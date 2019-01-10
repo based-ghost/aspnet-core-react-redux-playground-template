@@ -1,0 +1,180 @@
+﻿@charset "UTF-8";
+
+/* IMPORTS - variables.scss has overrides for bulma & react-toastify colors */
+@import 'variables.scss';
+@import "~font-awesome/scss/font-awesome.scss";
+@import "~react-toastify/scss/main.scss"; 
+@import '~bulma/bulma';
+@import '_tool-tip.scss';
+@import '_dropdown.scss';
+@import '_checkbox.scss';
+@import '_nav.scss';
+@import '_loaders.scss';
+
+/* TOASTIFY PACKAGE OVERRIDES */
+.Toastify__toast {
+    border-radius: $rt-toast-border-radius;
+}
+
+/* OVERIDE & GENERAL STYLES */
+html, body {
+    background-color: $color-body-bg;
+}
+
+.box {
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: $box-box-shadow;
+    box-shadow: $box-box-shadow;
+}
+
+#login-img {
+    padding-bottom: .75rem;
+}
+
+.section-login {
+    padding: 1rem 1.5rem;
+}
+
+.hero.is-dark .title {
+    color: $color-blue-highlight;
+}
+
+.form-columns {
+    h5 {
+        margin-bottom: 3.5rem !important;
+    }
+
+    .title:not(.is-spaced) + .subtitle {
+        margin-top: -1rem;
+    }
+}
+
+.is-horizontal-center {
+    justify-content: center;
+}
+
+.button {
+    font-weight: 600;
+}
+
+.dashboard-wrapper {
+    padding-bottom: 3rem;
+}
+
+.dashboard-link {
+    color: $color-black;
+    font-weight: 700;
+    padding: 0.25em 0.5em 0.25em;
+    margin-right: .25em;
+
+    &.react {
+        background-color: rgba(32,156,238,0.2);
+        border-bottom: 1px solid rgba(32,156,238,0.75);
+
+        &:hover {
+            background-color: rgba(32,156,238,0.35);
+            border-bottom: 1px solid rgba(32,156,238,1);
+        }
+    }
+
+    &.redux {
+        background-color: rgba(118,74,188,0.2);
+        border-bottom: 1px solid rgba(118,74,188,0.75);
+
+        &:hover {
+            background-color: rgba(118,74,188,0.35);
+            border-bottom: 1px solid rgba(118,74,188,1);
+        }
+    }
+
+    &.bulma {
+        background-color: rgba(0, 196, 167,0.2);
+        border-bottom: 1px solid rgba(0, 196, 167,0.75);
+
+        &:hover {
+            background-color: rgba(0, 196, 167,0.35);
+            border-bottom: 1px solid rgba(0, 196, 167,1);
+        }
+    }
+
+    &.aspcore {
+        background-color: rgba(118,74,188,0.2);
+        border-bottom: 1px solid rgba(118,74,188,0.75);
+
+        &:hover {
+            background-color: rgba(118,74,188,0.35);
+            border-bottom: 1px solid rgba(118,74,188,1);
+        }
+    }
+
+    &.sass {
+        background-color: rgba(198,83,140,0.2);
+        border-bottom: 1px solid rgba(198,83,140,.75);
+
+        &:hover {
+            background-color: rgba(198,83,140,.35);
+            border-bottom: 1px solid rgba(198,83,140,1);
+        }
+    }
+
+    &.typescript {
+        background-color: rgba(41,78,128,0.2);
+        border-bottom: 1px solid rgba(41,78,128,.75);
+
+        &:hover {
+            background-color: rgba(41,78,128,.35);
+            border-bottom: 1px solid rgba(41,78,128,1);
+        }
+    }
+}
+
+.content.dashboard-content li + li {
+    margin-top: 1em;
+}
+
+.dashboard-info {
+    padding: 1.5em !important;
+}
+
+.is-pagination-group p {
+    > a {
+        width: 8em;
+    }
+
+    &:nth-child(1) {
+        margin-left: auto;
+    }
+
+    &:nth-child(2) {
+        margin-right: auto;
+    }
+}
+
+.icon-clickable {
+    pointer-events: visible !important;
+    cursor: pointer;
+
+    &:hover {
+        color: $color-black !important;
+        opacity: .7;
+    }
+}
+
+#app-footer {
+    position: absolute;
+    width: 100%;
+    padding-top: 3em;
+    padding-bottom: 1em;
+
+    > div {
+        color: $color-footer-text;
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        width: 30%;
+        text-align: center;
+        padding-top: 1.5em;
+        border-top: 1px solid $color-gray-border;
+    }
+}

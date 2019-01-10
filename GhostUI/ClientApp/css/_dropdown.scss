@@ -1,0 +1,72 @@
+﻿.dropdown {
+    button {
+        justify-content: initial;
+        padding-left: 1em;
+        font-weight: 400;
+        box-shadow: $dropdown-button-box-shadow;
+
+        &:hover .caret-select {
+            opacity: 1;
+        }
+
+        &:focus .caret-select {
+            opacity: 1;
+            color: $blue;
+        }
+    }
+
+    &.normal-width button {
+        min-width: 14rem;
+    }
+
+    &.full-width button {
+        width: 100%;
+    }
+
+    &.is-medium .dropdown-menu .dropdown-content > li > a {
+        font-size: 1rem;
+    }
+
+    &.is-active button .caret-select {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+        -webkit-transition: transform .2s ease;
+        transition: transform .2s ease;
+    }
+}
+
+.caret-select {
+    opacity: .75;
+    position: absolute;
+    right: .75rem;
+    display: inline-block;
+    margin-left: .75rem;
+    vertical-align: middle;
+    border-top: 7px dashed;
+    border-right: 7px solid transparent;
+    border-left: 7px solid transparent;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: transform .2s ease;
+    transition: transform .2s ease;
+}
+
+.is-medium .caret-select {
+    border-top: 9px dashed;
+    border-right: 9px solid transparent;
+    border-left: 9px solid transparent;
+}
+
+.dropdown-menu {
+    right: 0;
+}
+
+.dropdown-content {
+    -webkit-box-shadow: $dropdown-box-shadow;
+    box-shadow: $dropdown-box-shadow;
+}
+
+.selected-option {
+    color: $blue !important;
+    font-weight: 500;
+}

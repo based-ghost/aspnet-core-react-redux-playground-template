@@ -1,0 +1,129 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <IsPackable>false</IsPackable>
+    <LangVersion>default</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNetCore.HealthChecks.UI" Version="2.2.10" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
+    <Content Remove="ClientApp\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\api\auth.service.ts" />
+    <None Remove="ClientApp\api\base.service.ts" />
+    <None Remove="ClientApp\api\sample.service.ts" />
+    <None Remove="ClientApp\api\signalR.service.ts" />
+    <None Remove="ClientApp\components\controls\checkbox.tsx" />
+    <None Remove="ClientApp\components\controls\Dropdown.tsx" />
+    <None Remove="ClientApp\components\controls\index.ts" />
+    <None Remove="ClientApp\components\footer\Footer.tsx" />
+    <None Remove="ClientApp\components\loaders\index.ts" />
+    <None Remove="ClientApp\components\nav\index.ts" />
+    <None Remove="ClientApp\configureStore.ts" />
+    <None Remove="ClientApp\config\constants.ts" />
+    <None Remove="ClientApp\config\toastify.tsx" />
+    <None Remove="ClientApp\pages\index.ts" />
+    <None Remove="ClientApp\prototype\index.ts" />
+    <None Remove="ClientApp\prototype\string.extensions.ts" />
+    <None Remove="ClientApp\store\auth\actions.ts" />
+    <None Remove="ClientApp\store\auth\index.ts" />
+    <None Remove="ClientApp\store\auth\reducer.ts" />
+    <None Remove="ClientApp\store\auth\types.ts" />
+    <None Remove="ClientApp\store\form\actions.ts" />
+    <None Remove="ClientApp\store\form\index.ts" />
+    <None Remove="ClientApp\store\form\reducer.ts" />
+    <None Remove="ClientApp\store\form\types.ts" />
+    <None Remove="ClientApp\store\index.ts" />
+    <None Remove="ClientApp\store\rootReducer.ts" />
+    <None Remove="ClientApp\store\weather-forecasts\actions.ts" />
+    <None Remove="ClientApp\store\weather-forecasts\index.ts" />
+    <None Remove="ClientApp\store\weather-forecasts\reducer.ts" />
+    <None Remove="ClientApp\store\weather-forecasts\types.ts" />
+    <None Remove="ClientApp\types\redux.d.ts" />
+    <None Remove="ClientApp\utils\handle-error.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\api\services\base.service.ts" />
+    <TypeScriptCompile Include="ClientApp\api\services\sample.service.ts" />
+    <TypeScriptCompile Include="ClientApp\api\services\signalR.service.ts" />
+    <TypeScriptCompile Include="ClientApp\components\controls\Checkbox.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\controls\Dropdown.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\controls\index.ts" />
+    <TypeScriptCompile Include="ClientApp\components\footer\Footer.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\loaders\Authenticator.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\loaders\index.ts" />
+    <TypeScriptCompile Include="ClientApp\components\loaders\Spinner.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\nav\index.ts" />
+    <TypeScriptCompile Include="ClientApp\components\nav\NavBar.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\nav\Settings.tsx" />
+    <TypeScriptCompile Include="ClientApp\pages\index.ts" />
+    <TypeScriptCompile Include="ClientApp\store\configureStore.ts" />
+    <TypeScriptCompile Include="ClientApp\config\constants.ts" />
+    <TypeScriptCompile Include="ClientApp\utils\toastify-msg-renderer.tsx" />
+    <TypeScriptCompile Include="ClientApp\config\dashboard-content.tsx" />
+    <TypeScriptCompile Include="ClientApp\pages\Login.tsx" />
+    <TypeScriptCompile Include="ClientApp\prototype\index.ts" />
+    <TypeScriptCompile Include="ClientApp\prototype\extensions\string.extensions.ts" />
+    <TypeScriptCompile Include="ClientApp\store\auth\actions.ts" />
+    <TypeScriptCompile Include="ClientApp\store\auth\index.ts" />
+    <TypeScriptCompile Include="ClientApp\store\auth\reducer.ts" />
+    <TypeScriptCompile Include="ClientApp\store\auth\types.ts" />
+    <TypeScriptCompile Include="ClientApp\store\form\actions.ts" />
+    <TypeScriptCompile Include="ClientApp\store\form\index.ts" />
+    <TypeScriptCompile Include="ClientApp\store\form\reducer.ts" />
+    <TypeScriptCompile Include="ClientApp\store\form\types.ts" />
+    <TypeScriptCompile Include="ClientApp\store\index.ts" />
+    <TypeScriptCompile Include="ClientApp\store\rootReducer.ts" />
+    <TypeScriptCompile Include="ClientApp\store\weather-forecasts\actions.ts" />
+    <TypeScriptCompile Include="ClientApp\store\weather-forecasts\index.ts" />
+    <TypeScriptCompile Include="ClientApp\store\weather-forecasts\reducer.ts" />
+    <TypeScriptCompile Include="ClientApp\store\weather-forecasts\types.ts" />
+    <TypeScriptCompile Include="ClientApp\types\redux.d.ts" />
+    <TypeScriptCompile Include="ClientApp\utils\handle-error.ts" />
+  </ItemGroup>
+
+  <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+
+    <!-- In development, the dist files won't exist on the first run or when cloning to
+         a different machine, so rebuild them if not already present. -->
+    <Message Importance="high" Text="Performing first-run Webpack build..." />
+    <Exec Command="npm install" />
+    <Exec Command="node node_modules/webpack/bin/webpack.js" />
+  </Target>
+
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec Command="npm install" />
+    <Exec Command="node node_modules/webpack/bin/webpack.js --env.prod" />
+
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="wwwroot\dist\**; ClientApp\dist\**" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+
+</Project>

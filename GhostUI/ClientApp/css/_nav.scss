@@ -1,0 +1,182 @@
+﻿/* NAV-BAR */
+.navbar {
+    width: 100%;
+    padding-top: .72rem;
+    padding-bottom: .72rem;
+    background-color: $color-nav-bar;
+}
+
+.brand-wrapper {
+    width: 11em;
+    padding-top: .2em;
+    padding-left: 1.5em;
+}
+
+.navbar-centered {
+    position: absolute;
+    width: 100%;
+    -webkit-animation: opacityFadeIn .25s both ease;
+    animation: opacityFadeIn .25s both ease;
+    -webkit-animation-delay: .25s;
+    animation-delay: .25s;
+}
+
+.nav-divider {
+    background-color: white;
+    border-radius: 50%;
+    display: inline-block;
+    margin: auto .01rem auto .01rem;
+    height: .6rem;
+    opacity: .7;
+    width: 1.5%;
+}
+
+.navbar-start {
+    font-size: 1.25rem;
+    font-weight: 400;
+    position: relative;
+    width: 33em;
+    margin-left: auto;
+    margin-right: auto;
+
+    a.navbar-item {
+        color: white;
+        opacity: .7;
+        width: 31%;
+        text-transform: uppercase;
+        -webkit-transition: all .15s ease-in;
+        transition: all .15s ease-in;
+
+        &:hover {
+            color: white;
+            background-color: transparent;
+            opacity: 1;
+        }
+
+        &.is-active {
+            color: $color-blue-highlight !important;
+            opacity: 1 !important;
+        }
+
+        > span:first-child {
+            margin-left: auto;
+        }
+
+        > span:last-child {
+            margin-left: .65rem;
+            margin-right: auto;
+        }
+    }
+}
+
+/* SETTINGS PLUGIN */
+.fixed-plugin {
+    position: fixed;
+    top: 120px;
+    right: 0;
+    width: 65px;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1031;
+    border-radius: 8px 0 0 8px;
+    text-align: center;
+    -webkit-transition: background .15s ease-in;
+    transition: background .15s ease-in;
+    -webkit-animation: opacityFadeIn .25s both ease;
+    animation: opacityFadeIn .25s both ease;
+    -webkit-animation-delay: .25s;
+    animation-delay: .25s;
+
+    &:hover, &.fixed-plugin-active {
+        background: rgba(0, 0, 0, 0.6);
+    }
+
+    .fa-cog {
+        color: white;
+        padding: 10px;
+        border-radius: 0 0 6px 6px;
+        width: auto;
+    }
+
+    .dropdown .dropdown-menu {
+        top: 0;
+        opacity: 1;
+        right: 62px;
+        left: auto;
+        width: 11rem;
+        min-width: 11rem;
+        display: block;
+        padding-top: 10px;
+        padding-bottom: 5px;
+        background-color: white;
+        position: absolute;
+        z-index: 1000;
+        -webkit-border-radius: 6px;
+        border-radius: 6px;
+        -webkit-box-shadow: $settings-box-shadow;
+        box-shadow: $settings-box-shadow;
+
+        &::before {
+            border-bottom: 16px solid transparent;
+            border-left: 16px solid $color-gray-border;
+            border-top: 16px solid transparent;
+            right: -16px;
+            margin-left: auto;
+            left: auto;
+        }
+
+        &::after {
+            border-bottom: 16px solid transparent;
+            border-left: 16px solid white;
+            border-top: 16px solid transparent;
+            right: -15px;
+            content: '';
+            display: inline-block;
+            position: absolute;
+            top: 22px;
+            width: 17px;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
+        &::before {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            top: 22px;
+            width: 17px;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+    }
+
+    li.header-title {
+        line-height: 35px;
+        font-size: 18px;
+        text-align: center;
+        color: #7f888f;
+        text-transform: uppercase;
+        border-bottom: 1px solid $color-gray-border;
+        margin-bottom: .5rem;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    a.dropdown-item {
+        width: 100%;
+        font-size: 1rem;
+        display: inline-block;
+        color: $color-ash-gray;
+        padding-right: 1rem;
+        z-index: initial;
+        pointer-events: visible;
+
+        span {
+            float: left;
+        }
+
+        > span:last-child {
+            margin-left: .3rem;
+        }
+    }
+}
