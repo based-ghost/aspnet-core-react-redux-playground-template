@@ -10,13 +10,15 @@ $color-nav-bar: #242424;
 $color-gray-border: #dbdbdb;
 $color-black: #363636;
 $color-ash-gray: #555;
-$color-blue-highlight: #41adf1; 
+$color-blue-highlight: #00b9fb; 
 $color-footer-text: #4a4a4a;
 
+/* CHECKBOX CONTROL */
 $color-checkbox-mark: $green;
 $color-checkbox-border: $color-gray-border;
 $color-checkbox-border-hover: #b5b5b5;
 
+/* AUTHENTICATOR LOADER */
 $color-login-success: #1be551;
 $color-login-fail: $red;
 
@@ -24,10 +26,6 @@ $color-login-fail: $red;
 $fa-font-path: '~font-awesome/fonts' !default;
 
 /* REACT-TOASTIFY OVERRIDES */
-$rt-color-info: $cyan;
-$rt-color-success: $green;
-$rt-color-warning: #f1c40f;
-$rt-color-error: $red;
 $rt-toast-min-height: 78px;
 $rt-toast-border-radius: 4px;
 

@@ -132,18 +132,26 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
         e.preventDefault();
 
         if ((this.state.credentials.userName!).isEmptyOrWhiteSpace() || (this.state.credentials.password!).isEmptyOrWhiteSpace()) {
-            // Run invalidInputs error
+            // Run invalidInputs error and display toast notification (if one is not already active)
             this.setState({ invalidInputs: true });
             if (!toast.isActive(this.toastId)) {
                 this.toastId = toast.error(renderToastContent('Enter user name/password', 'fa-exclamation'));
             }
         } else {
-            // Login stub code
+            // Clear any toast notifications and prepare state for Login request stub / run login request stub
+            toast.dismiss();
             this.setState({ invalidInputs: false, authRequestStatus: AuthStatusEnum.Process as string });
+
             setTimeout(() => {
                 this.props.loginUserRequest(this.state.credentials);
             }, 4000);
         }
+    }
+
+    private toggleShowPassword = () => {
+        this.setState({
+            showPassword: !this.state.showPassword
+        });
     }
 
     private updateRememberMe = (checked: boolean) => {
@@ -170,12 +178,6 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
                 ...this.state.credentials,
                 password: (e.target.value || '')
             }
-        });
-    }
-
-    private toggleShowPassword: React.MouseEventHandler<HTMLSpanElement> = (e) => {
-        this.setState({
-            showPassword: !this.state.showPassword
         });
     }
 }

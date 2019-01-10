@@ -1,4 +1,5 @@
 ﻿export interface IActionType {
+    NAMESPACE: string;
     LOGIN: string;
     LOGIN_SUCCESS: string;
     LOGIN_FAIL: string;
@@ -7,11 +8,12 @@
 }
 
 export const ActionType: IActionType = {
-    LOGIN: 'LOGIN',
-    LOGIN_SUCCESS: 'LOGIN_SUCCESS',
-    LOGIN_FAIL: 'LOGIN_FAIL',
-    LOGOUT: 'LOGOUT',
-    RESET_STATE: 'RESET_AUTH_RESET'
+    NAMESPACE: 'auth',
+    LOGIN: 'auth/login',
+    LOGIN_SUCCESS: 'auth/loginSuccess',
+    LOGIN_FAIL: 'auth/loginFail',
+    LOGOUT: 'auth/logout',
+    RESET_STATE: 'auth/resetState'
 };
 
 export const enum AuthStatusEnum {

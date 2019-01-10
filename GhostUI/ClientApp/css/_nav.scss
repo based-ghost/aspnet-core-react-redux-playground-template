@@ -38,6 +38,10 @@
     width: 33em;
     margin-left: auto;
     margin-right: auto;
+    flex-direction: row;
+    display: flex;
+    overflow-x: hidden;
+    overflow-y: hidden;
 
     a.navbar-item {
         color: white;
@@ -55,6 +59,7 @@
 
         &.is-active {
             color: $color-blue-highlight !important;
+            background-color: transparent;
             opacity: 1 !important;
         }
 

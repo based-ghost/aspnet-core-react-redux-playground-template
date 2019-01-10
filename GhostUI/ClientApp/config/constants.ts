@@ -37,7 +37,8 @@ export const authService = {
  * SampleDataController endpoints
  */
 export const sampleService = {
-    CONTROLLER_ID: 'SampleData'
+    CONTROLLER_ID: 'SampleData',
+    GET_FORECASTS_RQ: 'WeatherForecasts?startDateIndex='
 };
 
 /**
@@ -50,5 +51,6 @@ export const signalrService = {
     HUB_MESSAGE_TITLE: 'Hub Message',
     LOGIN_USER_EVENT: 'UserLogin',
     LOGOUT_USER_EVENT: 'UserLogout',
-    CLOSE_EVENT: 'CloseAllConnections'
+    CLOSE_EVENT: 'CloseAllConnections',
+    TOASTIFY_ICON: 'fa-info'
 };

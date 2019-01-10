@@ -51,13 +51,13 @@ class SignalRService {
     private registerOnServerEvents(): void {
         this._hubConnection.on(signalrService.LOGIN_USER_EVENT, () => {
             setTimeout(() => {
-                toast.info(renderToastContent('A user has logged in (SignalR)', 'fa-info'));
+                toast.info(renderToastContent('A user has logged in (SignalR)', signalrService.TOASTIFY_ICON));
             }, signalrService.HUB_MESSAGE_DELAY);
         });
 
         this._hubConnection.on(signalrService.LOGOUT_USER_EVENT, () => {
             setTimeout(() => {
-                toast.info(renderToastContent('A user has logged out (SignalR)', 'fa-info'));
+                toast.info(renderToastContent('A user has logged out (SignalR)', signalrService.TOASTIFY_ICON));
             }, signalrService.HUB_MESSAGE_DELAY);
         });
 
@@ -65,7 +65,7 @@ class SignalRService {
             this._hubConnection.stop().then(() => {
                 setTimeout(() => {
                     this._isConnected = false;
-                    toast.info(renderToastContent(`All hub connections closed (SignalR) - ${reason}`, 'fa-info'));
+                    toast.info(renderToastContent(`All hub connections closed (SignalR) - ${reason}`, signalrService.TOASTIFY_ICON));
                 }, signalrService.HUB_MESSAGE_DELAY);
             });
         });

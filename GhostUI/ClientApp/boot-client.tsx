@@ -2,10 +2,10 @@ import './css/site.scss';
 import './prototype';
 import routes from './routes';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createBrowserHistory } from 'history';
 import { AppContainer } from 'react-hot-loader';
+import { hydrate, render, Renderer } from 'react-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import { ApplicationState, configureStore } from './store';
 import { ToastContainer, ToastPosition } from 'react-toastify';
@@ -17,8 +17,8 @@ const initialState = (window as any).initialReduxState as ApplicationState;
 const store = configureStore(history, initialState);
 
 // This function starts up the React app when it runs in a browser. It sets up the routing configuration and injects the app into a DOM element.
-const renderApp = () => {
-    ReactDOM.render(
+const renderApp = (domRenderer: Renderer = render) => {
+    domRenderer(
         <AppContainer>
             <Provider store={store}>
                 <ConnectedRouter history={history} children={routes} />
@@ -30,7 +30,8 @@ const renderApp = () => {
 };
 
 // Execute function above to patch app to dom
-renderApp();
+// server-side rendered output should use hydrate method - but only in production builds, so check if module.hot does not apply as well
+renderApp((initialState && !module.hot) ? hydrate : render);
 
 // Allow Hot Module Replacement
 if (module.hot) {

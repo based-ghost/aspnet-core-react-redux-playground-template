@@ -1,13 +1,15 @@
 ﻿export interface IActionType {
+    NAMESPACE: string;
     REQUEST: string;
-    RECIEVE: string;
+    RECEIVE: string;
     RESET_STATE: string;
 }
 
 export const ActionType: IActionType = {
-    REQUEST: 'FETCH_REQUEST',
-    RECIEVE: 'FETCH_RECIEVE',
-    RESET_STATE: 'RESET_WEATHER_STATE'
+    NAMESPACE: 'weather',
+    REQUEST: 'weather/fetch',
+    RECEIVE: 'weather/receive',
+    RESET_STATE: 'weather/resetState'
 };
 
 export interface WeatherForecast {

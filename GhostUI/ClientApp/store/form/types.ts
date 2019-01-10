@@ -1,4 +1,5 @@
 ﻿export interface IActionType {
+    NAMESPACE: string;
     INCREMENT: string;
     DECREMENT: string;
     DROPDOWN_SELECT: string;
@@ -6,10 +7,11 @@
 }
 
 export const ActionType: IActionType = {
-    INCREMENT: 'INCREMENT',
-    DECREMENT: 'DECREMENT',
-    DROPDOWN_SELECT: 'DROPDOWN_SELECT',
-    CHECK_SAMPLE_BOX: 'CHECK_SAMPLE_BOX'
+    NAMESPACE: 'form',
+    INCREMENT: 'form/increment',
+    DECREMENT: 'form/decrement',
+    DROPDOWN_SELECT: 'form/dropdownSelect',
+    CHECK_SAMPLE_BOX: 'form/checkSampleBox'
 };
 
 export interface DropdownOption {

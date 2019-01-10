@@ -2397,9 +2397,9 @@
     background: #fff;
     color: #aaa; }
   .Toastify__toast--info {
-    background: #209cee; }
+    background: #3498db; }
   .Toastify__toast--success {
-    background: #4bbf73; }
+    background: #07bc0c; }
   .Toastify__toast--warning {
     background: #f1c40f; }
   .Toastify__toast--error {
@@ -9754,7 +9754,11 @@ input[type="checkbox"] {
   position: relative;
   width: 33em;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  flex-direction: row;
+  display: flex;
+  overflow-x: hidden;
+  overflow-y: hidden; }
   .navbar-start a.navbar-item {
     color: white;
     opacity: .7;
@@ -9767,7 +9771,8 @@ input[type="checkbox"] {
       background-color: transparent;
       opacity: 1; }
     .navbar-start a.navbar-item.is-active {
-      color: #41adf1 !important;
+      color: #00b9fb !important;
+      background-color: transparent;
       opacity: 1 !important; }
     .navbar-start a.navbar-item > span:first-child {
       margin-left: auto; }
@@ -9984,7 +9989,7 @@ html, body {
   padding: 1rem 1.5rem; }
 
 .hero.is-dark .title {
-  color: #41adf1; }
+  color: #00b9fb; }
 
 .form-columns h5 {
   margin-bottom: 3.5rem !important; }

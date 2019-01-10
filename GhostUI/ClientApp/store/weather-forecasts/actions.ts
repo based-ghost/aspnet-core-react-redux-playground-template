@@ -8,7 +8,7 @@ export const actionCreators = {
         if (startDateIndex !== getState().weatherForecasts.startDateIndex) {
             // Build http request and success handler in Promise<void> wrapper
             const fetchTask = SampleApi.getWeatherForecastsAsync(startDateIndex).then(data => {
-                dispatch({ type: ActionType.RECIEVE, startDateIndex: startDateIndex, forecasts: data });
+                dispatch({ type: ActionType.RECEIVE, startDateIndex: startDateIndex, forecasts: data });
             });
 
             // Ensure server-side prerendering waits for this to complete

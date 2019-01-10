@@ -15,6 +15,11 @@ const initialState = () => {
 };
 
 export const reducer = (state: FormState = initialState(), action: FunctionReturnTypes<typeof actionCreators>) => {
+    // If current action is not pertinent to this reducer, skip remainder of checks
+    if (!action.type.startsWith(ActionType.NAMESPACE)) {
+        return state;
+    }
+
     switch (action.type) {
         case ActionType.INCREMENT:
             return {
@@ -41,6 +46,6 @@ export const reducer = (state: FormState = initialState(), action: FunctionRetur
                 selectedDropdownOption: state.selectedDropdownOption
             };
         default:
-            return state || initialState();
+            return state;
     }
 };

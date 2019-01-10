@@ -12,6 +12,11 @@ const initialState = () => {
 export const reducer = (state: WeatherForecastsState = initialState(), incomingAction: FunctionReturnTypes<typeof actionCreators>) => {
     const action = incomingAction as WeatherForecastsAction;
 
+    // If current action is not pertinent to this reducer, skip remainder of checks
+    if (!action.type.startsWith(ActionType.NAMESPACE)) {
+        return state;
+    }
+
     switch (action.type) {
         case ActionType.REQUEST:
             return {
@@ -19,7 +24,7 @@ export const reducer = (state: WeatherForecastsState = initialState(), incomingA
                 forecasts: state.forecasts,
                 isLoading: true
             };
-        case ActionType.RECIEVE:
+        case ActionType.RECEIVE:
             // Only accept the incoming data if it matches the most recent request. This ensures we correctly handle out-of-order responses.
             if (action.startDateIndex === state.startDateIndex) {
                 return {
@@ -33,5 +38,5 @@ export const reducer = (state: WeatherForecastsState = initialState(), incomingA
             break;
     }
 
-    return state || initialState();
+    return state;
 };
