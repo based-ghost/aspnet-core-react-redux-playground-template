@@ -28,6 +28,8 @@ bld/
 .vs/
 /wwwroot/dist/
 /ClientApp/dist/
+/GhostUI/wwwroot/dist
+/GhostUI/ClientApp/dist
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
