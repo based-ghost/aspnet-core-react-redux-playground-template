@@ -1,6 +1,10 @@
 # ASP.NET Core 2.2 / React + Redux + TypeScript + Hot Module Replacement (HMR) + Server-Side Rendering (SSR)
 This template is a SPA application built using ASP.NET Core 2.2 as the REST API server and React/Redux/TypeScript as the web client (Bulma + SASS used for UI styling). You can find a similar version using Vue + Vuex (and associated libraries) here: https://github.com/based-ghost/aspnet-core-vue-vuex-playground-template
 
+
+![](https://j.gifs.com/KZKYQn.gif)
+
+
 # General Overview
 This template is largely based on the original React + Redux .NET Core SPA template that was offered around the time of .NET Core 2.0 release (the existing template is a much more simplified version of what was offered in the past and the structure is quite different as well). Using that as a base, this template greatly extends the functionality provided and also uses the latest versions of all dependent libraries. Keep in mind that I use this project (or others like it) as a testing ground for varying libraries/packages and it is not meant to act as a stand-alone final solution - it is more of POC. For example, the login & logout processes are stubbed to simulate the actual process (no real authentication is happening, however, it is something I plan to add to this project in the near future). I plan on keeping this up to date, and the listed technology stack may be subject to change.
 
