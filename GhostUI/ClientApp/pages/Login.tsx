@@ -131,6 +131,11 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
     private handleLogin: React.FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
 
+        // Prevent multiple login requests onClick
+        if (this.state.authRequestStatus === AuthStatusEnum.Process) {
+            return;
+        }
+
         if ((this.state.credentials.userName!).isEmptyOrWhiteSpace() || (this.state.credentials.password!).isEmptyOrWhiteSpace()) {
             // Run invalidInputs error and display toast notification (if one is not already active)
             this.setState({ invalidInputs: true });
