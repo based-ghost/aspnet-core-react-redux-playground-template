@@ -16,7 +16,7 @@ const initialState = Object.freeze({
 
 export default class Authenticator extends React.PureComponent<AuthenticatorProps, AuthenticatorState> {
     static defaultProps = {
-        runResultTime: 2500,
+        runResultTime: 1500,
         authStatus: AuthStatusEnum.None as string
     };
 
