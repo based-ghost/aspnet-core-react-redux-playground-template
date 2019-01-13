@@ -6,7 +6,6 @@
     "moduleResolution": "node",
     "target": "es5",
     "jsx": "react",
-    "noImplicitAny": false,
     "experimentalDecorators": true,
     "sourceMap": true,
     "skipDefaultLibCheck": true,

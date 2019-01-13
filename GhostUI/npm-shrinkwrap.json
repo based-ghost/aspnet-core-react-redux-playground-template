@@ -1259,9 +1259,9 @@
       }
     },
     "connected-react-router": {
-      "version": "6.2.0",
-      "resolved": "https://registry.npmjs.org/connected-react-router/-/connected-react-router-6.2.0.tgz",
-      "integrity": "sha512-hgDt+NhtjKHg7m0zpD2eMs0mcgC2kqQITdTQvEWOK26vT6RXDOA8KyzzZ4H04/1zGKUrvwjqrsHHvZ4dQTo/dQ==",
+      "version": "6.2.1",
+      "resolved": "https://registry.npmjs.org/connected-react-router/-/connected-react-router-6.2.1.tgz",
+      "integrity": "sha512-7QFs0wPYvwrzA7NptHx0DgblNA/nVErX0TUjTiOCwXSaqj/1Ng+nEmEczrfdA8gw7kIzFIa08WJGMymdb7bAZA==",
       "requires": {
         "immutable": "3.8.2",
         "seamless-immutable": "7.1.4"

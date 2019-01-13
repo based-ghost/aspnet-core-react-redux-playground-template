@@ -41,7 +41,7 @@
     "aspnet-prerendering": "^3.0.1",
     "axios": "^0.18.0",
     "bulma": "^0.7.2",
-    "connected-react-router": "^6.2.0",
+    "connected-react-router": "^6.2.1",
     "domain-task": "^3.0.3",
     "font-awesome": "^4.7.0",
     "history": "^4.7.2",
