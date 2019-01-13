@@ -25,8 +25,8 @@ After discovering the ```dotnet new reactredux``` command no longer created the 
   * TypeScript
   * Webpack for bundling of application assets and HMR (Hot Module Replacement)
   * Bulma CSS framework + SASS
-  * Axios for REST endpoint requests
-  * react-toastify (highly configurable toast notification library - comes hooked up to display login error & SignalR hub push notifications examples) - https://github.com/fkhadra/react-toastify
+  * [Axios](https://github.com/axios/axios) for REST endpoint requests
+  * [react-toastify](https://github.com/fkhadra/react-toastify) - a highly configurable toast notification library - comes hooked up to display login error & SignalR hub push notifications examples.
   * Custom, reusable Dropdown & Checkbox components that provide full functionality w/ state management (without a JQuery dependency).
   * Two different loader components (spinner & authentication animation w/ callback for success/fail)
   
