@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { RoutePaths } from '../../routes';
 import { ApplicationState } from '../../store';
+import { spaNugetUrls } from '../../config/constants';
 import { actionCreators, reducer } from '../../store/auth';
-import { healthChecksConfig } from '../../config/constants';
 
 type NavProps = ReturnType<typeof reducer> & typeof actionCreators;
 type SettingsState = typeof initialState;
@@ -51,7 +51,7 @@ class Settings extends React.Component<NavProps, SettingsState> {
                     {this.renderHealthCheckAnchor()}
                 </li>
                 <li>
-                    {this.renderMessagesAnchor()}
+                    {this.renderSwaggerAnchor()}
                 </li>
                 <li>
                     {this.renderLogoutAnchor()}
@@ -80,7 +80,7 @@ class Settings extends React.Component<NavProps, SettingsState> {
             <a className='dropdown-item'
                target='_blank'
                rel='noopener'
-               href={healthChecksConfig.UI_URL}
+               href={spaNugetUrls.health_ui}
                role='button'>
                 <span className='icon'>
                     <i className='fa fa-heart'></i>
@@ -90,13 +90,17 @@ class Settings extends React.Component<NavProps, SettingsState> {
         );
     }
 
-    private renderMessagesAnchor(): React.ReactNode {
+    private renderSwaggerAnchor(): React.ReactNode {
         return (
-            <a className='dropdown-item'>
+            <a className='dropdown-item'
+               target='_blank'
+               rel='noopener'
+               href={spaNugetUrls.swagger_docs}
+               role='button'>
                 <span className='icon'>
-                    <i className='fa fa-envelope'></i>
+                    <i className='fa fa-file'></i>
                 </span>
-                <span>Messages</span>
+                <span>Swagger API</span>
             </a>
         );
     }

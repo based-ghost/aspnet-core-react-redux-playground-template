@@ -42,7 +42,7 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
 
         if (nextAuthStatus !== curAuthStatus) {
             this.setState({
-                authRequestStatus: (nextAuthStatus === AuthStatusEnum.Success) ? 'success' : 'fail'
+                authRequestStatus: nextAuthStatus
             });
         }
     }
@@ -149,7 +149,7 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
 
             setTimeout(() => {
                 this.props.loginUserRequest(this.state.credentials);
-            }, 4000);
+            }, 2500);
         }
     }
 

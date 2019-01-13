@@ -1,4 +1,5 @@
 using GhostUI.Hubs;
+using NSwag.AspNetCore;
 using GhostUI.Extensions;
 using System.IO.Compression;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +35,9 @@ namespace GhostUI
                 .AddResponseCompression_Gzip(gzipMimeTypes, CompressionLevel.Fastest)
                 .AddMvcConfig(CompatibilityVersion.Version_2_2)
                 .AddSignalR();
+
+            // Register the Swagger services
+            services.AddSwaggerDocument(settings => settings.Title = $"{this.GetType().Namespace} API");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,6 +64,14 @@ namespace GhostUI
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+
+            // Register the Swagger generator and the Swagger UI middlewares
+            // NSwage.MsBuild + adding automation config in GhostUI.csproj makes this part of the build step (updates to API will be handled automatically)
+            app.UseSwaggerUi3(settings =>
+            {
+                settings.Path = "/docs";
+                settings.DocumentPath = "/docs/api-specification.json";
+            });
 
             app.UseCors("AllowAll")
                .UseStaticFiles()
