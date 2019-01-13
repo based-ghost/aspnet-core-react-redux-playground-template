@@ -20,7 +20,7 @@ After discovering the ```dotnet new reactredux``` command no longer created the 
 * __Client__
   * React
   * Redux
-  * aspnet-prerendering (production build) - Server-Side Rendering (SSR)
+  * aspnet-prerendering/SSR (production build)
   * connected-react-router/react-router-dom/react-router-redux
   * TypeScript
   * Webpack for bundling of application assets and HMR (Hot Module Replacement)
