@@ -30,9 +30,8 @@ namespace GhostUI
                 .AddGCInfoCheck("GCInfo");
 
             // Add CORS, Gzip response compression (prod only), MVC, SignalR
-            var gzipMimeTypes = Configuration.GetSection("Compression:Gzip:MimeTypes").Get<string[]>();
             services.AddCorsConfig("AllowAll")
-                .AddResponseCompression_Gzip(gzipMimeTypes, CompressionLevel.Fastest)
+                .AddResponseCompression_Gzip(Configuration)
                 .AddMvcConfig(CompatibilityVersion.Version_2_2)
                 .AddSignalR();
 

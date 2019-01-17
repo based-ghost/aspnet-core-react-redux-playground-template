@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System.IO.Compression;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Builder;
 using Newtonsoft.Json.Serialization;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.ResponseCompression;
 
@@ -37,12 +37,15 @@ namespace GhostUI.Extensions
             return services;
         }
 
-        public static IServiceCollection AddResponseCompression_Gzip(this IServiceCollection services, IEnumerable<string> mimeTypes, CompressionLevel compressionLvl, bool enableForHttps = false)
+        public static IServiceCollection AddResponseCompression_Gzip(this IServiceCollection services, IConfiguration config, CompressionLevel compressionLvl = CompressionLevel.Fastest)
         {
+            var enableForHttps = config.GetValue<bool>("Compression:Gzip:EnableForHttps");
+            var gzipMimeTypes = config.GetSection("Compression:Gzip:MimeTypes").Get<string[]>();
+
             services.AddResponseCompression(options => {
                 options.EnableForHttps = enableForHttps;
                 options.Providers.Add<GzipCompressionProvider>();
-                options.MimeTypes = mimeTypes;
+                options.MimeTypes = gzipMimeTypes;
             });
 
             services.Configure<GzipCompressionProviderOptions>(options => options.Level = compressionLvl);
