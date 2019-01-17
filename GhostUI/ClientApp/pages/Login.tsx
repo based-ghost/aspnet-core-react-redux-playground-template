@@ -1,12 +1,12 @@
 ﻿import * as React from 'react';
 import { SignalRApi } from '../api';
 import { connect } from 'react-redux';
-import { RoutePaths } from '../routes';
 import { ApplicationState } from '../store';
 import { toast, ToastId } from 'react-toastify';
 import { Checkbox } from '../components/controls';
-import { RouteComponentProps } from 'react-router-dom';
 import { Authenticator } from '../components/loaders';
+import { RoutesConfig } from '../router/routes-config';
+import { RouteComponentProps } from 'react-router-dom';
 import { renderToastContent } from '../utils/toastify-msg-renderer';
 import { actionCreators, AuthStatusEnum, Credentials, reducer } from '../store/auth';
 
@@ -63,7 +63,7 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
                             </form>
                             <Authenticator authStatus={this.state.authRequestStatus}
                                            failDispatcher={() => { this.props.resetState(); this.setState({ authRequestStatus: AuthStatusEnum.None as string }); }}
-                                           successDispatcher={() => this.props.history.push(RoutePaths.Dashboard)} />
+                                           successDispatcher={() => this.props.history.push(RoutesConfig.Dashboard.path)} />
                         </div>
                     </div>
                 </div>

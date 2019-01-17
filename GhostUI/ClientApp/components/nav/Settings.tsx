@@ -1,9 +1,9 @@
 ﻿import * as React from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
-import { RoutePaths } from '../../routes';
 import { ApplicationState } from '../../store';
 import { spaNugetUrls } from '../../config/constants';
+import { RoutesConfig } from '../../router/routes-config';
 import { actionCreators, reducer } from '../../store/auth';
 
 type NavProps = ReturnType<typeof reducer> & typeof actionCreators;
@@ -64,12 +64,12 @@ class Settings extends React.Component<NavProps, SettingsState> {
         return (
             <Route render={({ history }) => (
                 <a className='dropdown-item'
-                   onClick={() => { this.props.logoutUserRequest(() => history.push(RoutePaths.Login)); }}
+                   onClick={() => { this.props.logoutUserRequest(() => history.push(RoutesConfig.Login.path)); }}
                    role='button'>
                     <span className='icon'>
-                        <i className='fa fa-sign-out'></i>
+                        <i className={RoutesConfig.Login.icon}></i>
                     </span>
-                    <span>Logout</span>
+                    <span>{RoutesConfig.Login.displayName}</span>
                 </a>
             )} />
         );
