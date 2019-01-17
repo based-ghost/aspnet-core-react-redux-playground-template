@@ -1,7 +1,6 @@
 using GhostUI.Hubs;
 using NSwag.AspNetCore;
 using GhostUI.Extensions;
-using System.IO.Compression;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
