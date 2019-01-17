@@ -2,7 +2,7 @@
 This template is a SPA application built using ASP.NET Core 2.2 as the REST API server and React/Redux/TypeScript as the web client (Bulma + SASS used for UI styling). You can find a similar version using Vue + Vuex (and associated libraries) here: https://github.com/based-ghost/aspnet-core-vue-vuex-playground-template
 
 
-![](https://j.gifs.com/KZKYQn.gif)
+![](https://j.gifs.com/7LNMRA.gif)
 
 
 # General Overview
@@ -11,21 +11,22 @@ This template is largely based on the original React + Redux .NET Core SPA templ
 After discovering the ```dotnet new reactredux``` command no longer created the desired template, I eventually came across the following repository that was quite helpful and right along the lines of what I was looking for - https://github.com/RyanLamansky/react-redux-typescript-dotnet-core-ssr-hmr
 
 # Technology Stack Overview
-* Server
+* __Server__
   * ASP.NET Core 2.2
   * SignalR
-  * HealthChecks + the AspNetCore.HealthChecks.UI package - https://github.com/xabaril/AspNetCore.Diagnostics.HealthChecks - this provides  a nicely formatted UI for viewing the results of the HealthCheck modules in use and is accessed on ```/health-ui``` (also, provide an option for viewing the raw JSON data that the UI package prettifies for you at ```/healthchecks-json``` - configured in appsettings.json and can be accessed in the application via the floating settings cog on right screen by clicking the "Health Checks" link).
+  * HealthChecks + [AspNetCore.HealthChecks.UI package](https://github.com/xabaril/AspNetCore.Diagnostics.HealthChecks) - this provides  a nicely formatted UI for viewing the results of the HealthCheck modules in use and is accessed on ```/health-ui``` (also, provide an option for viewing the raw JSON data that the UI package prettifies for you at ```/healthchecks-json```). Access this view in the application via the floating settings cog on right screen by clicking the "Health Checks" link.
+  * API Documentation using Swagger UI - using package [NSwag.AspNetCore](http://NSwag.org) to prettify the specification output and display at ```/docs``` & [NSwag.MSBuild](http://NSwag.org) to handle automatic updates - so that when the project builds, the NSwag CLI will run and generate an updated API specification. Access this view in the application via the floating settings cog on right screen by clicking the "Swagger API" link.
   * Gzip response compression (production build)
-* Client
+* __Client__
   * React
   * Redux
-  * aspnet-prerendering (production build)
+  * aspnet-prerendering/SSR (production build)
   * connected-react-router/react-router-dom/react-router-redux
   * TypeScript
   * Webpack for bundling of application assets and HMR (Hot Module Replacement)
   * Bulma CSS framework + SASS
-  * Axios for REST endpoint requests
-  * react-toastify (highly configurable toast notification library - comes hooked up to display login error & SignalR hub push notifications examples) - https://github.com/fkhadra/react-toastify
+  * [Axios](https://github.com/axios/axios) for REST endpoint requests
+  * [react-toastify](https://github.com/fkhadra/react-toastify) - a highly configurable toast notification library - comes hooked up to display login error & SignalR hub push notifications examples.
   * Custom, reusable Dropdown & Checkbox components that provide full functionality w/ state management (without a JQuery dependency).
   * Two different loader components (spinner & authentication animation w/ callback for success/fail)
   
