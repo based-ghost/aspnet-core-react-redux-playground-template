@@ -37,17 +37,19 @@ namespace GhostUI.Extensions
             return services;
         }
 
-        public static IServiceCollection AddResponseCompression_Gzip(this IServiceCollection services, IConfiguration config, CompressionLevel compressionLvl = CompressionLevel.Fastest)
+        public static IServiceCollection AddResponseCompressionConfig(this IServiceCollection services, IConfiguration config, CompressionLevel compressionLvl = CompressionLevel.Fastest)
         {
-            var enableForHttps = config.GetValue<bool>("Compression:Gzip:EnableForHttps");
-            var gzipMimeTypes = config.GetSection("Compression:Gzip:MimeTypes").Get<string[]>();
+            var enableForHttps = config.GetValue<bool>("Compression:EnableForHttps");
+            var gzipMimeTypes = config.GetSection("Compression:MimeTypes").Get<string[]>();
 
             services.AddResponseCompression(options => {
-                options.EnableForHttps = enableForHttps;
+                options.Providers.Add<BrotliCompressionProvider>();
                 options.Providers.Add<GzipCompressionProvider>();
+                options.EnableForHttps = enableForHttps;
                 options.MimeTypes = gzipMimeTypes;
             });
 
+            services.Configure<BrotliCompressionProviderOptions>(options => options.Level = compressionLvl);
             services.Configure<GzipCompressionProviderOptions>(options => options.Level = compressionLvl);
 
             return services;

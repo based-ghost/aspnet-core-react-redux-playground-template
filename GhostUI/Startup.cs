@@ -28,9 +28,9 @@ namespace GhostUI
                 .AddHealthChecks()
                 .AddGCInfoCheck("GCInfo");
 
-            // Add CORS, Gzip response compression (prod only), MVC, SignalR
+            // Add CORS, Brotli/Gzip response compression (prod only), MVC, SignalR
             services.AddCorsConfig("AllowAll")
-                .AddResponseCompression_Gzip(Configuration)
+                .AddResponseCompressionConfig(Configuration)
                 .AddMvcConfig(CompatibilityVersion.Version_2_2)
                 .AddSignalR();
 
@@ -41,12 +41,8 @@ namespace GhostUI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            // Enable all custom health checks registered earlier (browse to {url}/healthchecks-ui to UI / {url}/healthchecks-json to raw JSON)
-            app.UseApiHealthChecks("/healthchecks-json")
-               .UseHealthChecksUI();
-
             // If development, enable Hot Module Replacement
-            // If production, enable Gzip response compression & strict transport security headers
+            // If production, enable Brotli/Gzip response compression & strict transport security headers
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage()
@@ -62,6 +58,10 @@ namespace GhostUI
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+
+            // Enable all custom health checks registered earlier (browse to {url}/healthchecks-ui to UI / {url}/healthchecks-json to raw JSON)
+            app.UseApiHealthChecks("/healthchecks-json")
+               .UseHealthChecksUI();
 
             // Register the Swagger generator and the Swagger UI middlewares
             // NSwage.MsBuild + adding automation config in GhostUI.csproj makes this part of the build step (updates to API will be handled automatically)
