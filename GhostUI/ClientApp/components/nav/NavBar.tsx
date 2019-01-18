@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 import { ApplicationState } from '../../store';
 import { RoutesConfig } from '../../router/routes-config';
 import { actionCreators, AuthState } from '../../store/auth';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type NavProps = AuthState & typeof actionCreators;
 
@@ -26,21 +28,21 @@ class NavBar extends React.Component<NavProps> {
             <div className='navbar-start'>
                 <NavLink to={RoutesConfig.Form.path} className='navbar-item' activeClassName='is-active'>
                     <span className='icon'>
-                        <i className={RoutesConfig.Form.icon}></i>
+                        <FontAwesomeIcon icon={RoutesConfig.Form.icon as IconProp} />
                     </span>
                     <span>{RoutesConfig.Form.displayName}</span>
                 </NavLink>
                 <div className='nav-divider'></div>
                 <NavLink to={RoutesConfig.Dashboard.path} className='navbar-item' activeClassName='is-active'>
                     <span className='icon'>
-                        <i className={RoutesConfig.Dashboard.icon}></i>
+                        <FontAwesomeIcon icon={RoutesConfig.Dashboard.icon as IconProp} />
                     </span>
                     <span>{RoutesConfig.Dashboard.displayName}</span>
                 </NavLink>
                 <div className='nav-divider'></div>
                 <NavLink to={RoutesConfig.FetchData.path.Relative} className='navbar-item' activeClassName='is-active'>
                     <span className='icon'>
-                        <i className={RoutesConfig.FetchData.icon}></i>
+                        <FontAwesomeIcon icon={RoutesConfig.FetchData.icon as IconProp} />
                     </span>
                     <span>{RoutesConfig.FetchData.displayName}</span>
                 </NavLink>

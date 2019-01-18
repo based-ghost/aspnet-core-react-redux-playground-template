@@ -53,5 +53,5 @@ export const signalrService = {
     LOGIN_USER_EVENT: 'UserLogin',
     LOGOUT_USER_EVENT: 'UserLogout',
     CLOSE_EVENT: 'CloseAllConnections',
-    TOASTIFY_ICON: 'fa-info'
+    TOASTIFY_ICON: 'info'
 };

@@ -40,6 +40,7 @@
     <None Remove="ClientApp\components\nav\index.ts" />
     <None Remove="ClientApp\configureStore.ts" />
     <None Remove="ClientApp\config\constants.ts" />
+    <None Remove="ClientApp\config\fa.config.ts" />
     <None Remove="ClientApp\config\toastify.tsx" />
     <None Remove="ClientApp\pages\index.ts" />
     <None Remove="ClientApp\prototype\index.ts" />
@@ -78,6 +79,7 @@
     <TypeScriptCompile Include="ClientApp\components\nav\index.ts" />
     <TypeScriptCompile Include="ClientApp\components\nav\NavBar.tsx" />
     <TypeScriptCompile Include="ClientApp\components\nav\Settings.tsx" />
+    <TypeScriptCompile Include="ClientApp\config\fa.config.ts" />
     <TypeScriptCompile Include="ClientApp\pages\index.ts" />
     <TypeScriptCompile Include="ClientApp\router\routes-config.ts" />
     <TypeScriptCompile Include="ClientApp\router\routes.tsx" />

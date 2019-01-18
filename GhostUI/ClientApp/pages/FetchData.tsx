@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { ApplicationState } from '../store';
 import { Spinner } from '../components/loaders';
 import { Link, RouteComponentProps } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { actionCreators, reducer, WeatherForecast } from '../store/weather-forecasts';
 
 type WeatherForecastProps = ReturnType<typeof reducer> & typeof actionCreators & RouteComponentProps<{ startDateIndex: string }>;
@@ -67,7 +68,7 @@ class FetchData extends React.PureComponent<WeatherForecastProps> {
                 <p className='control'>
                     <Link className='button is-info' to={`/fetchdata/${(this.props.startDateIndex || 0) - 5}`}>
                         <span className='icon'>
-                            <i className='fa fa-chevron-left'></i>
+                            <FontAwesomeIcon icon='chevron-left' />
                         </span>
                         <span>Previous</span>
                     </Link>
@@ -76,7 +77,7 @@ class FetchData extends React.PureComponent<WeatherForecastProps> {
                     <Link className='button is-info' to={`/fetchdata/${(this.props.startDateIndex || 0) + 5}`}>
                         <span>Next</span>
                         <span className='icon'>
-                            <i className='fa fa-chevron-right'></i>
+                            <FontAwesomeIcon icon='chevron-right' />
                         </span>
                     </Link>
                 </p>

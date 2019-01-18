@@ -2,17 +2,17 @@
     Login: {
         path: '/',
         displayName: 'Logout',
-        icon: 'fa fa-sign-out'
+        icon: 'sign-out-alt'
     },
     Form: {
         path: '/form',
         displayName: 'Form',
-        icon: 'fa fa-pencil-square-o'
+        icon: 'pencil-alt'
     },
     Dashboard: {
         path: '/dashboard',
         displayName: 'Dashboard',
-        icon: 'fa fa-home'
+        icon: 'home'
     },
     FetchData: {
         path: {
@@ -20,6 +20,6 @@
             Relative: '/fetchdata'
         },
         displayName: 'Fetch Data',
-        icon: 'fa fa-cloud'
+        icon: 'cloud'
     }
 };

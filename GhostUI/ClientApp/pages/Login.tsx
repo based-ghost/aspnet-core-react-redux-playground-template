@@ -7,6 +7,7 @@ import { Checkbox } from '../components/controls';
 import { Authenticator } from '../components/loaders';
 import { RoutesConfig } from '../router/routes-config';
 import { RouteComponentProps } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { renderToastContent } from '../utils/toastify-msg-renderer';
 import { actionCreators, AuthStatusEnum, Credentials, reducer } from '../store/auth';
 
@@ -82,7 +83,7 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
                            autoFocus
                            placeholder='User Name' />
                     <span className='icon is-left'>
-                        <i className='fa fa-user'></i>
+                        <FontAwesomeIcon icon='user' />
                     </span>
                 </div>
             </div>
@@ -99,12 +100,12 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
                            onChange={this.updatePassword}
                            placeholder='Password' />
                     <span className='icon is-left'>
-                        <i className='fa fa-lock'></i>
+                        <FontAwesomeIcon icon='lock' />
                     </span>
                     <span className='icon is-right icon-clickable'
                           data-tooltip={!this.state.showPassword ? 'Show password' : 'Hide password'}
                           onClick={this.toggleShowPassword}>
-                        <i className={!this.state.showPassword ? 'fa fa-eye' : 'fa fa-eye-slash'}></i>
+                        <FontAwesomeIcon icon={!this.state.showPassword ? 'eye' : 'eye-slash'} />
                     </span>
                 </div>
             </div>
@@ -118,10 +119,10 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
                           parentClass='remember-me-control'
                           dispatchHandler={this.updateRememberMe}
                           checked={!!this.state.credentials.rememberMe} />
-                <button className='button is-block is-info is-large is-fullwidth' type='submit'>
+                <button className='button is-info is-large is-fullwidth' type='submit'>
                     <span>Login</span>
                     <span className='icon'>
-                        <i className='fa fa-sign-in'></i>
+                        <FontAwesomeIcon icon='sign-in-alt' />
                     </span>
                 </button>
             </React.Fragment>
@@ -140,7 +141,7 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
             // Run invalidInputs error and display toast notification (if one is not already active)
             this.setState({ invalidInputs: true });
             if (!toast.isActive(this.toastId)) {
-                this.toastId = toast.error(renderToastContent('Enter user name/password', 'fa-exclamation'));
+                this.toastId = toast.error(renderToastContent('Enter user name/password', 'exclamation'));
             }
         } else {
             // Clear any toast notifications and prepare state for Login request stub / run login request stub

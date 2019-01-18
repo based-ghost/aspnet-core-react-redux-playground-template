@@ -1,9 +1,8 @@
-﻿@charset "UTF-8";
+﻿@charset 'utf-8';
 
 /* IMPORTS - variables.scss has overrides for bulma & react-toastify colors */
 @import 'variables.scss';
-@import "~font-awesome/scss/font-awesome.scss";
-@import "~react-toastify/scss/main.scss"; 
+@import '~react-toastify/scss/main.scss'; 
 @import '~bulma/bulma';
 @import '_tool-tip.scss';
 @import '_dropdown.scss';

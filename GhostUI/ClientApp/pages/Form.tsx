@@ -5,6 +5,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import { actionCreators, reducer } from '../store/form';
 import { DROPDOWN_TEST_DATA } from '../config/constants';
 import { Checkbox, Dropdown } from '../components/controls';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type FormProps = ReturnType<typeof reducer> & typeof actionCreators & RouteComponentProps<{}>;
 
@@ -33,7 +34,7 @@ class Form extends React.PureComponent<FormProps> {
                     <p className='control'>
                         <button className='button is-danger' onClick={() => { this.props.decrement(); }}>
                             <span className='icon'>
-                                <i className='fa fa-minus'></i>
+                                <FontAwesomeIcon icon='minus' />
                             </span>
                             <span>Decrement</span>
                         </button>
@@ -41,7 +42,7 @@ class Form extends React.PureComponent<FormProps> {
                     <p className='control'>
                         <button className='button is-success' onClick={() => { this.props.increment(); }}>
                             <span className='icon'>
-                                <i className='fa fa-plus'></i>
+                                <FontAwesomeIcon icon='plus' />
                             </span>
                             <span>Increment</span>
                         </button>

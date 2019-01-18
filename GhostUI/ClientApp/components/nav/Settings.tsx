@@ -5,6 +5,8 @@ import { ApplicationState } from '../../store';
 import { spaNugetUrls } from '../../config/constants';
 import { RoutesConfig } from '../../router/routes-config';
 import { actionCreators, reducer } from '../../store/auth';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type NavProps = ReturnType<typeof reducer> & typeof actionCreators;
 type SettingsState = typeof initialState;
@@ -35,7 +37,7 @@ class Settings extends React.Component<NavProps, SettingsState> {
             <div className={`fixed-plugin ${this.state.open ? 'fixed-plugin-active' : ''}`} style={{ display: this.props.isAuthenticated ? '' : 'none' }}>
                 <div className='dropdown'>
                     <a role='button' ref={this._settingsAnchorRef}>
-                        <i className='fa fa-cog fa-2x'></i>
+                        <FontAwesomeIcon icon='cog' size='3x' />
                     </a>
                     { (this.props.isAuthenticated && this.state.open) ? this.renderSettingsMenu() : null }
                 </div>
@@ -67,7 +69,7 @@ class Settings extends React.Component<NavProps, SettingsState> {
                    onClick={() => { this.props.logoutUserRequest(() => history.push(RoutesConfig.Login.path)); }}
                    role='button'>
                     <span className='icon'>
-                        <i className={RoutesConfig.Login.icon}></i>
+                        <FontAwesomeIcon icon={RoutesConfig.Login.icon as IconProp} />
                     </span>
                     <span>{RoutesConfig.Login.displayName}</span>
                 </a>
@@ -83,7 +85,7 @@ class Settings extends React.Component<NavProps, SettingsState> {
                href={spaNugetUrls.health_ui}
                role='button'>
                 <span className='icon'>
-                    <i className='fa fa-heart'></i>
+                    <FontAwesomeIcon icon='heart' />
                 </span>
                 <span>Health Checks</span>
             </a>
@@ -98,7 +100,7 @@ class Settings extends React.Component<NavProps, SettingsState> {
                href={spaNugetUrls.swagger_docs}
                role='button'>
                 <span className='icon'>
-                    <i className='fa fa-file'></i>
+                    <FontAwesomeIcon icon='file' />
                 </span>
                 <span>Swagger API</span>
             </a>

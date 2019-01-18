@@ -1,4 +1,5 @@
 import './css/site.scss';
+import './config/fa.config';
 import './prototype';
 import * as React from 'react';
 import routes from './router/routes';

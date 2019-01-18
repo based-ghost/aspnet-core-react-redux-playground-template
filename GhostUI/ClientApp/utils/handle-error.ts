@@ -51,5 +51,5 @@ export const handleError = (error: AxiosError): void => {
     }
 
     // Display error in toastify notification
-    toast.error(renderToastContent(`Code: ${message.status}; Message: (${message.body})`, 'fa-exclamation'));
+    toast.error(renderToastContent(`Code: ${message.status}; Message: (${message.body})`, 'exclamation'));
 };
