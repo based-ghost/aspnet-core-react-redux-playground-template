@@ -81,7 +81,7 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
                            value={this.state.credentials.userName}
                            onChange={this.updateUserName}
                            autoFocus
-                           placeholder='User Name' />
+                           placeholder='Username' />
                     <span className='icon is-left'>
                         <FontAwesomeIcon icon='user' />
                     </span>
