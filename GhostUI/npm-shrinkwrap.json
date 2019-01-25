@@ -101,9 +101,9 @@
       }
     },
     "@types/react-redux": {
-      "version": "7.0.0",
-      "resolved": "https://registry.npmjs.org/@types/react-redux/-/react-redux-7.0.0.tgz",
-      "integrity": "sha512-p5/vXqS4+Gq7EYzNv4SMi/yy7cM/BUbZORlPXY6F8wCyo5EfPa3Gpf6CEQX+UtbK5g2mqgERqVYyutzZYKIpaQ==",
+      "version": "7.0.1",
+      "resolved": "https://registry.npmjs.org/@types/react-redux/-/react-redux-7.0.1.tgz",
+      "integrity": "sha512-+DIH7TI2MT4Ke4lOrRMgNy//DzTDIzv5QwkJSD6AVrlsIgzf7yMM0JoWL5wJUXYwKQ2f1FgvwlvIVGD2QWQnew==",
       "dev": true,
       "requires": {
         "@types/react": "16.7.20",
@@ -167,9 +167,9 @@
       }
     },
     "@types/webpack": {
-      "version": "4.4.23",
-      "resolved": "https://registry.npmjs.org/@types/webpack/-/webpack-4.4.23.tgz",
-      "integrity": "sha512-WswyG+2mRg0ul/ytPpCSWo+kOlVVPW/fKCBEVwqmPVC/2ffWEwhsCEQgnFbWDf8EWId2qGcpL623EjLfNTRk9A==",
+      "version": "4.4.24",
+      "resolved": "https://registry.npmjs.org/@types/webpack/-/webpack-4.4.24.tgz",
+      "integrity": "sha512-yg99CjvB7xZ/iuHrsZ7dkGKoq/FRDzqLzAxKh2EmTem6FWjzrty4FqCqBYuX5z+MFwSaaQGDAX4Q9HQkLjGLnQ==",
       "dev": true,
       "requires": {
         "@types/anymatch": "1.3.0",
