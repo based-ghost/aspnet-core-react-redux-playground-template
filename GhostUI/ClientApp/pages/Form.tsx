@@ -63,7 +63,7 @@ class Form extends React.PureComponent<FormProps> {
                         <Dropdown options={DROPDOWN_TEST_DATA}
                                   labelKey='label'
                                   selectedOptionLabel={this.props.selectedDropdownOption.label}
-                                  parentClass='normal-width'
+                                  wrapperClass='normal-width'
                                   dispatchHandler={this.props.selectOption} />
                     </div>
                 </div>

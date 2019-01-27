@@ -3,7 +3,7 @@
 type CheckboxProps = {
     checked: boolean;
     disabled?: boolean;
-    parentClass?: string;
+    wrapperClass?: string;
     controlClass?: string;
     trailingLabel?: string;
     dispatchHandler: Function;
@@ -11,13 +11,13 @@ type CheckboxProps = {
 
 export default class Checkbox extends React.PureComponent<CheckboxProps> {
     static defaultProps = {
-        parentClass: '',
+        wrapperClass: '',
         controlClass: ''
     };
 
     public render(): React.ReactNode {
         return (
-            <div className={`control ${this.props.parentClass}`}>
+            <div className={`control ${this.props.wrapperClass}`}>
                 <p className={`checkbox-control ${this.props.controlClass}`}>
                     <label>
                         <input type='checkbox'

@@ -116,7 +116,7 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
         return (
             <React.Fragment>
                 <Checkbox trailingLabel='Remember me'
-                          parentClass='remember-me-control'
+                          wrapperClass='remember-me-control'
                           dispatchHandler={this.updateRememberMe}
                           checked={!!this.state.credentials.rememberMe} />
                 <button className='button is-info is-large is-fullwidth' type='submit'>

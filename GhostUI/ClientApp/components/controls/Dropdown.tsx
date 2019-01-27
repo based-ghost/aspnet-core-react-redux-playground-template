@@ -5,7 +5,7 @@ type DropdownProps = {
     placeholder?: string;
     disabled?: boolean;
     buttonClass?: string;
-    parentClass?: string;
+    wrapperClass?: string;
     labelKey?: string;
     selectedOptionLabel?: string;
     dispatchHandler: Function;
@@ -14,23 +14,34 @@ type DropdownProps = {
 type DropdownState = typeof initialState;
 
 const initialState = Object.freeze({
-    open: false
+    open: false,
+    isArrayOfObjects: false
 });
 
-export default class Dropdown extends React.Component<DropdownProps, DropdownState> {
+export default class Dropdown extends React.PureComponent<DropdownProps, DropdownState> {
     static defaultProps = {
         labelKey: 'label',
-        parentClass: '',
+        wrapperClass: '',
         buttonClass: '',
         placeholder: ''
     };
 
+    // Object that holds cached functions for onClick handler in options list (avoids rebuilding each re-render)
+    private _clickHandlerCache: any = {};
+
+    // Element references (ref attribute)
     private readonly _buttonRef: React.RefObject<HTMLButtonElement>;
     private readonly _dropdownDivRef: React.RefObject<HTMLDivElement>;
 
     constructor(props: DropdownProps) {
         super(props);
-        this.state = initialState;
+
+        // May want to eval isArrayOfObjects in a getDerivedStateFromProps hook to handle dynamic changes to options prop
+        this.state = {
+            ...initialState,
+            isArrayOfObjects: this.checkIsArrayOfObjects(this.props.options)
+        };
+
         this._buttonRef = React.createRef<HTMLButtonElement>();
         this._dropdownDivRef = React.createRef<HTMLDivElement>();
     }
@@ -45,7 +56,7 @@ export default class Dropdown extends React.Component<DropdownProps, DropdownSta
 
     public render(): React.ReactNode {
         return (
-            <div className={`dropdown ${this.props.parentClass} ${this.state.open ? 'is-active' : ''}`}>
+            <div className={`dropdown ${this.props.wrapperClass} ${this.state.open ? 'is-active' : ''}`}>
                 <button className={`button ${this.props.buttonClass}`}
                         type='button'
                         disabled={this.props.disabled}
@@ -60,20 +71,20 @@ export default class Dropdown extends React.Component<DropdownProps, DropdownSta
                      role='menu'
                      ref={this._dropdownDivRef}>
                     <ul className='dropdown-content'>
-                        { this.props.options.map((option: any, index: number) => this.renderListOption(option, index)) }
+                        { this.props.options.map((option: any) => this.renderListOption(option)) }
                     </ul>
                 </div>
             </div>
         );
     }
 
-    private renderListOption(option: any, index: number): React.ReactNode {
+    private renderListOption(option: any): React.ReactNode {
         const optionLabel = this.getOptionLabelName(option);
         return (
-            <li key={index}>
+            <li key={optionLabel}>
                 <a role='button'
                    className={`dropdown-item ${optionLabel === this.props.selectedOptionLabel ? 'selected-option' : ''}`}
-                   onClick={() => { this.props.dispatchHandler(option); }}>
+                   onClick={this.getCachedClickHandler(option, optionLabel)}>
                       { optionLabel }
                 </a>
             </li>
@@ -92,12 +103,21 @@ export default class Dropdown extends React.Component<DropdownProps, DropdownSta
         });
     }
 
-    private get isArrayOfObjects(): boolean {
-        return this.props.options && (this.props.options[0] === Object(this.props.options[0]));
+    private checkIsArrayOfObjects(options: any[]): boolean {
+        return options && (options[0] === Object(options[0]));
     }
 
     private getOptionLabelName(option: any): string {
-        return this.isArrayOfObjects ? (option[this.props.labelKey!] || option[0]) : option;
+        return this.state.isArrayOfObjects ? (option[this.props.labelKey!] || option[0]) : option;
+    }
+
+    // Generate and/or return a click handler, given a unique identifier.
+    private getCachedClickHandler(option: any, key: any): any {
+        // If no click handler exists for this unique identifier, create one.
+        if (!Object.prototype.hasOwnProperty.call(this._clickHandlerCache, key)) {
+            this._clickHandlerCache[key] = () => this.props.dispatchHandler(option);
+        }
+        return this._clickHandlerCache[key];
     }
 
     private handleClick: { (e: MouseEvent): void } = (e: MouseEvent) => {
@@ -111,8 +131,8 @@ export default class Dropdown extends React.Component<DropdownProps, DropdownSta
 
     private keyDownHandler: React.KeyboardEventHandler<HTMLButtonElement> = (e) => {
         if (e.keyCode === 38 || e.keyCode === 40) { // up and down keys
-            this.toggleOpenState();
             e.preventDefault();
+            this.toggleOpenState();
         } else if (e.keyCode === 27) { // Esc key
             this._buttonRef.current!.focus();
             this.setOpenStateFalse();

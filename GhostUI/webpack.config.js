@@ -1,8 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
+const merge = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
-const merge = require('webpack-merge');
 
 process.traceDeprecation = true;
 
@@ -69,15 +69,24 @@ module.exports = (env) => {
             ]
         },
         plugins: [
-            new CheckerPlugin()
+            new CheckerPlugin(),
+            new webpack.DefinePlugin({
+                'process.env': {
+                    NODE_ENV: JSON.stringify(isDevBuild ? 'development' : 'production')
+                }
+            })
         ].concat(isDevBuild ? [
             // Plugins that apply in development builds only
         ] : [
             // Plugins that apply in production builds only
-                new webpack.optimize.ModuleConcatenationPlugin(),
-                new webpack.optimize.AggressiveMergingPlugin(),
-                new webpack.optimize.OccurrenceOrderPlugin()
-            ])
+            new webpack.optimize.UglifyJsPlugin({
+                cache: true,
+                parallel: true
+            }),
+            new webpack.optimize.OccurrenceOrderPlugin(),
+            new webpack.optimize.AggressiveMergingPlugin(),
+            new webpack.optimize.ModuleConcatenationPlugin()
+        ])
     });
 
     // Configuration for client-side bundle suitable for running in browsers
