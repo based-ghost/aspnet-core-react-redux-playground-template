@@ -1,7 +1,6 @@
 ﻿import { toast } from 'react-toastify';
 import * as SignalR from '@aspnet/signalr';
 import { signalrService } from '../../config/constants';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { renderToastContent } from '../../utils/toastify-msg-renderer';
 
 /**

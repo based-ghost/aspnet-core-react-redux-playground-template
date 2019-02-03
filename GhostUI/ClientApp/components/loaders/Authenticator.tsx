@@ -48,7 +48,7 @@ export default class Authenticator extends React.PureComponent<AuthenticatorProp
     }
 
     public render(): React.ReactNode {
-        return this.state.show ? this.renderAuthAnimation() : null;
+        return this.state.show && this.renderAuthAnimation();
     }
 
     private renderAuthAnimation(): React.ReactNode {

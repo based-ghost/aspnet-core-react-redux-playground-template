@@ -1,14 +1,9 @@
 ﻿declare global {
     interface String {
-        isEmpty(): boolean;
         isIn(...args: any[]): boolean;
         isEmptyOrWhiteSpace(): boolean;
     }
 }
-
-String.prototype.isEmpty = function (): boolean {
-    return (!this || this.length === 0);
-};
 
 String.prototype.isEmptyOrWhiteSpace = function (): boolean {
     return (!this || this.length === 0 || !this.trim());

@@ -78,8 +78,7 @@ class Form extends React.PureComponent<FormProps> {
                 <h5 className='subtitle is-5'>Toggle the checkbox</h5>
                 <p className='subtitle is-5'>Checked: <strong>{this.props.checkboxValue.toString()}</strong></p>
                 <div className='field is-grouped'>
-                    <Checkbox dispatchHandler={this.props.doCheck}
-                              checked={this.props.checkboxValue} />
+                    <Checkbox dispatchHandler={this.props.doCheck} checked={this.props.checkboxValue} />
                 </div>
             </div>
         );

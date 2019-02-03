@@ -114,18 +114,18 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
 
     private renderLoginControls(): React.ReactNode {
         return (
-            <React.Fragment>
-                <Checkbox trailingLabel='Remember me'
-                          wrapperClass='remember-me-control'
-                          dispatchHandler={this.updateRememberMe}
-                          checked={!!this.state.credentials.rememberMe} />
-                <button className='button is-info is-large is-fullwidth' type='submit'>
-                    <span>Login</span>
-                    <span className='icon'>
-                        <FontAwesomeIcon icon='sign-in-alt' />
-                    </span>
-                </button>
-            </React.Fragment>
+            <>
+              <Checkbox trailingLabel='Remember me'
+                        wrapperClass='remember-me-control'
+                        dispatchHandler={this.updateRememberMe}
+                        checked={!!this.state.credentials.rememberMe} />
+              <button className='button is-info is-large is-fullwidth' type='submit'>
+                  <span>Login</span>
+                  <span className='icon'>
+                      <FontAwesomeIcon icon='sign-in-alt' />
+                  </span>
+              </button>
+            </>
         );
     }
 

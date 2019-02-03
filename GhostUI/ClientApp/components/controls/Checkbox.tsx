@@ -25,7 +25,7 @@ export default class Checkbox extends React.PureComponent<CheckboxProps> {
                                defaultChecked={!!this.props.checked}
                                onClick={this.handleCheckboxClick} />
                         <i className='helper'></i>
-                        { this.props.trailingLabel ? <span>{this.props.trailingLabel}</span> : null }
+                        { this.props.trailingLabel && <span>{this.props.trailingLabel}</span> }
                     </label>
                 </p>
             </div>

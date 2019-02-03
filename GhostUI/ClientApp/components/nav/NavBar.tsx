@@ -17,7 +17,7 @@ class NavBar extends React.Component<NavProps> {
                     <img src={require('../../assets/image/bulma.io-logo.png')} alt='' />
                 </div>
                 <div className='navbar-centered'>
-                    { this.props.isAuthenticated ? this.renderNavigationLinks() : null }
+                    { this.props.isAuthenticated && this.renderNavigationLinks() }
                 </div>
             </nav>
         );

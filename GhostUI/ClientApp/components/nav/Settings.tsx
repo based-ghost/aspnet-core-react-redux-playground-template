@@ -8,14 +8,14 @@ import { actionCreators, reducer } from '../../store/auth';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-type NavProps = ReturnType<typeof reducer> & typeof actionCreators;
 type SettingsState = typeof initialState;
+type NavProps = ReturnType<typeof reducer> & typeof actionCreators;
 
 const initialState = Object.freeze({
     open: false
 });
 
-class Settings extends React.Component<NavProps, SettingsState> {
+class Settings extends React.PureComponent<NavProps, SettingsState> {
     private readonly _settingsAnchorRef: React.RefObject<HTMLAnchorElement>;
 
     constructor(props: NavProps) {
@@ -39,7 +39,7 @@ class Settings extends React.Component<NavProps, SettingsState> {
                     <a role='button' ref={this._settingsAnchorRef}>
                         <FontAwesomeIcon icon='cog' size='3x' />
                     </a>
-                    { (this.props.isAuthenticated && this.state.open) ? this.renderSettingsMenu() : null }
+                    { (this.props.isAuthenticated && this.state.open) && this.renderSettingsMenu() }
                 </div>
             </div>
         );
@@ -50,60 +50,42 @@ class Settings extends React.Component<NavProps, SettingsState> {
             <ul className='dropdown-menu'>
                 <li className='header-title'>Settings</li>
                 <li>
-                    {this.renderHealthCheckAnchor()}
+                    <a className='dropdown-item'
+                       target='_blank'
+                       rel='noopener'
+                       href={spaNugetUrls.health_ui}
+                       role='button'>
+                        <span className='icon'>
+                            <FontAwesomeIcon icon='heart' />
+                        </span>
+                        <span>Health Checks</span>
+                    </a>
                 </li>
                 <li>
-                    {this.renderSwaggerAnchor()}
+                    <a className='dropdown-item'
+                       target='_blank'
+                       rel='noopener'
+                       href={spaNugetUrls.swagger_docs}
+                       role='button'>
+                        <span className='icon'>
+                            <FontAwesomeIcon icon='file' />
+                        </span>
+                        <span>Swagger API</span>
+                    </a>
                 </li>
                 <li>
-                    {this.renderLogoutAnchor()}
+                    <Route render={({ history }) => (
+                        <a className='dropdown-item'
+                           onClick={() => { this.props.logoutUserRequest(() => history.push(RoutesConfig.Login.path)); }}
+                           role='button'>
+                            <span className='icon'>
+                                <FontAwesomeIcon icon={RoutesConfig.Login.icon as IconProp} />
+                            </span>
+                            <span>{RoutesConfig.Login.displayName}</span>
+                        </a>
+                    )} />
                 </li>
             </ul>
-        );
-    }
-
-    private renderLogoutAnchor(): React.ReactNode {
-        return (
-            <Route render={({ history }) => (
-                <a className='dropdown-item'
-                   onClick={() => { this.props.logoutUserRequest(() => history.push(RoutesConfig.Login.path)); }}
-                   role='button'>
-                    <span className='icon'>
-                        <FontAwesomeIcon icon={RoutesConfig.Login.icon as IconProp} />
-                    </span>
-                    <span>{RoutesConfig.Login.displayName}</span>
-                </a>
-            )} />
-        );
-    }
-
-    private renderHealthCheckAnchor(): React.ReactNode {
-        return (
-            <a className='dropdown-item'
-               target='_blank'
-               rel='noopener'
-               href={spaNugetUrls.health_ui}
-               role='button'>
-                <span className='icon'>
-                    <FontAwesomeIcon icon='heart' />
-                </span>
-                <span>Health Checks</span>
-            </a>
-        );
-    }
-
-    private renderSwaggerAnchor(): React.ReactNode {
-        return (
-            <a className='dropdown-item'
-               target='_blank'
-               rel='noopener'
-               href={spaNugetUrls.swagger_docs}
-               role='button'>
-                <span className='icon'>
-                    <FontAwesomeIcon icon='file' />
-                </span>
-                <span>Swagger API</span>
-            </a>
         );
     }
 
