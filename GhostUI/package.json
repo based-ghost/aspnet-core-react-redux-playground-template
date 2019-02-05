@@ -1,7 +1,9 @@
 {
-  "name": "GhostUI",
-  "private": true,
-  "version": "0.0.0",
+  "name": "aspnet-core-react-redux-playground-template",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "MIT",
   "devDependencies": {
     "@types/history": "4.7.2",
     "@types/react": "^16.8.1",
