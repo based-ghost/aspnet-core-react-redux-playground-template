@@ -53,7 +53,7 @@ class Settings extends React.PureComponent<NavProps, SettingsState> {
                     <a className='dropdown-item'
                        target='_blank'
                        rel='noopener'
-                       href={spaNugetUrls.health_ui}
+                       href={spaNugetUrls.HEALTH_UI}
                        role='button'>
                         <span className='icon'>
                             <FontAwesomeIcon icon='heart' />
@@ -65,7 +65,7 @@ class Settings extends React.PureComponent<NavProps, SettingsState> {
                     <a className='dropdown-item'
                        target='_blank'
                        rel='noopener'
-                       href={spaNugetUrls.swagger_docs}
+                       href={spaNugetUrls.SWAGGER_DOCS}
                        role='button'>
                         <span className='icon'>
                             <FontAwesomeIcon icon='file' />

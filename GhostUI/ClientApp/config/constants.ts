@@ -21,9 +21,9 @@ export const DROPDOWN_TEST_DATA: DropdownOption[] = [
  * HealthChecks/Swagger response path config
  */
 export const spaNugetUrls = {
-    health_ui: 'http://localhost:56717/healthchecks-ui',
-    health_json: 'http://localhost:56717/healthchecks-json',
-    swagger_docs: 'http://localhost:56717/docs'
+    HEALTH_UI: 'http://localhost:56717/healthchecks-ui',
+    HEALTH_JSON: 'http://localhost:56717/healthchecks-json',
+    SWAGGER_DOCS: 'http://localhost:56717/docs'
 };
 
 /**
