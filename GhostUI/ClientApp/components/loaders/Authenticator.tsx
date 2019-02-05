@@ -33,17 +33,9 @@ export default class Authenticator extends React.PureComponent<AuthenticatorProp
             return;
 
         if (nextAuthStatus.isIn(AuthStatusEnum.Success, AuthStatusEnum.Fail)) {
-            setTimeout(() => {
-                if (nextAuthStatus === AuthStatusEnum.Success) {
-                    this.props.successDispatcher();
-                } else {
-                    this.props.failDispatcher();
-                }
-            }, this.props.runResultTime);
+            this.handleAuthCallback(nextAuthStatus);
         } else {
-            this.setState({
-                show: (nextAuthStatus === AuthStatusEnum.Process)
-            });
+            this.setState({ show: (nextAuthStatus === AuthStatusEnum.Process) });
         }
     }
 
@@ -58,5 +50,15 @@ export default class Authenticator extends React.PureComponent<AuthenticatorProp
                 <div></div>
             </div>
         );
+    }
+
+    private handleAuthCallback(nextAuthStatus: string): void {
+        setTimeout(() => {
+            if (nextAuthStatus === AuthStatusEnum.Success) {
+                this.props.successDispatcher();
+            } else {
+                this.props.failDispatcher();
+            }
+        }, this.props.runResultTime);
     }
 }

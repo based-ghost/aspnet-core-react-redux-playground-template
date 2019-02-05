@@ -32,5 +32,7 @@ export default class Checkbox extends React.PureComponent<CheckboxProps> {
         );
     }
 
-    private handleCheckboxClick: React.MouseEventHandler<HTMLInputElement> = (e) => this.props.dispatchHandler(!!e.currentTarget.checked);
+    private handleCheckboxClick: React.MouseEventHandler<HTMLInputElement> = (e) => {
+        this.props.dispatchHandler(!!e.currentTarget.checked);
+    }
 }

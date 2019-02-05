@@ -91,16 +91,8 @@ export default class Dropdown extends React.PureComponent<DropdownProps, Dropdow
         );
     }
 
-    private toggleOpenState(): void {
-        this.setState({
-            open: !this.state.open
-        });
-    }
-
-    private setOpenStateFalse(): void {
-        this.setState({
-            open: false
-        });
+    private toggleOpenState(newValue: boolean): void {
+        this.setState({ open: newValue });
     }
 
     private checkIsArrayOfObjects(options: any[]): boolean {
@@ -123,21 +115,21 @@ export default class Dropdown extends React.PureComponent<DropdownProps, Dropdow
     private handleClick: { (e: MouseEvent): void } = (e: MouseEvent) => {
         // Bound a mousedown event listener to the doc, and if the target is the button or immediate child, toggle open - otherwise set !open if open
         if (this._buttonRef.current && this._buttonRef.current.contains(e.target as HTMLElement)) {
-            this.toggleOpenState();
+            this.toggleOpenState(!this.state.open);
         } else if (this.state.open) {
-            this.setOpenStateFalse();
+            this.toggleOpenState(false);
         }
     }
 
     private keyDownHandler: React.KeyboardEventHandler<HTMLButtonElement> = (e) => {
         if (e.keyCode === 38 || e.keyCode === 40) { // up and down keys
             e.preventDefault();
-            this.toggleOpenState();
+            this.toggleOpenState(!this.state.open);
         } else if (e.keyCode === 27) { // Esc key
             this._buttonRef.current!.focus();
-            this.setOpenStateFalse();
+            this.toggleOpenState(false);
         } else if (e.keyCode === 9 && this.state.open) { // Tab key
-            this.setOpenStateFalse();
+            this.toggleOpenState(false);
         }
     }
 }

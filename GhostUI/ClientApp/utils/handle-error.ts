@@ -2,15 +2,9 @@
 import { toast } from 'react-toastify';
 import { renderToastContent } from '../utils/toastify-msg-renderer';
 
-interface ErrorMessage {
-    body: string;
-    request: string;
-    status: number;
-}
-
 export const handleError = (error: AxiosError): void => {
     // Define ErrorMessage object
-    const message: ErrorMessage = {
+    const message = {
         body: 'Internal Server Error',
         request: '',
         status: 500

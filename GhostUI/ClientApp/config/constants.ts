@@ -1,4 +1,5 @@
-﻿import { DropdownOption } from '../store/form';
+﻿import * as React from 'react';
+import { DropdownOption } from '../store/form';
 
 /**
  * Text that appears at bottom of all views/pages (footer)
@@ -54,4 +55,18 @@ export const signalrService = {
     LOGOUT_USER_EVENT: 'UserLogout',
     CLOSE_EVENT: 'CloseAllConnections',
     TOASTIFY_ICON: 'info'
+};
+
+/**
+ * react-toastify npm package constant values for building the inner message html - used in file under utils (toastify-msg-renderer.tsx)
+ */
+export const toastDefaultIcon: string = 'info';
+
+export const toastIconStyle: React.CSSProperties = {
+    fontSize: '1.5rem'
+};
+
+export const toastMsgStyle: React.CSSProperties = {
+    marginLeft: '.65rem',
+    fontSize: '1.1rem'
 };
