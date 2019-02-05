@@ -60,13 +60,19 @@ export const signalrService = {
 /**
  * react-toastify npm package constant values for building the inner message html - used in file under utils (toastify-msg-renderer.tsx)
  */
-export const toastDefaultIcon: string = 'info';
+const toastDefaultIcon: string = 'info';
 
-export const toastIconStyle: React.CSSProperties = {
+const toastIconStyle: React.CSSProperties = {
     fontSize: '1.5rem'
 };
 
-export const toastMsgStyle: React.CSSProperties = {
+const toastMsgStyle: React.CSSProperties = {
     marginLeft: '.65rem',
     fontSize: '1.1rem'
+};
+
+export const toastContent = {
+    MSG_STYLE: toastMsgStyle,
+    ICON_STYLE: toastIconStyle,
+    DEFAULT_ICON: toastDefaultIcon
 };
