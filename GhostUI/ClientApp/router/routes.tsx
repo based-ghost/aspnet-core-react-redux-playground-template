@@ -1,8 +1,7 @@
 ﻿import * as React from 'react';
-import App from '../app';
 import { Route } from 'react-router-dom';
 import { RoutesConfig } from './routes-config';
-import { Dashboard, FetchData, Form, Login } from '../pages';
+import { App, Dashboard, FetchData, Form, Login } from '../pages';
 
 const routes: React.ReactNode = (
     <App>
