@@ -45,7 +45,7 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "aspnet-prerendering": "^3.0.1",
     "axios": "^0.18.0",
-    "bulma": "^0.7.3",
+    "bulma": "^0.7.4",
     "connected-react-router": "^6.2.2",
     "domain-task": "^3.0.3",
     "history": "^4.7.2",
