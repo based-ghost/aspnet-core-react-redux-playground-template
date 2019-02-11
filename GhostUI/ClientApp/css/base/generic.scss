@@ -39,6 +39,10 @@ html, body {
 
 .is-horizontal-center {
     justify-content: center;
+    align-items: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    justify-content: center;
 }
 
 .button {
@@ -148,20 +152,22 @@ html, body {
     }
 }
 
-#app-footer {
-    position: absolute;
-    width: 100%;
-    padding-top: 3em;
-    padding-bottom: 1em;
+.footer {
+    background-color: $color-body-bg;
+    padding: 3rem 1.5rem 3rem;
+    font-size: 1.25rem;
+    color: $color-footer;
+    width: 50%;
+    margin: auto;
 
-    > div {
-        color: $color-footer-text;
-        position: relative;
-        margin-left: auto;
-        margin-right: auto;
-        width: 30%;
-        text-align: center;
-        padding-top: 1.5em;
-        border-top: 1px solid $color-gray-border;
+    > hr {
+        height: 1px;
+        margin: 2rem 0;
+        background-color: $color-footer;
+        opacity: .5;
+    }
+
+    @media (max-width: 900px) {
+        width: 100%;
     }
 }

@@ -15,19 +15,15 @@ const Dashboard: React.SFC<{}> = () => (
             <div className='card'>
                 <div className='card-content'>
                     <div className='column'>
-                        <div className='bd-notification is-flex is-horizontal-center'>
+                        <div className='is-flex is-horizontal-center'>
                             <img src={require('../assets/image/react-redux-aspcore-logo.png')} alt='' />
                         </div>
-                        <div className='columns is-multiline is-mobile'>
+                        <div className='columns is-multiline'>
                             <div className='column dashboard-info is-half'>
-                                <div className='bd-notification'>
-                                    {Column_1}
-                                </div>
+                                {Column_1}
                             </div>
                             <div className='column dashboard-info is-half'>
-                                <div className='bd-notification'>
-                                    {Column_2}
-                                </div>
+                                {Column_2}
                             </div>
                         </div>
                     </div>

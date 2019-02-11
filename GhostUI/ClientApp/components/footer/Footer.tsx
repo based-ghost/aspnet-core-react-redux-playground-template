@@ -2,9 +2,12 @@
 import { FOOTER_TEXT } from '../../config/constants';
 
 const Footer: React.SFC<{}> = () => (
-    <div id='app-footer'>
-        <div>{FOOTER_TEXT}</div>
-    </div>
+    <footer className='footer'>
+        <hr />
+        <div className='content has-text-centered'>
+            {FOOTER_TEXT}
+        </div>
+    </footer>
 );
 
 export default Footer;
