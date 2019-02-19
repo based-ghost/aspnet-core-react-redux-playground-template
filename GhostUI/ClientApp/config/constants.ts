@@ -63,11 +63,11 @@ export const signalrService = {
 const toastDefaultIcon: string = 'info';
 
 const toastIconStyle: React.CSSProperties = {
-    fontSize: '1.5rem'
+    fontSize: '1.25rem'
 };
 
 const toastMsgStyle: React.CSSProperties = {
-    marginLeft: '.65rem',
+    marginLeft: '.4rem',
     fontSize: '1.1rem'
 };
 

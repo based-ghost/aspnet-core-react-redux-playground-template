@@ -7,7 +7,7 @@ const routes: React.ReactNode = (
     <App>
         <Route exact path={RoutesConfig.Login.path} component={Login} />
         <Route path={RoutesConfig.Form.path} component={Form} />
-        <Route path={RoutesConfig.Dashboard.path} component={Dashboard} />
+        <Route path={RoutesConfig.Dashboard.path} render={() => <Dashboard />} />
         <Route path={RoutesConfig.FetchData.path.Absolute} component={FetchData} />
     </App>
 );
