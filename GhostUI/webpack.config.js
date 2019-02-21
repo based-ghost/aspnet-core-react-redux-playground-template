@@ -71,10 +71,8 @@ module.exports = (env) => {
         plugins: [
             new CheckerPlugin(),
             new webpack.DefinePlugin({
-                'process.env': {
-                    NODE_ENV: JSON.stringify(isDevBuild ? 'development' : 'production')
-                }
-            })
+                'process.env.NODE_ENV': JSON.stringify(isDevBuild ? 'development' : 'production')
+            }),
         ].concat(isDevBuild ? [
             // Plugins that apply in development builds only
         ] : [
