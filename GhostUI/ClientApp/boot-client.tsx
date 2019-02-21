@@ -2,7 +2,7 @@ import './css/site.scss';
 import './config/fa.config';
 import './prototype';
 import * as React from 'react';
-import routes from './router/routes';
+import routes from './routes';
 import { Provider } from 'react-redux';
 import { createBrowserHistory } from 'history';
 import { AppContainer } from 'react-hot-loader';
@@ -36,7 +36,7 @@ renderApp((initialState && !module.hot) ? hydrate : render);
 
 // Allow Hot Module Replacement
 if (module.hot) {
-    module.hot.accept('./router/routes', () => {
+    module.hot.accept('./routes', () => {
         renderApp();
     });
 }

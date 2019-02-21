@@ -23,8 +23,12 @@ html, body {
     padding: 1rem 1.5rem;
 }
 
-.hero.is-dark .title {
-    color: $color-blue-highlight;
+.hero.is-dark {
+    background-color: $color-hero-is-dark;
+
+    .title {
+        color: $color-blue-highlight;
+    }
 }
 
 .form-columns {

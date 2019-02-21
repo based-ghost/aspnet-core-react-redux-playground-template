@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { ApplicationState } from '../../store';
 import { spaNugetUrls } from '../../config/constants';
-import { RoutesConfig } from '../../router/routes-config';
+import { RoutesConfig } from '../../config/routes.config';
 import { actionCreators, reducer } from '../../store/auth';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

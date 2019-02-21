@@ -5,7 +5,7 @@ import { ApplicationState } from '../store';
 import { toast, ToastId } from 'react-toastify';
 import { Checkbox } from '../components/controls';
 import { Authenticator } from '../components/loaders';
-import { RoutesConfig } from '../router/routes-config';
+import { RoutesConfig } from '../config/routes.config';
 import { RouteComponentProps } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { renderToastContent } from '../utils/toastify-msg-renderer';

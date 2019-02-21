@@ -1,6 +1,4 @@
-﻿import _App from './App';
-export { _App as App };
-import _Form from './Form';
+﻿import _Form from './Form';
 export { _Form as Form };
 import _Login from './Login';
 export { _Login as Login };

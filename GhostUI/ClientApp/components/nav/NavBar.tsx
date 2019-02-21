@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { ApplicationState } from '../../store';
-import { RoutesConfig } from '../../router/routes-config';
+import { RoutesConfig } from '../../config/routes.config';
 import { actionCreators, AuthState } from '../../store/auth';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
