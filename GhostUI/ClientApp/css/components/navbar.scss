@@ -1,55 +1,90 @@
 ﻿/* NAV-BAR */
 .navbar {
     width: 100%;
-    padding-top: .72rem;
-    padding-bottom: .72rem;
     background-color: $color-nav-bar;
+    padding-left: 7rem;
+    padding-right: 7rem;
+
+    @include reduceNavBarPadding {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+
+    @include removeNavBarPadding {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
 }
 
-.brand-wrapper {
-    width: 11em;
-    padding-top: .2em;
-    padding-left: 1.5em;
-}
-
-.navbar-centered {
-    position: absolute;
+.navbar-wrapper {
     width: 100%;
+    margin: auto;
     -webkit-animation: opacityFadeIn .25s both ease;
     animation: opacityFadeIn .25s both ease;
     -webkit-animation-delay: .25s;
     animation-delay: .25s;
-}
-
-.nav-divider {
-    background-color: white;
-    border-radius: 50%;
-    display: inline-block;
-    margin: auto .01rem auto .01rem;
-    height: .6rem;
-    opacity: .7;
-    width: 1.5%;
-}
-
-.navbar-start {
-    font-size: 1.25rem;
-    font-weight: 400;
-    position: relative;
-    width: 33em;
-    margin-left: auto;
-    margin-right: auto;
-    flex-direction: row;
     display: flex;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    height: 75px;
+}
+
+.brand-wrapper {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    width: 46%;
+    margin: auto;
+
+    @include renderMobileNavView {
+        margin-right: .25rem;
+    }
+}
+
+.navbar-routes {
+    font-size: 1.25rem;
+    height: 100%;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    justify-content: flex-end;
+    margin: auto;
+    width: 54%;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
 
     a.navbar-item {
         color: white;
-        opacity: .7;
-        width: 31%;
-        text-transform: uppercase;
+        opacity: .8;
+        background-color: transparent;
         -webkit-transition: all .15s ease-in;
         transition: all .15s ease-in;
+        border-bottom: 3px solid $color-nav-bar;
+        border-top: 3px solid $color-nav-bar;
+        display: flex;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: row;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        height: 100%;
+
+        @include renderMobileNavView {
+            font-size: .95rem;
+            padding: 0.75rem 0.2rem 0.75rem 0.2rem;
+        }
+
+        &:not(:first-child) {
+            margin-left: 1.25rem;
+
+            @include renderMobileNavView {
+                margin-left: 0;
+            }
+        }
 
         &:hover {
             color: white;
@@ -59,17 +94,25 @@
 
         &.is-active {
             color: $color-blue-highlight !important;
-            background-color: transparent;
             opacity: 1 !important;
+            border-bottom: 3px solid $color-blue-highlight !important;
         }
 
         > span:first-child {
-            margin-left: auto;
+            @include renderMobileNavView {
+                display: none;
+            }
         }
 
         > span:last-child {
-            margin-left: .65rem;
+            margin-left: .5rem;
             margin-right: auto;
+
+            @include renderMobileNavView {
+                margin-left: 0;
+                padding-left: .25rem;
+                padding-right: .25rem;
+            }
         }
     }
 }

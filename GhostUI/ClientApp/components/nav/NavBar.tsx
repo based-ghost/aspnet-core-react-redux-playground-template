@@ -13,11 +13,13 @@ class NavBar extends React.Component<NavProps> {
     public render(): React.ReactNode {
         return (
             <nav className='navbar' role='navigation' aria-label='main navigation'>
-                <div className='brand-wrapper'>
-                    <img src={require('../../assets/image/bulma.io-logo.png')} alt='' />
-                </div>
-                <div className='navbar-centered'>
-                    { this.props.isAuthenticated && this.renderNavigationLinks() }
+                <div className='navbar-wrapper'>
+                    <div className='brand-wrapper'>
+                        <img src={require('../../assets/image/bulma.io-logo.png')} alt='' width='165' />
+                    </div>
+                    <div className='navbar-routes'>
+                        { this.props.isAuthenticated && this.renderNavigationLinks() }
+                    </div>
                 </div>
             </nav>
         );
@@ -25,28 +27,26 @@ class NavBar extends React.Component<NavProps> {
 
     private renderNavigationLinks(): React.ReactNode {
         return (
-            <div className='navbar-start'>
-                <NavLink to={RoutesConfig.Form.path} className='navbar-item' activeClassName='is-active'>
-                    <span className='icon'>
-                        <FontAwesomeIcon icon={RoutesConfig.Form.icon as IconProp} />
-                    </span>
-                    <span>{RoutesConfig.Form.displayName}</span>
-                </NavLink>
-                <div className='nav-divider'></div>
-                <NavLink to={RoutesConfig.Dashboard.path} className='navbar-item' activeClassName='is-active'>
-                    <span className='icon'>
-                        <FontAwesomeIcon icon={RoutesConfig.Dashboard.icon as IconProp} />
-                    </span>
-                    <span>{RoutesConfig.Dashboard.displayName}</span>
-                </NavLink>
-                <div className='nav-divider'></div>
-                <NavLink to={RoutesConfig.FetchData.path.Relative} className='navbar-item' activeClassName='is-active'>
-                    <span className='icon'>
-                        <FontAwesomeIcon icon={RoutesConfig.FetchData.icon as IconProp} />
-                    </span>
-                    <span>{RoutesConfig.FetchData.displayName}</span>
-                </NavLink>
-            </div>
+            <>
+              <NavLink to={RoutesConfig.Form.path} className='navbar-item' activeClassName='is-active'>
+                  <span className='icon'>
+                      <FontAwesomeIcon icon={RoutesConfig.Form.icon as IconProp} />
+                  </span>
+                  <span>{RoutesConfig.Form.displayName}</span>
+              </NavLink>
+              <NavLink to={RoutesConfig.Dashboard.path} className='navbar-item' activeClassName='is-active'>
+                  <span className='icon'>
+                      <FontAwesomeIcon icon={RoutesConfig.Dashboard.icon as IconProp} />
+                  </span>
+                  <span>{RoutesConfig.Dashboard.displayName}</span>
+              </NavLink>
+              <NavLink to={RoutesConfig.FetchData.path.Relative} className='navbar-item' activeClassName='is-active'>
+                  <span className='icon'>
+                      <FontAwesomeIcon icon={RoutesConfig.FetchData.icon as IconProp} />
+                  </span>
+                  <span>{RoutesConfig.FetchData.displayName}</span>
+              </NavLink>
+            </>
         );
     }
 }
