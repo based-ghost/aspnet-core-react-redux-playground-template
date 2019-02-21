@@ -16,9 +16,8 @@ const Dashboard: React.FunctionComponent<{}> = () => (
     <div className='dashboard-wrapper'>
         <section className='hero is-dark'>
             <div className='hero-body'>
-                <div className='container has-text-centered'>
-                    <h1 className='title'>Welcome, User</h1>
-                    <h2 className='subtitle'>Check out some highlights from the technology stack below.</h2>
+                <div className='is-flex is-horizontal-center'>
+                    <img src={require('../assets/image/aspcore-react.png')} alt='' width='300' />
                 </div>
             </div>
         </section>
@@ -26,9 +25,8 @@ const Dashboard: React.FunctionComponent<{}> = () => (
             <div className='card'>
                 <div className='card-content'>
                     <div className='column'>
-                        <div className='is-flex is-horizontal-center'>
-                            <img src={require('../assets/image/react-redux-aspcore-logo.png')} alt='' />
-                        </div>
+                        <p className='title has-text-centered'>Technology Stack</p>
+                        <hr />
                         <div className='columns is-multiline'>
                             <div className='column dashboard-info is-half'>
                                 <div className='content dashboard-content'>

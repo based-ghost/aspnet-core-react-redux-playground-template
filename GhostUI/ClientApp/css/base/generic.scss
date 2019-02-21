@@ -26,6 +26,10 @@ html, body {
 .hero.is-dark {
     background-color: $color-hero-is-dark;
 
+    .hero-body {
+        padding: 1.5rem;
+    }
+
     .title {
         color: $color-blue-highlight;
     }
@@ -55,6 +59,10 @@ html, body {
 
 .dashboard-wrapper {
     padding-bottom: 3rem;
+
+    hr {
+        margin: .5rem 0;
+    }
 }
 
 .dashboard-link {
@@ -156,19 +164,22 @@ html, body {
     }
 }
 
+.table.is-fullwidth {
+    @media (max-width: 449px) {
+        font-size: .8rem;
+    }
+}
+
 .footer {
     background-color: $color-body-bg;
     padding: 3rem 1.5rem 3rem;
-    font-size: 1.25rem;
-    color: $color-footer;
     width: 50%;
     margin: auto;
 
     > hr {
         height: 1px;
-        margin: 2rem 0;
-        background-color: $color-footer;
-        opacity: .5;
+        margin: 2rem 0 .75rem 0;
+        background-color: rgba(0, 0, 0, 0.35);
     }
 
     @media (max-width: 900px) {
