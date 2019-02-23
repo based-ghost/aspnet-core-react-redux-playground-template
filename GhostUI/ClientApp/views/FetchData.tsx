@@ -8,7 +8,7 @@ import { actionCreators, reducer, WeatherForecast } from '../store/weather-forec
 
 type WeatherForecastProps = ReturnType<typeof reducer> & typeof actionCreators & RouteComponentProps<{ startDateIndex: string }>;
 
-class FetchData extends React.PureComponent<WeatherForecastProps> {
+class FetchData extends React.Component<WeatherForecastProps> {
     public componentDidMount(): void {
         const startDateIndex = parseInt(this.props.match.params.startDateIndex) || 0;
         this.props.requestWeatherForecasts(startDateIndex);

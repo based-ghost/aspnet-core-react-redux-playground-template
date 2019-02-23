@@ -2,6 +2,7 @@
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { ApplicationState } from '../../store';
+import { boundMethod } from 'autobind-decorator';
 import { spaNugetUrls } from '../../config/constants';
 import { RoutesConfig } from '../../config/routes.config';
 import { actionCreators, reducer } from '../../store/auth';
@@ -15,6 +16,7 @@ const initialState = Object.freeze({
     open: false
 });
 
+/* PureComponent due to the fact that this is a global component in Layout.tsx - gets rendered on each route/switch call (8-9 times in some cases) */
 class Settings extends React.PureComponent<NavProps, SettingsState> {
     private readonly _settingsAnchorRef: React.RefObject<HTMLAnchorElement>;
 
@@ -89,7 +91,8 @@ class Settings extends React.PureComponent<NavProps, SettingsState> {
         );
     }
 
-    private handleClick: { (e: MouseEvent): void } = (e: MouseEvent) => {
+    @boundMethod
+    private handleClick(e: MouseEvent): void {
         // Bind a click event listener to the document obj, and if the target is the cog anchor or immediate child, toggle open - otherwise, set open false
         if (this._settingsAnchorRef.current && this._settingsAnchorRef.current.contains(e.target as HTMLElement)) {
             this.setState({

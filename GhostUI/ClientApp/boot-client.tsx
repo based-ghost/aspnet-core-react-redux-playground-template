@@ -2,7 +2,6 @@ import './css/site.scss';
 import './config/fa.config';
 import './prototype';
 import * as React from 'react';
-import routes from './routes';
 import { Provider } from 'react-redux';
 import { createBrowserHistory } from 'history';
 import { AppContainer } from 'react-hot-loader';
@@ -10,6 +9,9 @@ import { hydrate, render, Renderer } from 'react-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import { ApplicationState, configureStore } from './store';
 import { ToastContainer, ToastPosition } from 'react-toastify';
+
+import * as RoutesModule from './routes';
+let routes = RoutesModule.routes;
 
 // Create browser history to use in the Redux store / Get the application-wide store instance, prepopulating with state from the server where available.
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href')!;
@@ -37,6 +39,7 @@ renderApp((initialState && !module.hot) ? hydrate : render);
 // Allow Hot Module Replacement
 if (module.hot) {
     module.hot.accept('./routes', () => {
+        routes = require<typeof RoutesModule>('./routes').routes;
         renderApp();
     });
 }

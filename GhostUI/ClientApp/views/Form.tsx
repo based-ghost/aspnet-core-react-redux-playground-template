@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type FormProps = ReturnType<typeof reducer> & typeof actionCreators & RouteComponentProps<{}>;
 
-class Form extends React.PureComponent<FormProps> {
+class Form extends React.Component<FormProps> {
     public render(): React.ReactNode {
         return (
             <section className='section'>

@@ -6,3 +6,5 @@ import _Dashboard from './Dashboard';
 export { _Dashboard as Dashboard };
 import _FetchData from './FetchData';
 export { _FetchData as FetchData };
+import _Layout from './Layout';
+export { _Layout as Layout };

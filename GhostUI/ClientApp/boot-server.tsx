@@ -1,5 +1,5 @@
 import * as React from 'react';
-import routes from './routes';
+import { routes } from './routes';
 import { Provider } from 'react-redux';
 import { configureStore } from './store';
 import { replace } from 'react-router-redux';
@@ -25,18 +25,25 @@ export default createServerRenderer(params => {
             </Provider>
         );
 
-        renderToString(app);
+        const renderApp = (): string => {
+            return renderToString(app);
+        };
+
+        renderApp();
 
         // If there's a redirection, just send this information back to the host application
         if (routerContext.url) {
-            resolve({ redirectUrl: routerContext.url });
+            resolve({
+                redirectUrl: routerContext.url,
+                globals: { initialReduxState: store.getState() }
+            });
             return;
         }
         
         // Once any async tasks are done, perform the final render (also send the redux store state, so the client can continue execution where the server left off)
         params.domainTasks.then(() => {
             resolve({
-                html: renderToString(app),
+                html: renderApp(),
                 globals: { initialReduxState: store.getState() }
             });
         }, reject); // Also propagate any errors back into the host application

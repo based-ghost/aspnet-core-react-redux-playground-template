@@ -1,16 +1,7 @@
 import * as React from 'react';
 
-// React 16.6 introduced the ability to wrap Functional Components with React.memo which now gives us the ability to prevent functional components from
-// rerendering every time and only when the props change - this is very similar to using React.PureComponent with class components
-
 // React 16.8 introduced "Hooks" which will now enable functional components to be opt in stateful by using "useState" - this means they are technically no longer
 // stateless functional components (React.SFC<{}>) but are now React.FunctionComponent
-
-// Prop Type check error in 'react-router' - exporting this component wrapped in React.memo causesa false-positive for a type error when referenced as:
-// <Route path={RoutesConfig.Dashboard.path} component={Dashboard} />
-// in routes.tsx
-// need to change to:
-// <Route path={RoutesConfig.Dashboard.path} render={() => <Dashboard />} />
 
 const Dashboard: React.FunctionComponent<{}> = () => (
     <div className='dashboard-wrapper'>
@@ -72,4 +63,4 @@ const Dashboard: React.FunctionComponent<{}> = () => (
     </div>
 );
 
-export default React.memo(Dashboard);
+export default Dashboard;

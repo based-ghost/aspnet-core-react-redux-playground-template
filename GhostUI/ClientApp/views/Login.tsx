@@ -3,6 +3,7 @@ import { SignalRApi } from '../api';
 import { connect } from 'react-redux';
 import { ApplicationState } from '../store';
 import { toast, ToastId } from 'react-toastify';
+import { boundMethod } from 'autobind-decorator';
 import { Checkbox } from '../components/controls';
 import { Authenticator } from '../components/loaders';
 import { RoutesConfig } from '../config/routes.config';
@@ -25,7 +26,7 @@ const initialState = Object.freeze({
     } as Credentials
 });
 
-class Login extends React.PureComponent<LoginProps, LoginState> {
+class Login extends React.Component<LoginProps, LoginState> {
     private toastId: ToastId = '';
 
     constructor(props: LoginProps) {
@@ -129,7 +130,8 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
         );
     }
 
-    private handleLogin: React.FormEventHandler<HTMLFormElement> = (e) => {
+    @boundMethod
+    private handleLogin(e: React.SyntheticEvent<HTMLFormElement>): void {
         e.preventDefault();
 
         // Prevent multiple login requests onClick
@@ -154,13 +156,15 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
         }
     }
 
-    private toggleShowPassword = () => {
+    @boundMethod
+    private toggleShowPassword(): void {
         this.setState({
             showPassword: !this.state.showPassword
         });
     }
 
-    private updateRememberMe = (checked: boolean) => {
+    @boundMethod
+    private updateRememberMe(checked: boolean): void {
         this.setState({
             credentials: {
                 ...this.state.credentials,
@@ -169,20 +173,22 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
         });
     }
 
-    private updateUserName: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    @boundMethod
+    private updateUserName(e: React.SyntheticEvent<HTMLInputElement>): void {
         this.setState({
             credentials: {
                 ...this.state.credentials,
-                userName: (e.target.value || '')
+                userName: (e.currentTarget.value || '')
             }
         });
     }
 
-    private updatePassword: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    @boundMethod
+    private updatePassword(e: React.SyntheticEvent<HTMLInputElement>): void {
         this.setState({
             credentials: {
                 ...this.state.credentials,
-                password: (e.target.value || '')
+                password: (e.currentTarget.value || '')
             }
         });
     }
