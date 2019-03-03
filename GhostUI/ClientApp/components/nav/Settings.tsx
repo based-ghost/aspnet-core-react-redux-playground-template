@@ -2,7 +2,6 @@
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { ApplicationState } from '../../store';
-import { boundMethod } from 'autobind-decorator';
 import { spaNugetUrls } from '../../config/constants';
 import { RoutesConfig } from '../../config/routes.config';
 import { actionCreators, reducer } from '../../store/auth';
@@ -91,9 +90,8 @@ class Settings extends React.PureComponent<NavProps, SettingsState> {
         );
     }
 
-    @boundMethod
-    private handleClick(e: MouseEvent): void {
-        // Bind a click event listener to the document obj, and if the target is the cog anchor or immediate child, toggle open - otherwise, set open false
+     // Bind a click event listener to the document obj, and if the target is the cog anchor or immediate child, toggle open - otherwise, set open false
+    private handleClick = (e: MouseEvent): void => {
         if (this._settingsAnchorRef.current && this._settingsAnchorRef.current.contains(e.target as HTMLElement)) {
             this.setState({
                 open: !this.state.open

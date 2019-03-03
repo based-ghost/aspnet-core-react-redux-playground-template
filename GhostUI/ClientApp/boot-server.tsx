@@ -9,12 +9,11 @@ import { renderToString } from 'react-dom/server';
 import { createServerRenderer, RenderResult } from 'aspnet-prerendering';
 
 export default createServerRenderer(params => {
-    return new Promise<RenderResult>((resolve, reject) => {
+    return new Promise<RenderResult>((resolve, reject) => {   
         // Prepare Redux store with in-memory history, and dispatch a navigation event corresponding to the incoming URL
         const basename = params.baseUrl.substring(0, params.baseUrl.length - 1); // Remove trailing slash
         const urlAfterBasename = params.url.substring(basename.length);
         const store = configureStore(createMemoryHistory());
-
         store.dispatch(replace(urlAfterBasename));
         
         // Prepare an instance of the application and perform an inital render that will cause any async tasks (e.g., data access) to begin

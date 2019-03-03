@@ -9,12 +9,9 @@ type AuthenticatorProps = {
 };
 
 type AuthenticatorState = typeof initialState;
+const initialState = Object.freeze({ show: false });
 
-const initialState = Object.freeze({
-    show: false
-});
-
-export default class Authenticator extends React.Component<AuthenticatorProps, AuthenticatorState> {
+export default class Authenticator extends React.PureComponent<AuthenticatorProps, AuthenticatorState> {
     static defaultProps = {
         runResultTime: 1500,
         authStatus: AuthStatusEnum.None as string
@@ -27,10 +24,6 @@ export default class Authenticator extends React.Component<AuthenticatorProps, A
 
     public componentWillReceiveProps(nextProps: AuthenticatorProps): void {
         const nextAuthStatus = nextProps.authStatus || AuthStatusEnum.None;
-        const authStatusChanged = nextAuthStatus !== this.props.authStatus;
-
-        if (!authStatusChanged)
-            return;
 
         if (nextAuthStatus.isIn(AuthStatusEnum.Success, AuthStatusEnum.Fail)) {
             this.handleAuthCallback(nextAuthStatus);

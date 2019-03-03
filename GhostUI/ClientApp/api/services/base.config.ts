@@ -1,9 +1,21 @@
-﻿import { AxiosError } from 'axios';
+﻿import axios, { AxiosError } from 'axios';
 import { toast } from 'react-toastify';
-import { renderToastContent } from '../utils/toastify-msg-renderer';
+import { renderToastContent } from '../../utils/toastify-msg-renderer';
 
-export const handleError = (error: AxiosError): void => {
-    // Define ErrorMessage object
+export const configureAxiosInterceptors = (): void => {
+    axios.interceptors.response.use(
+        (response) => {
+            return response;
+        },
+        (error) => {
+            handleAxiosError(error);
+            return Promise.reject(error);
+        }
+    );
+};
+
+export const handleAxiosError = (error: AxiosError): void => {
+    // Error Message Object
     const message = {
         body: 'Internal Server Error',
         request: '',
@@ -26,7 +38,7 @@ export const handleError = (error: AxiosError): void => {
         } else if (error.response.status === 405) {
             message.body = 'API Route Method Not Allowed';
         } else if (error.response.status === 422) {
-            message.body = 'Unprocessable Entity';
+            //Validation Message
         } else if (error.response.status >= 500) {
             message.body = 'Internal Server Error';
         }
@@ -44,6 +56,6 @@ export const handleError = (error: AxiosError): void => {
         }
     }
 
-    // Display error in toastify notification
-    toast.error(renderToastContent(`Code: ${message.status}; Message: (${message.body})`, 'exclamation'));
+    // Log in console or use toastify notification
+    toast.error(renderToastContent(`XHR Error - ${message.status} (${message.body})`, 'exclamation'));
 };

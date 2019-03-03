@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AspNetCore.HealthChecks.UI" Version="2.2.16" />
+    <PackageReference Include="AspNetCore.HealthChecks.UI" Version="2.2.17" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.2.0" />
     <PackageReference Include="NSwag.AspNetCore" Version="12.0.14" />
     <PackageReference Include="NSwag.MSBuild" Version="12.0.14">
@@ -31,6 +31,7 @@
     <None Remove="ClientApp\api\auth.service.ts" />
     <None Remove="ClientApp\api\base.service.ts" />
     <None Remove="ClientApp\api\sample.service.ts" />
+    <None Remove="ClientApp\api\services\base.config.ts" />
     <None Remove="ClientApp\api\signalR.service.ts" />
     <None Remove="ClientApp\components\controls\checkbox.tsx" />
     <None Remove="ClientApp\components\controls\Dropdown.tsx" />
@@ -60,10 +61,10 @@
     <None Remove="ClientApp\store\weather-forecasts\reducer.ts" />
     <None Remove="ClientApp\store\weather-forecasts\types.ts" />
     <None Remove="ClientApp\types\redux.d.ts" />
-    <None Remove="ClientApp\utils\handle-error.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\api\services\base.config.ts" />
     <TypeScriptCompile Include="ClientApp\api\services\base.service.ts" />
     <TypeScriptCompile Include="ClientApp\api\services\sample.service.ts" />
     <TypeScriptCompile Include="ClientApp\api\services\signalR.service.ts" />
@@ -102,7 +103,6 @@
     <TypeScriptCompile Include="ClientApp\store\weather-forecasts\reducer.ts" />
     <TypeScriptCompile Include="ClientApp\store\weather-forecasts\types.ts" />
     <TypeScriptCompile Include="ClientApp\types\redux.d.ts" />
-    <TypeScriptCompile Include="ClientApp\utils\handle-error.ts" />
   </ItemGroup>
 
   <ItemGroup>

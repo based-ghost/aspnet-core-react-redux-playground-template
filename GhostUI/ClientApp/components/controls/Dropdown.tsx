@@ -112,8 +112,8 @@ export default class Dropdown extends React.PureComponent<DropdownProps, Dropdow
         return this._clickHandlerCache[key];
     }
 
-    private handleClick: { (e: MouseEvent): void } = (e: MouseEvent) => {
-        // Bound a mousedown event listener to the doc, and if the target is the button or immediate child, toggle open - otherwise set !open if open
+    // Bound a mousedown event listener to the doc, and if the target is the button or immediate child, toggle open - otherwise set !open if open
+    private handleClick = (e: MouseEvent): void => {
         if (this._buttonRef.current && this._buttonRef.current.contains(e.target as HTMLElement)) {
             this.toggleOpenState(!this.state.open);
         } else if (this.state.open) {

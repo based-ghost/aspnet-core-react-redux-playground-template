@@ -34,8 +34,9 @@ class Login extends React.Component<LoginProps, LoginState> {
         this.state = initialState;
     }
 
-    public componentDidMount(): void {
-        SignalRApi.startConnection(); // SignalR connections
+    // Configure SignalR and start connections directly before mounting this component to DOM
+    public componentWillMount(): void {
+        SignalRApi.startConnection();
     }
 
     public componentWillReceiveProps(nextProps: LoginProps): void {
