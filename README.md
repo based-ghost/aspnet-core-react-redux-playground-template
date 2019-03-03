@@ -18,14 +18,15 @@ After discovering the ```dotnet new reactredux``` command no longer created the 
   - API Documentation using Swagger UI - using package [NSwag.AspNetCore](http://NSwag.org) to prettify the specification output and display at ```/docs``` & [NSwag.MSBuild](http://NSwag.org) to handle automatic updates - so that when the project builds, the NSwag CLI will run and generate an updated API specification. Access this view in the application via the floating settings cog on right screen by clicking the "Swagger API" link.
   - Brotli/Gzip response compression (production build)
 - **Client**
-  - React
-  - Redux
+  - [React](https://reactjs.org/)
+  - [Redux](https://redux.js.org/)
   - aspnet-prerendering/SSR (production build)
   - connected-react-router/react-router-dom/react-router-redux
-  - TypeScript
-  - Webpack for bundling of application assets and HMR (Hot Module Replacement)
-  - Bulma CSS framework + SASS + Font Awesome 5 (using fontawesome-svg-core)
-  - Axios for REST endpoint requests
+  - [TypeScript](https://www.typescriptlang.org/)
+  - [Webpack](https://github.com/webpack/webpack) for bundling of application assets and HMR (Hot Module Replacement)
+  - [Bulma CSS Framework](https://bulma.io/) + [SASS](https://github.com/sass/sass) + Font Awesome 5 (using fontawesome-svg-core)
+  - [autobind-decorator](https://github.com/andreypopp/autobind-decorator) which is self-described as 'A class or method decorator which binds methods to the instance so this is always correct, even when the method is detached' - nice-to-have syntax that makes your code more succintc and avoids the repetition of having to bind methods in the constructor of a class-component - autobind (boundMethod) on a method is lazy and is only bound once.
+  - [Axios](https://github.com/axios/axios) for REST endpoint requests
   - [react-toastify](https://github.com/fkhadra/react-toastify) - a highly configurable toast notification library - comes hooked up to display login error & SignalR hub push notifications examples.
   - Custom, reusable Dropdown & Checkbox components that provide full functionality w/ state management (without a JQuery dependency).
   - Two different loader components (spinner & authentication animation w/ callback for success/fail)
