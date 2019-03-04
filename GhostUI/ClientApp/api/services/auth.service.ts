@@ -16,12 +16,12 @@ const authService = {
 class AuthService extends BaseService {
     private static _authService: AuthService;
 
-    public static get Instance(): AuthService {
-        return this._authService || (this._authService = new this(authService.CONTROLLER_ID));
-    }
-
     private constructor(controllerName: string) {
         super(controllerName);
+    }
+
+    public static get Instance(): AuthService {
+        return this._authService || (this._authService = new this(authService.CONTROLLER_ID));
     }
 
     public async logoutAsync(): Promise<any> {

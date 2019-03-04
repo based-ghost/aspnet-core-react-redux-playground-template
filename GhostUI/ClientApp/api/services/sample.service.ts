@@ -15,12 +15,12 @@ const sampleService = {
 class SampleService extends BaseService {
     private static _sampleService: SampleService;
 
-    public static get Instance(): SampleService {
-        return this._sampleService || (this._sampleService = new this(sampleService.CONTROLLER_ID));
-    }
-
     private constructor(controllerName: string) {
         super(controllerName);
+    }
+
+    public static get Instance(): SampleService {
+        return this._sampleService || (this._sampleService = new this(sampleService.CONTROLLER_ID));
     }
 
     public async getWeatherForecastsAsync(startDateIndex: number): Promise<IWeatherForecast[]> {
