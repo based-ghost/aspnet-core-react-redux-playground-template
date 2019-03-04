@@ -1,6 +1,6 @@
 ﻿import { FunctionReturnTypes } from '../';
 import { actionCreators } from './actions';
-import { ActionType, AuthAction, AuthState} from './types';
+import { ActionType, IAuthAction, IAuthState} from './types';
 
 const initialState = () => {
     return {
@@ -8,11 +8,11 @@ const initialState = () => {
         token: '',
         status: '',
         userName: ''
-    } as AuthState;
+    } as IAuthState;
 };
 
-export const reducer = (state: AuthState = initialState(), incomingAction: FunctionReturnTypes<typeof actionCreators>) => {
-    const action = incomingAction as AuthAction;
+export const reducer = (state: IAuthState = initialState(), incomingAction: FunctionReturnTypes<typeof actionCreators>) => {
+    const action = incomingAction as IAuthAction;
 
     // If current action is not pertinent to this reducer, skip remainder of checks
     if (!action.type.startsWith(ActionType.NAMESPACE)) {

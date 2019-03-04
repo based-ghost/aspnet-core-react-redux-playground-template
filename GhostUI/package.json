@@ -31,7 +31,7 @@
     "postcss-preset-env": "^6.6.0",
     "postcss-safe-parser": "^4.0.1",
     "react-dev-utils": "^7.0.3",
-    "react-hot-loader": "^4.7.1",
+    "react-hot-loader": "^4.7.2",
     "sass-loader": "7.1.0",
     "sass-resources-loader": "^2.0.0",
     "style-loader": "0.23.1",

@@ -1,7 +1,7 @@
 ﻿import * as React from 'react';
 import { SignalRApi } from '../api';
 import { connect } from 'react-redux';
-import { ApplicationState } from '../store';
+import { IApplicationState } from '../store';
 import { toast, ToastId } from 'react-toastify';
 import { boundMethod } from 'autobind-decorator';
 import { Checkbox } from '../components/controls';
@@ -10,7 +10,7 @@ import { RoutesConfig } from '../config/routes.config';
 import { RouteComponentProps } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { renderToastContent } from '../utils/toastify-msg-renderer';
-import { actionCreators, AuthStatusEnum, Credentials, reducer } from '../store/auth';
+import { actionCreators, AuthStatusEnum, ICredentials, reducer } from '../store/auth';
 
 type LoginProps = ReturnType<typeof reducer> & typeof actionCreators & RouteComponentProps<{}>;
 type LoginState = typeof initialState;
@@ -23,7 +23,7 @@ const initialState = Object.freeze({
         userName: '',
         password: '',
         rememberMe: false
-    } as Credentials
+    } as ICredentials
 });
 
 class Login extends React.Component<LoginProps, LoginState> {
@@ -196,4 +196,4 @@ class Login extends React.Component<LoginProps, LoginState> {
 }
 
 // Wire up the React component to the Redux store
-export default connect((state: ApplicationState) => state.auth, actionCreators)(Login);
+export default connect((state: IApplicationState) => state.auth, actionCreators)(Login);

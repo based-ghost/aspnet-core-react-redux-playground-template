@@ -6,16 +6,16 @@ import { routes } from './routes';
 import { Provider } from 'react-redux';
 import { createBrowserHistory } from 'history';
 import { AppContainer } from 'react-hot-loader';
-import { configureAxiosInterceptors } from './api';
 import { hydrate, render, Renderer } from 'react-dom';
 import { ConnectedRouter } from 'connected-react-router';
-import { ApplicationState, configureStore } from './store';
+import { configureStore, IApplicationState } from './store';
 import { ToastContainer, ToastPosition } from 'react-toastify';
+import { configureAxiosInterceptors } from './config/axios.config';
 
 // Create browser history to use in the Redux store / Get the application-wide store instance, prepopulating with state from the server where available.
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href')!;
 const history = createBrowserHistory({ basename: baseUrl });
-const initialState = (window as any).initialReduxState as ApplicationState;
+const initialState = (window as any).initialReduxState as IApplicationState;
 const store = configureStore(history, initialState);
 
 // Execute any base Axios configurations (e.g. request interceptors)

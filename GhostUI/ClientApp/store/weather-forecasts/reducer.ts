@@ -1,16 +1,16 @@
 ﻿import { FunctionReturnTypes } from '../';
 import { actionCreators } from './actions';
-import { ActionType, WeatherForecastsAction, WeatherForecastsState } from './types';
+import { ActionType, IWeatherForecastsAction, IWeatherForecastsState } from './types';
 
 const initialState = () => {
     return {
         forecasts: [],
         isLoading: false
-    } as WeatherForecastsState;
+    } as IWeatherForecastsState;
 };
 
-export const reducer = (state: WeatherForecastsState = initialState(), incomingAction: FunctionReturnTypes<typeof actionCreators>) => {
-    const action = incomingAction as WeatherForecastsAction;
+export const reducer = (state: IWeatherForecastsState = initialState(), incomingAction: FunctionReturnTypes<typeof actionCreators>) => {
+    const action = incomingAction as IWeatherForecastsAction;
 
     // If current action is not pertinent to this reducer, skip remainder of checks
     if (!action.type.startsWith(ActionType.NAMESPACE)) {

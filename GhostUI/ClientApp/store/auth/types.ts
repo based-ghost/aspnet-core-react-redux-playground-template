@@ -23,28 +23,28 @@ export const enum AuthStatusEnum {
     Fail = 'fail'
 }
 
-export interface Credentials {
+export interface ICredentials {
     userName?: string;
     password?: string;
     rememberMe?: boolean;
 }
 
-export interface AuthUser {
+export interface IAuthUser {
     token?: string;
     status?: string;
     userName?: string;
 }
 
-export interface AuthState {
+export interface IAuthState {
     readonly isAuthenticated: boolean;
     readonly token?: string;
     readonly status?: string;
     readonly userName?: string;
 }
 
-export interface AuthAction {
+export interface IAuthAction {
     readonly type: string;
-    readonly authUser?: AuthUser;
+    readonly authUser?: IAuthUser;
     readonly checked?: boolean;
     readonly value?: string;
 }

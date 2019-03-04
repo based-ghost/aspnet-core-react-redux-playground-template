@@ -64,7 +64,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\api\services\base.config.ts" />
+    <TypeScriptCompile Include="ClientApp\config\axios.config.ts" />
     <TypeScriptCompile Include="ClientApp\api\services\base.service.ts" />
     <TypeScriptCompile Include="ClientApp\api\services\sample.service.ts" />
     <TypeScriptCompile Include="ClientApp\api\services\signalR.service.ts" />

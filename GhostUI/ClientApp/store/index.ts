@@ -1,2 +1,2 @@
 ﻿export { configureStore } from './configureStore';
-export { ApplicationState, AppThunkAction, createRootReducer, FunctionReturnTypes } from './rootReducer';
+export { IApplicationState, IAppThunkAction, createRootReducer, FunctionReturnTypes } from './rootReducer';

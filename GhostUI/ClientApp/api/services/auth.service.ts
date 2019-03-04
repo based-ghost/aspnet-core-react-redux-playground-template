@@ -1,6 +1,14 @@
 ﻿import { BaseService } from './base.service';
-import { authService } from '../../config/constants';
-import { AuthUser, Credentials } from '../../store/auth/types';
+import { IAuthUser, ICredentials } from '../../store/auth/types';
+
+/**
+ * AuthController endpoints
+ */
+const authService = {
+    CONTROLLER_ID: 'Auth',
+    LOGIN_RQ: 'Login',
+    LOGOUT_RQ: 'Logout'
+};
 
 /**
  * Auth API abstraction layer communication via Axios (typescript singleton pattern)
@@ -21,9 +29,9 @@ class AuthService extends BaseService {
         return data;
     }
 
-    public async loginAsync(credentials: Credentials): Promise<AuthUser> {
+    public async loginAsync(credentials: ICredentials): Promise<IAuthUser> {
         const { data } = await this.$http.post(authService.LOGIN_RQ, credentials);
-        return <AuthUser> data;
+        return <IAuthUser> data;
     }
 }
 

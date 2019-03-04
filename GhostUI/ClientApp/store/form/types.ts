@@ -14,19 +14,19 @@ export const ActionType: IActionType = {
     CHECK_SAMPLE_BOX: 'form/checkSampleBox'
 };
 
-export interface DropdownOption {
+export interface IDropdownOption {
     value: number;
     label: string;
 }
 
-export interface FormState {
+export interface IFormState {
     readonly count: number;
     readonly checkboxValue: boolean;
-    readonly selectedDropdownOption: DropdownOption;
+    readonly selectedDropdownOption: IDropdownOption;
 }
 
-export interface FormAction {
+export interface IFormAction {
     readonly type: string;
-    readonly option?: DropdownOption;
+    readonly option?: IDropdownOption;
     readonly checked?: boolean;
 }

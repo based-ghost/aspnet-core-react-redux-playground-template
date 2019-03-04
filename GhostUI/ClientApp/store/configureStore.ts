@@ -4,7 +4,7 @@ import * as RootModule from './rootReducer';
 import { routerMiddleware } from 'connected-react-router';
 import { applyMiddleware, compose, createStore, GenericStoreEnhancer, Store, StoreEnhancerStoreCreator } from 'redux';
 
-export function configureStore(history: History, initialState?: RootModule.ApplicationState): Store<RootModule.ApplicationState> {
+export function configureStore(history: History, initialState?: RootModule.IApplicationState): Store<RootModule.IApplicationState> {
     // If devTools is installed, connect to it
     const windowIfDefined = typeof window === 'undefined' ? null : window as any;
     const devToolsExtension = windowIfDefined && windowIfDefined.__REDUX_DEVTOOLS_EXTENSION__ as () => GenericStoreEnhancer;
@@ -16,7 +16,7 @@ export function configureStore(history: History, initialState?: RootModule.Appli
     )(createStore);
 
     // Combine all reducers and instantiate the app-wide store instance
-    const store = createStoreWithMiddleware(RootModule.createRootReducer(history), initialState) as Store<RootModule.ApplicationState>;
+    const store = createStoreWithMiddleware(RootModule.createRootReducer(history), initialState) as Store<RootModule.IApplicationState>;
 
     // Enable Webpack hot module replacement for reducers
     if (module.hot) {

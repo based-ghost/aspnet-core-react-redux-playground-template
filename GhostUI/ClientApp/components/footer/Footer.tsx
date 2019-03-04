@@ -1,5 +1,4 @@
 ﻿import * as React from 'react';
-import { FOOTER_TEXT } from '../../config/constants';
 
 // React 16.6 introduced the ability to wrap Functional Components with React.memo which now gives us the ability to prevent functional components from
 // rerendering every time and only when the props change - this is very similar to using React.PureComponent with class components
@@ -10,9 +9,7 @@ import { FOOTER_TEXT } from '../../config/constants';
 const Footer: React.FunctionComponent<{}> = () => (
     <footer className='footer'>
         <hr />
-        <div className='content has-text-centered'>
-            {FOOTER_TEXT}
-        </div>
+        <div className='content has-text-centered'>&copy; 2019 based-ghost LLC</div>
     </footer>
 );
 

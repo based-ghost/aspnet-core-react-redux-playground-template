@@ -1,6 +1,6 @@
 ﻿import { FunctionReturnTypes } from '../';
 import { actionCreators } from './actions';
-import { ActionType, FormState } from './types';
+import { ActionType, IFormState } from './types';
 import { DROPDOWN_TEST_DATA } from '../../config/constants';
 
 const initialState = () => {
@@ -11,10 +11,10 @@ const initialState = () => {
             value: 1,
             label: 'Option 1'
         }
-    } as FormState;
+    } as IFormState;
 };
 
-export const reducer = (state: FormState = initialState(), action: FunctionReturnTypes<typeof actionCreators>) => {
+export const reducer = (state: IFormState = initialState(), action: FunctionReturnTypes<typeof actionCreators>) => {
     // If current action is not pertinent to this reducer, skip remainder of checks
     if (!action.type.startsWith(ActionType.NAMESPACE)) {
         return state;

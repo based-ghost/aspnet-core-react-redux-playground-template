@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { ApplicationState } from '../store';
+import { IApplicationState } from '../store';
 import { Spinner } from '../components/loaders';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { actionCreators, reducer, WeatherForecast } from '../store/weather-forecasts';
+import { actionCreators, IWeatherForecast, reducer } from '../store/weather-forecasts';
 
 type WeatherForecastProps = ReturnType<typeof reducer> & typeof actionCreators & RouteComponentProps<{ startDateIndex: string }>;
 
@@ -49,7 +49,7 @@ class FetchData extends React.Component<WeatherForecastProps> {
                     </tr>
                 </thead>
                 <tbody>
-                    {(this.props.forecasts || []).map((forecast: WeatherForecast, index: number) =>
+                    {(this.props.forecasts || []).map((forecast: IWeatherForecast, index: number) =>
                         <tr key={index}>
                             <td>{forecast.DateFormatted}</td>
                             <td>{forecast.TemperatureC}</td>
@@ -64,27 +64,23 @@ class FetchData extends React.Component<WeatherForecastProps> {
 
     private renderPagination(): React.ReactNode {
         return (
-            <div className='field is-grouped is-pagination-group'>
-                <p className='control'>
-                    <Link className='button is-info' to={`/fetchdata/${(this.props.startDateIndex || 0) - 5}`}>
-                        <span className='icon'>
-                            <FontAwesomeIcon icon='chevron-left' />
-                        </span>
-                        <span>Previous</span>
-                    </Link>
-                </p>
-                <p className='control'>
-                    <Link className='button is-info' to={`/fetchdata/${(this.props.startDateIndex || 0) + 5}`}>
-                        <span>Next</span>
-                        <span className='icon'>
-                            <FontAwesomeIcon icon='chevron-right' />
-                        </span>
-                    </Link>
-                </p>
-            </div>
+            <p className='buttons is-pagination-group'>
+                <Link className='button is-info' to={`/fetchdata/${(this.props.startDateIndex || 0) - 5}`}>
+                    <span className='icon'>
+                        <FontAwesomeIcon icon='chevron-left' />
+                    </span>
+                    <span>Previous</span>
+                </Link>
+                <Link className='button is-info' to={`/fetchdata/${(this.props.startDateIndex || 0) + 5}`}>
+                    <span>Next</span>
+                    <span className='icon'>
+                        <FontAwesomeIcon icon='chevron-right' />
+                    </span>
+                </Link>
+            </p>
         );
     }
 }
 
 // Wire up the React component to the Redux store
-export default connect((state: ApplicationState) => state.weatherForecasts, actionCreators)(FetchData);
+export default connect((state: IApplicationState) => state.weatherForecasts, actionCreators)(FetchData);

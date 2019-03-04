@@ -1,7 +1,7 @@
 ﻿import * as React from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
-import { ApplicationState } from '../../store';
+import { IApplicationState } from '../../store';
 import { spaNugetUrls } from '../../config/constants';
 import { RoutesConfig } from '../../config/routes.config';
 import { actionCreators, reducer } from '../../store/auth';
@@ -34,13 +34,17 @@ class Settings extends React.PureComponent<NavProps, SettingsState> {
     }
 
     public render(): React.ReactNode {
+        return this.props.isAuthenticated && this.renderSettings();
+    }
+
+    private renderSettings(): React.ReactNode {
         return (
-            <div className={`fixed-plugin ${this.state.open ? 'fixed-plugin-active' : ''}`} style={{ display: this.props.isAuthenticated ? '' : 'none' }}>
+            <div className={`fixed-plugin ${this.state.open ? 'fixed-plugin-active' : ''}`}>
                 <div className='dropdown'>
                     <a role='button' ref={this._settingsAnchorRef}>
                         <FontAwesomeIcon icon='cog' size='3x' />
                     </a>
-                    { (this.props.isAuthenticated && this.state.open) && this.renderSettingsMenu() }
+                    { this.state.open && this.renderSettingsMenu() }
                 </div>
             </div>
         );
@@ -105,4 +109,4 @@ class Settings extends React.PureComponent<NavProps, SettingsState> {
 }
 
 // Wire up the React component to the Redux store
-export default connect((state: ApplicationState) => state.auth, actionCreators)(Settings);
+export default connect((state: IApplicationState) => state.auth, actionCreators)(Settings);

@@ -1,13 +1,13 @@
 ﻿import * as React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { ApplicationState } from '../../store';
+import { IApplicationState } from '../../store';
 import { RoutesConfig } from '../../config/routes.config';
-import { actionCreators, AuthState } from '../../store/auth';
+import { actionCreators, IAuthState } from '../../store/auth';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-type NavProps = AuthState & typeof actionCreators;
+type NavProps = IAuthState & typeof actionCreators;
 
 class NavBar extends React.Component<NavProps> {
     public render(): React.ReactNode {
@@ -52,4 +52,4 @@ class NavBar extends React.Component<NavProps> {
 }
 
 // Wire up the React component to the Redux store
-export default connect((state: ApplicationState) => state.auth, actionCreators)(NavBar);
+export default connect((state: IApplicationState) => state.auth, actionCreators)(NavBar);

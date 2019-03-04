@@ -165,7 +165,7 @@
 
         &::before {
             border-bottom: 16px solid transparent;
-            border-left: 16px solid $color-gray-border;
+            border-left: 16px solid #dbdbdb;
             border-top: 16px solid transparent;
             right: -16px;
             margin-left: auto;
@@ -203,7 +203,7 @@
         text-align: center;
         color: #7f888f;
         text-transform: uppercase;
-        border-bottom: 1px solid $color-gray-border;
+        border-bottom: 1px solid #dbdbdb;
         margin-bottom: .5rem;
         width: 80%;
         margin-left: auto;

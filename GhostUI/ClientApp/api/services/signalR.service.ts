@@ -1,7 +1,20 @@
 ﻿import { toast } from 'react-toastify';
 import * as SignalR from '@aspnet/signalr';
-import { signalrService } from '../../config/constants';
 import { renderToastContent } from '../../utils/toastify-msg-renderer';
+
+/**
+ * SignalR defaults
+ */
+export const signalrService = {
+    BASE_URL: 'http://localhost:56717/hubs/users',
+    CONNECTION_DELAY: 0,
+    HUB_MESSAGE_DELAY: 3000,
+    HUB_MESSAGE_TITLE: 'Hub Message',
+    LOGIN_USER_EVENT: 'UserLogin',
+    LOGOUT_USER_EVENT: 'UserLogout',
+    CLOSE_EVENT: 'CloseAllConnections',
+    TOASTIFY_ICON: 'info'
+};
 
 /**
  * SignalR API abstraction layer communication - configures/manages hub connections (typescript singleton pattern)

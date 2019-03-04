@@ -9,14 +9,14 @@ import { renderToString } from 'react-dom/server';
 import { createServerRenderer, RenderResult } from 'aspnet-prerendering';
 
 export default createServerRenderer(params => {
-    return new Promise<RenderResult>((resolve, reject) => {   
+    return new Promise<RenderResult>((resolve, reject) => {
+        
         // Prepare Redux store with in-memory history, and dispatch a navigation event corresponding to the incoming URL
         const basename = params.baseUrl.substring(0, params.baseUrl.length - 1); // Remove trailing slash
         const urlAfterBasename = params.url.substring(basename.length);
         const store = configureStore(createMemoryHistory());
         store.dispatch(replace(urlAfterBasename));
         
-        // Prepare an instance of the application and perform an inital render that will cause any async tasks (e.g., data access) to begin
         const routerContext: any = {};
         const app = (
             <Provider store={store}>
@@ -24,11 +24,8 @@ export default createServerRenderer(params => {
             </Provider>
         );
 
-        const renderApp = (): string => {
-            return renderToString(app);
-        };
-
-        renderApp();
+        // Prepare an instance of the application and perform an inital render that will cause any async tasks (e.g., data access) to begin
+        renderToString(app);
 
         // If there's a redirection, just send this information back to the host application
         if (routerContext.url) {
@@ -42,7 +39,7 @@ export default createServerRenderer(params => {
         // Once any async tasks are done, perform the final render (also send the redux store state, so the client can continue execution where the server left off)
         params.domainTasks.then(() => {
             resolve({
-                html: renderApp(),
+                html: renderToString(app),
                 globals: { initialReduxState: store.getState() }
             });
         }, reject); // Also propagate any errors back into the host application

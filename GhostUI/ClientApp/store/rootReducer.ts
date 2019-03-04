@@ -6,7 +6,7 @@ import * as WeatherForecasts from './weather-forecasts';
 import { connectRouter, RouterState } from 'connected-react-router';
 
 // The top-level state object
-export interface ApplicationState {
+export interface IApplicationState {
     readonly auth: ReturnType<typeof Auth.reducer>;
     readonly form: ReturnType<typeof Form.reducer>;
     readonly weatherForecasts: ReturnType<typeof WeatherForecasts.reducer>;
@@ -14,8 +14,8 @@ export interface ApplicationState {
 }
 
 // Takes all the individual reducers and creates a single state object by combining them
-export function createRootReducer(history: History): Redux.Reducer<ApplicationState> {
-    return Redux.combineReducers<ApplicationState>({
+export function createRootReducer(history: History): Redux.Reducer<IApplicationState> {
+    return Redux.combineReducers<IApplicationState>({
         auth: Auth.reducer,
         form: Form.reducer,
         weatherForecasts: WeatherForecasts.reducer,
@@ -24,8 +24,8 @@ export function createRootReducer(history: History): Redux.Reducer<ApplicationSt
 }
 
 // This type can be used as a hint on action creators so that its 'dispatch' and 'getState' params are correctly typed to match your store.
-export interface AppThunkAction<TAction> {
-    (dispatch: (action: TAction) => void, getState: () => ApplicationState): any;
+export interface IAppThunkAction<TAction> {
+    (dispatch: (action: TAction) => void, getState: () => IApplicationState): any;
 }
 
 // Gets the underlying unique types for all actionCreator objects for which it is applied to - used in reducer to help infer dispatched action type

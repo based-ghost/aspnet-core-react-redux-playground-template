@@ -1,6 +1,13 @@
 ﻿import { BaseService } from './base.service';
-import { sampleService } from '../../config/constants';
-import { WeatherForecast } from '../../store/weather-forecasts';
+import { IWeatherForecast } from '../../store/weather-forecasts';
+
+/**
+ * SampleDataController endpoints
+ */
+const sampleService = {
+    CONTROLLER_ID: 'SampleData',
+    GET_FORECASTS_RQ: 'WeatherForecasts?startDateIndex='
+};
 
 /**
  * SampleData API abstraction layer communication via Axios (typescript singleton pattern)
@@ -16,9 +23,9 @@ class SampleService extends BaseService {
         super(controllerName);
     }
 
-    public async getWeatherForecastsAsync(startDateIndex: number): Promise<WeatherForecast[]> {
+    public async getWeatherForecastsAsync(startDateIndex: number): Promise<IWeatherForecast[]> {
         const { data } = await this.$http.get(sampleService.GET_FORECASTS_RQ + startDateIndex);
-        return <WeatherForecast[]> data;
+        return <IWeatherForecast[]> data;
     }
 }
 
