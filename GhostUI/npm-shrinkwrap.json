@@ -109,6 +109,15 @@
       "integrity": "sha512-ui3WwXmjTaY73fOQ3/m3nnajU/Orhi6cEu5rzX+BrAAJxa3eITXZ5ch9suPqtM03OWhAHhPSyBGCN4UKoxO20Q==",
       "dev": true
     },
+    "@types/hoist-non-react-statics": {
+      "version": "3.3.0",
+      "resolved": "https://registry.npmjs.org/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.0.tgz",
+      "integrity": "sha512-O2OGyW9wlO2bbDmZRH17MecArQfsIa1g//ve2IJk6BnmwEglFz5kdhP1BlgeqjVNH5IHIhsc83DWFo8StCe8+Q==",
+      "dev": true,
+      "requires": {
+        "@types/react": "*"
+      }
+    },
     "@types/node": {
       "version": "10.12.18",
       "resolved": "https://registry.npmjs.org/@types/node/-/node-10.12.18.tgz",
@@ -128,9 +137,9 @@
       "dev": true
     },
     "@types/react": {
-      "version": "16.8.6",
-      "resolved": "https://registry.npmjs.org/@types/react/-/react-16.8.6.tgz",
-      "integrity": "sha512-bN9qDjEMltmHrl0PZRI4IF2AbB7V5UlRfG+OOduckVnRQ4VzXVSzy/1eLAh778IEqhTnW0mmgL9yShfinNverA==",
+      "version": "16.8.7",
+      "resolved": "https://registry.npmjs.org/@types/react/-/react-16.8.7.tgz",
+      "integrity": "sha512-0xbkIyrDNKUn4IJVf8JaCn+ucao/cq6ZB8O6kSzhrJub1cVSqgTArtG0qCfdERWKMEIvUbrwLXeQMqWEsyr9dA==",
       "dev": true,
       "requires": {
         "@types/prop-types": "*",
@@ -157,11 +166,12 @@
       }
     },
     "@types/react-redux": {
-      "version": "7.0.1",
-      "resolved": "https://registry.npmjs.org/@types/react-redux/-/react-redux-7.0.1.tgz",
-      "integrity": "sha512-+DIH7TI2MT4Ke4lOrRMgNy//DzTDIzv5QwkJSD6AVrlsIgzf7yMM0JoWL5wJUXYwKQ2f1FgvwlvIVGD2QWQnew==",
+      "version": "7.0.2",
+      "resolved": "https://registry.npmjs.org/@types/react-redux/-/react-redux-7.0.2.tgz",
+      "integrity": "sha512-sIOvCQrR2fQBDwNmL+6YXKrqvjGvjdCTN4BxqCUsDYkhpXE7aAlrZaiTqH5r6u+r0o1MEx3J3oxZ0UQZp6lN1A==",
       "dev": true,
       "requires": {
+        "@types/hoist-non-react-statics": "*",
         "@types/react": "*",
         "redux": "^4.0.0"
       }
@@ -498,9 +508,9 @@
       "dev": true
     },
     "ansi-colors": {
-      "version": "3.2.3",
-      "resolved": "https://registry.npmjs.org/ansi-colors/-/ansi-colors-3.2.3.tgz",
-      "integrity": "sha512-LEHHyuhlPY3TmuUYMh2oz89lTShfvgbmzaBcxve9t/9Wuy7Dwf4yoAKcND7KFT1HAQfqZ12qtc+DUrBMeKF9nw==",
+      "version": "3.2.4",
+      "resolved": "https://registry.npmjs.org/ansi-colors/-/ansi-colors-3.2.4.tgz",
+      "integrity": "sha512-hHUXGagefjN2iRrID63xckIvotOXOojhQKWIPUZ4mNUZ9nLZW+7FMNoE1lOkEhNWYsx/7ysGIuJYCiMAA9FnrA==",
       "dev": true
     },
     "ansi-escapes": {
@@ -2069,9 +2079,9 @@
       }
     },
     "csstype": {
-      "version": "2.6.2",
-      "resolved": "https://registry.npmjs.org/csstype/-/csstype-2.6.2.tgz",
-      "integrity": "sha512-Rl7PvTae0pflc1YtxtKbiSqq20Ts6vpIYOD5WBafl4y123DyHUeLrRdQP66sQW8/6gmX8jrYJLXwNeMqYVJcow==",
+      "version": "2.6.3",
+      "resolved": "https://registry.npmjs.org/csstype/-/csstype-2.6.3.tgz",
+      "integrity": "sha512-rINUZXOkcBmoHWEyu7JdHu5JMzkGRoMX4ov9830WNgxf5UYxcBUO0QTKAqeJ5EZfSdlrcJYkC8WwfVW7JYi4yg==",
       "dev": true
     },
     "currently-unhandled": {
@@ -3007,6 +3017,21 @@
       "resolved": "https://registry.npmjs.org/forever-agent/-/forever-agent-0.6.1.tgz",
       "integrity": "sha1-+8cfDEGt6zf5bFd60e1C2P2sypE=",
       "dev": true
+    },
+    "fork-ts-checker-webpack-plugin": {
+      "version": "1.0.0-alpha.6",
+      "resolved": "https://registry.npmjs.org/fork-ts-checker-webpack-plugin/-/fork-ts-checker-webpack-plugin-1.0.0-alpha.6.tgz",
+      "integrity": "sha512-s/V+58nLrUjuXyzYk8AL11XG8bxIirTbafDLMn26sL59HQx8QvvsRTqOkhq4MV0coIkog1jZuH/E9Abm8zFZ2g==",
+      "dev": true,
+      "requires": {
+        "babel-code-frame": "^6.22.0",
+        "chalk": "^2.4.1",
+        "chokidar": "^2.0.4",
+        "micromatch": "^3.1.10",
+        "minimatch": "^3.0.4",
+        "semver": "^5.6.0",
+        "tapable": "^1.0.0"
+      }
     },
     "form-data": {
       "version": "2.3.3",
@@ -7088,20 +7113,20 @@
       "dev": true
     },
     "react": {
-      "version": "16.8.3",
-      "resolved": "https://registry.npmjs.org/react/-/react-16.8.3.tgz",
-      "integrity": "sha512-3UoSIsEq8yTJuSu0luO1QQWYbgGEILm+eJl2QN/VLDi7hL+EN18M3q3oVZwmVzzBJ3DkM7RMdRwBmZZ+b4IzSA==",
+      "version": "16.8.4",
+      "resolved": "https://registry.npmjs.org/react/-/react-16.8.4.tgz",
+      "integrity": "sha512-0GQ6gFXfUH7aZcjGVymlPOASTuSjlQL4ZtVC5YKH+3JL6bBLCVO21DknzmaPlI90LN253ojj02nsapy+j7wIjg==",
       "requires": {
         "loose-envify": "^1.1.0",
         "object-assign": "^4.1.1",
         "prop-types": "^15.6.2",
-        "scheduler": "^0.13.3"
+        "scheduler": "^0.13.4"
       }
     },
     "react-dev-utils": {
-      "version": "7.0.3",
-      "resolved": "https://registry.npmjs.org/react-dev-utils/-/react-dev-utils-7.0.3.tgz",
-      "integrity": "sha512-KEFsH1CewnmddPLXIuU+QWKTH/hpJKZClL2+74XN54NkPnR2KnB5gGmuQ0E7DwcCkUpdMxxqBX+rB7aB5sZS4A==",
+      "version": "8.0.0",
+      "resolved": "https://registry.npmjs.org/react-dev-utils/-/react-dev-utils-8.0.0.tgz",
+      "integrity": "sha512-TK8cj7eghvxfe7bfBluLGpI/upo4EXC+G74hYmPucAG8C2XcbT+vKnlWPwLnABb75Zk+mR6D556Da+yvDjljrw==",
       "dev": true,
       "requires": {
         "@babel/code-frame": "7.0.0",
@@ -7113,6 +7138,7 @@
         "escape-string-regexp": "1.0.5",
         "filesize": "3.6.1",
         "find-up": "3.0.0",
+        "fork-ts-checker-webpack-plugin": "1.0.0-alpha.6",
         "global-modules": "2.0.0",
         "globby": "8.0.2",
         "gzip-size": "5.0.0",
@@ -7122,7 +7148,7 @@
         "loader-utils": "1.2.3",
         "opn": "5.4.0",
         "pkg-up": "2.0.0",
-        "react-error-overlay": "^5.1.3",
+        "react-error-overlay": "^5.1.4",
         "recursive-readdir": "2.2.2",
         "shell-quote": "1.6.1",
         "sockjs-client": "1.3.0",
@@ -7233,20 +7259,20 @@
       }
     },
     "react-dom": {
-      "version": "16.8.3",
-      "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-16.8.3.tgz",
-      "integrity": "sha512-ttMem9yJL4/lpItZAQ2NTFAbV7frotHk5DZEHXUOws2rMmrsvh1Na7ThGT0dTzUIl6pqTOi5tYREfL8AEna3lA==",
+      "version": "16.8.4",
+      "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-16.8.4.tgz",
+      "integrity": "sha512-Ob2wK7XG2tUDt7ps7LtLzGYYB6DXMCLj0G5fO6WeEICtT4/HdpOi7W/xLzZnR6RCG1tYza60nMdqtxzA8FaPJQ==",
       "requires": {
         "loose-envify": "^1.1.0",
         "object-assign": "^4.1.1",
         "prop-types": "^15.6.2",
-        "scheduler": "^0.13.3"
+        "scheduler": "^0.13.4"
       }
     },
     "react-error-overlay": {
-      "version": "5.1.3",
-      "resolved": "https://registry.npmjs.org/react-error-overlay/-/react-error-overlay-5.1.3.tgz",
-      "integrity": "sha512-GoqeM3Xadie7XUApXOjkY3Qhs8RkwB/Za4WMedBGrOKH1eTuKGyoAECff7jiVonJchOx6KZ9i8ILO5XIoHB+Tg==",
+      "version": "5.1.4",
+      "resolved": "https://registry.npmjs.org/react-error-overlay/-/react-error-overlay-5.1.4.tgz",
+      "integrity": "sha512-fp+U98OMZcnduQ+NSEiQa4s/XMsbp+5KlydmkbESOw4P69iWZ68ZMFM5a2BuE0FgqPBKApJyRuYHR95jM8lAmg==",
       "dev": true
     },
     "react-hot-loader": {
@@ -7860,9 +7886,9 @@
       "dev": true
     },
     "scheduler": {
-      "version": "0.13.3",
-      "resolved": "https://registry.npmjs.org/scheduler/-/scheduler-0.13.3.tgz",
-      "integrity": "sha512-UxN5QRYWtpR1egNWzJcVLk8jlegxAugswQc984lD3kU7NuobsO37/sRfbpTdBjtnD5TBNFA2Q2oLV5+UmPSmEQ==",
+      "version": "0.13.4",
+      "resolved": "https://registry.npmjs.org/scheduler/-/scheduler-0.13.4.tgz",
+      "integrity": "sha512-cvSOlRPxOHs5dAhP9yiS/6IDmVAVxmk33f0CtTJRkmUWcb1Us+t7b1wqdzoC0REw2muC9V5f1L/w5R5uKGaepA==",
       "requires": {
         "loose-envify": "^1.1.0",
         "object-assign": "^4.1.1"
@@ -9275,9 +9301,9 @@
       }
     },
     "webpack-dev-middleware": {
-      "version": "3.6.0",
-      "resolved": "https://registry.npmjs.org/webpack-dev-middleware/-/webpack-dev-middleware-3.6.0.tgz",
-      "integrity": "sha512-oeXA3m+5gbYbDBGo4SvKpAHJJEGMoekUbHgo1RK7CP1sz7/WOSeu/dWJtSTk+rzDCLkPwQhGocgIq6lQqOyOwg==",
+      "version": "3.6.1",
+      "resolved": "https://registry.npmjs.org/webpack-dev-middleware/-/webpack-dev-middleware-3.6.1.tgz",
+      "integrity": "sha512-XQmemun8QJexMEvNFbD2BIg4eSKrmSIMrTfnl2nql2Sc6OGAYFyb8rwuYrCjl/IiEYYuyTEiimMscu7EXji/Dw==",
       "dev": true,
       "requires": {
         "memory-fs": "^0.4.1",
