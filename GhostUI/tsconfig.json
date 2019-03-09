@@ -9,6 +9,7 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "skipLibCheck": true,
     "strict": false,

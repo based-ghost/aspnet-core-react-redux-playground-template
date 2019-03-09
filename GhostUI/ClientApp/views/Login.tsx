@@ -9,7 +9,7 @@ import { Authenticator } from '../components/loaders';
 import { RoutesConfig } from '../config/routes.config';
 import { RouteComponentProps } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { renderToastContent } from '../utils/toastify-msg-renderer';
+import { renderToastifyMsg } from '../utils/renderToastifyMsg';
 import { actionCreators, AuthStatusEnum, ICredentials, reducer } from '../store/auth';
 
 type LoginProps = ReturnType<typeof reducer> & typeof actionCreators & RouteComponentProps<{}>;
@@ -144,7 +144,7 @@ class Login extends React.Component<LoginProps, LoginState> {
             // Run invalidInputs error and display toast notification (if one is not already active)
             this.setState({ invalidInputs: true });
             if (!toast.isActive(this.toastId)) {
-                this.toastId = toast.error(renderToastContent('Enter user name/password', 'exclamation'));
+                this.toastId = toast.error(renderToastifyMsg('Enter user name/password', 'exclamation'));
             }
         } else {
             // Clear any toast notifications and prepare state for Login request stub / run login request stub

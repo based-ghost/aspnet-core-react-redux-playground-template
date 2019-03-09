@@ -1,6 +1,6 @@
 ﻿import axios, { AxiosError } from 'axios';
 import { toast } from 'react-toastify';
-import { renderToastContent } from '../utils/toastify-msg-renderer';
+import { renderToastifyMsg } from '../utils/renderToastifyMsg';
 
 export const configureAxiosInterceptors = (): void => {
     axios.interceptors.response.use(
@@ -57,5 +57,5 @@ export const handleAxiosError = (error: AxiosError): void => {
     }
 
     // Log in console or use toastify notification
-    toast.error(renderToastContent(`XHR Error - ${message.status} (${message.body})`, 'exclamation'));
+    toast.error(renderToastifyMsg(`XHR Error - ${message.status} (${message.body})`, 'exclamation'));
 };

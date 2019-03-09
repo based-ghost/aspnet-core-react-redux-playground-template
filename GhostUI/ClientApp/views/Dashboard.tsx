@@ -1,9 +1,6 @@
 import * as React from 'react';
 
-// React 16.8 introduced "Hooks" which will now enable functional components to be opt in stateful by using "useState" - this means they are technically no longer
-// stateless functional components (React.SFC<{}>) but are now React.FunctionComponent
-
-const Dashboard: React.FunctionComponent<{}> = () => (
+const Dashboard: React.FC<{}> = () => (
     <div className='dashboard-wrapper'>
         <section className='hero is-dark'>
             <div className='hero-body'>

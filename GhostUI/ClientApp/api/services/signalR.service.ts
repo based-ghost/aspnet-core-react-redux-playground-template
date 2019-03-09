@@ -1,6 +1,6 @@
 ﻿import { toast } from 'react-toastify';
 import * as SignalR from '@aspnet/signalr';
-import { renderToastContent } from '../../utils/toastify-msg-renderer';
+import { renderToastifyMsg } from '../../utils/renderToastifyMsg';
 
 /**
  * SignalR defaults
@@ -64,13 +64,13 @@ class SignalRService {
     private registerOnServerEvents(): void {
         this._hubConnection.on(signalrService.LOGIN_USER_EVENT, () => {
             setTimeout(() => {
-                toast.info(renderToastContent('A user has logged in (SignalR)', signalrService.TOASTIFY_ICON));
+                toast.info(renderToastifyMsg('A user has logged in (SignalR)', signalrService.TOASTIFY_ICON));
             }, signalrService.HUB_MESSAGE_DELAY);
         });
 
         this._hubConnection.on(signalrService.LOGOUT_USER_EVENT, () => {
             setTimeout(() => {
-                toast.info(renderToastContent('A user has logged out (SignalR)', signalrService.TOASTIFY_ICON));
+                toast.info(renderToastifyMsg('A user has logged out (SignalR)', signalrService.TOASTIFY_ICON));
             }, signalrService.HUB_MESSAGE_DELAY);
         });
 
@@ -78,7 +78,7 @@ class SignalRService {
             this._hubConnection.stop().then(() => {
                 setTimeout(() => {
                     this._isConnected = false;
-                    toast.info(renderToastContent(`All hub connections closed (SignalR) - ${reason}`, signalrService.TOASTIFY_ICON));
+                    toast.info(renderToastifyMsg(`All hub connections closed (SignalR) - ${reason}`, signalrService.TOASTIFY_ICON));
                 }, signalrService.HUB_MESSAGE_DELAY);
             });
         });

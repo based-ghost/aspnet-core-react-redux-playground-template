@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AspNetCore.HealthChecks.UI" Version="2.2.17" />
+    <PackageReference Include="AspNetCore.HealthChecks.UI" Version="2.2.19" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.2.2" />
     <PackageReference Include="NSwag.AspNetCore" Version="12.0.15" />
     <PackageReference Include="NSwag.MSBuild" Version="12.0.15">
@@ -84,7 +84,7 @@
     <TypeScriptCompile Include="ClientApp\routes.tsx" />
     <TypeScriptCompile Include="ClientApp\store\configureStore.ts" />
     <TypeScriptCompile Include="ClientApp\config\constants.ts" />
-    <TypeScriptCompile Include="ClientApp\utils\toastify-msg-renderer.tsx" />
+    <TypeScriptCompile Include="ClientApp\utils\renderToastifyMsg.tsx" />
     <TypeScriptCompile Include="ClientApp\views\Login.tsx" />
     <TypeScriptCompile Include="ClientApp\prototype\index.ts" />
     <TypeScriptCompile Include="ClientApp\prototype\extensions\string.extensions.ts" />

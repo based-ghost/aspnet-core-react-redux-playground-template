@@ -6,7 +6,7 @@ import * as PropTypes from 'prop-types';
  * @param styles The styles you want to assign.
  * @return {(target:any)=>void} A function that wraps the target with the provided styles.
  */
-export function WithStyles(styles: any): any {
+export function withStyles(styles: any): any {
     return function <T extends { new(...args: any[]): React.Component<any, any> }>(Component: T) {
         // Add context types
         class ComponentWithStyles extends Component {
