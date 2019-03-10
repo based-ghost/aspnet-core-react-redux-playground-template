@@ -35,7 +35,6 @@ const tslintOptions = {
                 'import-sources-order': 'any',
                 'named-imports-order': 'case-insensitive'
             }],
-            'prefer-const': true,
             'prefer-template': true,
             'quotemark': [true, 'single'],
             'semicolon': [true, 'always'],

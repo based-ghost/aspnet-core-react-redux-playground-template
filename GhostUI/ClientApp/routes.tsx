@@ -7,9 +7,9 @@ export const routes: React.ReactNode = (
     <Layout>
         <Switch>
             <Route exact path={RoutesConfig.Login.path} component={Login} />
-            <Route path={RoutesConfig.Form.path} component={Form} />
-            <Route path={RoutesConfig.Dashboard.path} component={Dashboard} />
-            <Route path={RoutesConfig.FetchData.path.Absolute} component={FetchData} />
+            <Route exact path={RoutesConfig.Form.path} component={Form} />
+            <Route exact path={RoutesConfig.Dashboard.path} component={Dashboard} />
+            <Route exact path={RoutesConfig.FetchData.path.Absolute} component={FetchData} />
         </Switch>
     </Layout>
 );
