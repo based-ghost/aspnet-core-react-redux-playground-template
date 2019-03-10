@@ -69,15 +69,28 @@
     top: 0;
     left: 0;
     margin: 1.25em auto auto auto;
+    display: none;
 
-    &.success div {
-        opacity: 0.6;
-        border: .7em solid #1be551;
+    &.process {
+        display: inline-block;
     }
 
-    &.fail div {
-        opacity: 0.6;
-        border: .7em solid #e74c3c;
+    &.success {
+        display: inline-block;
+
+        > div {
+            opacity: 0.6;
+            border: .7em solid #1be551;
+        }
+    }
+
+    &.fail {
+        display: inline-block;
+
+        > div {
+            opacity: 0.6;
+            border: .7em solid #e74c3c;
+        }
     }
 
     div {

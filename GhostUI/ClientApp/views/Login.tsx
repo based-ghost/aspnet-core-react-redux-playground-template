@@ -65,6 +65,7 @@ class Login extends React.Component<LoginProps, LoginState> {
                                 { this.renderLoginControls() }
                             </form>
                             <Authenticator authStatus={this.state.authRequestStatus}
+                                           callbackTimeout={1500}
                                            failDispatcher={() => { this.props.resetState(); this.setState({ authRequestStatus: AuthStatusEnum.None as string }); }}
                                            successDispatcher={() => this.props.history.push(RoutesConfig.Dashboard.path)} />
                         </div>

@@ -18,7 +18,7 @@ const initialState = Object.freeze({
     isArrayOfObjects: false
 });
 
-export default class Dropdown extends React.PureComponent<DropdownProps, DropdownState> {
+export default class Dropdown extends React.Component<DropdownProps, DropdownState> {
     static defaultProps = {
         labelKey: 'label',
         wrapperClass: '',

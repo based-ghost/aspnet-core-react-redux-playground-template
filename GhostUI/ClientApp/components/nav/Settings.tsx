@@ -35,37 +35,39 @@ const Settings: React.FC<NavProps> = (props) => {
                 <a role='button' ref={settingsAnchorEl}>
                     <FontAwesomeIcon icon='cog' size='3x' />
                 </a>
-                {open && (
-                    <ul className='dropdown-menu'>
-                        <li className='header-title'>Settings</li>
-                        <li>
-                            <a className='dropdown-item' target='_blank' rel='noopener' href={spaNugetUrls.HEALTH_UI} role='button'>
-                                <span className='icon'>
-                                    <FontAwesomeIcon icon='heart' />
-                                </span>
-                                <span>Health Checks</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a className='dropdown-item' target='_blank' rel='noopener' href={spaNugetUrls.SWAGGER_DOCS} role='button'>
-                                <span className='icon'>
-                                    <FontAwesomeIcon icon='file' />
-                                </span>
-                                <span>Swagger API</span>
-                            </a>
-                        </li>
-                        <li>
-                            <Route render={({ history }) => (
-                                <a className='dropdown-item' onClick={() => { props.logoutUserRequest(() => history.push(RoutesConfig.Login.path)); }} role='button'>
+                {
+                    open && (
+                        <ul className='dropdown-menu'>
+                            <li className='header-title'>Settings</li>
+                            <li>
+                                <a className='dropdown-item' target='_blank' rel='noopener' href={spaNugetUrls.HEALTH_UI} role='button'>
                                     <span className='icon'>
-                                        <FontAwesomeIcon icon={RoutesConfig.Login.icon as IconProp} />
+                                        <FontAwesomeIcon icon='heart' />
                                     </span>
-                                    <span>{RoutesConfig.Login.displayName}</span>
+                                    <span>Health Checks</span>
                                 </a>
-                            )} />
-                        </li>
-                    </ul>
-                )}
+                            </li>
+                            <li>
+                                <a className='dropdown-item' target='_blank' rel='noopener' href={spaNugetUrls.SWAGGER_DOCS} role='button'>
+                                    <span className='icon'>
+                                        <FontAwesomeIcon icon='file' />
+                                    </span>
+                                    <span>Swagger API</span>
+                                </a>
+                            </li>
+                            <li>
+                                <Route render={({ history }) => (
+                                    <a className='dropdown-item' onClick={() => { props.logoutUserRequest(() => history.push(RoutesConfig.Login.path)); }} role='button'>
+                                        <span className='icon'>
+                                            <FontAwesomeIcon icon={RoutesConfig.Login.icon as IconProp} />
+                                        </span>
+                                        <span>{RoutesConfig.Login.displayName}</span>
+                                    </a>
+                                )} />
+                            </li>
+                        </ul>
+                    )
+                }
             </div>
         </div>
     );

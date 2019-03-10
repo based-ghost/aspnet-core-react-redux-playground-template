@@ -17,28 +17,30 @@ const NavBar: React.FC<NavProps> = (props) => {
                     <img src={require('../../assets/image/bulma.io-logo.png')} alt='' width='165' />
                 </div>
                 <div className='navbar-routes'>
-                    {props.isAuthenticated && (
-                        <>
-                          <NavLink exact={true} to={RoutesConfig.Form.path} className='navbar-item' activeClassName='is-active'>
-                              <span className='icon'>
-                                  <FontAwesomeIcon icon={RoutesConfig.Form.icon as IconProp} />
-                              </span>
-                              <span>{RoutesConfig.Form.displayName}</span>
-                          </NavLink>
-                          <NavLink exact={true} to={RoutesConfig.Dashboard.path} className='navbar-item' activeClassName='is-active'>
-                              <span className='icon'>
-                                  <FontAwesomeIcon icon={RoutesConfig.Dashboard.icon as IconProp} />
-                              </span>
-                              <span>{RoutesConfig.Dashboard.displayName}</span>
-                          </NavLink>
-                          <NavLink exact={true} to={RoutesConfig.FetchData.path.Relative} className='navbar-item' activeClassName='is-active'>
-                              <span className='icon'>
-                                  <FontAwesomeIcon icon={RoutesConfig.FetchData.icon as IconProp} />
-                              </span>
-                              <span>{RoutesConfig.FetchData.displayName}</span>
-                          </NavLink>
-                        </>
-                    )}
+                    {
+                        props.isAuthenticated && (
+                            <React.Fragment>
+                                <NavLink exact={true} to={RoutesConfig.Form.path} className='navbar-item' activeClassName='is-active'>
+                                    <span className='icon'>
+                                        <FontAwesomeIcon icon={RoutesConfig.Form.icon as IconProp} />
+                                    </span>
+                                    <span>{RoutesConfig.Form.displayName}</span>
+                                </NavLink>
+                                <NavLink exact={true} to={RoutesConfig.Dashboard.path} className='navbar-item' activeClassName='is-active'>
+                                    <span className='icon'>
+                                        <FontAwesomeIcon icon={RoutesConfig.Dashboard.icon as IconProp} />
+                                    </span>
+                                    <span>{RoutesConfig.Dashboard.displayName}</span>
+                                </NavLink>
+                                <NavLink exact={true} to={RoutesConfig.FetchData.path.Relative} className='navbar-item' activeClassName='is-active'>
+                                    <span className='icon'>
+                                        <FontAwesomeIcon icon={RoutesConfig.FetchData.icon as IconProp} />
+                                    </span>
+                                    <span>{RoutesConfig.FetchData.displayName}</span>
+                                </NavLink>
+                            </React.Fragment>
+                        )
+                    }
                 </div>
             </div>
         </nav>
