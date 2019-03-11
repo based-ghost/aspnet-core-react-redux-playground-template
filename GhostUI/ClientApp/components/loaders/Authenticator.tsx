@@ -9,12 +9,19 @@ type AuthenticatorProps = {
 };
 
 const Authenticator: React.FC<AuthenticatorProps> = (props) => {
+    const handleAuthCallback = (authStatus: string): void => {
+        setTimeout(() => {
+            if (authStatus === AuthStatusEnum.Success) {
+                props.successDispatcher();
+            } else {
+                props.failDispatcher();
+            }
+        }, props.callbackTimeout || 1500);
+    };
+
     React.useEffect(() => {
         if (props.authStatus && props.authStatus.isIn(AuthStatusEnum.Success, AuthStatusEnum.Fail)) {
-            setTimeout(() => {
-                (props.authStatus === AuthStatusEnum.Success) && props.successDispatcher();
-                (props.authStatus === AuthStatusEnum.Fail) && props.failDispatcher();
-            }, props.callbackTimeout || 1500);
+            handleAuthCallback(props.authStatus);
         }
     }, [props.authStatus]);
 
