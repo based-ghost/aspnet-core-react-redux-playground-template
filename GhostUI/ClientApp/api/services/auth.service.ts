@@ -2,15 +2,6 @@
 import { IAuthUser, ICredentials } from '../../store/auth/types';
 
 /**
- * AuthController endpoints
- */
-const authService = {
-    CONTROLLER_ID: 'Auth',
-    LOGIN_RQ: 'Login',
-    LOGOUT_RQ: 'Logout'
-};
-
-/**
  * Auth API abstraction layer communication via Axios (typescript singleton pattern)
  */
 class AuthService extends BaseService {
@@ -21,17 +12,16 @@ class AuthService extends BaseService {
     }
 
     public static get Instance(): AuthService {
-        return this._authService || (this._authService = new this(authService.CONTROLLER_ID));
-    }
-
-    public async logoutAsync(): Promise<any> {
-        const { data } = await this.$http.post(authService.LOGOUT_RQ);
-        return data;
+        return this._authService || (this._authService = new this('Auth'));
     }
 
     public async loginAsync(credentials: ICredentials): Promise<IAuthUser> {
-        const { data } = await this.$http.post(authService.LOGIN_RQ, credentials);
-        return <IAuthUser> data;
+        const { data } = await this.$http.post('Login', credentials);
+        return data as IAuthUser;
+    }
+
+    public async logoutAsync(): Promise<any> {
+        return await this.$http.post('Logout');
     }
 }
 
