@@ -19,8 +19,7 @@ namespace GhostUI.Extensions
                         corsBuilder
                             .AllowAnyOrigin()
                             .AllowAnyHeader()
-                            .AllowAnyMethod()
-                            .AllowCredentials()));
+                            .AllowAnyMethod()));
 
             return services;
         }

@@ -79,7 +79,7 @@ class Login extends React.Component<LoginProps, LoginState> {
         return (
             <div className='field'>
                 <div className='control has-icons-left'>
-                    <input className={`input is-large ${this.state.invalidInputs ? 'is-danger' : ''}`}
+                    <input className={`input is-large ${(this.state.invalidInputs && !this.state.credentials.userName) ? 'is-danger' : ''}`}
                            type='text'
                            value={this.state.credentials.userName}
                            onChange={this.updateUserName}
@@ -97,7 +97,7 @@ class Login extends React.Component<LoginProps, LoginState> {
         return (
             <div className='field'>
                 <div className='control has-icons-left has-icons-right'>
-                    <input className={`input is-large ${this.state.invalidInputs ? 'is-danger' : ''}`}
+                    <input className={`input is-large ${(this.state.invalidInputs && !this.state.credentials.password) ? 'is-danger' : ''}`}
                            type={!this.state.showPassword ? 'password' : 'text'}
                            value={this.state.credentials.password}
                            onChange={this.updatePassword}
@@ -141,7 +141,7 @@ class Login extends React.Component<LoginProps, LoginState> {
             return;
         }
 
-        if ((this.state.credentials.userName!).isEmptyOrWhiteSpace() || (this.state.credentials.password!).isEmptyOrWhiteSpace()) {
+        if (!this.state.credentials.userName || !this.state.credentials.password) {
             // Run invalidInputs error and display toast notification (if one is not already active)
             this.setState({ invalidInputs: true });
             if (!toast.isActive(this.toastId)) {
@@ -180,7 +180,7 @@ class Login extends React.Component<LoginProps, LoginState> {
         this.setState({
             credentials: {
                 ...this.state.credentials,
-                userName: (e.currentTarget.value || '')
+                userName: (e.currentTarget.value || '').trim()
             }
         });
     }
@@ -190,7 +190,7 @@ class Login extends React.Component<LoginProps, LoginState> {
         this.setState({
             credentials: {
                 ...this.state.credentials,
-                password: (e.currentTarget.value || '')
+                password: (e.currentTarget.value || '').trim()
             }
         });
     }

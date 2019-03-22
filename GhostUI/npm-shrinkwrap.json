@@ -96,24 +96,24 @@
       "integrity": "sha512-4zAPlpDEh2VwXswwr/t8xGNDGg8RQiPxtxZ3qQEXyQsBV39ptTdESCjuBvGze1nLMVrxmTIKmnO/nAV8Tqjjzg=="
     },
     "@fortawesome/fontawesome-common-types": {
-      "version": "0.2.15",
-      "resolved": "https://registry.npmjs.org/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.15.tgz",
-      "integrity": "sha512-ATBRyKJw1d2ko+0DWN9+BXau0EK3I/Q6pPzPv3LhJD7r052YFAkAdfb1Bd7ZqhBsJrdse/S7jKxWUOZ61qBD4g=="
+      "version": "0.2.17",
+      "resolved": "https://registry.npmjs.org/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.17.tgz",
+      "integrity": "sha512-DEYsEb/iiGVoMPQGjhG2uOylLVuMzTxOxysClkabZ5n80Q3oFDWGnshCLKvOvKoeClsgmKhWVrnnqvsMI1cAbw=="
     },
     "@fortawesome/fontawesome-svg-core": {
-      "version": "1.2.15",
-      "resolved": "https://registry.npmjs.org/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.2.15.tgz",
-      "integrity": "sha512-M/sHyl4g2VBtKYkay1Z+XImMyTVcaBPmehYtPw4HKD9zg2E7eovB7Yx98aUfZjPbroGqa+IL4/+KhWBMOGlHIQ==",
+      "version": "1.2.17",
+      "resolved": "https://registry.npmjs.org/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.2.17.tgz",
+      "integrity": "sha512-TORMW/wIX2QyyGBd4XwHGPir4/0U18Wxf+iDBAUW3EIJ0/VC/ZMpJOiyiCe1f8g9h0PPzA7sqVtl8JtTUtm4uA==",
       "requires": {
-        "@fortawesome/fontawesome-common-types": "^0.2.15"
+        "@fortawesome/fontawesome-common-types": "^0.2.17"
       }
     },
     "@fortawesome/free-solid-svg-icons": {
-      "version": "5.7.2",
-      "resolved": "https://registry.npmjs.org/@fortawesome/free-solid-svg-icons/-/free-solid-svg-icons-5.7.2.tgz",
-      "integrity": "sha512-iujcXMyAvIbWM8W3jkOLpvJbR+rPpdN1QyqhZeJaLRdHPH4JmuovIAYP4vx5Sa1csZVXfRD1eDWqVZ/jGM620A==",
+      "version": "5.8.1",
+      "resolved": "https://registry.npmjs.org/@fortawesome/free-solid-svg-icons/-/free-solid-svg-icons-5.8.1.tgz",
+      "integrity": "sha512-FUcxR75PtMOo3ihRHJOZz64IsWIVdWgB2vCMLJjquTv487wVVCMH5H5gWa72et2oI9lKKD2jvjQ+y+7mxhscVQ==",
       "requires": {
-        "@fortawesome/fontawesome-common-types": "^0.2.15"
+        "@fortawesome/fontawesome-common-types": "^0.2.17"
       }
     },
     "@fortawesome/react-fontawesome": {
@@ -191,9 +191,9 @@
       }
     },
     "@types/react-dom": {
-      "version": "16.8.2",
-      "resolved": "https://registry.npmjs.org/@types/react-dom/-/react-dom-16.8.2.tgz",
-      "integrity": "sha512-MX7n1wq3G/De15RGAAqnmidzhr2Y9O/ClxPxyqaNg96pGyeXUYPSvujgzEVpLo9oIP4Wn1UETl+rxTN02KEpBw==",
+      "version": "16.8.3",
+      "resolved": "https://registry.npmjs.org/@types/react-dom/-/react-dom-16.8.3.tgz",
+      "integrity": "sha512-HF5hD5YR3z9Mn6kXcW1VKe4AQ04ZlZj1EdLBae61hzQ3eEWWxMgNLUbIxeZp40BnSxqY1eAYLsH9QopQcxzScA==",
       "dev": true,
       "requires": {
         "@types/react": "*"
@@ -210,12 +210,12 @@
       }
     },
     "@types/react-redux": {
-      "version": "7.0.3",
-      "resolved": "https://registry.npmjs.org/@types/react-redux/-/react-redux-7.0.3.tgz",
-      "integrity": "sha512-6qsIHHNwF41viooUgR2lXHL81v3uyeJsugq9YCMYE4g2bDyG710G/I/w5nbn7AQ9XfuOLUwrWfm3edV7gDJ9AQ==",
+      "version": "7.0.5",
+      "resolved": "https://registry.npmjs.org/@types/react-redux/-/react-redux-7.0.5.tgz",
+      "integrity": "sha512-O0WyoSbrMofJRxtSDe8qYhnmr2SSlTnshlQdnpgpD763L8BzlhXuEseksV7LSoCUwZ7vN4YqpQThl3jp02sceQ==",
       "dev": true,
       "requires": {
-        "@types/hoist-non-react-statics": "*",
+        "@types/hoist-non-react-statics": "^3.3.0",
         "@types/react": "*",
         "redux": "^4.0.0"
       }
@@ -277,9 +277,9 @@
       }
     },
     "@types/webpack": {
-      "version": "4.4.25",
-      "resolved": "https://registry.npmjs.org/@types/webpack/-/webpack-4.4.25.tgz",
-      "integrity": "sha512-YaYVbSK1bC3xiAWFLSgDQyVHdCTNq5cLlcx633basmrwSoUxJiv4SZ0SoT1uoF15zWx98afOcCbqA1YHeCdRYA==",
+      "version": "4.4.26",
+      "resolved": "https://registry.npmjs.org/@types/webpack/-/webpack-4.4.26.tgz",
+      "integrity": "sha512-vs8LjgEZUQTBxotXbMf8s4jgykozkqjv6P0JRi+1BLh0n7LQUkMXfvsoPb5U/dBL1ay5Lu0c46G6FRmAZBhAUA==",
       "dev": true,
       "requires": {
         "@types/anymatch": "*",
@@ -7616,9 +7616,9 @@
       }
     },
     "react-router": {
-      "version": "4.4.0",
-      "resolved": "https://registry.npmjs.org/react-router/-/react-router-4.4.0.tgz",
-      "integrity": "sha512-qTGsOSF2b02zOsUfcnHjw7muI0Ejx+yA2e4P9qqzB2O+N3Icpca4epViXRgkBIvBjagXBtroxXqH0RJhYDMUbg==",
+      "version": "5.0.0",
+      "resolved": "https://registry.npmjs.org/react-router/-/react-router-5.0.0.tgz",
+      "integrity": "sha512-6EQDakGdLG/it2x9EaCt9ZpEEPxnd0OCLBHQ1AcITAAx7nCnyvnzf76jKWG1s2/oJ7SSviUgfWHofdYljFexsA==",
       "requires": {
         "@babel/runtime": "^7.1.2",
         "create-react-context": "^0.2.2",
@@ -7633,15 +7633,15 @@
       }
     },
     "react-router-dom": {
-      "version": "4.4.0",
-      "resolved": "https://registry.npmjs.org/react-router-dom/-/react-router-dom-4.4.0.tgz",
-      "integrity": "sha512-r4knbi8lanTGrwoUXFaWALrJZOAl3h9bdFUz4woHgEm7/bYcpBGfnYhPU82xjXrPeJyWF6OmIxpwXjxos30gOQ==",
+      "version": "5.0.0",
+      "resolved": "https://registry.npmjs.org/react-router-dom/-/react-router-dom-5.0.0.tgz",
+      "integrity": "sha512-wSpja5g9kh5dIteZT3tUoggjnsa+TPFHSMrpHXMpFsaHhQkm/JNVGh2jiF9Dkh4+duj4MKCkwO6H08u6inZYgQ==",
       "requires": {
         "@babel/runtime": "^7.1.2",
-        "history": "^4.8.0-beta.0",
+        "history": "^4.9.0",
         "loose-envify": "^1.3.1",
         "prop-types": "^15.6.2",
-        "react-router": "^4.4.0",
+        "react-router": "5.0.0",
         "tiny-invariant": "^1.0.2",
         "tiny-warning": "^1.0.0"
       }
@@ -9052,9 +9052,9 @@
       "dev": true
     },
     "typescript": {
-      "version": "3.3.3333",
-      "resolved": "https://registry.npmjs.org/typescript/-/typescript-3.3.3333.tgz",
-      "integrity": "sha512-JjSKsAfuHBE/fB2oZ8NxtRTk5iGcg6hkYXMnZ3Wc+b2RSqejEqTaem11mHASMnFilHrax3sLK0GDzcJrekZYLw==",
+      "version": "3.3.4000",
+      "resolved": "https://registry.npmjs.org/typescript/-/typescript-3.3.4000.tgz",
+      "integrity": "sha512-jjOcCZvpkl2+z7JFn0yBOoLQyLoIkNZAs/fYJkUG6VKy6zLPHJGfQJYFHzibB6GJaF/8QrcECtlQ5cpvRHSMEA==",
       "dev": true
     },
     "ua-parser-js": {

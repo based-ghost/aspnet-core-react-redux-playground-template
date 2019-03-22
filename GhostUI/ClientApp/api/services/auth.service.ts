@@ -21,7 +21,7 @@ class AuthService extends BaseService {
     }
 
     public async logoutAsync(): Promise<any> {
-        return await this.$http.post('Logout');
+        await this.$http.post('Logout');
     }
 }
 
