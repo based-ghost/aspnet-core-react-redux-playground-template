@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { IApplicationState } from '../store';
+import { boundMethod } from 'autobind-decorator';
 import { RouteComponentProps } from 'react-router-dom';
 import { actionCreators, reducer } from '../store/form';
 import { DROPDOWN_TEST_DATA } from '../config/constants';
@@ -31,13 +32,13 @@ class Form extends React.Component<FormProps> {
                 <h5 className='subtitle is-5'>Simple example of a React component</h5>
                 <p className='subtitle is-5'>Current count: <strong>{this.props.count}</strong></p>
                 <p className='buttons'>
-                    <button className='button is-danger' onClick={() => { this.props.decrement(); }}>
+                    <button className='button is-danger' onClick={this.decrementCount}>
                         <span className='icon'>
                             <FontAwesomeIcon icon='minus' />
                         </span>
                         <span>Decrement</span>
                     </button>
-                    <button className='button is-success' onClick={() => { this.props.increment(); }}>
+                    <button className='button is-success' onClick={this.incrementCount}>
                         <span className='icon'>
                             <FontAwesomeIcon icon='plus' />
                         </span>
@@ -76,6 +77,16 @@ class Form extends React.Component<FormProps> {
                 </div>
             </div>
         );
+    }
+
+    @boundMethod
+    private decrementCount(): void {
+        this.props.decrement();
+    }
+
+    @boundMethod
+    private incrementCount(): void {
+        this.props.increment();
     }
 }
 
