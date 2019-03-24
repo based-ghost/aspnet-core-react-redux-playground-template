@@ -29,7 +29,7 @@ export const actionCreators = {
 };
 
 function validateLoginResponse(authUser: IAuthUser): boolean {
-    if (!authUser || !authUser.status || authUser.status!.isEmptyOrWhiteSpace() || !authUser.token || authUser.token!.isEmptyOrWhiteSpace()) {
+    if (!authUser || !authUser.status || !authUser.token || authUser.token!.trim() === '') {
         return false;
     } else if (authUser.status!.toLowerCase().trim() !== 'success') {
         return false;
