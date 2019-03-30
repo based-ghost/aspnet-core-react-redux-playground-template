@@ -58,7 +58,7 @@ class Login extends React.Component<LoginProps, LoginState> {
                         <h3 className='title'>Login</h3>
                         <p className='subtitle'>Please login to proceed</p>
                         <div className='box'>
-                            <img id='login-img' src={require('../assets/image/based-ghost-crop.png')} alt='' width='190' />
+                            <img id='login-img' src={require('../assets/image/based-ghost-crop.png')} alt='based-ghost Logo' width='190' />
                             <form onSubmit={this.handleLogin}>
                                 { this.renderNameInput() }
                                 { this.renderPasswordInput() }
@@ -66,8 +66,8 @@ class Login extends React.Component<LoginProps, LoginState> {
                             </form>
                             <Authenticator authStatus={this.state.authRequestStatus}
                                            callbackTimeout={1500}
-                                           failDispatcher={() => { this.props.resetState(); this.setState({ authRequestStatus: AuthStatusEnum.None as string }); }}
-                                           successDispatcher={() => this.props.history.push(RoutesConfig.Dashboard.path)} />
+                                           failDispatcher={this.onFailedAuth}
+                                           successDispatcher={this.onSuccessfulAuth} />
                         </div>
                     </div>
                 </div>
@@ -130,6 +130,15 @@ class Login extends React.Component<LoginProps, LoginState> {
               </button>
             </>
         );
+    }
+
+    private onSuccessfulAuth = (): void => {
+        this.props.history.push(RoutesConfig.Dashboard.path);
+    }
+
+    private onFailedAuth = (): void => {
+        this.props.resetState();
+        this.setState({ authRequestStatus: AuthStatusEnum.None as string });
     }
 
     @boundMethod

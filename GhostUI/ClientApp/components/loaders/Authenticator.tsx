@@ -4,8 +4,8 @@ import { AuthStatusEnum } from '../../store/auth/types';
 type AuthenticatorProps = {
     authStatus?: string;
     callbackTimeout?: number;
-    successDispatcher: Function;
-    failDispatcher: Function;
+    successDispatcher: () => void;
+    failDispatcher: () => void;
 };
 
 const Authenticator: React.FC<AuthenticatorProps> = (props) => {
@@ -39,14 +39,11 @@ export default Authenticator;
  * ORIGINAL CLASS IMPLEMENTATION
  */
 
-//import * as React from 'react';
-//import { AuthStatusEnum } from '../../store/auth/types';
-
 //type AuthenticatorProps = {
 //    authStatus?: string;
 //    callbackTimeout?: number;
-//    successDispatcher: Function;
-//    failDispatcher: Function;
+//    successDispatcher: () => void;
+//    failDispatcher: () => void;
 //};
 
 //type AuthenticatorState = typeof initialState;

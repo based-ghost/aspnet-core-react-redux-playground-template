@@ -11,8 +11,8 @@
   <ItemGroup>
     <PackageReference Include="AspNetCore.HealthChecks.UI" Version="2.2.27" />
     <PackageReference Include="Microsoft.AspNetCore.All" />
-    <PackageReference Include="NSwag.AspNetCore" Version="12.0.18" />
-    <PackageReference Include="NSwag.MSBuild" Version="12.0.18">
+    <PackageReference Include="NSwag.AspNetCore" Version="12.0.19" />
+    <PackageReference Include="NSwag.MSBuild" Version="12.0.19">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
@@ -43,6 +43,7 @@
     <None Remove="ClientApp\config\constants.ts" />
     <None Remove="ClientApp\config\fa.config.ts" />
     <None Remove="ClientApp\config\toastify.tsx" />
+    <None Remove="ClientApp\store\auth\validation.ts" />
     <None Remove="ClientApp\views\index.ts" />
     <None Remove="ClientApp\prototype\index.ts" />
     <None Remove="ClientApp\prototype\string.extensions.ts" />
@@ -79,6 +80,7 @@
     <TypeScriptCompile Include="ClientApp\components\nav\NavBar.tsx" />
     <TypeScriptCompile Include="ClientApp\components\nav\Settings.tsx" />
     <TypeScriptCompile Include="ClientApp\config\fa.config.ts" />
+    <TypeScriptCompile Include="ClientApp\utils\validation.ts" />
     <TypeScriptCompile Include="ClientApp\views\index.ts" />
     <TypeScriptCompile Include="ClientApp\config\routes.config.ts" />
     <TypeScriptCompile Include="ClientApp\routes.tsx" />

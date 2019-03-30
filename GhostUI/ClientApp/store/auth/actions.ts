@@ -1,12 +1,13 @@
 ﻿import { IAppThunkAction } from '../';
 import { AuthApi } from '../../api';
 import { addTask } from 'domain-task';
+import { validateLoginRs } from '../../utils/validation';
 import { ActionType, IAuthAction, IAuthUser, ICredentials } from './types';
 
 export const actionCreators = {
     loginUserRequest: (credentials: ICredentials): IAppThunkAction<IAuthAction> => (dispatch, getState) => {
         const loginTask = AuthApi.loginAsync(credentials).then(data => {
-            if (validateLoginResponse(data)) { // SUCCESS
+            if (validateLoginRs(data)) { // SUCCESS
                 dispatch({ type: ActionType.LOGIN_SUCCESS, authUser: data });
             } else { // FAIL
                 dispatch({ type: ActionType.LOGIN_FAIL });
@@ -27,12 +28,3 @@ export const actionCreators = {
     },
     resetState: (): IAuthAction => ({ type: ActionType.RESET_STATE })
 };
-
-function validateLoginResponse(authUser: IAuthUser): boolean {
-    if (!authUser || !authUser.status || !authUser.token || authUser.token!.trim() === '') {
-        return false;
-    } else if (authUser.status!.toLowerCase().trim() !== 'success') {
-        return false;
-    }
-    return true;
-}

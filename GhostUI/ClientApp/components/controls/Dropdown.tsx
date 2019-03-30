@@ -1,4 +1,5 @@
 ﻿import * as React from 'react';
+import { isArrayOfObjects } from '../../utils/validation';
 
 type DropdownProps = {
     options: any[];
@@ -8,7 +9,7 @@ type DropdownProps = {
     wrapperClass?: string;
     labelKey?: string;
     selectedOptionLabel?: string;
-    dispatchHandler: Function;
+    dispatchHandler: (option: any) => void;
 };
 
 type DropdownState = typeof initialState;
@@ -39,7 +40,7 @@ export default class Dropdown extends React.Component<DropdownProps, DropdownSta
         // May want to eval isArrayOfObjects in a getDerivedStateFromProps hook to handle dynamic changes to options prop
         this.state = {
             ...initialState,
-            isArrayOfObjects: this.checkIsArrayOfObjects(this.props.options)
+            isArrayOfObjects: isArrayOfObjects(this.props.options)
         };
 
         this._buttonRef = React.createRef<HTMLButtonElement>();
@@ -93,10 +94,6 @@ export default class Dropdown extends React.Component<DropdownProps, DropdownSta
 
     private toggleOpenState(newValue: boolean): void {
         this.setState({ open: newValue });
-    }
-
-    private checkIsArrayOfObjects(options: any[]): boolean {
-        return options && (options[0] === Object(options[0]));
     }
 
     private getOptionLabelName(option: any): string {

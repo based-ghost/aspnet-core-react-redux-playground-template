@@ -5,7 +5,7 @@ import { renderToastifyMsg } from '../../utils/renderToastifyMsg';
 /**
  * SignalR defaults
  */
-export const signalrService = {
+const signalrService = {
     BASE_URL: 'http://localhost:56717/hubs/users',
     CONNECTION_DELAY: 0,
     HUB_MESSAGE_DELAY: 3000,

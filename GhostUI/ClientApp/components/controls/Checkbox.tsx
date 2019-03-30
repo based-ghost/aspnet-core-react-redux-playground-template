@@ -6,7 +6,7 @@ type CheckboxProps = {
     wrapperClass?: string;
     controlClass?: string;
     trailingLabel?: string;
-    dispatchHandler: Function;
+    dispatchHandler: (checked: boolean) => void;
 };
 
 const Checkbox: React.FC<CheckboxProps> = (props) => {

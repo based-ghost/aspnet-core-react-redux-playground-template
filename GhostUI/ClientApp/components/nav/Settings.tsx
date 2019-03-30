@@ -1,18 +1,34 @@
 ﻿import * as React from 'react';
 import { connect } from 'react-redux';
+import { History } from 'history';
 import { Route } from 'react-router-dom';
 import { IApplicationState } from '../../store';
+import { actionCreators } from '../../store/auth';
 import { spaNugetUrls } from '../../config/constants';
 import { RoutesConfig } from '../../config/routes.config';
-import { actionCreators, reducer } from '../../store/auth';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-type NavProps = ReturnType<typeof reducer> & typeof actionCreators;
+// Map only necessary IApplicationState to SettingsProps
+type SettingsState = {
+    isAuthenticated: boolean;
+};
 
-const Settings: React.FC<NavProps> = (props) => {
+const mapStateToProps = (state: IApplicationState): SettingsState => {
+    return {
+        isAuthenticated: state.auth.isAuthenticated
+    };
+};
+
+type SettingsProps = SettingsState & typeof actionCreators;
+
+const Settings: React.FC<SettingsProps> = (props) => {
     const settingsAnchorEl = React.useRef(null);
     const [open, setOpen] = React.useState(false);
+
+    const handleLogout = (history: History) => (e: React.MouseEvent): void => {
+        props.logoutUserRequest(() => history.push(RoutesConfig.Login.path));
+    };
 
     const handleClick = (e: Event): void => {
         if (settingsAnchorEl.current && settingsAnchorEl.current.contains(e.target as HTMLElement)) {
@@ -57,7 +73,7 @@ const Settings: React.FC<NavProps> = (props) => {
                             </li>
                             <li>
                                 <Route render={({ history }) => (
-                                    <a className='dropdown-item' onClick={() => { props.logoutUserRequest(() => history.push(RoutesConfig.Login.path)); }} role='button'>
+                                    <a className='dropdown-item' onClick={handleLogout(history)} role='button'>
                                         <span className='icon'>
                                             <FontAwesomeIcon icon={RoutesConfig.Login.icon as IconProp} />
                                         </span>
@@ -74,7 +90,7 @@ const Settings: React.FC<NavProps> = (props) => {
 };
 
 // Wire up the React component to the Redux store
-export default connect((state: IApplicationState) => state.auth, actionCreators)(Settings);
+export default connect(mapStateToProps, actionCreators)(Settings);
 
 /**
  * ORIGINAL CLASS IMPLEMENTATION

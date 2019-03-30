@@ -4,17 +4,27 @@ import { NavLink } from 'react-router-dom';
 import { IApplicationState } from '../../store';
 import { RoutesConfig } from '../../config/routes.config';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { actionCreators, IAuthState } from '../../store/auth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-type NavProps = IAuthState & typeof actionCreators;
+// Map only necessary IApplicationState to NavBarProps
+type NavBarState = {
+    isAuthenticated: boolean;
+};
 
-const NavBar: React.FC<NavProps> = (props) => {
+const mapStateToProps = (state: IApplicationState): NavBarState => {
+    return {
+        isAuthenticated: state.auth.isAuthenticated
+    };
+};
+
+type NavBarProps = NavBarState;
+
+const NavBar: React.FC<NavBarProps> = (props) => {
     return (
         <nav className='navbar' role='navigation' aria-label='main navigation'>
             <div className='navbar-wrapper'>
                 <div className='brand-wrapper'>
-                    <img src={require('../../assets/image/bulma.io-logo.png')} alt='' width='165' />
+                    <img src={require('../../assets/image/bulma.io-logo.png')} alt='Bulma Logo' width='165' />
                 </div>
                 <div className='navbar-routes'>
                     {
@@ -48,4 +58,4 @@ const NavBar: React.FC<NavProps> = (props) => {
 };
 
 // Wire up the React component to the Redux store
-export default connect((state: IApplicationState) => state.auth, actionCreators)(NavBar);
+export default connect(mapStateToProps)(NavBar);
