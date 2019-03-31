@@ -1,7 +1,7 @@
 import './css/site.scss';
 import './config/fa.config';
 import './prototype';
-import * as React from 'react';
+import React from 'react';
 import { routes } from './routes';
 import { Provider } from 'react-redux';
 import { createBrowserHistory } from 'history';

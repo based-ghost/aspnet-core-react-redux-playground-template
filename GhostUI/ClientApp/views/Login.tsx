@@ -1,4 +1,4 @@
-﻿import * as React from 'react';
+﻿import React from 'react';
 import { SignalRApi } from '../api';
 import { connect } from 'react-redux';
 import { IApplicationState } from '../store';
@@ -120,7 +120,7 @@ class Login extends React.Component<LoginProps, LoginState> {
             <>
               <Checkbox trailingLabel='Remember me'
                         wrapperClass='remember-me-control'
-                        dispatchHandler={this.updateRememberMe}
+                        onCheck={this.updateRememberMe}
                         checked={!!this.state.credentials.rememberMe} />
               <button className='button is-info is-large is-fullwidth' type='submit'>
                   <span>Login</span>

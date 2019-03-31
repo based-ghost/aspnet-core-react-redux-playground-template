@@ -1,4 +1,4 @@
-﻿import * as React from 'react';
+﻿import React from 'react';
 
 type CheckboxProps = {
     checked: boolean;
@@ -6,12 +6,12 @@ type CheckboxProps = {
     wrapperClass?: string;
     controlClass?: string;
     trailingLabel?: string;
-    dispatchHandler: (checked: boolean) => void;
+    onCheck: (checked: boolean) => void;
 };
 
 const Checkbox: React.FC<CheckboxProps> = (props) => {
-    const handleCheckboxClick: React.MouseEventHandler<HTMLInputElement> = (e) => {
-        props.dispatchHandler(!!e.currentTarget.checked);
+    const handleOnCheck: React.MouseEventHandler<HTMLInputElement> = (e) => {
+        props.onCheck(!!e.currentTarget.checked);
     };
 
     return (
@@ -21,7 +21,7 @@ const Checkbox: React.FC<CheckboxProps> = (props) => {
                     <input type='checkbox'
                            disabled={props.disabled}
                            defaultChecked={!!props.checked}
-                           onClick={handleCheckboxClick} />
+                           onClick={handleOnCheck} />
                     <i className='helper'></i>
                     { props.trailingLabel && <span>{props.trailingLabel}</span> }
                 </label>

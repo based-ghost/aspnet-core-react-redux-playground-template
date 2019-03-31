@@ -1,4 +1,4 @@
-﻿import * as React from 'react';
+﻿import React, { useEffect } from 'react';
 import { AuthStatusEnum } from '../../store/auth/types';
 
 type AuthenticatorProps = {
@@ -19,7 +19,7 @@ const Authenticator: React.FC<AuthenticatorProps> = (props) => {
         }, props.callbackTimeout || 1500);
     };
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (props.authStatus && props.authStatus.isIn(AuthStatusEnum.Success, AuthStatusEnum.Fail)) {
             handleAuthCallback(props.authStatus);
         }

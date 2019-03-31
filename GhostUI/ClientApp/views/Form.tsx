@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { IApplicationState } from '../store';
 import { boundMethod } from 'autobind-decorator';
@@ -73,7 +73,7 @@ class Form extends React.Component<FormProps> {
                 <h5 className='subtitle is-5'>Toggle the checkbox</h5>
                 <p className='subtitle is-5'>Checked: <strong>{this.props.checkboxValue.toString()}</strong></p>
                 <div className='field'>
-                    <Checkbox dispatchHandler={this.props.doCheck} checked={this.props.checkboxValue} />
+                    <Checkbox onCheck={this.props.doCheck} checked={this.props.checkboxValue} />
                 </div>
             </div>
         );

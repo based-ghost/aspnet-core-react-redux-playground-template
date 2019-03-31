@@ -1,4 +1,4 @@
-﻿import * as React from 'react';
+﻿import React, { useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import { History } from 'history';
 import { Route } from 'react-router-dom';
@@ -8,6 +8,7 @@ import { spaNugetUrls } from '../../config/constants';
 import { RoutesConfig } from '../../config/routes.config';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 
 // Map only necessary IApplicationState to SettingsProps
 type SettingsState = {
@@ -23,27 +24,15 @@ const mapStateToProps = (state: IApplicationState): SettingsState => {
 type SettingsProps = SettingsState & typeof actionCreators;
 
 const Settings: React.FC<SettingsProps> = (props) => {
-    const settingsAnchorEl = React.useRef(null);
-    const [open, setOpen] = React.useState(false);
+    const settingsAnchorEl = useRef();
+    const [open, setOpen] = useState(false);
 
     const handleLogout = (history: History) => (e: React.MouseEvent): void => {
         props.logoutUserRequest(() => history.push(RoutesConfig.Login.path));
     };
 
-    const handleClick = (e: Event): void => {
-        if (settingsAnchorEl.current && settingsAnchorEl.current.contains(e.target as HTMLElement)) {
-            setOpen(open => !open);
-        } else {
-            setOpen(false);
-        }
-    };
-
-    React.useEffect(() => {
-        document.addEventListener('click', handleClick, false);
-        return () => {
-            document.removeEventListener('click', handleClick, false);
-        };
-    }, []);
+    // Custom hook defined under hooks directory
+    useOnClickOutside(settingsAnchorEl, () => setOpen(false), () => setOpen(open => !open));
 
     return (
         <div className={`fixed-plugin ${open ? 'fixed-plugin-active' : ''}`} style={{ display: !props.isAuthenticated ? 'none' : '' }}>

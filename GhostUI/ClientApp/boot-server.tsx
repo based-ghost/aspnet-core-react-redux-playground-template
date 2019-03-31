@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { routes } from './routes';
 import { Provider } from 'react-redux';
 import { configureStore } from './store';
