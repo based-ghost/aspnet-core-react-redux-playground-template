@@ -17,7 +17,7 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
     let clickHandlerCache = {};
     const buttonRef = useRef(null);
     const [open, setOpen] = useState(false);
-    const [isArrayOfObjects, setIsArrayOfObjects] = useState(false);
+    const [isArrayOfObjects, setIsArrayOfObjects] = useState(checkIsArrayOfObjects(props.options));
 
     useOnClickOutside(buttonRef, () => setOpen(false), () => setOpen(open => !open));
 
@@ -30,9 +30,7 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
         return isArrayOfObjects ? (option[props.labelKey] || option[0]) : option;
     };
 
-    const getCachedClickHandler = (option: any): any => {
-        const key = getOptionLabelName(option);
-
+    const getCachedClickHandler = (option: any, key: any): any => {
         // If no click handler exists for this unique identifier, create one.
         if (!Object.prototype.hasOwnProperty.call(clickHandlerCache, key)) {
             clickHandlerCache[key] = () => props.dispatchHandler(option);
@@ -69,15 +67,18 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
             </button>
             <div className='dropdown-menu' role='menu'>
                 <ul className='dropdown-content'>
-                    {props.options.map((option: any, index: number) =>
-                        <li key={index}>
-                            <a role='button'
-                               className={`dropdown-item ${getOptionLabelName(option) === props.selectedOptionLabel ? 'selected-option' : ''}`}
-                               onClick={getCachedClickHandler(option)}>
-                                {option[props.labelKey] || option}
-                            </a>
-                        </li>
-                    )}
+                    {props.options.map((option: any) => {
+                        const optionLbl = getOptionLabelName(option);
+                        return (
+                            <li key={optionLbl}>
+                                <a role='button'
+                                   className={`dropdown-item ${optionLbl === props.selectedOptionLabel ? 'selected-option' : ''}`}
+                                   onClick={getCachedClickHandler(option, optionLbl)}>
+                                    {optionLbl}
+                                </a>
+                            </li>
+                        );
+                    })}
                 </ul>
             </div>
         </div>
