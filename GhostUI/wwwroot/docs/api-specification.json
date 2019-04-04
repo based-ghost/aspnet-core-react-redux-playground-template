@@ -1,21 +1,10 @@
 ﻿{
-  "x-generator": "NSwag v12.0.20.0 (NJsonSchema v9.13.28.0 (Newtonsoft.Json v11.0.0.0))",
+  "x-generator": "NSwag v12.1.0.0 (NJsonSchema v9.13.28.0 (Newtonsoft.Json v11.0.0.0))",
   "swagger": "2.0",
   "info": {
     "title": "GhostUI API",
     "version": "1.0.0"
   },
-  "consumes": [
-    "application/json-patch+json",
-    "application/json",
-    "text/json",
-    "application/*+json"
-  ],
-  "produces": [
-    "text/plain",
-    "application/json",
-    "text/json"
-  ],
   "paths": {
     "/api/Auth/Login": {
       "post": {
@@ -23,6 +12,12 @@
           "Auth"
         ],
         "operationId": "Auth_Login",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
         "parameters": [
           {
             "name": "request",
@@ -68,6 +63,11 @@
           "SampleData"
         ],
         "operationId": "SampleData_WeatherForecasts",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "type": "integer",
