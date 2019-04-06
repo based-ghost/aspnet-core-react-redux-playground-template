@@ -7523,9 +7523,9 @@
       "dev": true
     },
     "react-hot-loader": {
-      "version": "4.8.2",
-      "resolved": "https://registry.npmjs.org/react-hot-loader/-/react-hot-loader-4.8.2.tgz",
-      "integrity": "sha512-W5I8ps/32q5zL0mKfGGdPgsZfgljs/tdCTYxM6P1N8GV4+rUAu4g6ysy//5/jJpAFM0Bpgr6HrVLWK9h0jMdrA==",
+      "version": "4.8.3",
+      "resolved": "https://registry.npmjs.org/react-hot-loader/-/react-hot-loader-4.8.3.tgz",
+      "integrity": "sha512-Is8bKbSxuDLTqsWu1yjr+o1yA6yGDGjEQ2i1E8t/Nj1xJYC6QBRbyoofTn1xkMoKpcgXHuTJTqBhK0RY6moFJA==",
       "dev": true,
       "requires": {
         "fast-levenshtein": "^2.0.6",
@@ -9055,9 +9055,9 @@
       "dev": true
     },
     "typescript": {
-      "version": "3.4.1",
-      "resolved": "https://registry.npmjs.org/typescript/-/typescript-3.4.1.tgz",
-      "integrity": "sha512-3NSMb2VzDQm8oBTLH6Nj55VVtUEpe/rgkIzMir0qVoLyjDZlnMBva0U6vDiV3IH+sl/Yu6oP5QwsAQtHPmDd2Q==",
+      "version": "3.4.2",
+      "resolved": "https://registry.npmjs.org/typescript/-/typescript-3.4.2.tgz",
+      "integrity": "sha512-Og2Vn6Mk7JAuWA1hQdDQN/Ekm/SchX80VzLhjKN9ETYrIepBFAd8PkOdOTK2nKt0FCkmMZKBJvQ1dV1gIxPu/A==",
       "dev": true
     },
     "ua-parser-js": {

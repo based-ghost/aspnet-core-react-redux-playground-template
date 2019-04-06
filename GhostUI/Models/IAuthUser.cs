@@ -1,4 +1,4 @@
-﻿namespace GhostUI.Models.Response
+﻿namespace GhostUI.Models
 {
     public interface IAuthUser
     {

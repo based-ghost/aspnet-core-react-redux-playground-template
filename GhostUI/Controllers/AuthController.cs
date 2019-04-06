@@ -1,6 +1,5 @@
 ﻿using GhostUI.Hubs;
-using GhostUI.Models.Request;
-using GhostUI.Models.Response;
+using GhostUI.Models;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;

@@ -1,11 +1,14 @@
+using System.Net;
 using GhostUI.Hubs;
+using GhostUI.Models;
 using NSwag.AspNetCore;
 using GhostUI.Extensions;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
-using GhostUI.Middleware.ExceptionHandler;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -59,6 +62,24 @@ namespace GhostUI
                 app.UseHsts();
             }
 
+            // Global exception handling
+            app.UseExceptionHandler(builder =>
+            {
+                builder.Run(async context =>
+                {
+                    var error = context.Features.Get<IExceptionHandlerFeature>();
+                    var exDetails = new ExceptionDetails((int)HttpStatusCode.InternalServerError, error?.Error.Message);
+
+                    context.Response.ContentType = "application/json";
+                    context.Response.StatusCode = exDetails.StatusCode;
+                    context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+                    context.Response.Headers.Add("Application-Error", exDetails.Message);
+                    context.Response.Headers.Add("Access-Control-Expose-Headers", "Application-Error");
+
+                    await context.Response.WriteAsync(exDetails.ToString());
+                });
+            });
+
             // Enable all custom health checks registered earlier (browse to {url}/healthchecks-ui to UI / {url}/healthchecks-json to raw JSON)
             app.UseApiHealthChecks("/healthchecks-json")
                .UseHealthChecksUI();
@@ -74,7 +95,6 @@ namespace GhostUI
             app.UseCors("AllowAll")
                .UseStaticFiles()
                .UseSignalR((options) => options.MapHub<UsersHub>("/hubs/users"))
-               .UseMiddleware<ExceptionMiddleware>()
                .UseMvc(routes =>
                {
                    routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}")

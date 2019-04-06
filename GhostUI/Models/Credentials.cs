@@ -1,4 +1,4 @@
-﻿namespace GhostUI.Models.Request
+﻿namespace GhostUI.Models
 {
     public class Credentials : ICredentials
     {
