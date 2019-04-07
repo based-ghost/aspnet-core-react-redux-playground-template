@@ -116,7 +116,8 @@
       "additionalProperties": false,
       "required": [
         "TemperatureC",
-        "TemperatureF"
+        "TemperatureF",
+        "ID"
       ],
       "properties": {
         "TemperatureC": {
@@ -130,6 +131,10 @@
           "type": "string"
         },
         "TemperatureF": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ID": {
           "type": "integer",
           "format": "int32"
         }

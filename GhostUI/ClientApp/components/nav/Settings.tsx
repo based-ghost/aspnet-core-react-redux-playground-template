@@ -10,18 +10,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 
-// Map only necessary IApplicationState to SettingsProps
-type SettingsState = {
-    isAuthenticated: boolean;
-};
-
-const mapStateToProps = (state: IApplicationState): SettingsState => {
-    return {
-        isAuthenticated: state.auth.isAuthenticated
-    };
-};
-
-type SettingsProps = SettingsState & typeof actionCreators;
+type SettingsProps = { isAuthenticated: boolean; } & typeof actionCreators;
 
 const Settings: React.FC<SettingsProps> = (props) => {
     const settingsAnchorEl = useRef();
@@ -76,6 +65,13 @@ const Settings: React.FC<SettingsProps> = (props) => {
             </div>
         </div>
     );
+};
+
+// Map only necessary IApplicationState to Settings props
+const mapStateToProps = (state: IApplicationState) => {
+    return {
+        isAuthenticated: state.auth.isAuthenticated
+    };
 };
 
 // Wire up the React component to the Redux store

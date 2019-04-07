@@ -92,13 +92,13 @@
     <TypeScriptCompile Include="ClientApp\hooks\useInputValue.ts" />
     <TypeScriptCompile Include="ClientApp\hooks\useToggle.ts" />
     <TypeScriptCompile Include="ClientApp\types\index.d.ts" />
-    <TypeScriptCompile Include="ClientApp\utils\validation.ts" />
+    <TypeScriptCompile Include="ClientApp\utils\validationUtils.ts" />
     <TypeScriptCompile Include="ClientApp\views\index.ts" />
     <TypeScriptCompile Include="ClientApp\config\routes.config.ts" />
     <TypeScriptCompile Include="ClientApp\routes.tsx" />
     <TypeScriptCompile Include="ClientApp\store\configureStore.ts" />
     <TypeScriptCompile Include="ClientApp\config\constants.ts" />
-    <TypeScriptCompile Include="ClientApp\utils\renderToastifyMsg.tsx" />
+    <TypeScriptCompile Include="ClientApp\utils\notificationUtils.tsx" />
     <TypeScriptCompile Include="ClientApp\views\Login.tsx" />
     <TypeScriptCompile Include="ClientApp\prototype\index.ts" />
     <TypeScriptCompile Include="ClientApp\prototype\extensions\string.extensions.ts" />

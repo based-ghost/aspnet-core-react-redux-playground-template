@@ -8,8 +8,8 @@ import { Checkbox } from '../components/controls';
 import { Authenticator } from '../components/loaders';
 import { RoutesConfig } from '../config/routes.config';
 import { RouteComponentProps } from 'react-router-dom';
+import { renderToastifyMsg } from '../utils/notificationUtils';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { renderToastifyMsg } from '../utils/renderToastifyMsg';
 import { actionCreators, AuthStatusEnum, ICredentials, reducer } from '../store/auth';
 
 type LoginProps = ReturnType<typeof reducer> & typeof actionCreators & RouteComponentProps<{}>;
@@ -64,10 +64,12 @@ class Login extends React.Component<LoginProps, LoginState> {
                                 { this.renderPasswordInput() }
                                 { this.renderLoginControls() }
                             </form>
-                            <Authenticator authStatus={this.state.authRequestStatus}
-                                           callbackTimeout={1500}
-                                           failDispatcher={this.onFailedAuth}
-                                           successDispatcher={this.onSuccessfulAuth} />
+                            <Authenticator
+                                authStatus={this.state.authRequestStatus}
+                                callbackTimeout={1500}
+                                failDispatcher={this.onFailedAuth}
+                                successDispatcher={this.onSuccessfulAuth}
+                            />
                         </div>
                     </div>
                 </div>
@@ -79,12 +81,14 @@ class Login extends React.Component<LoginProps, LoginState> {
         return (
             <div className='field'>
                 <div className='control has-icons-left'>
-                    <input className={`input is-large ${(this.state.invalidInputs && !this.state.credentials.userName) ? 'is-danger' : ''}`}
-                           type='text'
-                           value={this.state.credentials.userName}
-                           onChange={this.updateUserName}
-                           autoFocus
-                           placeholder='Username' />
+                    <input
+                        className={`input is-large ${(this.state.invalidInputs && !this.state.credentials.userName) ? 'is-danger' : ''}`}
+                        type='text'
+                        value={this.state.credentials.userName}
+                        onChange={this.updateUserName}
+                        autoFocus
+                        placeholder='Username'
+                    />
                     <span className='icon is-left'>
                         <FontAwesomeIcon icon='user' />
                     </span>
@@ -97,11 +101,13 @@ class Login extends React.Component<LoginProps, LoginState> {
         return (
             <div className='field'>
                 <div className='control has-icons-left has-icons-right'>
-                    <input className={`input is-large ${(this.state.invalidInputs && !this.state.credentials.password) ? 'is-danger' : ''}`}
-                           type={!this.state.showPassword ? 'password' : 'text'}
-                           value={this.state.credentials.password}
-                           onChange={this.updatePassword}
-                           placeholder='Password' />
+                    <input
+                        className={`input is-large ${(this.state.invalidInputs && !this.state.credentials.password) ? 'is-danger' : ''}`}
+                        type={!this.state.showPassword ? 'password' : 'text'}
+                        value={this.state.credentials.password}
+                        onChange={this.updatePassword}
+                        placeholder='Password'
+                    />
                     <span className='icon is-left'>
                         <FontAwesomeIcon icon='lock' />
                     </span>
@@ -117,18 +123,20 @@ class Login extends React.Component<LoginProps, LoginState> {
 
     private renderLoginControls(): React.ReactNode {
         return (
-            <>
-              <Checkbox trailingLabel='Remember me'
-                        wrapperClass='remember-me-control'
-                        onCheck={this.updateRememberMe}
-                        checked={!!this.state.credentials.rememberMe} />
+            <React.Fragment>
+                <Checkbox
+                    trailingLabel='Remember me'
+                    wrapperClass='remember-me-control'
+                    onCheck={this.updateRememberMe}
+                    checked={!!this.state.credentials.rememberMe}
+                />
               <button className='button is-info is-large is-fullwidth' type='submit'>
                   <span>Login</span>
                   <span className='icon'>
                       <FontAwesomeIcon icon='sign-in-alt' />
                   </span>
               </button>
-            </>
+            </React.Fragment>
         );
     }
 

@@ -1,6 +1,6 @@
 ﻿import React, { useEffect, useRef, useState } from 'react';
-import { checkIsArrayOfObjects } from '../../utils/validation';
 import { useOnClickOutside } from '../../hooks/useOnClickOutside';
+import { checkIsArrayOfObjects } from '../../utils/validationUtils';
 
 type DropdownProps = {
     options: any[];

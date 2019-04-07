@@ -2,24 +2,38 @@
     Login: {
         path: '/',
         displayName: 'Logout',
-        icon: 'sign-out-alt'
+        icon: 'sign-out-alt',
+        navBar: {
+            show: false,
+            order: 0
+        }
     },
     Form: {
         path: '/form',
         displayName: 'Form',
-        icon: 'pencil-alt'
+        icon: 'pencil-alt',
+        navBar: {
+            show: true,
+            order: 1
+        }
     },
     Dashboard: {
         path: '/dashboard',
         displayName: 'Dashboard',
-        icon: 'home'
+        icon: 'home',
+        navBar: {
+            show: true,
+            order: 2
+        }
     },
     FetchData: {
-        path: {
-            Absolute: '/fetchdata/:startDateIndex?',
-            Relative: '/fetchdata'
-        },
+        path: '/fetchdata',
+        pathAbsolute: '/fetchdata/:startDateIndex?',
         displayName: 'Fetch Data',
-        icon: 'cloud'
+        icon: 'cloud',
+        navBar: {
+            show: true,
+            order: 3
+        }
     }
 };

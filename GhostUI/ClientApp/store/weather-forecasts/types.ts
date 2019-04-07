@@ -13,6 +13,7 @@ export const ActionType: IActionType = {
 };
 
 export interface IWeatherForecast {
+    ID: number;
     DateFormatted: string;
     TemperatureC: number;
     TemperatureF: number;

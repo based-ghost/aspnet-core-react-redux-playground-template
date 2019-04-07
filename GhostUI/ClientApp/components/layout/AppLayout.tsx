@@ -3,12 +3,12 @@ import Footer from '../footer/Footer';
 import { NavBar, Settings } from '../nav';
 
 const AppLayout: React.FC<{}> = (props) => (
-  <>
-    <NavBar />
-    <Settings />
-    {props.children}
-    <Footer />
-  </>
+    <React.Fragment>
+        <NavBar />
+        <Settings />
+        {props.children}
+        <Footer />
+    </React.Fragment>
 );
 
 export default AppLayout;

@@ -1,4 +1,6 @@
-﻿namespace GhostUI.Models
+﻿using System;
+
+namespace GhostUI.Models
 {
     public class WeatherForecast : IWeatherForecast
     {
@@ -7,5 +9,6 @@
         public string Summary       { get; set; }
 
         public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+        public int ID => Convert.ToInt32(DateFormatted.Replace("/", ""));
     }
 }

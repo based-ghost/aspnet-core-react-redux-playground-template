@@ -49,8 +49,8 @@ class FetchData extends React.Component<WeatherForecastProps> {
                     </tr>
                 </thead>
                 <tbody>
-                    {(this.props.forecasts || []).map((forecast: IWeatherForecast, index: number) =>
-                        <tr key={index}>
+                    {(this.props.forecasts || []).map((forecast: IWeatherForecast) =>
+                        <tr key={forecast.ID}>
                             <td>{forecast.DateFormatted}</td>
                             <td>{forecast.TemperatureC}</td>
                             <td>{forecast.TemperatureF}</td>

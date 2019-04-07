@@ -60,7 +60,8 @@ class Form extends React.Component<FormProps> {
                               labelKey='label'
                               selectedOptionLabel={this.props.selectedDropdownOption.label}
                               wrapperClass='normal-width'
-                              dispatchHandler={this.props.selectOption} />
+                              dispatchHandler={this.props.selectOption}
+                    />
                 </div>
             </div>
         );
