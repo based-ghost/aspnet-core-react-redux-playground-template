@@ -40,11 +40,13 @@
     <None Remove="ClientApp\components\footer\Footer.tsx" />
     <None Remove="ClientApp\components\loaders\index.ts" />
     <None Remove="ClientApp\components\nav\index.ts" />
+    <None Remove="ClientApp\components\nav\SquarePaymentForm.tsx" />
     <None Remove="ClientApp\configureStore.ts" />
     <None Remove="ClientApp\config\constants.ts" />
     <None Remove="ClientApp\config\fa.config.ts" />
     <None Remove="ClientApp\config\toastify.tsx" />
     <None Remove="ClientApp\hooks\useDebounce.ts" />
+    <None Remove="ClientApp\hooks\useDynamicScript.ts" />
     <None Remove="ClientApp\hooks\useEventListener.ts" />
     <None Remove="ClientApp\hooks\useInputValue.ts" />
     <None Remove="ClientApp\hooks\useToggle.ts" />
@@ -71,7 +73,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\components\nav\SquarePaymentForm.tsx" />
     <TypeScriptCompile Include="ClientApp\hooks\useDebounce.ts" />
+    <TypeScriptCompile Include="ClientApp\hooks\useDynamicScript.ts" />
     <TypeScriptCompile Include="ClientApp\hooks\useOnClickOutside.ts" />
     <TypeScriptCompile Include="ClientApp\config\axios.config.ts" />
     <TypeScriptCompile Include="ClientApp\api\services\base.service.ts" />
