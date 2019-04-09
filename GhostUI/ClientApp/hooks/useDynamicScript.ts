@@ -30,10 +30,10 @@ export function useDynamicScript(options: IOptions = {}) {
 
         cachedScripts.push(options.src);
 
+        let script = document.createElement('script');
         const containerElem = options.container || defaults.container;
         const loadAsync = options.hasOwnProperty('async') ? options.async !== false : defaults.async;
 
-        let script = document.createElement('script');
         script.src = options.src;
         script.async = loadAsync;
 
