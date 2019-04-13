@@ -163,9 +163,9 @@
       }
     },
     "@types/node": {
-      "version": "11.13.2",
-      "resolved": "https://registry.npmjs.org/@types/node/-/node-11.13.2.tgz",
-      "integrity": "sha512-HOtU5KqROKT7qX/itKHuTtt5fV0iXbheQvrgbLNXFJQBY/eh+VS5vmmTAVlo3qIGMsypm0G4N1t2AXjy1ZicaQ==",
+      "version": "11.13.4",
+      "resolved": "https://registry.npmjs.org/@types/node/-/node-11.13.4.tgz",
+      "integrity": "sha512-+rabAZZ3Yn7tF/XPGHupKIL5EcAbrLxnTr/hgQICxbeuAfWtT0UZSfULE+ndusckBItcv4o6ZeOJplQikVcLvQ==",
       "dev": true
     },
     "@types/prop-types": {
@@ -191,9 +191,9 @@
       }
     },
     "@types/react-dom": {
-      "version": "16.8.3",
-      "resolved": "https://registry.npmjs.org/@types/react-dom/-/react-dom-16.8.3.tgz",
-      "integrity": "sha512-HF5hD5YR3z9Mn6kXcW1VKe4AQ04ZlZj1EdLBae61hzQ3eEWWxMgNLUbIxeZp40BnSxqY1eAYLsH9QopQcxzScA==",
+      "version": "16.8.4",
+      "resolved": "https://registry.npmjs.org/@types/react-dom/-/react-dom-16.8.4.tgz",
+      "integrity": "sha512-eIRpEW73DCzPIMaNBDP5pPIpK1KXyZwNgfxiVagb5iGiz6da+9A5hslSX6GAQKdO7SayVCS/Fr2kjqprgAvkfA==",
       "dev": true,
       "requires": {
         "@types/react": "*"
@@ -231,9 +231,9 @@
       }
     },
     "@types/react-router-dom": {
-      "version": "4.3.1",
-      "resolved": "https://registry.npmjs.org/@types/react-router-dom/-/react-router-dom-4.3.1.tgz",
-      "integrity": "sha512-GbztJAScOmQ/7RsQfO4cd55RuH1W4g6V1gDW3j4riLlt+8yxYLqqsiMzmyuXBLzdFmDtX/uU2Bpcm0cmudv44A==",
+      "version": "4.3.2",
+      "resolved": "https://registry.npmjs.org/@types/react-router-dom/-/react-router-dom-4.3.2.tgz",
+      "integrity": "sha512-biesHodFxPgDxku2m08XwPeAfUYBcxAnrQG7pwFikuA3L2e3u2OKAb+Sb16bJuU3L5CTHd+Ivap+ke4mmGsHqQ==",
       "dev": true,
       "requires": {
         "@types/history": "*",
@@ -2696,9 +2696,9 @@
       "dev": true
     },
     "eslint-scope": {
-      "version": "4.0.0",
-      "resolved": "https://registry.npmjs.org/eslint-scope/-/eslint-scope-4.0.0.tgz",
-      "integrity": "sha512-1G6UTDi7Jc1ELFwnR58HV4fK9OQK4S6N985f166xqXxpjU6plxFISJa2Ba9KCQuFa8RCnj/lSFJbHo7UFDBnUA==",
+      "version": "4.0.3",
+      "resolved": "https://registry.npmjs.org/eslint-scope/-/eslint-scope-4.0.3.tgz",
+      "integrity": "sha512-p7VutNr1O/QrxysMo3E45FjYDTeXBy0iTltPFNSqKAIfjDSXC+4dj+qfyuD8bfAXrW/y6lW3O76VaYNPKfpKrg==",
       "dev": true,
       "requires": {
         "esrecurse": "^4.1.0",
@@ -4278,9 +4278,9 @@
       }
     },
     "ieee754": {
-      "version": "1.1.12",
-      "resolved": "https://registry.npmjs.org/ieee754/-/ieee754-1.1.12.tgz",
-      "integrity": "sha512-GguP+DRY+pJ3soyIiGPTvdiVXjZ+DbXOxGpXn3eMvNW4x4irjqXm4wHKscC+TfxSJ0yw/S1F24tqdMNsMZTiLA==",
+      "version": "1.1.13",
+      "resolved": "https://registry.npmjs.org/ieee754/-/ieee754-1.1.13.tgz",
+      "integrity": "sha512-4vf7I2LYV/HaWerSo3XmlMkp5eZ83i+/CDluXi/IGTs/O1sejBNhTtnxzmRZfvOUqj7lZjqHkeTvpgSFDlWZTg==",
       "dev": true
     },
     "iferr": {
@@ -5372,14 +5372,54 @@
       }
     },
     "mini-css-extract-plugin": {
-      "version": "0.5.0",
-      "resolved": "https://registry.npmjs.org/mini-css-extract-plugin/-/mini-css-extract-plugin-0.5.0.tgz",
-      "integrity": "sha512-IuaLjruM0vMKhUUT51fQdQzBYTX49dLj8w68ALEAe2A4iYNpIC4eMac67mt3NzycvjOlf07/kYxJDc0RTl1Wqw==",
+      "version": "0.6.0",
+      "resolved": "https://registry.npmjs.org/mini-css-extract-plugin/-/mini-css-extract-plugin-0.6.0.tgz",
+      "integrity": "sha512-79q5P7YGI6rdnVyIAV4NXpBQJFWdkzJxCim3Kog4078fM0piAaFlwocqbejdWtLW1cEzCexPrh6EdyFsPgVdAw==",
       "dev": true,
       "requires": {
         "loader-utils": "^1.1.0",
+        "normalize-url": "^2.0.1",
         "schema-utils": "^1.0.0",
         "webpack-sources": "^1.1.0"
+      },
+      "dependencies": {
+        "normalize-url": {
+          "version": "2.0.1",
+          "resolved": "https://registry.npmjs.org/normalize-url/-/normalize-url-2.0.1.tgz",
+          "integrity": "sha512-D6MUW4K/VzoJ4rJ01JFKxDrtY1v9wrgzCX5f2qj/lzH1m/lW6MhUZFKerVsnyjOhOsYzI9Kqqak+10l4LvLpMw==",
+          "dev": true,
+          "requires": {
+            "prepend-http": "^2.0.0",
+            "query-string": "^5.0.1",
+            "sort-keys": "^2.0.0"
+          }
+        },
+        "prepend-http": {
+          "version": "2.0.0",
+          "resolved": "https://registry.npmjs.org/prepend-http/-/prepend-http-2.0.0.tgz",
+          "integrity": "sha1-6SQ0v6XqjBn0HN/UAddBo8gZ2Jc=",
+          "dev": true
+        },
+        "query-string": {
+          "version": "5.1.1",
+          "resolved": "https://registry.npmjs.org/query-string/-/query-string-5.1.1.tgz",
+          "integrity": "sha512-gjWOsm2SoGlgLEdAGt7a6slVOk9mGiXmPFMqrEhLQ68rhQuBnpfs3+EmlvqKyxnCo9/PPlF+9MtY02S1aFg+Jw==",
+          "dev": true,
+          "requires": {
+            "decode-uri-component": "^0.2.0",
+            "object-assign": "^4.1.0",
+            "strict-uri-encode": "^1.0.0"
+          }
+        },
+        "sort-keys": {
+          "version": "2.0.0",
+          "resolved": "https://registry.npmjs.org/sort-keys/-/sort-keys-2.0.0.tgz",
+          "integrity": "sha1-ZYU1WEhh7JfXMNbPQYIuH1ZoQSg=",
+          "dev": true,
+          "requires": {
+            "is-plain-obj": "^1.0.0"
+          }
+        }
       }
     },
     "minimalistic-assert": {
@@ -6015,9 +6055,9 @@
       "dev": true
     },
     "pako": {
-      "version": "1.0.9",
-      "resolved": "https://registry.npmjs.org/pako/-/pako-1.0.9.tgz",
-      "integrity": "sha512-tPjtE6dq+dOSg8NMkqRmFjUYH9fect1zmYgB0g6ztQMaVNI7N1CEvLZud2bPHhg7PRgfKEeTshSPiqXb1F7A+A==",
+      "version": "1.0.10",
+      "resolved": "https://registry.npmjs.org/pako/-/pako-1.0.10.tgz",
+      "integrity": "sha512-0DTvPVU3ed8+HNXOu5Bs+o//Mbdj9VNQMUOe9oKCwh8l0GNwpTDMKCWbRjgtD291AWnkAgkqA/LOnQS8AmS1tw==",
       "dev": true
     },
     "parallel-transform": {
@@ -7558,9 +7598,9 @@
       "integrity": "sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA=="
     },
     "react-redux": {
-      "version": "7.0.1",
-      "resolved": "https://registry.npmjs.org/react-redux/-/react-redux-7.0.1.tgz",
-      "integrity": "sha512-orSiI/QXtGiiJmf8lN/zVTx4hysFo/kGOsce28IUu/mu98AGemBwPTDzf64P4Vf/miRmevO8/w2RSw2awDd21w==",
+      "version": "7.0.2",
+      "resolved": "https://registry.npmjs.org/react-redux/-/react-redux-7.0.2.tgz",
+      "integrity": "sha512-uKRuMgQt8dWbcz0U75oFK5tDo3boyAKrqvf/j94vpqRFFZfyDDy4kofUgloFIGyuKTq2Zz51zgK9RzOTFXk5ew==",
       "requires": {
         "@babel/runtime": "^7.4.3",
         "hoist-non-react-statics": "^3.3.0",
@@ -7645,9 +7685,9 @@
       "integrity": "sha1-InQDWWtRUeGCN32rg1tdRfD4BU4="
     },
     "react-toastify": {
-      "version": "5.0.0",
-      "resolved": "https://registry.npmjs.org/react-toastify/-/react-toastify-5.0.0.tgz",
-      "integrity": "sha512-gu2c7ipGMRnIjQ2Tu2haZdhKKSGXpSK5krUSIC+UdEA5cAfORQziQaYaQRKo7MFuSYDvQNo1NOV90jiEhaosDg==",
+      "version": "5.0.1",
+      "resolved": "https://registry.npmjs.org/react-toastify/-/react-toastify-5.0.1.tgz",
+      "integrity": "sha512-O492qeG+xNZfG5N/LW0hG9YIteU8EPOzSkU8RviBhCd40kcnnq87QIklbqCkygm/BiwlvSdLFCKIpFPdrvBA7Q==",
       "requires": {
         "@babel/runtime": "^7.4.2",
         "classnames": "^2.2.6",
@@ -9091,9 +9131,9 @@
       "dev": true
     },
     "typescript": {
-      "version": "3.4.2",
-      "resolved": "https://registry.npmjs.org/typescript/-/typescript-3.4.2.tgz",
-      "integrity": "sha512-Og2Vn6Mk7JAuWA1hQdDQN/Ekm/SchX80VzLhjKN9ETYrIepBFAd8PkOdOTK2nKt0FCkmMZKBJvQ1dV1gIxPu/A==",
+      "version": "3.4.3",
+      "resolved": "https://registry.npmjs.org/typescript/-/typescript-3.4.3.tgz",
+      "integrity": "sha512-FFgHdPt4T/duxx6Ndf7hwgMZZjZpB+U0nMNGVCYPq0rEzWKjEDobm4J6yb3CS7naZ0yURFqdw9Gwc7UOh/P9oQ==",
       "dev": true
     },
     "ua-parser-js": {
@@ -9380,9 +9420,9 @@
       }
     },
     "webpack": {
-      "version": "4.29.6",
-      "resolved": "https://registry.npmjs.org/webpack/-/webpack-4.29.6.tgz",
-      "integrity": "sha512-MwBwpiE1BQpMDkbnUUaW6K8RFZjljJHArC6tWQJoFm0oQtfoSebtg4Y7/QHnJ/SddtjYLHaKGX64CFjG5rehJw==",
+      "version": "4.30.0",
+      "resolved": "https://registry.npmjs.org/webpack/-/webpack-4.30.0.tgz",
+      "integrity": "sha512-4hgvO2YbAFUhyTdlR4FNyt2+YaYBYHavyzjCMbZzgglo02rlKi/pcsEzwCuCpsn1ryzIl1cq/u8ArIKu8JBYMg==",
       "dev": true,
       "requires": {
         "@webassemblyjs/ast": "1.8.5",
