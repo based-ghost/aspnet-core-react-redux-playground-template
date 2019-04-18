@@ -30,8 +30,8 @@ class FetchData extends React.Component<WeatherForecastProps> {
                     <h3 className='title is-3'>Weather forecast</h3>
                     <h5 className='subtitle is-5'>This component demonstrates fetching data from the server and working with URL parameters.</h5>
                     <Spinner loading={this.props.isLoading} />
-                    { this.renderForecastsTable() }
-                    { this.renderPagination() }
+                    {this.renderForecastsTable()}
+                    {this.renderPagination()}
                 </div>
             </section>
         );
@@ -66,16 +66,10 @@ class FetchData extends React.Component<WeatherForecastProps> {
         return (
             <p className='buttons is-pagination-group'>
                 <Link className='button is-info' to={`/fetchdata/${(this.props.startDateIndex || 0) - 5}`}>
-                    <span className='icon'>
-                        <FontAwesomeIcon icon='chevron-left' />
-                    </span>
-                    <span>Previous</span>
+                    <FontAwesomeIcon icon='chevron-left' />Previous
                 </Link>
                 <Link className='button is-info' to={`/fetchdata/${(this.props.startDateIndex || 0) + 5}`}>
-                    <span>Next</span>
-                    <span className='icon'>
-                        <FontAwesomeIcon icon='chevron-right' />
-                    </span>
+                    Next<FontAwesomeIcon icon='chevron-right' />
                 </Link>
             </p>
         );

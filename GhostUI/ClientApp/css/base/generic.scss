@@ -57,6 +57,14 @@ html, body {
     font-weight: 600;
 }
 
+.incrementer-buttons {
+    > .button {
+        svg {
+            margin-right: .5rem;
+        }
+    }
+}
+
 .dashboard-wrapper {
     padding-bottom: 3rem;
 
@@ -146,10 +154,18 @@ html, body {
 
         &:nth-child(1) {
             margin-left: auto;
+
+            svg {
+                margin-right: .35rem;
+            }
         }
 
         &:nth-child(2) {
             margin-right: auto;
+
+            svg {
+                margin-left: .35rem;
+            }
         }
     }
 }

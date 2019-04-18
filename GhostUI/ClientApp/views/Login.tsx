@@ -112,8 +112,8 @@ class Login extends React.Component<LoginProps, LoginState> {
                         <FontAwesomeIcon icon='lock' />
                     </span>
                     <span className='icon is-right icon-clickable'
-                          data-tooltip={!this.state.showPassword ? 'Show password' : 'Hide password'}
-                          onClick={this.toggleShowPassword}>
+                        data-tooltip={!this.state.showPassword ? 'Show password' : 'Hide password'}
+                        onClick={this.toggleShowPassword}>
                         <FontAwesomeIcon icon={!this.state.showPassword ? 'eye' : 'eye-slash'} />
                     </span>
                 </div>

@@ -16,9 +16,9 @@ class Form extends React.Component<FormProps> {
             <section className='section'>
                 <div className='container is-centered box'>
                     <div className='columns form-columns'>
-                        { this.renderCounterGroup() }
-                        { this.renderDropdownGroup() }
-                        { this.renderCheckboxGroup() }
+                        {this.renderCounterGroup()}
+                        {this.renderDropdownGroup()}
+                        {this.renderCheckboxGroup()}
                     </div>
                 </div>
             </section>
@@ -31,18 +31,12 @@ class Form extends React.Component<FormProps> {
                 <h3 className='title is-4'>Counter</h3>
                 <h5 className='subtitle is-5'>Simple example of a React component</h5>
                 <p className='subtitle is-5'>Current count: <strong>{this.props.count}</strong></p>
-                <p className='buttons'>
+                <p className='buttons incrementer-buttons'>
                     <button className='button is-danger' onClick={this.decrementCount}>
-                        <span className='icon'>
-                            <FontAwesomeIcon icon='minus' />
-                        </span>
-                        <span>Decrement</span>
+                        <FontAwesomeIcon icon='minus' />Decrement
                     </button>
                     <button className='button is-success' onClick={this.incrementCount}>
-                        <span className='icon'>
-                            <FontAwesomeIcon icon='plus' />
-                        </span>
-                        <span>Increment</span>
+                        <FontAwesomeIcon icon='plus' />Increment
                     </button>
                 </p>
             </div>
@@ -57,10 +51,10 @@ class Form extends React.Component<FormProps> {
                 <p className='subtitle is-5'>Option: <strong>{JSON.stringify(this.props.selectedDropdownOption)}</strong></p>
                 <div className='field'>
                     <Dropdown options={DROPDOWN_TEST_DATA}
-                              labelKey='label'
-                              selectedOptionLabel={this.props.selectedDropdownOption.label}
-                              wrapperClass='normal-width'
-                              dispatchHandler={this.props.selectOption}
+                        labelKey='label'
+                        selectedOptionLabel={this.props.selectedDropdownOption.label}
+                        wrapperClass='normal-width'
+                        dispatchHandler={this.props.selectOption}
                     />
                 </div>
             </div>

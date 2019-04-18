@@ -98,20 +98,11 @@
             border-bottom: 3px solid $color-blue-highlight !important;
         }
 
-        > span:first-child {
+        > svg {
+            margin-right:.5rem;
+
             @include renderMobileNavView {
                 display: none;
-            }
-        }
-
-        > span:last-child {
-            margin-left: .5rem;
-            margin-right: auto;
-
-            @include renderMobileNavView {
-                margin-left: 0;
-                padding-left: .25rem;
-                padding-right: .25rem;
             }
         }
     }
@@ -219,12 +210,9 @@
         z-index: initial;
         pointer-events: visible;
 
-        span {
-            float: left;
-        }
-
-        > span:last-child {
+        > svg {
             margin-left: .3rem;
+            margin-right: .3rem;
         }
     }
 }

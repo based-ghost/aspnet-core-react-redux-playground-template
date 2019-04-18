@@ -19,11 +19,12 @@ const Checkbox: React.FC<CheckboxProps> = (props) => {
             <p className={`checkbox-control ${props.controlClass || ''}`}>
                 <label>
                     <input type='checkbox'
-                           disabled={props.disabled}
-                           defaultChecked={!!props.checked}
-                           onClick={handleOnCheck} />
+                        disabled={props.disabled}
+                        defaultChecked={!!props.checked}
+                        onClick={handleOnCheck}
+                    />
                     <i className='helper'></i>
-                    { props.trailingLabel && <span>{props.trailingLabel}</span> }
+                    {props.trailingLabel && <span>{props.trailingLabel}</span>}
                 </label>
             </p>
         </div>
