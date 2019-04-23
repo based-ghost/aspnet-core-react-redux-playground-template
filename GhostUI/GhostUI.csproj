@@ -11,8 +11,8 @@
   <ItemGroup>
     <PackageReference Include="AspNetCore.HealthChecks.UI" Version="2.2.27" />
     <PackageReference Include="Microsoft.AspNetCore.All" />
-    <PackageReference Include="NSwag.AspNetCore" Version="12.1.0" />
-    <PackageReference Include="NSwag.MSBuild" Version="12.1.0">
+    <PackageReference Include="NSwag.AspNetCore" Version="12.2.3" />
+    <PackageReference Include="NSwag.MSBuild" Version="12.2.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
