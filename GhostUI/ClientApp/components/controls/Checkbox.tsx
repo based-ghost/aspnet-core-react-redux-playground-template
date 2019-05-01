@@ -1,34 +1,35 @@
 ﻿import React from 'react';
 
 type CheckboxProps = {
-    checked: boolean;
-    disabled?: boolean;
-    wrapperClass?: string;
-    controlClass?: string;
-    trailingLabel?: string;
-    onCheck: (checked: boolean) => void;
+  checked: boolean;
+  disabled?: boolean;
+  wrapperClass?: string;
+  controlClass?: string;
+  trailingLabel?: string;
+  onCheck: (checked: boolean) => void;
 };
 
-const Checkbox: React.FC<CheckboxProps> = (props) => {
-    const handleOnCheck: React.MouseEventHandler<HTMLInputElement> = (e) => {
-        props.onCheck(!!e.currentTarget.checked);
-    };
+const Checkbox: React.FC<CheckboxProps> = props => {
+  const handleOnCheck: React.MouseEventHandler<HTMLInputElement> = e => {
+    props.onCheck(!!e.currentTarget.checked);
+  };
 
-    return (
-        <div className={`control ${props.wrapperClass || ''}`}>
-            <p className={`checkbox-control ${props.controlClass || ''}`}>
-                <label>
-                    <input type='checkbox'
-                        disabled={props.disabled}
-                        defaultChecked={!!props.checked}
-                        onClick={handleOnCheck}
-                    />
-                    <i className='helper'></i>
-                    {props.trailingLabel && <span>{props.trailingLabel}</span>}
-                </label>
-            </p>
-        </div>
-    );
+  return (
+    <div className={`control ${props.wrapperClass || ''}`}>
+      <p className={`checkbox-control ${props.controlClass || ''}`}>
+        <label>
+          <input
+            type='checkbox'
+            disabled={props.disabled}
+            defaultChecked={!!props.checked}
+            onClick={handleOnCheck}
+          />
+          <i className='helper' />
+          {props.trailingLabel && <span>{props.trailingLabel}</span>}
+        </label>
+      </p>
+    </div>
+  );
 };
 
 export default Checkbox;

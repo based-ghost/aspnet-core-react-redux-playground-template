@@ -2,35 +2,35 @@
 import { AuthStatusEnum } from '../../store/auth/types';
 
 type AuthenticatorProps = {
-    authStatus?: string;
-    callbackTimeout?: number;
-    successDispatcher: () => void;
-    failDispatcher: () => void;
+  authStatus?: string;
+  callbackTimeout?: number;
+  successDispatcher: () => void;
+  failDispatcher: () => void;
 };
 
-const Authenticator: React.FC<AuthenticatorProps> = (props) => {
-    const handleAuthCallback = (authStatus: string): void => {
-        setTimeout(() => {
-            if (authStatus === AuthStatusEnum.Success) {
-                props.successDispatcher();
-            } else {
-                props.failDispatcher();
-            }
-        }, props.callbackTimeout || 1500);
-    };
+const Authenticator: React.FC<AuthenticatorProps> = props => {
+  const handleAuthCallback = (authStatus: string): void => {
+    setTimeout(() => {
+      if (authStatus === AuthStatusEnum.Success) {
+        props.successDispatcher();
+      } else {
+        props.failDispatcher();
+      }
+    }, props.callbackTimeout || 1500);
+  };
 
-    useEffect(() => {
-        if (props.authStatus && props.authStatus.isIn(AuthStatusEnum.Success, AuthStatusEnum.Fail)) {
-            handleAuthCallback(props.authStatus);
-        }
-    }, [props.authStatus]);
+  useEffect(() => {
+    if (props.authStatus && props.authStatus.isIn(AuthStatusEnum.Success, AuthStatusEnum.Fail)) {
+      handleAuthCallback(props.authStatus);
+    }
+  }, [props.authStatus]);
 
-    return (
-        <div className={`atom-loader ${props.authStatus}`}>
-            <div></div>
-            <div></div>
-        </div>
-    );
+  return (
+    <div className={`atom-loader ${props.authStatus}`}>
+      <div />
+      <div />
+    </div>
+  );
 };
 
 export default Authenticator;

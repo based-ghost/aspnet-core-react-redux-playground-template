@@ -1,89 +1,84 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { IApplicationState } from '../store';
-import { boundMethod } from 'autobind-decorator';
 import { RouteComponentProps } from 'react-router-dom';
 import { actionCreators, reducer } from '../store/form';
 import { DROPDOWN_TEST_DATA } from '../config/constants';
 import { Checkbox, Dropdown } from '../components/controls';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-type FormProps = ReturnType<typeof reducer> & typeof actionCreators & RouteComponentProps<{}>;
+type FormProps = ReturnType<typeof reducer> &
+  typeof actionCreators &
+  RouteComponentProps<{}>;
 
-class Form extends React.Component<FormProps> {
-    public render(): React.ReactNode {
-        return (
-            <section className='section'>
-                <div className='container is-centered box'>
-                    <div className='columns form-columns'>
-                        {this.renderCounterGroup()}
-                        {this.renderDropdownGroup()}
-                        {this.renderCheckboxGroup()}
-                    </div>
-                </div>
-            </section>
-        );
-    }
+const Form: React.FC<FormProps> = props => {
+  const renderCounterGroup: React.ReactNode = (
+    <div className='column'>
+      <h3 className='title is-4'>Counter</h3>
+      <h5 className='subtitle is-5'>Simple example of a React component</h5>
+      <p className='subtitle is-5'>
+        Current count: <strong>{props.count}</strong>
+      </p>
+      <p className='buttons incrementer-buttons'>
+        <button className='button is-danger' onClick={() => props.decrement()}>
+          <FontAwesomeIcon icon='minus' />
+          Decrement
+        </button>
+        <button className='button is-success' onClick={() => props.increment()}>
+          <FontAwesomeIcon icon='plus' />
+          Increment
+        </button>
+      </p>
+    </div>
+  );
 
-    private renderCounterGroup(): React.ReactNode {
-        return (
-            <div className='column'>
-                <h3 className='title is-4'>Counter</h3>
-                <h5 className='subtitle is-5'>Simple example of a React component</h5>
-                <p className='subtitle is-5'>Current count: <strong>{this.props.count}</strong></p>
-                <p className='buttons incrementer-buttons'>
-                    <button className='button is-danger' onClick={this.decrementCount}>
-                        <FontAwesomeIcon icon='minus' />Decrement
-                    </button>
-                    <button className='button is-success' onClick={this.incrementCount}>
-                        <FontAwesomeIcon icon='plus' />Increment
-                    </button>
-                </p>
-            </div>
-        );
-    }
+  const renderDropdownGroup: React.ReactNode = (
+    <div className='column'>
+      <h3 className='title is-4'>Dropdown</h3>
+      <h5 className='subtitle is-5'>Select an option from the dropdown</h5>
+      <p className='subtitle is-5'>
+        Option: <strong>{JSON.stringify(props.selectedDropdownOption)}</strong>
+      </p>
+      <div className='field'>
+        <Dropdown
+          options={DROPDOWN_TEST_DATA}
+          labelKey='label'
+          selectedOptionLabel={props.selectedDropdownOption.label}
+          wrapperClass='normal-width'
+          dispatchHandler={props.selectOption}
+        />
+      </div>
+    </div>
+  );
 
-    private renderDropdownGroup(): React.ReactNode {
-        return (
-            <div className='column'>
-                <h3 className='title is-4'>Dropdown</h3>
-                <h5 className='subtitle is-5'>Select an option from the dropdown</h5>
-                <p className='subtitle is-5'>Option: <strong>{JSON.stringify(this.props.selectedDropdownOption)}</strong></p>
-                <div className='field'>
-                    <Dropdown options={DROPDOWN_TEST_DATA}
-                        labelKey='label'
-                        selectedOptionLabel={this.props.selectedDropdownOption.label}
-                        wrapperClass='normal-width'
-                        dispatchHandler={this.props.selectOption}
-                    />
-                </div>
-            </div>
-        );
-    }
+  const renderCheckboxGroup: React.ReactNode = (
+    <div className='column'>
+      <h3 className='title is-4'>Checkbox</h3>
+      <h5 className='subtitle is-5'>Toggle the checkbox</h5>
+      <p className='subtitle is-5'>
+        Checked: <strong>{props.checkboxValue.toString()}</strong>
+      </p>
+      <div className='field'>
+        <Checkbox onCheck={props.doCheck} checked={props.checkboxValue} />
+      </div>
+    </div>
+  );
 
-    private renderCheckboxGroup(): React.ReactNode {
-        return (
-            <div className='column'>
-                <h3 className='title is-4'>Checkbox</h3>
-                <h5 className='subtitle is-5'>Toggle the checkbox</h5>
-                <p className='subtitle is-5'>Checked: <strong>{this.props.checkboxValue.toString()}</strong></p>
-                <div className='field'>
-                    <Checkbox onCheck={this.props.doCheck} checked={this.props.checkboxValue} />
-                </div>
-            </div>
-        );
-    }
-
-    @boundMethod
-    private decrementCount(): void {
-        this.props.decrement();
-    }
-
-    @boundMethod
-    private incrementCount(): void {
-        this.props.increment();
-    }
-}
+  return (
+    <section className='section'>
+      <div className='container is-centered box'>
+        <div className='columns form-columns'>
+          {renderCounterGroup}
+          {renderDropdownGroup}
+          {renderCheckboxGroup}
+        </div>
+      </div>
+    </section>
+  );
+};
 
 // Wire up the React component to the Redux store
-export default connect((state: IApplicationState) => state.form, actionCreators)(Form);
+export default connect(
+  (state: IApplicationState) => state.form,
+  actionCreators
+)(Form);

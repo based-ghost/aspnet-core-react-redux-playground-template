@@ -3,86 +3,91 @@ import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 import { checkIsArrayOfObjects } from '../../utils/validationUtils';
 
 type DropdownProps = {
-    options: any[];
-    placeholder?: string;
-    disabled?: boolean;
-    buttonClass?: string;
-    wrapperClass?: string;
-    labelKey: string;
-    selectedOptionLabel?: string;
-    dispatchHandler: (option: any) => void;
+  options: any[];
+  placeholder?: string;
+  disabled?: boolean;
+  buttonClass?: string;
+  wrapperClass?: string;
+  labelKey: string;
+  selectedOptionLabel?: string;
+  dispatchHandler: (option: any) => void;
 };
 
-const Dropdown: React.FC<DropdownProps> = (props) => {
-    let clickHandlerCache = {};
-    const buttonRef = useRef(null);
-    const [open, setOpen] = useState(false);
-    const [isArrayOfObjects, setIsArrayOfObjects] = useState(checkIsArrayOfObjects(props.options));
+const Dropdown: React.FC<DropdownProps> = props => {
+  let clickHandlerCache = {};
+  const buttonRef = useRef(null);
+  const [open, setOpen] = useState(false);
+  const [isArrayOfObjects, setIsArrayOfObjects] = useState(
+    checkIsArrayOfObjects(props.options)
+  );
 
-    useOnClickOutside(buttonRef, () => setOpen(false), () => setOpen(open => !open));
+  useOnClickOutside(buttonRef, () => setOpen(false), () => setOpen(open => !open));
 
-    useEffect(() => {
-        clickHandlerCache = {};
-        setIsArrayOfObjects(checkIsArrayOfObjects(props.options));
-    }, [props.options]);
+  useEffect(() => {
+    clickHandlerCache = {};
+    setIsArrayOfObjects(checkIsArrayOfObjects(props.options));
+  }, [props.options]);
 
-    const getOptionLabelName = (option: any): string => {
-        return isArrayOfObjects ? (option[props.labelKey] || option[0]) : option;
-    };
+  const getOptionLabelName = (option: any): string => {
+    return isArrayOfObjects ? option[props.labelKey] || option[0] : option;
+  };
 
-    const getCachedClickHandler = (option: any, key: any): any => {
-        // If no click handler exists for this unique identifier, create one.
-        if (!Object.prototype.hasOwnProperty.call(clickHandlerCache, key)) {
-            clickHandlerCache[key] = () => props.dispatchHandler(option);
-        }
-        return clickHandlerCache[key];
-    };
+  const getCachedClickHandler = (option: any, key: any): any => {
+    // If no click handler exists for this unique identifier, create one.
+    if (!Object.prototype.hasOwnProperty.call(clickHandlerCache, key)) {
+      clickHandlerCache[key] = () => props.dispatchHandler(option);
+    }
+    return clickHandlerCache[key];
+  };
 
-    const keyDownHandler: React.KeyboardEventHandler<HTMLButtonElement> = (e) => {
-        if (e.keyCode === 38 || e.keyCode === 40) {
-            // up and down keys
-            e.preventDefault();
-            setOpen(open => !open);
-        } else if (e.keyCode === 27) {
-            // Esc key
-            buttonRef.current.focus();
-            setOpen(false);
-        } else if (e.keyCode === 9) {
-            // Tab key
-            setOpen(false);
-        }
-    };
+  const keyDownHandler: React.KeyboardEventHandler<HTMLButtonElement> = e => {
+    if (e.keyCode === 38 || e.keyCode === 40) { // up and down keys
+      e.preventDefault();
+      setOpen(open => !open);
+    } else if (e.keyCode === 27) { // Esc key
+      buttonRef.current.focus();
+      setOpen(false);
+    } else if (e.keyCode === 9) { // Tab key
+      setOpen(false);
+    }
+  };
 
-    return (
-        <div className={`dropdown ${props.wrapperClass || ''} ${open ? 'is-active' : ''}`}>
-            <button className={`button ${props.buttonClass || ''}`}
-                    type='button'
-                    disabled={props.disabled}
-                    ref={buttonRef}
-                    onKeyDown={keyDownHandler}
-                    aria-haspopup='true'
-                    aria-controls='dropdown-menu'>
-                <span>{props.selectedOptionLabel || props.placeholder}</span>
-                <span className='caret-select'></span>
-            </button>
-            <div className='dropdown-menu' role='menu'>
-                <ul className='dropdown-content'>
-                    {props.options.map((option: any) => {
-                        const optionLbl = getOptionLabelName(option);
-                        return (
-                            <li key={optionLbl}>
-                                <a role='button'
-                                   className={`dropdown-item ${optionLbl === props.selectedOptionLabel ? 'selected-option' : ''}`}
-                                   onClick={getCachedClickHandler(option, optionLbl)}>
-                                    {optionLbl}
-                                </a>
-                            </li>
-                        );
-                    })}
-                </ul>
-            </div>
-        </div>
-    );
+  return (
+    <div
+      className={`dropdown ${props.wrapperClass || ''} ${open ? 'is-active' : ''}`}
+    >
+      <button
+        className={`button ${props.buttonClass || ''}`}
+        type='button'
+        disabled={props.disabled}
+        ref={buttonRef}
+        onKeyDown={keyDownHandler}
+        aria-haspopup='true'
+        aria-controls='dropdown-menu'
+      >
+        <span>{props.selectedOptionLabel || props.placeholder}</span>
+        <span className='caret-select' />
+      </button>
+      <div className='dropdown-menu' role='menu'>
+        <ul className='dropdown-content'>
+          {props.options.map((option: any) => {
+            const optionLbl = getOptionLabelName(option);
+            return (
+              <li key={optionLbl}>
+                <a
+                  role='button'
+                  className={`dropdown-item ${optionLbl === props.selectedOptionLabel ? 'selected-option' : ''}`}
+                  onClick={getCachedClickHandler(option, optionLbl)}
+                >
+                  {optionLbl}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </div>
+  );
 };
 
 export default Dropdown;

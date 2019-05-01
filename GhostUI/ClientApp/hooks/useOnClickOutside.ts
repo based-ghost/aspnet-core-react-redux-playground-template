@@ -1,11 +1,10 @@
 ﻿import { useEffect } from 'react';
-import { CallbackFunction } from '../types/index';
 
 /**
  * Name: useOnClickOutside
  * Use: handles if a click event occurred on or within a specific node, otherwise click happened outside.
  */
-export const useOnClickOutside = (ref: any, onOutsideClick: CallbackFunction, onInsideClick: CallbackFunction) => {
+export const useOnClickOutside = (ref: any, onOutsideClick: any, onInsideClick: any) => {
     const handleClick = (e) => {
         if (!ref.current) return;
 

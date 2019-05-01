@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Footer from '../footer/Footer';
 import { NavBar, Settings } from '../nav';
 
 const AppLayout: React.FC<{}> = (props) => (
-    <React.Fragment>
-        <NavBar />
-        <Settings />
-        {props.children}
-        <Footer />
-    </React.Fragment>
+  <Fragment>
+    <NavBar />
+    <Settings />
+    {props.children}
+    <Footer />
+  </Fragment>
 );
 
 export default AppLayout;
