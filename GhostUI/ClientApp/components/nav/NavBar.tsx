@@ -49,7 +49,9 @@ const NavBar: React.FC<{ isAuthenticated: boolean }> = ({ isAuthenticated }) => 
             width='165'
           />
         </div>
-        <div className='navbar-routes'>{navRoutes}</div>
+        <div className='navbar-routes'>
+            {navRoutes}
+        </div>
       </div>
     </nav>
   );

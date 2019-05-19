@@ -17,9 +17,7 @@ const Dropdown: React.FC<DropdownProps> = props => {
   let clickHandlerCache = {};
   const buttonRef = useRef(null);
   const [open, setOpen] = useState(false);
-  const [isArrayOfObjects, setIsArrayOfObjects] = useState(
-    checkIsArrayOfObjects(props.options)
-  );
+  const [isArrayOfObjects, setIsArrayOfObjects] = useState(checkIsArrayOfObjects(props.options));
 
   useOnClickOutside(buttonRef, () => setOpen(false), () => setOpen(open => !open));
 
