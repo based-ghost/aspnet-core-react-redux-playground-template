@@ -49,7 +49,7 @@ module.exports = (env) => {
     const isProductionBuild = !isDevBuild;
 
     const publicPath = '/';
-    const shouldUseRelativeAssetPaths = (publicPath === './');
+    const shouldUseRelativeAssetPaths = publicPath === './';
 
     // common function to get style loaders
     const getStyleLoaders = (cssOptions, preProcessor) => {
@@ -170,7 +170,14 @@ module.exports = (env) => {
                 },
                 {
                     test: /\.(svg|png|eot|ttf|woff|woff2|bmp|wav|gif|jpe?g)(\?v=[a-z0-9]\.[a-z0-9]\.[a-z0-9])?$/,
-                    use: 'url-loader?limit=100000'
+                    use: [
+                        {
+                            loader: 'url-loader',
+                            options: {
+                                limit: 100000
+                            }
+                        }
+                    ]
                 }
             ]
         },
@@ -236,7 +243,7 @@ module.exports = (env) => {
                             ecma: 5,
                             comments: false,
                             ascii_only: true
-                        },
+                        }
                     },
                     parallel: true,
                     cache: true,
