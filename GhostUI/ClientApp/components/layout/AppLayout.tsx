@@ -1,12 +1,12 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, ReactNode } from 'react';
 import Footer from '../footer/Footer';
 import { NavBar, Settings } from '../nav';
 
-const AppLayout: React.FC<{}> = (props) => (
+const AppLayout: React.FC<{ children?: ReactNode }> = ({ children }) => (
   <Fragment>
     <NavBar />
     <Settings />
-    {props.children}
+    {children}
     <Footer />
   </Fragment>
 );

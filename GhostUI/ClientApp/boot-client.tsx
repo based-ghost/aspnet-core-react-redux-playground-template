@@ -1,5 +1,3 @@
-import './css/site.scss';
-import './config/fa.config';
 import './prototype';
 import React from 'react';
 import { routes } from './routes';
@@ -11,6 +9,8 @@ import { ConnectedRouter } from 'connected-react-router';
 import { configureStore, IApplicationState } from './store';
 import { ToastContainer, ToastPosition } from 'react-toastify';
 import { configureAxiosInterceptors } from './config/axios.config';
+import './config/fa.config';
+import './css/site.scss';
 
 // Create browser history to use in the Redux store / Get the application-wide store instance, prepopulating with state from the server where available.
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href')!;
