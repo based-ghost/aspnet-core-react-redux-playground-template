@@ -14,28 +14,18 @@ type DropdownProps = {
 };
 
 const Dropdown: React.FC<DropdownProps> = props => {
-  let clickHandlerCache = {};
   const buttonRef = useRef(null);
   const [open, setOpen] = useState(false);
-  const [isArrayOfObjects, setIsArrayOfObjects] = useState(checkIsArrayOfObjects(props.options));
+  const [isArrayOfObjects, setIsArrayOfObjects] = useState(() => checkIsArrayOfObjects(props.options));
 
   useOnClickOutside(buttonRef, () => setOpen(false), () => setOpen(open => !open));
 
   useEffect(() => {
-    clickHandlerCache = {};
     setIsArrayOfObjects(checkIsArrayOfObjects(props.options));
   }, [props.options]);
 
   const getOptionLabelName = (option: any): string => {
     return isArrayOfObjects ? option[props.labelKey] || option[0] : option;
-  };
-
-  const getCachedClickHandler = (option: any, key: any): any => {
-    // If no click handler exists for this unique identifier, create one.
-    if (!Object.prototype.hasOwnProperty.call(clickHandlerCache, key)) {
-      clickHandlerCache[key] = () => props.dispatchHandler(option);
-    }
-    return clickHandlerCache[key];
   };
 
   const keyDownHandler: React.KeyboardEventHandler<HTMLButtonElement> = e => {
@@ -75,7 +65,7 @@ const Dropdown: React.FC<DropdownProps> = props => {
                 <a
                   role='button'
                   className={`dropdown-item ${optionLbl === props.selectedOptionLabel ? 'selected-option' : ''}`}
-                  onClick={getCachedClickHandler(option, optionLbl)}
+                  onClick={() => props.dispatchHandler(option)}
                 >
                   {optionLbl}
                 </a>
