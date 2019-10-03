@@ -1,4 +1,4 @@
-﻿import React from 'react';
+﻿import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { IApplicationState } from '../../store';
@@ -7,8 +7,8 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const NavBar: React.FC<{ isAuthenticated: boolean }> = ({ isAuthenticated }) => {
-  const navRoutes = isAuthenticated && (
-    <React.Fragment>
+  const navRoutes: React.ReactNode = isAuthenticated && (
+    <Fragment>
       <NavLink
         exact={true}
         to={RoutesConfig.Form.path}
@@ -36,11 +36,15 @@ const NavBar: React.FC<{ isAuthenticated: boolean }> = ({ isAuthenticated }) => 
         <FontAwesomeIcon icon={RoutesConfig.FetchData.icon as IconProp} />
         {RoutesConfig.FetchData.displayName}
       </NavLink>
-    </React.Fragment>
+    </Fragment>
   );
 
   return (
-    <nav className='navbar' role='navigation' aria-label='main navigation'>
+    <nav
+      role='navigation'
+      className='navbar'
+      aria-label='main navigation'
+    >
       <div className='navbar-wrapper'>
         <div className='brand-wrapper'>
           <img

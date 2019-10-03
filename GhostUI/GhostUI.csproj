@@ -11,8 +11,8 @@
   <ItemGroup>
     <PackageReference Include="AspNetCore.HealthChecks.UI" Version="2.2.32" />
     <PackageReference Include="Microsoft.AspNetCore.All" />
-    <PackageReference Include="NSwag.AspNetCore" Version="13.0.5" />
-    <PackageReference Include="NSwag.MSBuild" Version="13.0.5">
+    <PackageReference Include="NSwag.AspNetCore" Version="13.1.2" />
+    <PackageReference Include="NSwag.MSBuild" Version="13.1.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
@@ -44,11 +44,6 @@
     <None Remove="ClientApp\config\constants.ts" />
     <None Remove="ClientApp\config\fa.config.ts" />
     <None Remove="ClientApp\config\toastify.tsx" />
-    <None Remove="ClientApp\hooks\useDebounce.ts" />
-    <None Remove="ClientApp\hooks\useDynamicScript.ts" />
-    <None Remove="ClientApp\hooks\useEventListener.ts" />
-    <None Remove="ClientApp\hooks\useInputValue.ts" />
-    <None Remove="ClientApp\hooks\useToggle.ts" />
     <None Remove="ClientApp\store\auth\validation.ts" />
     <None Remove="ClientApp\types\index.d.ts" />
     <None Remove="ClientApp\views\index.ts" />
@@ -72,8 +67,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\hooks\useDebounce.ts" />
-    <TypeScriptCompile Include="ClientApp\hooks\useDynamicScript.ts" />
     <TypeScriptCompile Include="ClientApp\hooks\useOnClickOutside.ts" />
     <TypeScriptCompile Include="ClientApp\config\axios.config.ts" />
     <TypeScriptCompile Include="ClientApp\api\services\base.service.ts" />
@@ -90,9 +83,6 @@
     <TypeScriptCompile Include="ClientApp\components\nav\NavBar.tsx" />
     <TypeScriptCompile Include="ClientApp\components\nav\Settings.tsx" />
     <TypeScriptCompile Include="ClientApp\config\fa.config.ts" />
-    <TypeScriptCompile Include="ClientApp\hooks\useEventListener.ts" />
-    <TypeScriptCompile Include="ClientApp\hooks\useInputValue.ts" />
-    <TypeScriptCompile Include="ClientApp\hooks\useToggle.ts" />
     <TypeScriptCompile Include="ClientApp\types\index.d.ts" />
     <TypeScriptCompile Include="ClientApp\utils\validationUtils.ts" />
     <TypeScriptCompile Include="ClientApp\views\index.ts" />

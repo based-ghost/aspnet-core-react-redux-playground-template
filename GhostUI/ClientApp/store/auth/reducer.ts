@@ -2,13 +2,13 @@
 import { actionCreators } from './actions';
 import { ActionType, IAuthAction, IAuthState} from './types';
 
-const initialState = () => {
+const initialState = (): IAuthState => {
     return {
         isAuthenticated: false,
         token: '',
         status: '',
         userName: ''
-    } as IAuthState;
+    };
 };
 
 export const reducer = (state: IAuthState = initialState(), incomingAction: FunctionReturnTypes<typeof actionCreators>) => {

@@ -1,21 +1,24 @@
-﻿import { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 
-/**
- * Name: useOnClickOutside
- * Use: handles if a click event occurred on or within a specific node, otherwise click happened outside.
- */
-export const useOnClickOutside = (ref: any, onOutsideClick: any, onInsideClick: any) => {
-    const handleClick = (e) => {
-        if (!ref.current) return;
-
-        if (ref.current.contains(e.target)) {
-            onInsideClick && onInsideClick();
-        } else {
-            onOutsideClick && onOutsideClick();
-        }
-    };
-
+// Wrap the handleOutsideClick & handleInsideClick in useCallback prior to passing to this hook to optimize ...
+// ... otherwise the event listeners will be created and torn down on every render
+export const useOnClickOutside = (
+    ref: React.MutableRefObject<HTMLElement | null>,
+    handleOutsideClick: Function,
+    handleInsideClick: Function
+) => {
     useEffect(() => {
+        const handleClick = (e: any): void => {
+            if (!ref.current)
+                return;
+
+            if (ref.current.contains(e.target)) {
+                handleInsideClick && handleInsideClick();
+            } else {
+                handleOutsideClick && handleOutsideClick();
+            }
+        };
+
         document.addEventListener('click', handleClick);
         document.addEventListener('touchend', handleClick);
 
@@ -23,5 +26,5 @@ export const useOnClickOutside = (ref: any, onOutsideClick: any, onInsideClick: 
             document.removeEventListener('click', handleClick);
             document.removeEventListener('touchend', handleClick);
         };
-    }, [ref]);
+    }, [ref, handleOutsideClick, handleInsideClick]);
 };

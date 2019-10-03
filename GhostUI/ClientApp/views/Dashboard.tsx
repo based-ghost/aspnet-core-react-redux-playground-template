@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Dashboard: React.FC<{}> = () => (
+const Dashboard: React.FC = () => (
   <div className='dashboard-wrapper'>
     <section className='hero is-dark'>
       <div className='hero-body'>

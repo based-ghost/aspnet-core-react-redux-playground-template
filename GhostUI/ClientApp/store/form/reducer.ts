@@ -3,7 +3,7 @@ import { actionCreators } from './actions';
 import { ActionType, IFormState } from './types';
 import { DROPDOWN_TEST_DATA } from '../../config/constants';
 
-const initialState = () => {
+const initialState = (): IFormState => {
     return {
         count: 0,
         checkboxValue: false,
@@ -11,7 +11,7 @@ const initialState = () => {
             value: 1,
             label: 'Option 1'
         }
-    } as IFormState;
+    };
 };
 
 export const reducer = (state: IFormState = initialState(), action: FunctionReturnTypes<typeof actionCreators>) => {
@@ -23,27 +23,23 @@ export const reducer = (state: IFormState = initialState(), action: FunctionRetu
     switch (action.type) {
         case ActionType.INCREMENT:
             return {
+                ...state,
                 count: state.count + 1,
-                checkboxValue: state.checkboxValue,
-                selectedDropdownOption: state.selectedDropdownOption
             };
         case ActionType.DECREMENT:
             return {
+                ...state,
                 count: state.count - 1,
-                checkboxValue: state.checkboxValue,
-                selectedDropdownOption: state.selectedDropdownOption
             };
         case ActionType.DROPDOWN_SELECT:
             return {
-                count: state.count,
-                checkboxValue: state.checkboxValue,
+                ...state,
                 selectedDropdownOption: action.option || DROPDOWN_TEST_DATA[0]
             };
         case ActionType.CHECK_SAMPLE_BOX:
             return {
-                count: state.count,
+                ...state,
                 checkboxValue: !!action.checked,
-                selectedDropdownOption: state.selectedDropdownOption
             };
         default:
             return state;

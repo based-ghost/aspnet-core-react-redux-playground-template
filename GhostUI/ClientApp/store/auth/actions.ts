@@ -2,7 +2,7 @@
 import { AuthApi } from '../../api';
 import { addTask } from 'domain-task';
 import { isLoginSuccess } from '../../utils/validationUtils';
-import { ActionType, IAuthAction, IAuthUser, ICredentials } from './types';
+import { ActionType, IAuthAction, ICredentials } from './types';
 
 export const actionCreators = {
     loginUserRequest: (credentials: ICredentials): IAppThunkAction<IAuthAction> => (dispatch, getState) => {

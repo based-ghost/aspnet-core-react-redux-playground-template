@@ -40,6 +40,7 @@
         display: block;
 
         span {
+            user-select: none;
             padding-left: 2rem;
         }
     }
@@ -62,7 +63,7 @@
             position: absolute;
             height: 0;
             width: 0.2rem;
-            background-color: $color-checkbox-mark;
+            background-color: $cyan;
             display: block;
             transform-origin: left top;
             border-radius: 0.25rem;

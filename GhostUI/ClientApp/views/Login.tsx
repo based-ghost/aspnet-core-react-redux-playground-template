@@ -35,11 +35,11 @@ class Login extends React.Component<LoginProps, LoginState> {
     }
 
     // Configure SignalR and start connections directly before mounting this component to DOM
-    public componentWillMount(): void {
+    public UNSAFE_componentWillMount(): void {
         SignalRApi.startConnection();
     }
 
-    public componentWillReceiveProps(nextProps: LoginProps): void {
+    public UNSAFE_componentWillReceiveProps(nextProps: LoginProps): void {
         const nextAuthStatus = (nextProps && nextProps.status) ? nextProps.status : '';
         const curAuthStatus = (this.props && this.props.status) ? this.props.status : '';
 
@@ -58,7 +58,7 @@ class Login extends React.Component<LoginProps, LoginState> {
                         <h3 className='title'>Login</h3>
                         <p className='subtitle'>Please login to proceed</p>
                         <div className='box'>
-                            <img id='login-img' src={require('../assets/image/based-ghost-crop.png')} alt='based-ghost Logo' width='190' />
+                            <img id='login-img' src={require('../assets/image/based-ghost-main.png')} alt='based-ghost Logo' width='190' />
                             <form onSubmit={this.handleLogin}>
                                 { this.renderNameInput() }
                                 { this.renderPasswordInput() }

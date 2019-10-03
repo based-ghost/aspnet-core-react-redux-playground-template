@@ -14,7 +14,7 @@ class FetchData extends React.Component<WeatherForecastProps> {
         this.props.requestWeatherForecasts(startDateIndex);
     }
 
-    public componentWillReceiveProps(nextProps: WeatherForecastProps): void {
+    public UNSAFE_componentWillReceiveProps(nextProps: WeatherForecastProps): void {
         const nextStartDateIndex = nextProps.match.params.startDateIndex;
         const curStartDateIndex = (this.props.startDateIndex || 0).toString();
         if (nextStartDateIndex !== curStartDateIndex) {
@@ -65,10 +65,16 @@ class FetchData extends React.Component<WeatherForecastProps> {
     private renderPagination(): React.ReactNode {
         return (
             <p className='buttons is-pagination-group'>
-                <Link className='button is-info' to={`/fetchdata/${(this.props.startDateIndex || 0) - 5}`}>
+                <Link
+                  className='button is-info'
+                  to={`/fetchdata/${(this.props.startDateIndex || 0) - 5}`}
+                >
                     <FontAwesomeIcon icon='chevron-left' />Previous
                 </Link>
-                <Link className='button is-info' to={`/fetchdata/${(this.props.startDateIndex || 0) + 5}`}>
+                <Link
+                  className='button is-info'
+                  to={`/fetchdata/${(this.props.startDateIndex || 0) + 5}`}
+                >
                     Next<FontAwesomeIcon icon='chevron-right' />
                 </Link>
             </p>

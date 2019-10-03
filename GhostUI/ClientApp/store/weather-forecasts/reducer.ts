@@ -2,11 +2,11 @@
 import { actionCreators } from './actions';
 import { ActionType, IWeatherForecastsAction, IWeatherForecastsState } from './types';
 
-const initialState = () => {
+const initialState = (): IWeatherForecastsState => {
     return {
         forecasts: [],
         isLoading: false
-    } as IWeatherForecastsState;
+    };
 };
 
 export const reducer = (state: IWeatherForecastsState = initialState(), incomingAction: FunctionReturnTypes<typeof actionCreators>) => {
@@ -20,9 +20,9 @@ export const reducer = (state: IWeatherForecastsState = initialState(), incoming
     switch (action.type) {
         case ActionType.REQUEST:
             return {
+                ...state,
+                isLoading: true,
                 startDateIndex: action.startDateIndex,
-                forecasts: state.forecasts,
-                isLoading: true
             };
         case ActionType.RECEIVE:
             // Only accept the incoming data if it matches the most recent request. This ensures we correctly handle out-of-order responses.

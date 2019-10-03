@@ -1,4 +1,4 @@
-﻿import React, { useRef, useState } from 'react';
+﻿import React, { useCallback, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import { History } from 'history';
 import { Route } from 'react-router-dom';
@@ -12,17 +12,29 @@ import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 
 type SettingsProps = { isAuthenticated: boolean } & typeof actionCreators;
 
-const Settings: React.FC<SettingsProps> = props => {
-  const settingsAnchorEl = useRef();
-  const [open, setOpen] = useState(false);
+const Settings: React.FC<SettingsProps> = ({ isAuthenticated, logoutUserRequest }) => {
+  const [open, setOpen] = useState<boolean>(false);
+  const settingsAnchorRef = useRef<HTMLAnchorElement | null>(null);
 
-  useOnClickOutside(settingsAnchorEl, () => setOpen(false), () => setOpen(open => !open));
+  const onOutsideClick = useCallback(() => {
+    setOpen(false);
+  }, []);
+
+  const onInsideClick = useCallback(() => {
+    setOpen(open => !open);
+  }, []);
+
+  useOnClickOutside(
+    settingsAnchorRef,
+    onOutsideClick,
+    onInsideClick
+  );
 
   const handleLogout = (history: History) => (e: React.MouseEvent): void => {
-    props.logoutUserRequest(() => history.push(RoutesConfig.Login.path));
+    logoutUserRequest(() => history.push(RoutesConfig.Login.path));
   };
 
-  const logoutRoute = (
+  const logoutRoute: React.ReactNode = (
     <Route
       render={({ history }) => (
         <a
@@ -37,7 +49,7 @@ const Settings: React.FC<SettingsProps> = props => {
     />
   );
 
-  const menuContent = open && (
+  const menuContent: React.ReactNode = open && (
     <ul className='dropdown-menu'>
       <li className='header-title'>Settings</li>
       <li>
@@ -67,9 +79,12 @@ const Settings: React.FC<SettingsProps> = props => {
   );
 
   return (
-    <div className={`fixed-plugin ${open ? 'fixed-plugin-active' : ''}`} style={{ display: !props.isAuthenticated ? 'none' : '' }}>
+    <div
+      style={{ display: !isAuthenticated ? 'none' : '' }}
+      className={(`fixed-plugin ${open ? 'fixed-plugin-active' : ''}`).trim()}
+    >
       <div className='dropdown'>
-        <a role='button' ref={settingsAnchorEl}>
+        <a role='button' ref={settingsAnchorRef}>
           <FontAwesomeIcon icon='cog' size='3x' />
         </a>
         {menuContent}

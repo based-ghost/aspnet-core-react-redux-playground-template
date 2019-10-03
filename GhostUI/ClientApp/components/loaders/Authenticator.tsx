@@ -8,25 +8,30 @@ type AuthenticatorProps = {
   failDispatcher: () => void;
 };
 
-const Authenticator: React.FC<AuthenticatorProps> = props => {
-  const handleAuthCallback = (authStatus: string): void => {
-    setTimeout(() => {
-      if (authStatus === AuthStatusEnum.Success) {
-        props.successDispatcher();
-      } else {
-        props.failDispatcher();
-      }
-    }, props.callbackTimeout || 1500);
-  };
-
+const Authenticator: React.FC<AuthenticatorProps> = ({
+  authStatus,
+  failDispatcher,
+  successDispatcher,
+  callbackTimeout = 1500,
+}) => {
   useEffect(() => {
-    if (props.authStatus && props.authStatus.isIn(AuthStatusEnum.Success, AuthStatusEnum.Fail)) {
-      handleAuthCallback(props.authStatus);
+    const handleAuthCallback = (authStatus: string): void => {
+      setTimeout(() => {
+        if (authStatus === AuthStatusEnum.Success) {
+          successDispatcher();
+        } else {
+          failDispatcher();
+        }
+      }, callbackTimeout);
+    };
+
+    if (authStatus && authStatus.isIn(AuthStatusEnum.Success, AuthStatusEnum.Fail)) {
+      handleAuthCallback(authStatus);
     }
-  }, [props.authStatus]);
+  }, [authStatus, callbackTimeout, failDispatcher, successDispatcher]);
 
   return (
-    <div className={`atom-loader ${props.authStatus}`}>
+    <div className={`atom-loader ${authStatus}`}>
       <div />
       <div />
     </div>
@@ -34,58 +39,3 @@ const Authenticator: React.FC<AuthenticatorProps> = props => {
 };
 
 export default Authenticator;
-
-/**
- * ORIGINAL CLASS IMPLEMENTATION
- */
-
-//type AuthenticatorProps = {
-//    authStatus?: string;
-//    callbackTimeout?: number;
-//    successDispatcher: () => void;
-//    failDispatcher: () => void;
-//};
-
-//type AuthenticatorState = typeof initialState;
-//const initialState = Object.freeze({ show: false });
-
-//export default class Authenticator extends React.PureComponent<AuthenticatorProps, AuthenticatorState> {
-//    static defaultProps = {
-//        callbackTimeout: 1500,
-//        authStatus: AuthStatusEnum.None as string
-//    };
-
-//    constructor(props: AuthenticatorProps) {
-//        super(props);
-//        this.state = initialState;
-//    }
-
-//    public componentWillReceiveProps(nextProps: AuthenticatorProps): void {
-//        const nextAuthStatus = nextProps.authStatus || AuthStatusEnum.None;
-
-//        if (nextAuthStatus.isIn(AuthStatusEnum.Success, AuthStatusEnum.Fail)) {
-//            this.handleAuthCallback(nextAuthStatus);
-//        } else {
-//            this.setState({ show: (nextAuthStatus === AuthStatusEnum.Process) });
-//        }
-//    }
-
-//    public render(): React.ReactNode {
-//        return (
-//            <div className={`atom-loader ${this.state.show ? this.props.authStatus : 'inactive'}`}>
-//                <div></div>
-//                <div></div>
-//            </div>
-//        );
-//    }
-
-//    private handleAuthCallback(nextAuthStatus: string): void {
-//        setTimeout(() => {
-//            if (nextAuthStatus === AuthStatusEnum.Success) {
-//                this.props.successDispatcher();
-//            } else {
-//                this.props.failDispatcher();
-//            }
-//        }, this.props.callbackTimeout);
-//    }
-//}

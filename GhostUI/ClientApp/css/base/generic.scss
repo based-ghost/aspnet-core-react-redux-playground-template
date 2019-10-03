@@ -28,6 +28,10 @@ html, body {
 
     .hero-body {
         padding: 1.5rem;
+
+        img {
+            user-select: none;
+        }
     }
 
     .title {

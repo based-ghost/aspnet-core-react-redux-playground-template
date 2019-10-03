@@ -4,7 +4,7 @@ import AppLayout from './components/layout/AppLayout';
 import { RoutesConfig } from './config/routes.config';
 import { Dashboard, FetchData, Form, Login } from './views';
 
-export const routes: React.ReactNode = (
+export const routes: JSX.Element = (
   <AppLayout>
     <Switch>
       <Route exact path={RoutesConfig.Login.path} component={Login} />
