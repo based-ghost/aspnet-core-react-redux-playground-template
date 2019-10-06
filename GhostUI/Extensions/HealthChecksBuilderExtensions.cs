@@ -7,7 +7,12 @@ namespace GhostUI.Extensions
 {
     public static class HealthChecksBuilderExtensions
     {
-        public static IHealthChecksBuilder AddGCInfoCheck(this IHealthChecksBuilder builder, string name, HealthStatus? failureStatus = null, IEnumerable<string> tags = null, long? thresholdInBytes = null)
+        public static IHealthChecksBuilder AddGCInfoCheck(
+            this IHealthChecksBuilder builder,
+            string name,
+            HealthStatus? failureStatus = null,
+            IEnumerable<string> tags = null,
+            long? thresholdInBytes = null)
         {
             builder.AddCheck<GCInfoHealthCheck>(name, failureStatus ?? HealthStatus.Degraded, tags);
 

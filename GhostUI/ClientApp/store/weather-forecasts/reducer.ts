@@ -12,7 +12,6 @@ const initialState = (): IWeatherForecastsState => {
 export const reducer = (state: IWeatherForecastsState = initialState(), incomingAction: FunctionReturnTypes<typeof actionCreators>) => {
     const action = incomingAction as IWeatherForecastsAction;
 
-    // If current action is not pertinent to this reducer, skip remainder of checks
     if (!action.type.startsWith(ActionType.NAMESPACE)) {
         return state;
     }
@@ -33,10 +32,8 @@ export const reducer = (state: IWeatherForecastsState = initialState(), incoming
                     isLoading: false
                 };
             }
-            break;
+            return state;
         default:
-            break;
+            return state;
     }
-
-    return state;
 };

@@ -1,7 +1,6 @@
 using System.Net;
 using GhostUI.Hubs;
 using GhostUI.Models;
-using NSwag.AspNetCore;
 using GhostUI.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;

@@ -7,7 +7,6 @@ export const checkIsArrayOfObjects = (arr: any[]): boolean => {
 export const isLoginSuccess = (authUser: IAuthUser): boolean => {
     if (!authUser || !Object.keys(authUser).length) {
         return false;
-    } else {
-        return (authUser['status'] || '').toLowerCase().indexOf('success') > -1;
     }
+    return (authUser['status'] || '').toLowerCase().includes('success');
 };

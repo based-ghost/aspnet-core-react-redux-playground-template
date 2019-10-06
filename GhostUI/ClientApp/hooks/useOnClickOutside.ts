@@ -6,7 +6,7 @@ export const useOnClickOutside = (
     ref: React.MutableRefObject<HTMLElement | null>,
     handleOutsideClick: Function,
     handleInsideClick: Function
-) => {
+): void => {
     useEffect(() => {
         const handleClick = (e: any): void => {
             if (!ref.current)

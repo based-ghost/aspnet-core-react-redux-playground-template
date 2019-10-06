@@ -1,4 +1,4 @@
-﻿import React from 'react';
+﻿import React, { Fragment } from 'react';
 import { SignalRApi } from '../api';
 import { connect } from 'react-redux';
 import { IApplicationState } from '../store';
@@ -8,7 +8,7 @@ import { Checkbox } from '../components/controls';
 import { Authenticator } from '../components/loaders';
 import { RoutesConfig } from '../config/routes.config';
 import { RouteComponentProps } from 'react-router-dom';
-import { renderToastifyMsg } from '../utils/notificationUtils';
+import { renderToastifyMsg } from '../utils/renderToastifyMsg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { actionCreators, AuthStatusEnum, ICredentials, reducer } from '../store/auth';
 
@@ -58,11 +58,16 @@ class Login extends React.Component<LoginProps, LoginState> {
                         <h3 className='title'>Login</h3>
                         <p className='subtitle'>Please login to proceed</p>
                         <div className='box'>
-                            <img id='login-img' src={require('../assets/image/based-ghost-main.png')} alt='based-ghost Logo' width='190' />
+                            <img
+                                id='login-img'
+                                src={require('../assets/image/based-ghost-main.png')}
+                                alt='based-ghost Logo'
+                                width='180'
+                            />
                             <form onSubmit={this.handleLogin}>
-                                { this.renderNameInput() }
-                                { this.renderPasswordInput() }
-                                { this.renderLoginControls() }
+                                {this.renderNameInput()}
+                                {this.renderPasswordInput()}
+                                {this.renderLoginControls()}
                             </form>
                             <Authenticator
                                 authStatus={this.state.authRequestStatus}
@@ -78,11 +83,15 @@ class Login extends React.Component<LoginProps, LoginState> {
     }
 
     private renderNameInput(): React.ReactNode {
+        const userClassName = (
+            `input is-large ${(this.state.invalidInputs && !this.state.credentials.userName) ? 'is-danger' : ''}`
+        ).trim();
+
         return (
             <div className='field'>
                 <div className='control has-icons-left'>
                     <input
-                        className={`input is-large ${(this.state.invalidInputs && !this.state.credentials.userName) ? 'is-danger' : ''}`}
+                        className={userClassName}
                         type='text'
                         value={this.state.credentials.userName}
                         onChange={this.updateUserName}
@@ -98,11 +107,15 @@ class Login extends React.Component<LoginProps, LoginState> {
     }
 
     private renderPasswordInput(): React.ReactNode {
+        const pwordClassName = (
+            `input is-large ${(this.state.invalidInputs && !this.state.credentials.password) ? 'is-danger' : ''}`
+        ).trim();
+
         return (
             <div className='field'>
                 <div className='control has-icons-left has-icons-right'>
                     <input
-                        className={`input is-large ${(this.state.invalidInputs && !this.state.credentials.password) ? 'is-danger' : ''}`}
+                        className={pwordClassName}
                         type={!this.state.showPassword ? 'password' : 'text'}
                         value={this.state.credentials.password}
                         onChange={this.updatePassword}
@@ -111,9 +124,11 @@ class Login extends React.Component<LoginProps, LoginState> {
                     <span className='icon is-left'>
                         <FontAwesomeIcon icon='lock' />
                     </span>
-                    <span className='icon is-right icon-clickable'
+                    <span
+                        className='icon is-right icon-clickable'
                         data-tooltip={!this.state.showPassword ? 'Show password' : 'Hide password'}
-                        onClick={this.toggleShowPassword}>
+                        onClick={this.toggleShowPassword}
+                    >
                         <FontAwesomeIcon icon={!this.state.showPassword ? 'eye' : 'eye-slash'} />
                     </span>
                 </div>
@@ -123,20 +138,20 @@ class Login extends React.Component<LoginProps, LoginState> {
 
     private renderLoginControls(): React.ReactNode {
         return (
-            <React.Fragment>
+            <Fragment>
                 <Checkbox
                     trailingLabel='Remember me'
-                    wrapperClass='remember-me-control'
                     onCheck={this.updateRememberMe}
+                    wrapperClass='remember-me-control'
                     checked={!!this.state.credentials.rememberMe}
                 />
-              <button className='button is-info is-large is-fullwidth' type='submit'>
+              <button type='submit' className='button is-info is-large is-fullwidth'>
                   <span>Login</span>
                   <span className='icon'>
                       <FontAwesomeIcon icon='sign-in-alt' />
                   </span>
               </button>
-            </React.Fragment>
+            </Fragment>
         );
     }
 

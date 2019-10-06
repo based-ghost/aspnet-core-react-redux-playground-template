@@ -24,7 +24,7 @@
     -webkit-animation-delay: .25s;
     animation-delay: .25s;
     display: flex;
-    height: 75px;
+    height: 70px;
 }
 
 .brand-wrapper {
@@ -99,7 +99,7 @@
         }
 
         > svg {
-            margin-right:.5rem;
+            margin-right: .55rem;
 
             @include renderMobileNavView {
                 display: none;

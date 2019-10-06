@@ -31,10 +31,10 @@ const tslintOptions = {
             'no-irregular-whitespace': true,
             'no-trailing-whitespace': true,
             'one-line': [true, 'check-catch', 'check-finally', 'check-else', 'check-open-brace', 'check-whitespace'],
-            'ordered-imports': [true, {
+            /*'ordered-imports': [true, {
                 'import-sources-order': 'any',
                 'named-imports-order': 'case-insensitive'
-            }],
+            }],*/
             'prefer-template': true,
             'quotemark': [true, 'single'],
             'semicolon': [true, 'always'],

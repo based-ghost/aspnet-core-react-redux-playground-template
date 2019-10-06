@@ -23,6 +23,16 @@ html, body {
     padding: 1rem 1.5rem;
 }
 
+code {
+    color: #212529;
+    padding: 3px 4px;
+    font-size: 0.94em;
+    word-break: break-word;
+    border-radius: 0.25rem;
+    background-color: rgba(255, 229, 100, 0.2);
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
 .hero.is-dark {
     background-color: $color-hero-is-dark;
 
@@ -59,12 +69,32 @@ html, body {
 
 .button {
     font-weight: 600;
+
+    &.is-light {
+        background-color: #F0F0F0;
+
+        &:hover {
+            background-color: #E6E6E6;
+        }
+    }
 }
 
 .incrementer-buttons {
     > .button {
         svg {
             margin-right: .5rem;
+        }
+
+        &.plus {
+            svg {
+                color: $green;
+            }
+        }
+
+        &.minus {
+            svg {
+                color: $red;
+            }
         }
     }
 }
@@ -73,7 +103,9 @@ html, body {
     padding-bottom: 3rem;
 
     hr {
-        margin: .5rem 0;
+        width: 55%;
+        margin: 0.5rem auto;
+        background-color: rgba(0, 0, 0, 0.065);
     }
 }
 
@@ -160,7 +192,7 @@ html, body {
             margin-left: auto;
 
             svg {
-                margin-right: .35rem;
+                margin-right: .75rem;
             }
         }
 
@@ -168,7 +200,7 @@ html, body {
             margin-right: auto;
 
             svg {
-                margin-left: .35rem;
+                margin-left: .75rem;
             }
         }
     }
@@ -193,16 +225,28 @@ html, body {
 .footer {
     background-color: $color-body-bg;
     padding: 3rem 1.5rem 3rem;
-    width: 50%;
+    width: 40%;
     margin: auto;
 
     > hr {
         height: 1px;
         margin: 2rem 0 .75rem 0;
-        background-color: rgba(0, 0, 0, 0.35);
+        background-color: rgba(0, 0, 0, 0.15);
     }
 
     @media (max-width: 900px) {
         width: 100%;
+    }
+}
+
+.toastify-msg {
+    svg {
+        font-size: 1.2rem;
+        margin-left: 0.5rem;
+        margin-right: 0.75rem;
+    }
+
+    span {
+        font-size: 1.075rem;
     }
 }

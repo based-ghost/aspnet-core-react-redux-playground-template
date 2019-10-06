@@ -19,7 +19,7 @@
     },
     Dashboard: {
         path: '/dashboard',
-        displayName: 'Dashboard',
+        displayName: 'Home',
         icon: 'home',
         navBar: {
             show: true,
@@ -29,7 +29,7 @@
     FetchData: {
         path: '/fetchdata',
         pathAbsolute: '/fetchdata/:startDateIndex?',
-        displayName: 'Fetch Data',
+        displayName: 'Fetch',
         icon: 'cloud',
         navBar: {
             show: true,

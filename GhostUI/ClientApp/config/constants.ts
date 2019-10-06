@@ -19,17 +19,3 @@ export const spaNugetUrls = {
     HEALTH_JSON: 'http://localhost:56717/healthchecks-json',
     SWAGGER_DOCS: 'http://localhost:56717/docs'
 };
-
-/**
- * SignalR config
- */
-export const signalRConfig = {
-    BASE_URL: 'http://localhost:56717/hubs/users',
-    CONNECTION_DELAY: 0,
-    HUB_MESSAGE_DELAY: 3000,
-    HUB_MESSAGE_TITLE: 'Hub Message',
-    LOGIN_USER_EVENT: 'UserLogin',
-    LOGOUT_USER_EVENT: 'UserLogout',
-    CLOSE_EVENT: 'CloseAllConnections',
-    TOASTIFY_ICON: 'info'
-};

@@ -1,6 +1,6 @@
 ﻿import axios, { AxiosError } from 'axios';
 import { toast } from 'react-toastify';
-import { renderToastifyMsg } from '../utils/notificationUtils';
+import { renderToastifyMsg } from '../utils/renderToastifyMsg';
 
 export const configureAxiosInterceptors = (): void => {
     axios.interceptors.response.use(

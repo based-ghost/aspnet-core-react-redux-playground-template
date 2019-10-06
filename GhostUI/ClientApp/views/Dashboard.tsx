@@ -17,7 +17,7 @@ const Dashboard: React.FC = () => (
       <div className='card'>
         <div className='card-content'>
           <div className='column'>
-            <p className='title has-text-centered'>Technology Stack</p>
+            <p className='title has-text-centered'>Tech Stack</p>
             <hr />
             <div className='columns is-multiline'>
               <div className='column dashboard-info is-half'>

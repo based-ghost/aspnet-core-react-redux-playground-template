@@ -49,8 +49,8 @@ const NavBar: React.FC<{ isAuthenticated: boolean }> = ({ isAuthenticated }) => 
         <div className='brand-wrapper'>
           <img
             src={require('../../assets/image/bulma.io-logo.png')}
-            alt='Bulma Logo'
-            width='165'
+            alt='bulma.io-logo'
+            width='155'
           />
         </div>
         <div className='navbar-routes'>

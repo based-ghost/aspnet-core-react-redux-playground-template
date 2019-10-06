@@ -15,7 +15,6 @@ const initialState = (): IFormState => {
 };
 
 export const reducer = (state: IFormState = initialState(), action: FunctionReturnTypes<typeof actionCreators>) => {
-    // If current action is not pertinent to this reducer, skip remainder of checks
     if (!action.type.startsWith(ActionType.NAMESPACE)) {
         return state;
     }

@@ -1,5 +1,6 @@
 ﻿.dropdown {
     button {
+        cursor: default;
         justify-content: initial;
         padding-left: 1em;
         font-weight: 400;
@@ -64,6 +65,7 @@
 .dropdown-content {
     -webkit-box-shadow: $dropdown-box-shadow;
     box-shadow: $dropdown-box-shadow;
+    cursor: default;
 }
 
 .selected-option {

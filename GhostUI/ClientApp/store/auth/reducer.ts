@@ -14,7 +14,6 @@ const initialState = (): IAuthState => {
 export const reducer = (state: IAuthState = initialState(), incomingAction: FunctionReturnTypes<typeof actionCreators>) => {
     const action = incomingAction as IAuthAction;
 
-    // If current action is not pertinent to this reducer, skip remainder of checks
     if (!action.type.startsWith(ActionType.NAMESPACE)) {
         return state;
     }

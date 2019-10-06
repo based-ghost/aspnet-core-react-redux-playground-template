@@ -17,6 +17,7 @@ class FetchData extends React.Component<WeatherForecastProps> {
     public UNSAFE_componentWillReceiveProps(nextProps: WeatherForecastProps): void {
         const nextStartDateIndex = nextProps.match.params.startDateIndex;
         const curStartDateIndex = (this.props.startDateIndex || 0).toString();
+
         if (nextStartDateIndex !== curStartDateIndex) {
             const startDateIndex = parseInt(nextStartDateIndex) || 0;
             this.props.requestWeatherForecasts(startDateIndex);

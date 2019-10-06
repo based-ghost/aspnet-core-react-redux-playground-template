@@ -23,14 +23,14 @@ const Form: React.FC<FormProps> = ({
       <h3 className='title is-4'>Counter</h3>
       <h5 className='subtitle is-5'>Simple example of a React component</h5>
       <p className='subtitle is-5'>
-        Current count: <strong>{count}</strong>
+        Current count: <code>{count}</code>
       </p>
       <p className='buttons incrementer-buttons'>
-        <button className='button is-danger' onClick={() => decrement()}>
+        <button className='button is-light minus' onClick={decrement}>
           <FontAwesomeIcon icon='minus' />
           Decrement
         </button>
-        <button className='button is-success' onClick={() => increment()}>
+        <button className='button is-light plus' onClick={increment}>
           <FontAwesomeIcon icon='plus' />
           Increment
         </button>
@@ -43,7 +43,7 @@ const Form: React.FC<FormProps> = ({
       <h3 className='title is-4'>Dropdown</h3>
       <h5 className='subtitle is-5'>Select an option from the dropdown</h5>
       <p className='subtitle is-5'>
-        Option: <strong>{JSON.stringify(selectedDropdownOption)}</strong>
+        Option: <code>{JSON.stringify(selectedDropdownOption)}</code>
       </p>
       <div className='field'>
         <Dropdown
@@ -62,7 +62,7 @@ const Form: React.FC<FormProps> = ({
       <h3 className='title is-4'>Checkbox</h3>
       <h5 className='subtitle is-5'>Toggle the checkbox</h5>
       <p className='subtitle is-5'>
-        Checked: <strong>{checkboxValue.toString()}</strong>
+        Checked: <code>{checkboxValue.toString()}</code>
       </p>
       <div className='field'>
         <Checkbox onCheck={doCheck} checked={checkboxValue} />
