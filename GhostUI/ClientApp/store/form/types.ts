@@ -15,8 +15,8 @@ export const ActionType: IActionType = {
 };
 
 export interface IDropdownOption {
-    value: number;
-    label: string;
+    readonly value: number;
+    readonly label: string;
 }
 
 export interface IFormState {
@@ -25,8 +25,4 @@ export interface IFormState {
     readonly selectedDropdownOption: IDropdownOption;
 }
 
-export interface IFormAction {
-    readonly type: string;
-    readonly option?: IDropdownOption;
-    readonly checked?: boolean;
-}
+export type IFormAction = { readonly type: string; } & { [key: string]: any; };

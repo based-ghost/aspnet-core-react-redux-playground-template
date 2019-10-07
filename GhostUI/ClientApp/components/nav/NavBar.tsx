@@ -66,11 +66,9 @@ const NavBar: React.FC<NavBarProps> = ({ isAuthenticated }) => {
 };
 
 // Map only necessary IApplicationState to NavBar props
-const mapStateToProps = (state: IApplicationState) => {
-  return {
-    isAuthenticated: state.auth.isAuthenticated
-  };
-};
+const mapStateToProps = (state: IApplicationState) => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
 
 // Wire up the React component to the Redux store
 export default connect(mapStateToProps)(NavBar);

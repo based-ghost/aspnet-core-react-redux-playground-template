@@ -39,7 +39,7 @@ class SignalRService {
 
         setTimeout(() => {
             this._hubConnection.start().catch((error) => {
-                console.error(error.toString());
+                console.error(String(error));
             });
         }, _signalrConfig.CONNECTION_DELAY);
     }

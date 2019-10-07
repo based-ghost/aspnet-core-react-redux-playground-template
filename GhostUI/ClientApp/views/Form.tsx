@@ -11,11 +11,11 @@ type FormProps = ReturnType<typeof reducer> & typeof actionCreators & RouteCompo
 
 const Form: React.FC<FormProps> = ({
   count,
-  doCheck,
   increment,
   decrement,
   selectOption,
   checkboxValue,
+  handleOnCheck,
   selectedDropdownOption,
 }) => {
   const renderCounterGroup: React.ReactNode = (
@@ -65,7 +65,10 @@ const Form: React.FC<FormProps> = ({
         Checked: <code>{checkboxValue.toString()}</code>
       </p>
       <div className='field'>
-        <Checkbox onCheck={doCheck} checked={checkboxValue} />
+        <Checkbox
+          checked={checkboxValue}
+          onCheck={handleOnCheck}
+        />
       </div>
     </div>
   );
@@ -83,8 +86,8 @@ const Form: React.FC<FormProps> = ({
   );
 };
 
+// Map only necessary IApplicationState to Form props
+const mapStateToProps = (state: IApplicationState) => state.form;
+
 // Wire up the React component to the Redux store
-export default connect(
-  (state: IApplicationState) => state.form,
-  actionCreators
-)(Form);
+export default connect(mapStateToProps, actionCreators)(Form);

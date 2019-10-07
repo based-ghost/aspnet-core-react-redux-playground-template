@@ -6,7 +6,7 @@ import { Link, RouteComponentProps } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { actionCreators, IWeatherForecast, reducer } from '../store/weather-forecasts';
 
-type WeatherForecastProps = ReturnType<typeof reducer> & typeof actionCreators & RouteComponentProps<{ startDateIndex: string }>;
+type WeatherForecastProps = ReturnType<typeof reducer> & typeof actionCreators & RouteComponentProps<{ readonly startDateIndex: string }>;
 
 class FetchData extends React.Component<WeatherForecastProps> {
     public componentDidMount(): void {
@@ -83,5 +83,8 @@ class FetchData extends React.Component<WeatherForecastProps> {
     }
 }
 
+// Map only necessary IApplicationState to FetchData props
+const mapStateToProps = (state: IApplicationState) => state.weatherForecasts;
+
 // Wire up the React component to the Redux store
-export default connect((state: IApplicationState) => state.weatherForecasts, actionCreators)(FetchData);
+export default connect(mapStateToProps, actionCreators)(FetchData);

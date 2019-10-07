@@ -42,9 +42,4 @@ export interface IAuthState {
     readonly userName?: string;
 }
 
-export interface IAuthAction {
-    readonly type: string;
-    readonly authUser?: IAuthUser;
-    readonly checked?: boolean;
-    readonly value?: string;
-}
+export type IAuthAction = { readonly type: string; } & { [key: string]: any; };

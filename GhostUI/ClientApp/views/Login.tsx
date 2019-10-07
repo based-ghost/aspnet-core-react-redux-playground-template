@@ -231,5 +231,8 @@ class Login extends React.Component<LoginProps, LoginState> {
     }
 }
 
+// Map only necessary IApplicationState to Login props
+const mapStateToProps = (state: IApplicationState) => state.auth;
+
 // Wire up the React component to the Redux store
-export default connect((state: IApplicationState) => state.auth, actionCreators)(Login);
+export default connect(mapStateToProps, actionCreators)(Login);

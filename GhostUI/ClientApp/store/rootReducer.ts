@@ -13,6 +13,14 @@ export interface IApplicationState {
     readonly router: RouterState;
 }
 
+// This type can be used as a hint on action creators so that its 'dispatch' and 'getState' params are correctly typed to match your store.
+export interface IAppThunkAction<TAction> {
+    (dispatch: (action: TAction) => void, getState: () => IApplicationState): any;
+}
+
+// Gets the underlying unique types for all actionCreator objects for which it is applied to - used in reducer to help infer dispatched action type
+export type FunctionReturnTypes<T> = { [K in keyof T]: T[K] extends (...args: any[]) => any ? ReturnType<T[K]> : never }[keyof T];
+
 // Takes all the individual reducers and creates a single state object by combining them
 export function createRootReducer(history: History): Redux.Reducer<IApplicationState> {
     return Redux.combineReducers<IApplicationState>({
@@ -22,11 +30,3 @@ export function createRootReducer(history: History): Redux.Reducer<IApplicationS
         router: connectRouter(history)
     });
 }
-
-// This type can be used as a hint on action creators so that its 'dispatch' and 'getState' params are correctly typed to match your store.
-export interface IAppThunkAction<TAction> {
-    (dispatch: (action: TAction) => void, getState: () => IApplicationState): any;
-}
-
-// Gets the underlying unique types for all actionCreator objects for which it is applied to - used in reducer to help infer dispatched action type
-export type FunctionReturnTypes<T> = { [K in keyof T]: T[K] extends (...args: any[]) => any ? ReturnType<T[K]> : never }[keyof T];

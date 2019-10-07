@@ -1,11 +1,12 @@
 ﻿import React, { useEffect } from 'react';
+import { CallbackFunction } from '../../types';
 import { AuthStatusEnum } from '../../store/auth/types';
 
 type AuthenticatorProps = {
   readonly authStatus?: string;
   readonly callbackTimeout?: number;
-  readonly handleOnFail: () => void;
-  readonly handleOnSuccess: () => void;
+  readonly handleOnFail: CallbackFunction;
+  readonly handleOnSuccess: CallbackFunction;
 };
 
 const Authenticator: React.FC<AuthenticatorProps> = ({

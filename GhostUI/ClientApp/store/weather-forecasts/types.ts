@@ -13,11 +13,11 @@ export const ActionType: IActionType = {
 };
 
 export interface IWeatherForecast {
-    ID: number;
-    DateFormatted: string;
-    TemperatureC: number;
-    TemperatureF: number;
-    Summary: string;
+    readonly ID: number;
+    readonly DateFormatted: string;
+    readonly TemperatureC: number;
+    readonly TemperatureF: number;
+    readonly Summary: string;
 }
 
 export interface IWeatherForecastsState {
@@ -26,8 +26,4 @@ export interface IWeatherForecastsState {
     readonly forecasts?: IWeatherForecast[];
 }
 
-export interface IWeatherForecastsAction {
-    readonly type: string;
-    readonly startDateIndex?: number;
-    readonly forecasts?: IWeatherForecast[];
-}
+export type IWeatherForecastsAction = { readonly type: string; } & { [key: string]: any; };

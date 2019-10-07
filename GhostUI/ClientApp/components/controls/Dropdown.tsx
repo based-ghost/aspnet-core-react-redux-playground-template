@@ -4,11 +4,11 @@ import { checkIsArrayOfObjects } from '../../utils/helpers';
 
 type DropdownProps = {
   readonly options: any[];
-  readonly placeholder?: string;
+  readonly labelKey: string;
   readonly disabled?: boolean;
+  readonly placeholder?: string;
   readonly buttonClass?: string;
   readonly wrapperClass?: string;
-  readonly labelKey: string;
   readonly selectedOptionLabel?: string;
   readonly dispatchHandler: (option: any) => void;
 };

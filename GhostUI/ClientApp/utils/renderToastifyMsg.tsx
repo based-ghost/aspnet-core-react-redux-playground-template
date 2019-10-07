@@ -1,4 +1,4 @@
-﻿import React, { CSSProperties } from 'react';
+﻿import React from 'react';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
