@@ -62,84 +62,104 @@
 }
 
 /* Authenticator.tsx */
-.atom-loader {
-    position: relative;
-    width: 7em;
-    height: 7em;
-    top: 0;
-    left: 0;
+.fingerprint-spinner {
+    height: 100px;
+    width: 100px;
+    padding: 2px;
     margin: 1.25em auto auto auto;
-    display: none;
-
-    &.process {
-        display: inline-block;
-    }
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
 
     &.success {
-        display: inline-block;
-
         > div {
-            opacity: 0.6;
-            border: .7em solid #1be551;
+            border-top-color: #16E04C;
         }
     }
 
     &.fail {
-        display: inline-block;
-
         > div {
-            opacity: 0.6;
-            border: .7em solid #e74c3c;
+            border-top-color: #e74c3c;
         }
     }
 
-    div {
-        opacity: 0.5;
-        width: 7em;
-        height: 7em;
-        border: .7em solid #209cee;
-        -webkit-border-radius: 100%;
-        border-radius: 100%;
+    > div {
         position: absolute;
-        top: 0;
+        border-radius: 50%;
+        box-sizing: border-box;
+        border: 2px solid transparent;
+        border-top-color: $blue;
+        animation: fingerprint-spinner-animation 1500ms cubic-bezier(0.68, -0.75, 0.265, 1.75) infinite forwards;
+        margin: auto;
+        bottom: 0;
         left: 0;
-        -webkit-perspective: 800px;
-        perspective: 800px;
-        -webkit-animation-fill-mode: forwards;
-        animation-fill-mode: forwards;
+        right: 0;
+        top: 0;
 
         &:nth-child(1) {
-            -webkit-animation: rotate-right 1.75s 0s infinite linear;
-            animation: rotate-right 1.75s 0s infinite linear;
+            height: calc(96px / 9 + 0 * 96px / 9);
+            width: calc(96px / 9 + 0 * 96px / 9);
+            animation-delay: calc(50ms * 1);
         }
 
         &:nth-child(2) {
-            -webkit-animation: rotate-left 1.75s 0s infinite linear;
-            animation: rotate-left 1.75s 0s infinite linear;
+            height: calc(96px / 9 + 1 * 96px / 9);
+            width: calc(96px / 9 + 1 * 96px / 9);
+            animation-delay: calc(50ms * 2);
+        }
+
+        &:nth-child(3) {
+            height: calc(96px / 9 + 2 * 96px / 9);
+            width: calc(96px / 9 + 2 * 96px / 9);
+            animation-delay: calc(50ms * 3);
+        }
+
+        &:nth-child(4) {
+            height: calc(96px / 9 + 3 * 96px / 9);
+            width: calc(96px / 9 + 3 * 96px / 9);
+            animation-delay: calc(50ms * 4);
+        }
+
+        &:nth-child(5) {
+            height: calc(96px / 9 + 4 * 96px / 9);
+            width: calc(96px / 9 + 4 * 96px / 9);
+            animation-delay: calc(50ms * 5);
+        }
+
+        &:nth-child(6) {
+            height: calc(96px / 9 + 5 * 96px / 9);
+            width: calc(96px / 9 + 5 * 96px / 9);
+            animation-delay: calc(50ms * 6);
+        }
+
+        &:nth-child(7) {
+            height: calc(96px / 9 + 6 * 96px / 9);
+            width: calc(96px / 9 + 6 * 96px / 9);
+            animation-delay: calc(50ms * 7);
+        }
+
+        &:nth-child(8) {
+            height: calc(96px / 9 + 7 * 96px / 9);
+            width: calc(96px / 9 + 7 * 96px / 9);
+            animation-delay: calc(50ms * 8);
+        }
+
+        &:nth-child(9) {
+            height: calc(96px / 9 + 8 * 96px / 9);
+            width: calc(96px / 9 + 8 * 96px / 9);
+            animation-delay: calc(50ms * 9);
         }
     }
 }
 
-@-webkit-keyframes rotate-right {
-    0% {
-        -webkit-transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-    }
-
+@-webkit-keyframes fingerprint-spinner-animation {
     100% {
-        -webkit-transform: rotateX(180deg) rotateY(360deg) rotateZ(360deg);
-        transform: rotateX(180deg) rotateY(360deg) rotateZ(360deg);
+        transform: rotate(360deg);
     }
 }
 
-@keyframes rotate-left {
-    0% {
-        -webkit-transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-    }
-
+@keyframes fingerprint-spinner-animation {
     100% {
-        -webkit-transform: rotateX(360deg) rotateY(180deg) rotateZ(360deg);
-        transform: rotateX(360deg) rotateY(180deg) rotateZ(360deg);
+        transform: rotate(360deg);
     }
 }

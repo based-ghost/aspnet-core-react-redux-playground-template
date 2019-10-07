@@ -3,14 +3,14 @@ import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 import { checkIsArrayOfObjects } from '../../utils/helpers';
 
 type DropdownProps = {
-  options: any[];
-  placeholder?: string;
-  disabled?: boolean;
-  buttonClass?: string;
-  wrapperClass?: string;
-  labelKey: string;
-  selectedOptionLabel?: string;
-  dispatchHandler: (option: any) => void;
+  readonly options: any[];
+  readonly placeholder?: string;
+  readonly disabled?: boolean;
+  readonly buttonClass?: string;
+  readonly wrapperClass?: string;
+  readonly labelKey: string;
+  readonly selectedOptionLabel?: string;
+  readonly dispatchHandler: (option: any) => void;
 };
 
 const Dropdown: React.FC<DropdownProps> = ({

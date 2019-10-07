@@ -1,10 +1,10 @@
 ﻿export interface IActionType {
-    NAMESPACE: string;
-    LOGIN: string;
-    LOGIN_SUCCESS: string;
-    LOGIN_FAIL: string;
-    LOGOUT: string;
-    RESET_STATE: string;
+    readonly NAMESPACE: string;
+    readonly LOGIN: string;
+    readonly LOGIN_SUCCESS: string;
+    readonly LOGIN_FAIL: string;
+    readonly LOGOUT: string;
+    readonly RESET_STATE: string;
 }
 
 export const ActionType: IActionType = {

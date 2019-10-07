@@ -1,9 +1,9 @@
 ﻿export interface IActionType {
-    NAMESPACE: string;
-    INCREMENT: string;
-    DECREMENT: string;
-    DROPDOWN_SELECT: string;
-    CHECK_SAMPLE_BOX: string;
+    readonly NAMESPACE: string;
+    readonly INCREMENT: string;
+    readonly DECREMENT: string;
+    readonly DROPDOWN_SELECT: string;
+    readonly CHECK_SAMPLE_BOX: string;
 }
 
 export const ActionType: IActionType = {

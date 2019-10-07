@@ -12,8 +12,8 @@ import { renderToastifyMsg } from '../utils/renderToastifyMsg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { actionCreators, AuthStatusEnum, ICredentials, reducer } from '../store/auth';
 
-type LoginProps = ReturnType<typeof reducer> & typeof actionCreators & RouteComponentProps<{}>;
 type LoginState = typeof initialState;
+type LoginProps = ReturnType<typeof reducer> & typeof actionCreators & RouteComponentProps<{}>;
 
 const initialState = Object.freeze({
     showPassword: false,
@@ -59,10 +59,10 @@ class Login extends React.Component<LoginProps, LoginState> {
                         <p className='subtitle'>Please login to proceed</p>
                         <div className='box'>
                             <img
-                                id='login-img'
-                                src={require('../assets/image/based-ghost-main.png')}
-                                alt='based-ghost Logo'
                                 width='180'
+                                id='login-img'
+                                alt='based-ghost Logo'
+                                src={require('../assets/image/based-ghost-main.png')}
                             />
                             <form onSubmit={this.handleLogin}>
                                 {this.renderNameInput()}
@@ -70,10 +70,9 @@ class Login extends React.Component<LoginProps, LoginState> {
                                 {this.renderLoginControls()}
                             </form>
                             <Authenticator
+                                handleOnFail={this.onFailedAuth}
+                                handleOnSuccess={this.onSuccessfulAuth}
                                 authStatus={this.state.authRequestStatus}
-                                callbackTimeout={1500}
-                                failDispatcher={this.onFailedAuth}
-                                successDispatcher={this.onSuccessfulAuth}
                             />
                         </div>
                     </div>
@@ -91,12 +90,12 @@ class Login extends React.Component<LoginProps, LoginState> {
             <div className='field'>
                 <div className='control has-icons-left'>
                     <input
-                        className={userClassName}
-                        type='text'
-                        value={this.state.credentials.userName}
-                        onChange={this.updateUserName}
                         autoFocus
+                        type='text'
                         placeholder='Username'
+                        className={userClassName}
+                        onChange={this.updateUserName}
+                        value={this.state.credentials.userName}
                     />
                     <span className='icon is-left'>
                         <FontAwesomeIcon icon='user' />
@@ -115,19 +114,19 @@ class Login extends React.Component<LoginProps, LoginState> {
             <div className='field'>
                 <div className='control has-icons-left has-icons-right'>
                     <input
-                        className={pwordClassName}
-                        type={!this.state.showPassword ? 'password' : 'text'}
-                        value={this.state.credentials.password}
-                        onChange={this.updatePassword}
                         placeholder='Password'
+                        className={pwordClassName}
+                        onChange={this.updatePassword}
+                        value={this.state.credentials.password}
+                        type={!this.state.showPassword ? 'password' : 'text'}
                     />
                     <span className='icon is-left'>
                         <FontAwesomeIcon icon='lock' />
                     </span>
                     <span
+                        onClick={this.toggleShowPassword}
                         className='icon is-right icon-clickable'
                         data-tooltip={!this.state.showPassword ? 'Show password' : 'Hide password'}
-                        onClick={this.toggleShowPassword}
                     >
                         <FontAwesomeIcon icon={!this.state.showPassword ? 'eye' : 'eye-slash'} />
                     </span>
@@ -145,12 +144,12 @@ class Login extends React.Component<LoginProps, LoginState> {
                     wrapperClass='remember-me-control'
                     checked={!!this.state.credentials.rememberMe}
                 />
-              <button type='submit' className='button is-info is-large is-fullwidth'>
-                  <span>Login</span>
-                  <span className='icon'>
-                      <FontAwesomeIcon icon='sign-in-alt' />
-                  </span>
-              </button>
+                <button type='submit' className='button is-info is-large is-fullwidth'>
+                    <span>Login</span>
+                    <span className='icon'>
+                        <FontAwesomeIcon icon='sign-in-alt' />
+                    </span>
+                </button>
             </Fragment>
         );
     }
@@ -182,7 +181,11 @@ class Login extends React.Component<LoginProps, LoginState> {
         } else {
             // Clear any toast notifications and prepare state for Login request stub / run login request stub
             toast.dismiss();
-            this.setState({ invalidInputs: false, authRequestStatus: AuthStatusEnum.Process as string });
+
+            this.setState({
+                invalidInputs: false,
+                authRequestStatus: AuthStatusEnum.Process as string,
+            });
 
             setTimeout(() => {
                 this.props.loginUserRequest(this.state.credentials);

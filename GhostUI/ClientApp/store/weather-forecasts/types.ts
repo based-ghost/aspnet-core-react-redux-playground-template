@@ -1,8 +1,8 @@
 ﻿export interface IActionType {
-    NAMESPACE: string;
-    REQUEST: string;
-    RECEIVE: string;
-    RESET_STATE: string;
+    readonly NAMESPACE: string;
+    readonly REQUEST: string;
+    readonly RECEIVE: string;
+    readonly RESET_STATE: string;
 }
 
 export const ActionType: IActionType = {

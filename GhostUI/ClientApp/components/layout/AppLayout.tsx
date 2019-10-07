@@ -2,7 +2,11 @@ import React, { Fragment, ReactNode } from 'react';
 import Footer from '../footer/Footer';
 import { NavBar, Settings } from '../nav';
 
-const AppLayout: React.FC<{ children?: ReactNode }> = ({ children }) => (
+type AppLayoutProps = {
+  readonly children?: ReactNode;
+};
+
+const AppLayout: React.FC<AppLayoutProps> = ({ children }) => (
   <Fragment>
     <NavBar />
     <Settings />

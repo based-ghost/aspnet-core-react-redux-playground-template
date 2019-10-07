@@ -6,7 +6,11 @@ import { RoutesConfig } from '../../config/routes.config';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const NavBar: React.FC<{ isAuthenticated: boolean }> = ({ isAuthenticated }) => {
+type NavBarProps = {
+  readonly isAuthenticated: boolean;
+};
+
+const NavBar: React.FC<NavBarProps> = ({ isAuthenticated }) => {
   const navRoutes: React.ReactNode = isAuthenticated && (
     <Fragment>
       <NavLink

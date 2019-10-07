@@ -1,12 +1,12 @@
 ﻿import React from 'react';
 
 type CheckboxProps = {
-  checked: boolean;
-  disabled?: boolean;
-  wrapperClass?: string;
-  controlClass?: string;
-  trailingLabel?: string;
-  onCheck: (checked: boolean) => void;
+  readonly checked: boolean;
+  readonly disabled?: boolean;
+  readonly wrapperClass?: string;
+  readonly controlClass?: string;
+  readonly trailingLabel?: string;
+  readonly onCheck: (checked: boolean) => void;
 };
 
 const Checkbox: React.FC<CheckboxProps> = ({

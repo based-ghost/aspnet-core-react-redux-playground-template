@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 
 type SpinnerProps = {
-  loading?: boolean
+  readonly loading?: boolean;
 };
 
 const Spinner = React.memo<SpinnerProps>(({ loading }) => (
