@@ -24,5 +24,3 @@ export interface IFormState {
     readonly checkboxValue: boolean;
     readonly selectedDropdownOption: IDropdownOption;
 }
-
-export type IFormAction = { readonly type: string; } & { [key: string]: any; };

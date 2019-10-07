@@ -1,16 +1,16 @@
-﻿import { FunctionReturnTypes } from '../';
+﻿import { FunctionReturnTypes, ReduxAction } from '../';
 import { actionCreators } from './actions';
-import { ActionType, IWeatherForecastsAction, IWeatherForecastsState } from './types';
+import { ActionType, IWeatherForecastsState } from './types';
 
 const initialState = (): IWeatherForecastsState => {
     return {
         forecasts: [],
-        isLoading: false
+        isLoading: false,
     };
 };
 
 export const reducer = (state: IWeatherForecastsState = initialState(), incomingAction: FunctionReturnTypes<typeof actionCreators>) => {
-    const action = incomingAction as IWeatherForecastsAction;
+    const action = incomingAction as ReduxAction;
 
     if (!action.type.startsWith(ActionType.NAMESPACE)) {
         return state;

@@ -1,6 +1,6 @@
-﻿import { FunctionReturnTypes } from '../';
+﻿import { FunctionReturnTypes, ReduxAction } from '../';
 import { actionCreators } from './actions';
-import { ActionType, IAuthAction, IAuthState} from './types';
+import { ActionType, IAuthState} from './types';
 
 const initialState = (): IAuthState => {
     return {
@@ -12,7 +12,7 @@ const initialState = (): IAuthState => {
 };
 
 export const reducer = (state: IAuthState = initialState(), incomingAction: FunctionReturnTypes<typeof actionCreators>) => {
-    const action = incomingAction as IAuthAction;
+    const action = incomingAction as ReduxAction;
 
     if (!action.type.startsWith(ActionType.NAMESPACE)) {
         return state;

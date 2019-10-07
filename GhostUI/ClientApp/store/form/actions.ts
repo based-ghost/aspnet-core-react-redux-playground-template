@@ -1,8 +1,9 @@
-﻿import { ActionType, IDropdownOption, IFormAction } from './types';
+﻿import { ReduxAction } from '../';
+import { ActionType, IDropdownOption } from './types';
 
 export const actionCreators = {
-    increment: (): IFormAction => ({ type: ActionType.INCREMENT }),
-    decrement: (): IFormAction => ({ type: ActionType.DECREMENT }),
-    handleOnCheck: (checked: boolean): IFormAction => ({ type: ActionType.CHECK_SAMPLE_BOX, checked: checked }),
-    selectOption: (option: IDropdownOption): IFormAction => ({ type: ActionType.DROPDOWN_SELECT, option: option })
+    increment: (): ReduxAction => ({ type: ActionType.INCREMENT }),
+    decrement: (): ReduxAction => ({ type: ActionType.DECREMENT }),
+    handleOnCheck: (checked: boolean): ReduxAction => ({ type: ActionType.CHECK_SAMPLE_BOX, checked: checked }),
+    selectOption: (option: IDropdownOption): ReduxAction => ({ type: ActionType.DROPDOWN_SELECT, option: option })
 };

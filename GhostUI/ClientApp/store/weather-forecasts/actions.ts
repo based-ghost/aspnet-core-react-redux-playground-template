@@ -1,10 +1,10 @@
-﻿import { IAppThunkAction } from '../';
-import { addTask } from 'domain-task';
+﻿import { addTask } from 'domain-task';
 import { SampleApi } from '../../api';
-import { ActionType, IWeatherForecast, IWeatherForecastsAction } from './types';
+import { IAppThunkAction, ReduxAction } from '../';
+import { ActionType, IWeatherForecast } from './types';
 
 export const actionCreators = {
-    requestWeatherForecasts: (startDateIndex: number): IAppThunkAction<IWeatherForecastsAction> => (dispatch, getState) => {
+    requestWeatherForecasts: (startDateIndex: number): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
         if (startDateIndex !== getState().weatherForecasts.startDateIndex) {
             // Build http request and success handler in Promise<void> wrapper
             const fetchTask = SampleApi.getWeatherForecastsAsync(startDateIndex)
@@ -26,5 +26,5 @@ export const actionCreators = {
             });
         }
     },
-    resetState: (): IWeatherForecastsAction => ({ type: ActionType.RESET_STATE })
+    resetState: (): ReduxAction => ({ type: ActionType.RESET_STATE })
 };

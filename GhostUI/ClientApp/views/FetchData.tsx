@@ -10,7 +10,7 @@ type WeatherForecastProps = ReturnType<typeof reducer> & typeof actionCreators &
 
 class FetchData extends React.Component<WeatherForecastProps> {
     public componentDidMount(): void {
-        const startDateIndex = parseInt(this.props.match.params.startDateIndex) || 0;
+        const startDateIndex = parseInt(this.props.match.params.startDateIndex || '0');
         this.props.requestWeatherForecasts(startDateIndex);
     }
 
@@ -19,7 +19,7 @@ class FetchData extends React.Component<WeatherForecastProps> {
         const curStartDateIndex = (this.props.startDateIndex || 0).toString();
 
         if (nextStartDateIndex !== curStartDateIndex) {
-            const startDateIndex = parseInt(nextStartDateIndex) || 0;
+            const startDateIndex = parseInt(nextStartDateIndex || '0');
             this.props.requestWeatherForecasts(startDateIndex);
         }
     }

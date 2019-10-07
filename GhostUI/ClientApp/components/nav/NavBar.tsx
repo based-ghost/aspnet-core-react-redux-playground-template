@@ -14,7 +14,7 @@ const NavBar: React.FC<NavBarProps> = ({ isAuthenticated }) => {
   const navRoutes: React.ReactNode = isAuthenticated && (
     <Fragment>
       <NavLink
-        exact={true}
+        exact
         to={RoutesConfig.Form.path}
         className='navbar-item'
         activeClassName='is-active'
@@ -23,7 +23,7 @@ const NavBar: React.FC<NavBarProps> = ({ isAuthenticated }) => {
         {RoutesConfig.Form.displayName}
       </NavLink>
       <NavLink
-        exact={true}
+        exact
         to={RoutesConfig.Dashboard.path}
         className='navbar-item'
         activeClassName='is-active'
@@ -32,7 +32,6 @@ const NavBar: React.FC<NavBarProps> = ({ isAuthenticated }) => {
         {RoutesConfig.Dashboard.displayName}
       </NavLink>
       <NavLink
-        exact={true}
         to={RoutesConfig.FetchData.path}
         className='navbar-item'
         activeClassName='is-active'

@@ -21,9 +21,7 @@ export interface IWeatherForecast {
 }
 
 export interface IWeatherForecastsState {
-    readonly isLoading?: boolean;
+    readonly isLoading: boolean;
     readonly startDateIndex?: number;
-    readonly forecasts?: IWeatherForecast[];
+    readonly forecasts: IWeatherForecast[];
 }
-
-export type IWeatherForecastsAction = { readonly type: string; } & { [key: string]: any; };

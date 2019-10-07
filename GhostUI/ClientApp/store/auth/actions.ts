@@ -1,11 +1,11 @@
-﻿import { IAppThunkAction } from '../';
-import { AuthApi } from '../../api';
+﻿import { AuthApi } from '../../api';
 import { addTask } from 'domain-task';
+import { IAppThunkAction, ReduxAction } from '../';
 import { isLoginSuccess } from '../../utils/helpers';
-import { ActionType, IAuthAction, IAuthUser, ICredentials } from './types';
+import { ActionType, IAuthUser, ICredentials } from './types';
 
 export const actionCreators = {
-    loginUserRequest: (credentials: ICredentials): IAppThunkAction<IAuthAction> => (dispatch, getState) => {
+    loginUserRequest: (credentials: ICredentials): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
         const loginTask = AuthApi.loginAsync(credentials)
             .then((data: IAuthUser) => {
                 if (isLoginSuccess(data)) { // SUCCESS
@@ -18,7 +18,7 @@ export const actionCreators = {
         // Ensure server-side prerendering waits for this to complete
         addTask(loginTask);
     },
-    logoutUserRequest: (handleRouteCallback: Function): IAppThunkAction<IAuthAction> => (dispatch, getState) => {
+    logoutUserRequest: (handleRouteCallback: Function): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
         const logoutTask = AuthApi.logoutAsync()
             .then(() => {
                 handleRouteCallback();
@@ -28,5 +28,5 @@ export const actionCreators = {
         // Ensure server-side prerendering waits for this to complete
         addTask(logoutTask);
     },
-    resetState: (): IAuthAction => ({ type: ActionType.RESET_STATE })
+    resetState: (): ReduxAction => ({ type: ActionType.RESET_STATE })
 };
