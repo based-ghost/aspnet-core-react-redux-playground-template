@@ -1,5 +1,5 @@
 # ASP.NET Core 2.2 / React + Redux + TypeScript + Hot Module Replacement (HMR) + Server-Side Rendering (SSR)
-This template is a SPA application built using ASP.NET Core 2.2 as the REST API server and React/Redux/TypeScript as the web client (Bulma + SASS used for UI styling). You can find a similar version using Vue + Vuex (and associated libraries) here: https://github.com/based-ghost/aspnet-core-vue-vuex-playground-template
+This template is a SPA application built using ASP.NET Core 2.2 as the REST API server and React/Redux/TypeScript as the web client (Bulma + SASS used for UI styling). You can find a similar version using Vue + Vuex (and associated libraries) here: [aspnet-core-vue-vuex-playground-template](https://github.com/based-ghost/aspnet-core-vue-vuex-playground-template)
 
 
 ![](https://j.gifs.com/jZ6Y44.gif)

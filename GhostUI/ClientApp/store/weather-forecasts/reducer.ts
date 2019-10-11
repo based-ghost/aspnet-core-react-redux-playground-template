@@ -18,17 +18,19 @@ export const reducer = (state: IWeatherForecastsState = initialState(), incoming
 
     switch (action.type) {
         case ActionType.REQUEST:
+            const { startDateIndex } = action;
             return {
                 ...state,
+                startDateIndex,
                 isLoading: true,
-                startDateIndex: action.startDateIndex,
             };
         case ActionType.RECEIVE:
             // Only accept the incoming data if it matches the most recent request. This ensures we correctly handle out-of-order responses.
             if (action.startDateIndex === state.startDateIndex) {
+                const { forecasts, startDateIndex } = action;
                 return {
-                    startDateIndex: action.startDateIndex,
-                    forecasts: action.forecasts,
+                    forecasts,
+                    startDateIndex,
                     isLoading: false
                 };
             }

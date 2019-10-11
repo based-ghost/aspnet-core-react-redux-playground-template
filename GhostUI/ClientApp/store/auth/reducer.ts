@@ -22,11 +22,12 @@ export const reducer = (state: IAuthState = initialState(), incomingAction: Func
         case ActionType.LOGIN:
             return state;
         case ActionType.LOGIN_SUCCESS:
+            const { token, status, userName } = action.authUser!;
             return {
+                token,
+                status,
+                userName,
                 isAuthenticated: true,
-                token: action.authUser!.token,
-                status: action.authUser!.status,
-                userName: action.authUser!.userName
             };
         case ActionType.LOGOUT:
         case ActionType.LOGIN_FAIL:

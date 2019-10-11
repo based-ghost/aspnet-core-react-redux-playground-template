@@ -1,5 +1,6 @@
 ﻿import { AuthApi } from '../../api';
 import { addTask } from 'domain-task';
+import { CallbackFunction } from '../../types';
 import { IAppThunkAction, ReduxAction } from '../';
 import { isLoginSuccess } from '../../utils/helpers';
 import { ActionType, IAuthUser, ICredentials } from './types';
@@ -18,7 +19,7 @@ export const actionCreators = {
         // Ensure server-side prerendering waits for this to complete
         addTask(loginTask);
     },
-    logoutUserRequest: (handleRouteCallback: Function): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+    logoutUserRequest: (handleRouteCallback: CallbackFunction): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
         const logoutTask = AuthApi.logoutAsync()
             .then(() => {
                 handleRouteCallback();

@@ -31,7 +31,8 @@ const Settings: React.FC<SettingsProps> = ({ isAuthenticated, logoutUserRequest 
   );
 
   const handleLogout = (history: History) => (e: React.MouseEvent): void => {
-    logoutUserRequest(() => history.push(RoutesConfig.Login.path));
+    const onLogoutCallbackFn = ((): void => history.push(RoutesConfig.Login.path));
+    logoutUserRequest(onLogoutCallbackFn);
   };
 
   const logoutRoute: React.ReactNode = (
