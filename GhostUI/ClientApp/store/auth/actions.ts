@@ -2,11 +2,17 @@
 import { addTask } from 'domain-task';
 import { CallbackFunction } from '../../types';
 import { IAppThunkAction, ReduxAction } from '../';
-import { isLoginSuccess } from '../../utils/helpers';
 import { ActionType, IAuthUser, ICredentials } from './types';
 
 export const actionCreators = {
     loginUserRequest: (credentials: ICredentials): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
+        const isLoginSuccess = (authUser: IAuthUser): boolean => {
+            if (!authUser || !Object.keys(authUser).length) {
+                return false;
+            }
+            return String(authUser.status).toLowerCase().includes('success');
+        };
+
         const loginTask = AuthApi.loginAsync(credentials)
             .then((data: IAuthUser) => {
                 if (isLoginSuccess(data)) { // SUCCESS

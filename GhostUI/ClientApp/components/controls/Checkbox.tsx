@@ -1,8 +1,9 @@
-﻿import React from 'react';
+﻿import React, { ChangeEventHandler } from 'react';
 
 type CheckboxProps = {
   readonly checked: boolean;
   readonly disabled?: boolean;
+  readonly readOnly?: boolean;
   readonly wrapperClass?: string;
   readonly controlClass?: string;
   readonly trailingLabel?: string;
@@ -13,12 +14,13 @@ const Checkbox: React.FC<CheckboxProps> = ({
   onCheck,
   checked,
   disabled,
+  readOnly,
   wrapperClass,
   controlClass,
   trailingLabel,
 }) => {
-  const handleOnCheck: React.MouseEventHandler<HTMLInputElement> = e => {
-    onCheck(!!e.currentTarget.checked);
+  const handleOnCheck: ChangeEventHandler<HTMLInputElement> = (event) => {
+    onCheck(!!event.target.checked);
   };
 
   return (
@@ -27,9 +29,10 @@ const Checkbox: React.FC<CheckboxProps> = ({
         <label>
           <input
             type='checkbox'
+            checked={checked}
+            readOnly={readOnly}
             disabled={disabled}
-            defaultChecked={!!checked}
-            onClick={handleOnCheck}
+            onChange={handleOnCheck}
           />
           <i className='helper' />
           {trailingLabel && <span>{trailingLabel}</span>}
