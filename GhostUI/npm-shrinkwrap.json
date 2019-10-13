@@ -256,8 +256,7 @@
     "@types/prop-types": {
       "version": "15.7.3",
       "resolved": "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.3.tgz",
-      "integrity": "sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==",
-      "dev": true
+      "integrity": "sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw=="
     },
     "@types/q": {
       "version": "1.5.2",
@@ -269,7 +268,6 @@
       "version": "16.9.5",
       "resolved": "https://registry.npmjs.org/@types/react/-/react-16.9.5.tgz",
       "integrity": "sha512-jQ12VMiFOWYlp+j66dghOWcmDDwhca0bnlcTxS4Qz/fh5gi6wpaZDthPEu/Gc/YlAuO87vbiUXL8qKstFvuOaA==",
-      "dev": true,
       "requires": {
         "@types/prop-types": "*",
         "csstype": "^2.2.0"
@@ -291,6 +289,15 @@
       "dev": true,
       "requires": {
         "@types/node": "*",
+        "@types/react": "*"
+      }
+    },
+    "@types/react-native": {
+      "version": "0.60.19",
+      "resolved": "https://registry.npmjs.org/@types/react-native/-/react-native-0.60.19.tgz",
+      "integrity": "sha512-1Qq1EQn/bi7dnsdrZJu0f9MK18KZrEmLGMfw3V9Im5As4uwFUTCIkD4LnFJkfQtRvtJQN1cOQri6MTqT7d9fkg==",
+      "requires": {
+        "@types/prop-types": "*",
         "@types/react": "*"
       }
     },
@@ -344,6 +351,16 @@
       "resolved": "https://registry.npmjs.org/@types/source-list-map/-/source-list-map-0.1.2.tgz",
       "integrity": "sha512-K5K+yml8LTo9bWJI/rECfIPrGgxdpeNbj+d53lwN4QjW1MCwlkhUms+gtdzigTeUyBr09+u8BwOIY3MXvHdcsA==",
       "dev": true
+    },
+    "@types/styled-components": {
+      "version": "4.1.19",
+      "resolved": "https://registry.npmjs.org/@types/styled-components/-/styled-components-4.1.19.tgz",
+      "integrity": "sha512-nDkoTQ8ItcJiyEvTa24TwsIpIfNKCG+Lq0LvAwApOcjQ8OaeOOCg66YSPHBePHUh6RPt1LA8aEzRlgWhQPFqPg==",
+      "requires": {
+        "@types/react": "*",
+        "@types/react-native": "*",
+        "csstype": "^2.2.0"
+      }
     },
     "@types/tapable": {
       "version": "1.0.4",
@@ -2389,8 +2406,7 @@
     "csstype": {
       "version": "2.6.7",
       "resolved": "https://registry.npmjs.org/csstype/-/csstype-2.6.7.tgz",
-      "integrity": "sha512-9Mcn9sFbGBAdmimWb2gLVDtFJzeKtDGIr76TUqmjZrw9LFXBMSU70lcs+C0/7fyCd6iBDqmksUcCOUIkisPHsQ==",
-      "dev": true
+      "integrity": "sha512-9Mcn9sFbGBAdmimWb2gLVDtFJzeKtDGIr76TUqmjZrw9LFXBMSU70lcs+C0/7fyCd6iBDqmksUcCOUIkisPHsQ=="
     },
     "currently-unhandled": {
       "version": "0.4.1",

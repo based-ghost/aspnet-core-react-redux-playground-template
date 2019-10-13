@@ -53,6 +53,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "@fortawesome/react-fontawesome": "^0.1.6",
+    "@types/styled-components": "^4.1.19",
     "aspnet-prerendering": "^3.0.1",
     "autobind-decorator": "^2.4.0",
     "axios": "^0.19.0",
