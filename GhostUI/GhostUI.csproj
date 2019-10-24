@@ -34,7 +34,6 @@
     <None Remove="ClientApp\api\services\base.config.ts" />
     <None Remove="ClientApp\api\signalR.service.ts" />
     <None Remove="ClientApp\components\controls\checkbox.tsx" />
-    <None Remove="ClientApp\components\controls\Dropdown.tsx" />
     <None Remove="ClientApp\components\controls\index.ts" />
     <None Remove="ClientApp\components\controls\useOutsideClickHandler.tsx" />
     <None Remove="ClientApp\components\footer\Footer.tsx" />
@@ -73,7 +72,6 @@
     <TypeScriptCompile Include="ClientApp\api\services\sample.service.ts" />
     <TypeScriptCompile Include="ClientApp\api\services\signalR.service.ts" />
     <TypeScriptCompile Include="ClientApp\components\controls\Checkbox.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\controls\Dropdown.tsx" />
     <TypeScriptCompile Include="ClientApp\components\controls\index.ts" />
     <TypeScriptCompile Include="ClientApp\components\footer\Footer.tsx" />
     <TypeScriptCompile Include="ClientApp\components\loaders\Authenticator.tsx" />

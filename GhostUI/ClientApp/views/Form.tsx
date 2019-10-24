@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { IApplicationState } from '../store';
+import { Select } from 'react-functional-select';
+import { Checkbox } from '../components/controls';
 import { RouteComponentProps } from 'react-router-dom';
 import { actionCreators, reducer } from '../store/form';
 import { DROPDOWN_TEST_DATA } from '../config/constants';
-import { Checkbox, Dropdown } from '../components/controls';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type FormProps = ReturnType<typeof reducer> & typeof actionCreators & RouteComponentProps<{}>;
@@ -43,15 +44,13 @@ const Form: React.FC<FormProps> = ({
       <h3 className='title is-4'>Dropdown</h3>
       <h5 className='subtitle is-5'>Select an option from the dropdown</h5>
       <p className='subtitle is-5'>
-        Option: <code>{JSON.stringify(selectedDropdownOption)}</code>
+        Option: <code>{JSON.stringify(selectedDropdownOption || {})}</code>
       </p>
       <div className='field'>
-        <Dropdown
+        <Select
           options={DROPDOWN_TEST_DATA}
-          labelKey='label'
-          selectedOptionLabel={selectedDropdownOption.label}
-          wrapperClass='normal-width'
-          dispatchHandler={selectOption}
+          onOptionChange={selectOption}
+          initialValue={selectedDropdownOption}
         />
       </div>
     </div>
