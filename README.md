@@ -25,12 +25,12 @@ After discovering the ```dotnet new reactredux``` command no longer created the 
   - [TypeScript](https://www.typescriptlang.org/)
   - [Webpack](https://github.com/webpack/webpack) for bundling of application assets and HMR (Hot Module Replacement)
   - [Bulma CSS Framework](https://bulma.io/) + [SASS](https://github.com/sass/sass) + Font Awesome 5 (using fontawesome-svg-core)
-  - [styled-components](https://www.styled-components.com/) - CSS in JavaScript via template literals - example usage is demonstrated in the Spinner.tsx component.
+  - [styled-components](https://www.styled-components.com/) - CSS-in-JS via template literals - Examples in this project: `Checkbox.tsx`, `Spinner.tsx`, and `Footer.tsx` are written using `styled-components`.
   - [react-functional-select](https://github.com/based-ghost/react-functional-select) - A micro-sized & micro-optimized select component for ReactJS. Inspired by [react-select](https://github.com/JedWatson/react-select) and built for ultimate performance - leverages [react-window](https://github.com/bvaughn/react-window) to virtualize long options data and `styled-components` to handle styling via CSS-in-JS. Note: I am the author of this package.
   - [autobind-decorator](https://github.com/andreypopp/autobind-decorator) which is self-described as 'A class or method decorator which binds methods to the instance so this is always correct, even when the method is detached' - nice-to-have syntax that makes your code more succintc and avoids the repetition of having to bind methods in the constructor of a class-component - autobind (boundMethod) on a method is lazy and is only bound once.
   - [Axios](https://github.com/axios/axios) for REST endpoint requests
   - [react-toastify](https://github.com/fkhadra/react-toastify) - a highly configurable toast notification library - comes hooked up to display login error & SignalR hub push notifications examples.
-  - Custom, reusable Dropdown & Checkbox components that provide full functionality w/ state management (without a JQuery dependency).
+  - Custom, reusable Dropdown & Checkbox components that provide full functionality w/ state management (without JQuery dependency).
   - Two different loader components (spinner & authentication animation w/ callback for success/fail)
   
 ## Setup

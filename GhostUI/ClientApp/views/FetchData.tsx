@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Spinner } from '../components';
 import { IApplicationState } from '../store';
-import { Spinner } from '../components/loaders';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { actionCreators, IWeatherForecast, reducer } from '../store/weather-forecasts';
@@ -30,7 +30,7 @@ class FetchData extends React.Component<WeatherForecastProps> {
                 <div className='container is-centered box'>
                     <h3 className='title is-3'>Weather forecast</h3>
                     <h5 className='subtitle is-5'>This component demonstrates fetching data from the server and working with URL parameters.</h5>
-                    <Spinner loading={this.props.isLoading} />
+                    <Spinner isLoading={this.props.isLoading} />
                     {this.renderForecastsTable()}
                     {this.renderPagination()}
                 </div>

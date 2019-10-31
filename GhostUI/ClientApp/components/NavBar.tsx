@@ -1,10 +1,11 @@
 ﻿import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { IApplicationState } from '../../store';
-import { RoutesConfig } from '../../config/routes.config';
+import { IApplicationState } from '../store';
+import { RoutesConfig } from '../config/routes.config';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+const BulmaLogo = require('../assets/image/bulma.io-logo.png') as string;
 
 type NavBarProps = {
   readonly isAuthenticated: boolean;
@@ -51,9 +52,9 @@ const NavBar: React.FC<NavBarProps> = ({ isAuthenticated }) => {
       <div className='navbar-wrapper'>
         <div className='brand-wrapper'>
           <img
-            src={require('../../assets/image/bulma.io-logo.png')}
-            alt='bulma.io-logo'
             width='155'
+            src={BulmaLogo}
+            alt='bulma.io-logo'
           />
         </div>
         <div className='navbar-routes'>

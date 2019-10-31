@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 import { IApplicationState } from '../store';
 import { toast, ToastId } from 'react-toastify';
 import { boundMethod } from 'autobind-decorator';
-import { Checkbox } from '../components/controls';
-import { Authenticator } from '../components/loaders';
 import { RoutesConfig } from '../config/routes.config';
 import { RouteComponentProps } from 'react-router-dom';
+import { Checkbox, Authenticator } from '../components';
 import { renderToastifyMsg } from '../utils/renderToastifyMsg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { actionCreators, AuthStatusEnum, ICredentials, reducer } from '../store/auth';
+const BasedGhostLogo = require('../assets/image/based-ghost-main.png') as string;
 
 type LoginState = typeof initialState;
 type LoginProps = ReturnType<typeof reducer> & typeof actionCreators & RouteComponentProps<{}>;
@@ -61,8 +61,8 @@ class Login extends React.Component<LoginProps, LoginState> {
                             <img
                                 width='180'
                                 id='login-img'
-                                alt='based-ghost Logo'
-                                src={require('../assets/image/based-ghost-main.png')}
+                                alt='based-ghost-logo'
+                                src={BasedGhostLogo}
                             />
                             <form onSubmit={this.handleLogin}>
                                 {this.renderNameInput()}
@@ -81,10 +81,22 @@ class Login extends React.Component<LoginProps, LoginState> {
         );
     }
 
+    private onSuccessfulAuth = (): void => {
+        this.props.history.push(RoutesConfig.Dashboard.path);
+    }
+
+    private onFailedAuth = (): void => {
+        this.props.resetState();
+        this.setState({
+            authRequestStatus: AuthStatusEnum.None as string
+        });
+    }
+
+    @boundMethod
     private renderNameInput(): React.ReactNode {
-        const userClassName = (
-            `input is-large ${(this.state.invalidInputs && !this.state.credentials.userName) ? 'is-danger' : ''}`
-        ).trim();
+        const userClassName = `
+          input is-large ${(this.state.invalidInputs && !this.state.credentials.userName) ? 'is-danger' : ''}
+        `.trim();
 
         return (
             <div className='field'>
@@ -105,10 +117,11 @@ class Login extends React.Component<LoginProps, LoginState> {
         );
     }
 
+    @boundMethod
     private renderPasswordInput(): React.ReactNode {
-        const pwordClassName = (
-            `input is-large ${(this.state.invalidInputs && !this.state.credentials.password) ? 'is-danger' : ''}`
-        ).trim();
+        const pwordClassName = `
+          input is-large ${(this.state.invalidInputs && !this.state.credentials.password) ? 'is-danger' : ''}
+        `.trim();
 
         return (
             <div className='field'>
@@ -135,15 +148,17 @@ class Login extends React.Component<LoginProps, LoginState> {
         );
     }
 
+    @boundMethod
     private renderLoginControls(): React.ReactNode {
         return (
             <Fragment>
-                <Checkbox
-                    trailingLabel='Remember me'
-                    onCheck={this.updateRememberMe}
-                    wrapperClass='remember-me-control'
-                    checked={!!this.state.credentials.rememberMe}
-                />
+                <div className='field remember-me-field'>
+                    <Checkbox
+                        label='Remember me'
+                        onCheck={this.updateRememberMe}
+                        checked={!!this.state.credentials.rememberMe}
+                     />
+                 </div>
                 <button type='submit' className='button is-info is-large is-fullwidth'>
                     <span>Login</span>
                     <span className='icon'>
@@ -152,15 +167,6 @@ class Login extends React.Component<LoginProps, LoginState> {
                 </button>
             </Fragment>
         );
-    }
-
-    private onSuccessfulAuth = (): void => {
-        this.props.history.push(RoutesConfig.Dashboard.path);
-    }
-
-    private onFailedAuth = (): void => {
-        this.props.resetState();
-        this.setState({ authRequestStatus: AuthStatusEnum.None as string });
     }
 
     @boundMethod

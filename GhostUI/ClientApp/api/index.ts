@@ -1,3 +1,3 @@
-﻿export { AuthApi } from './services/auth.service';
-export { SampleApi } from './services/sample.service';
-export { SignalRApi } from './services/signalR.service';
+﻿export { AuthApi } from './auth.service';
+export { SampleApi } from './sample.service';
+export { SignalRApi } from './signalR.service';

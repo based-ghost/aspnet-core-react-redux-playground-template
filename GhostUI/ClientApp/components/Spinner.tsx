@@ -2,14 +2,10 @@
 import styled, { keyframes } from 'styled-components';
 
 type SpinnerProps = {
-  readonly loading?: boolean;
+  readonly isLoading?: boolean;
 };
 
-type StyledSpinnerProps = {
-  readonly $loading?: boolean;
-};
-
-const rotateAnimation = keyframes`
+const _spinRingAnimation = keyframes`
   0% {
     transform: rotate(0deg);
   } 100% {
@@ -17,16 +13,16 @@ const rotateAnimation = keyframes`
   }
 `;
 
-const borderColor = '#209cee transparent transparent transparent';
+const _borderColor = '#209cee transparent transparent transparent';
 
-const StyledSpinner = styled.div<StyledSpinnerProps>`
+const StyledSpinner = styled.div<SpinnerProps>`
   top: 50%;
   left: 48%;
   z-index: 9999;
   width: 4.75em;
   height: 4.75em;
   position: absolute;
-  display: ${({ $loading }) => $loading ? 'inline-block' : 'none'};
+  display: ${({ isLoading }) => isLoading ? 'inline-block' : 'none'};
 
   > div {
     width: 4.75em;
@@ -35,8 +31,8 @@ const StyledSpinner = styled.div<StyledSpinnerProps>`
     border-radius: 50%;
     border: 0.35em solid;
     box-sizing: border-box;
-    border-color: ${borderColor};
-    animation: ${rotateAnimation} 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: ${_borderColor};
+    animation: ${_spinRingAnimation} 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
 
     :nth-child(1) {
        animation-delay: -0.45s;
@@ -52,8 +48,8 @@ const StyledSpinner = styled.div<StyledSpinnerProps>`
   }
 `;
 
-const Spinner = React.memo<SpinnerProps>(({ loading }) => (
-  <StyledSpinner $loading={loading}>
+const Spinner = React.memo<SpinnerProps>(({ isLoading }) => (
+  <StyledSpinner isLoading={isLoading}>
     <div />
     <div />
     <div />

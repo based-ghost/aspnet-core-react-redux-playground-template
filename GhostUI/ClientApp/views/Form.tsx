@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Checkbox } from '../components';
 import { IApplicationState } from '../store';
 import { Select } from 'react-functional-select';
-import { Checkbox } from '../components/controls';
 import { RouteComponentProps } from 'react-router-dom';
 import { actionCreators, reducer } from '../store/form';
 import { DROPDOWN_TEST_DATA } from '../config/constants';

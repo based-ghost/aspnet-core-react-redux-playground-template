@@ -1,5 +1,5 @@
 ﻿import { toast } from 'react-toastify';
-import { renderToastifyMsg } from '../../utils/renderToastifyMsg';
+import { renderToastifyMsg } from '../utils/renderToastifyMsg';
 import { HubConnection, HubConnectionBuilder, HubConnectionState } from '@aspnet/signalr';
 
 /**

@@ -1,4 +1,5 @@
 import React from 'react';
+const AspCoreReactLogo = require('../assets/image/aspcore-react.png') as string;
 
 const Dashboard: React.FC = () => (
   <div className='dashboard-wrapper'>
@@ -6,9 +7,9 @@ const Dashboard: React.FC = () => (
       <div className='hero-body'>
         <div className='is-flex is-horizontal-center'>
           <img
-            src={require('../assets/image/aspcore-react.png')}
-            alt=''
             width='300'
+            alt='aspcore-react-logo'
+            src={AspCoreReactLogo}
           />
         </div>
       </div>

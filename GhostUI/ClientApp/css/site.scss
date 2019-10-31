@@ -6,9 +6,7 @@
 @import '~bulma/bulma';
 
 /* Local styles */
-@import 'controls/dropdown.scss';
-@import 'controls/checkbox.scss';
-@import 'components/navbar.scss';
-@import 'components/loaders.scss';
-@import 'components/tool-tip.scss';
 @import 'base/generic.scss';
+@import 'components/navbar.scss';
+@import 'components/tool-tip.scss';
+@import 'components/authenticator.scss';

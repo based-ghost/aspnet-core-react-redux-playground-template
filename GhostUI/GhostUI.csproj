@@ -28,17 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\api\auth.service.ts" />
-    <None Remove="ClientApp\api\base.service.ts" />
-    <None Remove="ClientApp\api\sample.service.ts" />
-    <None Remove="ClientApp\api\services\base.config.ts" />
-    <None Remove="ClientApp\api\signalR.service.ts" />
-    <None Remove="ClientApp\components\controls\checkbox.tsx" />
-    <None Remove="ClientApp\components\controls\index.ts" />
-    <None Remove="ClientApp\components\controls\useOutsideClickHandler.tsx" />
-    <None Remove="ClientApp\components\footer\Footer.tsx" />
-    <None Remove="ClientApp\components\loaders\index.ts" />
-    <None Remove="ClientApp\components\nav\index.ts" />
+    <None Remove="ClientApp\components\index.ts" />
     <None Remove="ClientApp\configureStore.ts" />
     <None Remove="ClientApp\config\constants.ts" />
     <None Remove="ClientApp\config\fa.config.ts" />
@@ -66,20 +56,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\components\index.ts" />
     <TypeScriptCompile Include="ClientApp\hooks\useOnClickOutside.ts" />
     <TypeScriptCompile Include="ClientApp\config\axios.config.ts" />
-    <TypeScriptCompile Include="ClientApp\api\services\base.service.ts" />
-    <TypeScriptCompile Include="ClientApp\api\services\sample.service.ts" />
-    <TypeScriptCompile Include="ClientApp\api\services\signalR.service.ts" />
-    <TypeScriptCompile Include="ClientApp\components\controls\Checkbox.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\controls\index.ts" />
-    <TypeScriptCompile Include="ClientApp\components\footer\Footer.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\loaders\Authenticator.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\loaders\index.ts" />
-    <TypeScriptCompile Include="ClientApp\components\loaders\Spinner.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\nav\index.ts" />
-    <TypeScriptCompile Include="ClientApp\components\nav\NavBar.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\nav\Settings.tsx" />
+    <TypeScriptCompile Include="ClientApp\api\base.service.ts" />
+    <TypeScriptCompile Include="ClientApp\api\sample.service.ts" />
+    <TypeScriptCompile Include="ClientApp\api\signalR.service.ts" />
+    <TypeScriptCompile Include="ClientApp\components\Checkbox.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\Footer.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\Authenticator.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\Spinner.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\NavBar.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\Settings.tsx" />
     <TypeScriptCompile Include="ClientApp\config\fa.config.ts" />
     <TypeScriptCompile Include="ClientApp\types\index.d.ts" />
     <TypeScriptCompile Include="ClientApp\utils\helpers.ts" />

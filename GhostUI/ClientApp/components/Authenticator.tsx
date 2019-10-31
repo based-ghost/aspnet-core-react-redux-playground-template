@@ -1,6 +1,6 @@
 ﻿import React, { useEffect } from 'react';
-import { CallbackFunction } from '../../types';
-import { AuthStatusEnum } from '../../store/auth/types';
+import { CallbackFunction } from '../types';
+import { AuthStatusEnum } from '../store/auth/types';
 
 type AuthenticatorProps = {
   readonly authStatus?: string;
