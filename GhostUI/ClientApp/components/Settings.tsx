@@ -10,7 +10,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { useOnClickOutside } from '../hooks/useOnClickOutside';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-type SettingsProps = { readonly isAuthenticated: boolean; } & typeof actionCreators;
+type SettingsProps = typeof actionCreators & { readonly isAuthenticated: boolean };
 
 const Settings: React.FC<SettingsProps> = ({ isAuthenticated, logoutUserRequest }) => {
   const [open, setOpen] = useState<boolean>(false);

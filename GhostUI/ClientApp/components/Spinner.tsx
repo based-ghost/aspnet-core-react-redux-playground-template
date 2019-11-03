@@ -13,8 +13,6 @@ const _spinRingAnimation = keyframes`
   }
 `;
 
-const _borderColor = '#209cee transparent transparent transparent';
-
 const StyledSpinner = styled.div<SpinnerProps>`
   top: 50%;
   left: 48%;
@@ -31,7 +29,7 @@ const StyledSpinner = styled.div<SpinnerProps>`
     border-radius: 50%;
     border: 0.35em solid;
     box-sizing: border-box;
-    border-color: ${_borderColor};
+    border-color: #209cee transparent transparent transparent;
     animation: ${_spinRingAnimation} 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
 
     :nth-child(1) {

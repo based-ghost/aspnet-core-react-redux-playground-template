@@ -1,5 +1,5 @@
 import React from 'react';
-const AspCoreReactLogo = require('../assets/image/aspcore-react.png') as string;
+const AspCoreReactLogo = require('../../assets/image/aspcore-react.png') as string;
 
 const Dashboard: React.FC = () => (
   <div className='dashboard-wrapper'>
@@ -93,7 +93,7 @@ const Dashboard: React.FC = () => (
                         SASS
                       </a>
                       is a CSS pre-processor extension to help provide more
-                      flexibility & maintainability to your style-sheets. Use
+                      flexibility &amp; maintainability to your style-sheets. Use
                       nesting, variables, mixins, inheritance and more great
                       features to make writing CSS a less arduous task.
                     </li>

@@ -1,4 +1,4 @@
-﻿import React, { ChangeEventHandler } from 'react';
+﻿import React, { ChangeEvent } from 'react';
 import styled from 'styled-components';
 
 const _borderColor = '#dbdbdb';
@@ -104,26 +104,20 @@ const Checkbox = React.memo<CheckboxProps>(({
   checked,
   disabled,
   readOnly,
-}) => {
-  const handleOnCheck: ChangeEventHandler<HTMLInputElement> = (e) => {
-    onCheck(!!e.target.checked);
-  };
-
-  return (
-    <StyledLabelWrapper>
-      <StyledInput
-        id={id}
-        name={name}
-        type='checkbox'
-        checked={checked}
-        readOnly={readOnly}
-        disabled={disabled}
-        onChange={handleOnCheck}
-      />
-      <StyledCheckIcon />
-      {label && <StyledSpan>{label}</StyledSpan>}
-    </StyledLabelWrapper>
-  );
-});
+}) => (
+  <StyledLabelWrapper>
+    <StyledInput
+      id={id}
+      name={name}
+      type='checkbox'
+      checked={checked}
+      readOnly={readOnly}
+      disabled={disabled}
+      onChange={(e: ChangeEvent<HTMLInputElement>) => onCheck(!!e.target.checked)}
+    />
+    <StyledCheckIcon />
+    {label && <StyledSpan>{label}</StyledSpan>}
+  </StyledLabelWrapper>
+));
 
 export default Checkbox;

@@ -57,9 +57,7 @@ const NavBar: React.FC<NavBarProps> = ({ isAuthenticated }) => {
             alt='bulma.io-logo'
           />
         </div>
-        <div className='navbar-routes'>
-            {navRoutes}
-        </div>
+        <div className='navbar-routes'>{navRoutes}</div>
       </div>
     </nav>
   );
