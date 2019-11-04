@@ -5,6 +5,7 @@ import { IApplicationState } from '../store';
 import { RoutesConfig } from '../config/routes.config';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 const BulmaLogo = require('../assets/image/bulma.io-logo.png') as string;
 
 type NavBarProps = {
@@ -63,10 +64,8 @@ const NavBar: React.FC<NavBarProps> = ({ isAuthenticated }) => {
   );
 };
 
-// Map only necessary IApplicationState to NavBar props
 const mapStateToProps = (state: IApplicationState) => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-// Wire up the React component to the Redux store
 export default connect(mapStateToProps)(NavBar);

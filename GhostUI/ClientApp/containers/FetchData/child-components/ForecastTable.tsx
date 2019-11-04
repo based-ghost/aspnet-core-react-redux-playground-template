@@ -1,6 +1,6 @@
 import React from "react";
-import { isArrayWithLength } from "../../utils";
-import { IWeatherForecast } from "../../store/weather-forecasts";
+import { isArrayWithLength } from "../../../utils";
+import { IWeatherForecast } from "../../../store/weather-forecasts";
 
 type ForecastTableProps = {
   readonly forecasts?: IWeatherForecast[];

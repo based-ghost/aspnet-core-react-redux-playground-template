@@ -77,8 +77,6 @@ const Form: React.FC<FormProps> = ({
   );
 };
 
-// Map only necessary IApplicationState to Form props
 const mapStateToProps = (state: IApplicationState) => state.form;
 
-// Wire up the React component to the Redux store
 export default connect(mapStateToProps, actionCreators)(Form);

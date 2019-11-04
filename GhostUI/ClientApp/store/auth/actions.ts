@@ -13,6 +13,10 @@ export const actionCreators = {
   resetState: (): ReduxAction => ({
     type: ActionType.RESET_STATE
   }),
+  setAuthStatus: (status: string): ReduxAction => ({
+    status,
+    type: ActionType.SET_AUTH_STATUS
+  }),
   loginUserRequest: (credentials: ICredentials): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
     const loginTask = AuthApi
       .loginAsync(credentials)

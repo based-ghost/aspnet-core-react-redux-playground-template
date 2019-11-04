@@ -2,12 +2,12 @@
 import { connect } from 'react-redux';
 import { History } from 'history';
 import { Route } from 'react-router-dom';
+import { useOnClickOutside } from '../hooks';
 import { IApplicationState } from '../store';
 import { actionCreators } from '../store/auth';
 import { spaNugetUrls } from '../config/constants';
 import { RoutesConfig } from '../config/routes.config';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { useOnClickOutside } from '../hooks/useOnClickOutside';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type SettingsProps = typeof actionCreators & { readonly isAuthenticated: boolean };
@@ -93,10 +93,8 @@ const Settings: React.FC<SettingsProps> = ({ isAuthenticated, logoutUserRequest 
   );
 };
 
-// Map only necessary IApplicationState to Settings props
 const mapStateToProps = (state: IApplicationState) => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-// Wire up the React component to the Redux store
 export default connect(mapStateToProps, actionCreators)(Settings);

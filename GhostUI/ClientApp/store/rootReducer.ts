@@ -7,10 +7,10 @@ import { connectRouter, RouterState } from 'connected-react-router';
 
 // The top-level state object
 export interface IApplicationState {
+  readonly router: RouterState;
   readonly auth: ReturnType<typeof Auth.reducer>;
   readonly form: ReturnType<typeof Form.reducer>;
   readonly weatherForecasts: ReturnType<typeof WeatherForecasts.reducer>;
-  readonly router: RouterState;
 }
 
 // Type for all redux actions - takes the action type and then an optional, variable amount of additional key-value pairs

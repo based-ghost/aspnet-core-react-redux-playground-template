@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { Pagination } from "./Pagination";
 import { Spinner } from "../../components";
 import { isNullOrUndefined } from "../../utils";
-import { ForecastTable } from "./ForecastTable";
 import { IApplicationState } from "../../store";
 import { RouteComponentProps } from "react-router-dom";
+import { Pagination, ForecastTable } from "./child-components";
 import { actionCreators, reducer } from "../../store/weather-forecasts";
 
 const _fetchDataTitle = 'Weather forecast';
@@ -46,8 +45,6 @@ const FetchData: React.FC<WeatherForecastProps> = ({
   );
 };
 
-// Map only necessary IApplicationState to FetchData props
 const mapStateToProps = (state: IApplicationState) => state.weatherForecasts;
 
-// Wire up the React component to the Redux store
 export default connect(mapStateToProps, actionCreators)(FetchData);

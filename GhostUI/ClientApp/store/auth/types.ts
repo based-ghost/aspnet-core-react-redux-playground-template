@@ -5,6 +5,7 @@
   readonly LOGIN_FAIL: string;
   readonly LOGOUT: string;
   readonly RESET_STATE: string;
+  readonly SET_AUTH_STATUS: string;
 }
 
 export const ActionType: IActionType = {
@@ -13,7 +14,8 @@ export const ActionType: IActionType = {
   LOGIN_SUCCESS: "auth/loginSuccess",
   LOGIN_FAIL: "auth/loginFail",
   LOGOUT: "auth/logout",
-  RESET_STATE: "auth/resetState"
+  RESET_STATE: "auth/resetState",
+  SET_AUTH_STATUS: "auth/setAuthStatus"
 };
 
 export const enum AuthStatusEnum {

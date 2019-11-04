@@ -2,6 +2,10 @@ import React, { ReactNode } from 'react';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+export const createClassName = (classNames: any[]): string => {
+  return classNames.filter(x => x).join(' ');
+};
+
 export const renderToastifyMsg = (message: string, icon: string = 'info'): ReactNode => (
   <div className='toastify-msg'>
     <FontAwesomeIcon icon={icon as IconProp} />

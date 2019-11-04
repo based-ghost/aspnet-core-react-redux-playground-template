@@ -22,6 +22,11 @@ export const reducer = (
   switch (action.type) {
     case ActionType.LOGIN:
       return state;
+    case ActionType.SET_AUTH_STATUS:
+      return {
+        ...state,
+        status: action.status
+      };
     case ActionType.LOGIN_SUCCESS:
       return {
         ...action.authUser,
