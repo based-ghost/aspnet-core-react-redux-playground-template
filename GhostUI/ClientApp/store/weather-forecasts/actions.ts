@@ -14,8 +14,7 @@ export const actionCreators = {
     }
 
     // Build http request and success handler in Promise<void> wrapper
-    const fetchTask = SampleApi
-      .getWeatherForecastsAsync(startDateIndex)
+    const fetchTask = SampleApi.getWeatherForecastsAsync(startDateIndex)
       .then((forecasts: IWeatherForecast[]) => {
         dispatch({
           forecasts,

@@ -1,16 +1,16 @@
-﻿import * as Form from './form';
-import * as Auth from './auth';
-import * as Redux from 'redux';
+﻿import * as Redux from 'redux';
 import { History } from 'history';
-import * as WeatherForecasts from './weather-forecasts';
+import { reducer as FormReducer } from './form';
+import { reducer as AuthReducer } from './auth';
+import { reducer as WeatherForecastsReducer } from './weather-forecasts';
 import { connectRouter, RouterState } from 'connected-react-router';
 
 // The top-level state object
 export interface IApplicationState {
   readonly router: RouterState;
-  readonly auth: ReturnType<typeof Auth.reducer>;
-  readonly form: ReturnType<typeof Form.reducer>;
-  readonly weatherForecasts: ReturnType<typeof WeatherForecasts.reducer>;
+  readonly auth: ReturnType<typeof AuthReducer>;
+  readonly form: ReturnType<typeof FormReducer>;
+  readonly weatherForecasts: ReturnType<typeof WeatherForecastsReducer>;
 }
 
 // Type for all redux actions - takes the action type and then an optional, variable amount of additional key-value pairs
@@ -27,9 +27,9 @@ export type FunctionReturnTypes<T> = { [K in keyof T]: T[K] extends (...args: an
 // Takes all the individual reducers and creates a single state object by combining them
 export const createRootReducer = (history: History): Redux.Reducer<IApplicationState> => (
   Redux.combineReducers<IApplicationState>({
-    auth: Auth.reducer,
-    form: Form.reducer,
-    weatherForecasts: WeatherForecasts.reducer,
+    auth: AuthReducer,
+    form: FormReducer,
+    weatherForecasts: WeatherForecastsReducer,
     router: connectRouter(history)
   })
 );

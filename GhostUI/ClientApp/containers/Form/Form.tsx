@@ -8,7 +8,9 @@ import { actionCreators, reducer } from '../../store/form';
 import { DROPDOWN_TEST_DATA } from '../../config/constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-type FormProps = ReturnType<typeof reducer> & typeof actionCreators & RouteComponentProps<{}>;
+type FormProps = ReturnType<typeof reducer>
+  & typeof actionCreators
+  & RouteComponentProps<{}>;
 
 const Form: React.FC<FormProps> = ({
   count,
@@ -39,7 +41,9 @@ const Form: React.FC<FormProps> = ({
     <div className='column'>
       <h3 className='title is-4'>Dropdown</h3>
       <h5 className='subtitle is-5'>Select an option from the dropdown</h5>
-      <p className='subtitle is-5'>Option: <code>{JSON.stringify(selectedDropdownOption || {})}</code></p>
+      <p className='subtitle is-5'>
+        Option: <code>{JSON.stringify(selectedDropdownOption || {})}</code>
+      </p>
       <div className='field'>
         <Select
           options={DROPDOWN_TEST_DATA}
@@ -54,7 +58,9 @@ const Form: React.FC<FormProps> = ({
     <div className='column'>
       <h3 className='title is-4'>Checkbox</h3>
       <h5 className='subtitle is-5'>Toggle the checkbox</h5>
-      <p className='subtitle is-5'>Checked: <code>{checkboxValue.toString()}</code></p>
+      <p className='subtitle is-5'>
+        Checked: <code>{checkboxValue.toString()}</code>
+      </p>
       <div className='field'>
         <Checkbox
           checked={checkboxValue}

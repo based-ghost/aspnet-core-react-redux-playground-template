@@ -10,7 +10,9 @@ import { actionCreators, reducer } from "../../store/weather-forecasts";
 const _fetchDataTitle = 'Weather forecast';
 const _fetchDataSubTitle = 'This component demonstrates fetching data from the server and working with URL parameters.';
 
-type WeatherForecastProps = ReturnType<typeof reducer> & typeof actionCreators & RouteComponentProps<{ readonly startDateIndex: string }>;
+type WeatherForecastProps = ReturnType<typeof reducer>
+  & typeof actionCreators
+  & RouteComponentProps<{ readonly startDateIndex: string }>;
 
 const FetchData: React.FC<WeatherForecastProps> = ({
   isLoading,

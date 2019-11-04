@@ -1,5 +1,4 @@
 import React from 'react';
-
 const AspCoreReactLogo = require('../../assets/image/aspcore-react.png') as string;
 
 const Dashboard: React.FC = () => (

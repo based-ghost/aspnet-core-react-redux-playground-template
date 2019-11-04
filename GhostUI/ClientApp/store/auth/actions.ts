@@ -18,8 +18,7 @@ export const actionCreators = {
     type: ActionType.SET_AUTH_STATUS
   }),
   loginUserRequest: (credentials: ICredentials): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
-    const loginTask = AuthApi
-      .loginAsync(credentials)
+    const loginTask = AuthApi.loginAsync(credentials)
       .then((authUser: IAuthUser) => {
         if (isLoginSuccess(authUser)) {
           dispatch({
@@ -35,8 +34,7 @@ export const actionCreators = {
     addTask(loginTask);
   },
   logoutUserRequest: (handleRouteCallback: CallbackFunction): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
-    const logoutTask = AuthApi
-      .logoutAsync()
+    const logoutTask = AuthApi.logoutAsync()
       .then(() => {
         handleRouteCallback();
         dispatch({ type: ActionType.RESET_STATE });

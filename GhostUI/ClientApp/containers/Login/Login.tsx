@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useState, useRef, ReactNode, Fragment } from "react";
+import React, { useEffect, useCallback, useState, useRef } from "react";
 import { History } from "history";
 import { SignalRApi } from "../../api";
 import { connect } from "react-redux";
@@ -12,7 +12,10 @@ import { UserNameInput, PasswordInput, LoginControls } from "./child-components"
 import { actionCreators, AuthStatusEnum, ICredentials, reducer } from "../../store/auth";
 
 const BasedGhostLogo = require("../../assets/image/based-ghost-main.png") as string;
-type LoginProps = ReturnType<typeof reducer> & typeof actionCreators & { readonly history: History };
+
+type LoginProps = ReturnType<typeof reducer>
+  & typeof actionCreators
+  & { readonly history: History };
 
 const Login: React.FC<LoginProps> = ({
   status,
@@ -56,9 +59,7 @@ const Login: React.FC<LoginProps> = ({
       // Run invalidInputs error and display toast notification (if one is not already active)
       setIsInputInvalid(true);
       if (!toast.isActive(toastIdRef.current)) {
-        toastIdRef.current = toast.error(
-          renderToastifyMsg('Enter user name/password', 'exclamation')
-        );
+        toastIdRef.current = toast.error(renderToastifyMsg('Enter user name/password', 'exclamation'));
       }
     } else {
       // Clear any toast notifications and prepare state for Login request stub / run login request stub
