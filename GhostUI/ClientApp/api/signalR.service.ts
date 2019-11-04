@@ -36,7 +36,9 @@ class SignalRService {
   }
 
   public startConnection(): void {
-    if (this._hubConnection.state === HubConnectionState.Connected) return;
+    if (this._hubConnection.state === HubConnectionState.Connected) {
+      return;
+    }
 
     setTimeout(() => {
       this._hubConnection.start().catch(error => {
