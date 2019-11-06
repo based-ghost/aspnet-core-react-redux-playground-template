@@ -10,6 +10,8 @@ This template is largely based on the original React + Redux .NET Core SPA templ
 
 After discovering the ```dotnet new reactredux``` command no longer created the desired template, I eventually came across the following repository that was quite helpful and right along the lines of what I was looking for - https://github.com/RyanLamansky/react-redux-typescript-dotnet-core-ssr-hmr
 
+#### *** All components are written using `React FunctionComponents` & `React Hooks`
+
 ## Technology Stack Overview
 - **Server**
   - ASP.NET Core 2.2
