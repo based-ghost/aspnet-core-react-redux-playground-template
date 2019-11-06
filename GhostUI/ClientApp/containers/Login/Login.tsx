@@ -38,7 +38,7 @@ const Login: React.FC<LoginProps> = ({
 
   const onFailedAuth = useCallback((): void => {
     resetState();
-    setAuthStatus(String(AuthStatusEnum.None));
+    setAuthStatus(AuthStatusEnum.NONE);
   }, [resetState, setAuthStatus]);
 
   const onSuccessfulAuth = useCallback((): void => {
@@ -51,7 +51,7 @@ const Login: React.FC<LoginProps> = ({
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    if (status === AuthStatusEnum.Process) {
+    if (status === AuthStatusEnum.PROCESS) {
       return;
     }
 
@@ -65,7 +65,7 @@ const Login: React.FC<LoginProps> = ({
       // Clear any toast notifications and prepare state for Login request stub / run login request stub
       toast.dismiss();
       setIsInputInvalid(false);
-      setAuthStatus(String(AuthStatusEnum.Process));
+      setAuthStatus(AuthStatusEnum.PROCESS);
 
       const credentials: ICredentials = {
         rememberMe,

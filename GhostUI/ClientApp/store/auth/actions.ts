@@ -2,18 +2,18 @@
 import { addTask } from "domain-task";
 import { CallbackFunction } from "../../types";
 import { IAppThunkAction, ReduxAction } from "../";
-import { ActionType, IAuthUser, ICredentials } from "./types";
+import { ActionType, IAuthUser, ICredentials, AuthStatusEnum, AuthStatus } from "./types";
 
 const isLoginSuccess = (authUser: IAuthUser): boolean => {
   const { status } = authUser;
-  return (status && status.toLowerCase().includes('success'));
+  return (status === AuthStatusEnum.SUCCESS);
 };
 
 export const actionCreators = {
   resetState: (): ReduxAction => ({
     type: ActionType.RESET_STATE
   }),
-  setAuthStatus: (status: string): ReduxAction => ({
+  setAuthStatus: (status: AuthStatus): ReduxAction => ({
     status,
     type: ActionType.SET_AUTH_STATUS
   }),

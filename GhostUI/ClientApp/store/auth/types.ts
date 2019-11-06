@@ -18,28 +18,30 @@ export const ActionType: IActionType = {
   SET_AUTH_STATUS: "auth/setAuthStatus"
 };
 
-export const enum AuthStatusEnum {
-  None = "none",
-  Process = "process",
-  Success = "success",
-  Fail = "fail"
-}
+export type AuthStatus = "none" | "process" | "success" | "fail";
 
-export interface ICredentials {
+export const AuthStatusEnum: { [key: string]: AuthStatus } = {
+  NONE: "none",
+  PROCESS: "process",
+  SUCCESS: "success",
+  FAIL: "fail"
+};
+
+export type ICredentials = {
   userName?: string;
   password?: string;
   rememberMe?: boolean;
-}
+};
 
-export interface IAuthUser {
+export type IAuthUser = {
   token?: string;
-  status?: string;
   userName?: string;
-}
+  status?: AuthStatus;
+};
 
-export interface IAuthState {
+export type IAuthState = {
   readonly isAuthenticated: boolean;
   readonly token?: string;
-  readonly status?: string;
   readonly userName?: string;
-}
+  readonly status?: AuthStatus;
+};

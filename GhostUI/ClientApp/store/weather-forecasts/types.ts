@@ -12,16 +12,16 @@ export const ActionType: IActionType = {
   RESET_STATE: "weather/resetState"
 };
 
-export interface IWeatherForecast {
+export type IWeatherForecast = {
   readonly ID: number;
   readonly DateFormatted: string;
   readonly TemperatureC: number;
   readonly TemperatureF: number;
   readonly Summary: string;
-}
+};
 
-export interface IWeatherForecastsState {
+export type IWeatherForecastsState = {
   readonly isLoading: boolean;
   readonly startDateIndex?: number;
   readonly forecasts: IWeatherForecast[];
-}
+};

@@ -1,15 +1,15 @@
 ﻿import React, { useEffect } from 'react';
 import { CallbackFunction } from '../types';
-import { AuthStatusEnum } from '../store/auth/types';
 import styled, { keyframes } from 'styled-components';
+import { AuthStatusEnum, AuthStatus } from '../store/auth/types';
 
 type AuthenticatorWrapperProps = {
-  readonly authStatus?: string;
+  readonly authStatus?: AuthStatus;
 };
 
 type AuthenticatorProps = {
   readonly delay?: number;
-  readonly authStatus?: string;
+  readonly authStatus?: AuthStatus;
   readonly handleOnFail: CallbackFunction;
   readonly handleOnSuccess: CallbackFunction;
 };
@@ -41,9 +41,9 @@ const getChildDivCSS = (): string => {
   return childDivCSS;
 };
 
-const getChildDivBorderColor = (authStatus: string): string => {
-  if (authStatus === AuthStatusEnum.Success) return _successColor;
-  if (authStatus === AuthStatusEnum.Fail) return _failColor;
+const getChildDivBorderColor = (authStatus: AuthStatus): string => {
+  if (authStatus === AuthStatusEnum.SUCCESS) return _successColor;
+  if (authStatus === AuthStatusEnum.FAIL) return _failColor;
   return _blueColor;
 };
 
@@ -81,8 +81,8 @@ const Authenticator = React.memo<AuthenticatorProps>(({
 }) => {
   useEffect(() => {
     const authHandler = setTimeout(() => {
-      (authStatus === AuthStatusEnum.Fail) && handleOnFail();
-      (authStatus === AuthStatusEnum.Success) && handleOnSuccess();
+      (authStatus === AuthStatusEnum.FAIL) && handleOnFail();
+      (authStatus === AuthStatusEnum.SUCCESS) && handleOnSuccess();
     }, delay);
 
     return () => {
@@ -90,7 +90,7 @@ const Authenticator = React.memo<AuthenticatorProps>(({
     };
   }, [authStatus, delay, handleOnFail, handleOnSuccess]);
 
-  if (!authStatus || (authStatus === AuthStatusEnum.None)) {
+  if (!authStatus || (authStatus === AuthStatusEnum.NONE)) {
     return null;
   }
 

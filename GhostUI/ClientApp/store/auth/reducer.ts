@@ -1,12 +1,12 @@
 ﻿import { FunctionReturnTypes, ReduxAction } from "../";
 import { actionCreators } from "./actions";
-import { ActionType, IAuthState } from "./types";
+import { ActionType, IAuthState, AuthStatusEnum } from "./types";
 
 const initialState = Object.freeze<IAuthState>({
-  isAuthenticated: false,
   token: '',
-  status: '',
-  userName: ''
+  userName: '',
+  isAuthenticated: false,
+  status: AuthStatusEnum.NONE,
 });
 
 export const reducer = (
