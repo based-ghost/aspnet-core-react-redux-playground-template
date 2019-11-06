@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { IApplicationState } from '../store';
-import { RoutesConfig } from '../config/routes.config';
+import { RoutesConfig, Route } from '../config/routes.config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const BulmaLogo = require('../assets/image/bulma.io-logo.png') as string;
@@ -12,9 +12,10 @@ type NavBarProps = {
 };
 
 const NavBar: React.FC<NavBarProps> = ({ isAuthenticated }) => {
-  const navRouteKeys = Object
+  const navRoutes: Route[] = Object
     .keys(RoutesConfig)
-    .filter((key: string) => !!RoutesConfig[key].showInNav);
+    .map((key: string) => RoutesConfig[key])
+    .filter((route: Route) => !!route.showInNav);
 
   return (
     <nav
@@ -31,16 +32,16 @@ const NavBar: React.FC<NavBarProps> = ({ isAuthenticated }) => {
           />
         </div>
         <div className='navbar-routes'>
-        {isAuthenticated && navRouteKeys.map((key: string) => (
+        {isAuthenticated && navRoutes.map((route: Route) => (
           <NavLink
+            to={route.path}
+            key={route.path}
+            exact={route.exact}
             className='navbar-item'
             activeClassName='is-active'
-            to={RoutesConfig[key].path}
-            key={RoutesConfig[key].path}
-            exact={RoutesConfig[key].exact}
           >
-            <FontAwesomeIcon icon={RoutesConfig[key].icon} />
-            {RoutesConfig[key].displayName}
+            <FontAwesomeIcon icon={route.icon} />
+            {route.displayName}
           </NavLink>
         ))}
         </div>
