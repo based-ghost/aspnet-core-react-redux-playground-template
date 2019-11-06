@@ -6,7 +6,7 @@ type PaginationProps = {
   readonly startDateIndex?: number;
 };
 
-export const Pagination = React.memo<PaginationProps>(({ startDateIndex }) => (
+const Pagination = React.memo<PaginationProps>(({ startDateIndex }) => (
   <p className="buttons is-pagination-group">
     <Link className="button is-info" to={`/fetchdata/${(startDateIndex || 0) - 5}`}>
       <FontAwesomeIcon icon="chevron-left" />
@@ -18,3 +18,5 @@ export const Pagination = React.memo<PaginationProps>(({ startDateIndex }) => (
     </Link>
   </p>
 ));
+
+export default Pagination;

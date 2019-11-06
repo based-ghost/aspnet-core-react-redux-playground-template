@@ -1,9 +1,8 @@
-﻿import React, { Fragment } from 'react';
+﻿import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { IApplicationState } from '../store';
 import { RoutesConfig } from '../config/routes.config';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const BulmaLogo = require('../assets/image/bulma.io-logo.png') as string;
@@ -13,36 +12,9 @@ type NavBarProps = {
 };
 
 const NavBar: React.FC<NavBarProps> = ({ isAuthenticated }) => {
-  const navRoutes: React.ReactNode = isAuthenticated && (
-    <Fragment>
-      <NavLink
-        exact
-        to={RoutesConfig.Form.path}
-        className='navbar-item'
-        activeClassName='is-active'
-      >
-        <FontAwesomeIcon icon={RoutesConfig.Form.icon as IconProp} />
-        {RoutesConfig.Form.displayName}
-      </NavLink>
-      <NavLink
-        exact
-        to={RoutesConfig.Dashboard.path}
-        className='navbar-item'
-        activeClassName='is-active'
-      >
-        <FontAwesomeIcon icon={RoutesConfig.Dashboard.icon as IconProp} />
-        {RoutesConfig.Dashboard.displayName}
-      </NavLink>
-      <NavLink
-        to={RoutesConfig.FetchData.path}
-        className='navbar-item'
-        activeClassName='is-active'
-      >
-        <FontAwesomeIcon icon={RoutesConfig.FetchData.icon as IconProp} />
-        {RoutesConfig.FetchData.displayName}
-      </NavLink>
-    </Fragment>
-  );
+  const navRouteKeys = Object
+    .keys(RoutesConfig)
+    .filter((key: string) => !!RoutesConfig[key].showInNav);
 
   return (
     <nav
@@ -58,7 +30,20 @@ const NavBar: React.FC<NavBarProps> = ({ isAuthenticated }) => {
             alt='bulma.io-logo'
           />
         </div>
-        <div className='navbar-routes'>{navRoutes}</div>
+        <div className='navbar-routes'>
+        {isAuthenticated && navRouteKeys.map((key: string) => (
+          <NavLink
+            className='navbar-item'
+            activeClassName='is-active'
+            to={RoutesConfig[key].path}
+            key={RoutesConfig[key].path}
+            exact={RoutesConfig[key].exact}
+          >
+            <FontAwesomeIcon icon={RoutesConfig[key].icon} />
+            {RoutesConfig[key].displayName}
+          </NavLink>
+        ))}
+        </div>
       </div>
     </nav>
   );

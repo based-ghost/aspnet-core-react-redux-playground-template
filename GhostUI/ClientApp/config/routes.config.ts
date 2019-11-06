@@ -1,39 +1,42 @@
-﻿export const RoutesConfig = {
+﻿import { IconProp } from '@fortawesome/fontawesome-svg-core';
+
+export type Route = {
+  readonly path: string;
+  readonly exact?: boolean;
+  readonly showInNav?: boolean;
+  readonly pathAbsolute?: string;
+  readonly displayName: string;
+  readonly icon: IconProp;
+};
+
+export type RoutesConfig = { [key: string]: Route };
+
+export const RoutesConfig: RoutesConfig = {
   Login: {
     path: "/",
+    showInNav: false,
     displayName: "Logout",
     icon: "sign-out-alt",
-    navBar: {
-      show: false,
-      order: 0
-    }
   },
   Form: {
+    exact: true,
+    showInNav: true,
     path: "/form",
     displayName: "Form",
     icon: "pencil-alt",
-    navBar: {
-      show: true,
-      order: 1
-    }
   },
   Dashboard: {
+    exact: true,
+    showInNav: true,
     path: "/dashboard",
     displayName: "Home",
     icon: "home",
-    navBar: {
-      show: true,
-      order: 2
-    }
   },
   FetchData: {
     path: "/fetchdata",
     pathAbsolute: "/fetchdata/:startDateIndex?",
+    showInNav: true,
     displayName: "Fetch",
     icon: "cloud",
-    navBar: {
-      show: true,
-      order: 3
-    }
-  }
+  },
 };

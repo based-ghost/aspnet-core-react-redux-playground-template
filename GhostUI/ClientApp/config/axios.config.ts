@@ -1,13 +1,13 @@
-﻿import axios, { AxiosError } from "axios";
+﻿import axios, { AxiosError, AxiosResponse } from "axios";
 import { toast } from "react-toastify";
 import { renderToastifyMsg } from "../utils";
 
 export const configureAxiosInterceptors = (): void => {
   axios.interceptors.response.use(
-    response => {
+    (response: AxiosResponse) => {
       return response;
     },
-    error => {
+    (error: AxiosError) => {
       handleAxiosError(error);
       return Promise.reject(error);
     }

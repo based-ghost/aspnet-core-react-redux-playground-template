@@ -2,8 +2,8 @@
 import { History } from 'history';
 import { reducer as FormReducer } from './form';
 import { reducer as AuthReducer } from './auth';
-import { reducer as WeatherForecastsReducer } from './weather-forecasts';
 import { connectRouter, RouterState } from 'connected-react-router';
+import { reducer as WeatherForecastsReducer } from './weather-forecasts';
 
 // The top-level state object
 export interface IApplicationState {

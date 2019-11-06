@@ -7,10 +7,7 @@ type LoginControlsProps = {
   readonly handleRememberMeCheck: (checked: boolean) => void;
 };
 
-export const LoginControls = React.memo<LoginControlsProps>(({
-  rememberMe,
-  handleRememberMeCheck,
-}) => (
+const LoginControls = React.memo<LoginControlsProps>(({ rememberMe,handleRememberMeCheck }) => (
   <Fragment>
     <div className="field remember-me-field">
       <Checkbox
@@ -27,3 +24,5 @@ export const LoginControls = React.memo<LoginControlsProps>(({
     </button>
   </Fragment>
 ));
+
+export default LoginControls;

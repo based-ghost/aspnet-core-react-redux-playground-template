@@ -6,7 +6,7 @@ type ForecastTableProps = {
   readonly forecasts?: IWeatherForecast[];
 };
 
-export const ForecastTable = React.memo<ForecastTableProps>(({ forecasts }) => (
+const ForecastTable = React.memo<ForecastTableProps>(({ forecasts }) => (
   <table className="table is-fullwidth">
     <thead>
       <tr>
@@ -29,3 +29,5 @@ export const ForecastTable = React.memo<ForecastTableProps>(({ forecasts }) => (
     </tbody>
   </table>
 ));
+
+export default ForecastTable;

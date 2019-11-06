@@ -3,10 +3,10 @@ import { useState, useCallback, useMemo, ChangeEvent } from 'react';
 export type TextInputType = 'text' | 'password';
 
 export type TextInput = {
-  readonly value: string;
-  readonly hasValue: boolean;
-  readonly clear: () => void;
-  readonly bindToInput: {
+  value: string;
+  hasValue: boolean;
+  clear: () => void;
+  bindToInput: {
     value: string;
     type: TextInputType;
     onChange: (e: ChangeEvent<HTMLInputElement>) => void;

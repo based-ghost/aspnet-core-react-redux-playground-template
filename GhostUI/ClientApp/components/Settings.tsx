@@ -7,7 +7,6 @@ import { IApplicationState } from '../store';
 import { actionCreators } from '../store/auth';
 import { spaNugetUrls } from '../config/constants';
 import { RoutesConfig } from '../config/routes.config';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type SettingsProps = typeof actionCreators & { readonly isAuthenticated: boolean };
@@ -68,7 +67,7 @@ const Settings: React.FC<SettingsProps> = ({ isAuthenticated, logoutUserRequest 
               className='dropdown-item'
               onClick={handleLogout(history)}
             >
-              <FontAwesomeIcon icon={RoutesConfig.Login.icon as IconProp} />{' '}
+              <FontAwesomeIcon icon={RoutesConfig.Login.icon} />{' '}
               {RoutesConfig.Login.displayName}
             </a>
           )}

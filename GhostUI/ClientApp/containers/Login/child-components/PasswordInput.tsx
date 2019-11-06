@@ -10,7 +10,7 @@ type PasswordInputProps = {
   readonly toggleShowPassword: () => void;
 };
 
-export const PasswordInput = React.memo<PasswordInputProps>(({
+const PasswordInput = React.memo<PasswordInputProps>(({
   textInput,
   showPassword,
   isInputInvalid,
@@ -48,3 +48,5 @@ export const PasswordInput = React.memo<PasswordInputProps>(({
     </div>
   );
 });
+
+export default PasswordInput;

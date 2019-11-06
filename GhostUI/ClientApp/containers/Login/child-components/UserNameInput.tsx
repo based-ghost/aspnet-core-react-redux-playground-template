@@ -8,7 +8,7 @@ type UserNameInputProps = {
   readonly isInputInvalid: boolean;
 };
 
-export const UserNameInput = React.memo<UserNameInputProps>(({ textInput, isInputInvalid }) => {
+const UserNameInput = React.memo<UserNameInputProps>(({ textInput, isInputInvalid }) => {
   const { hasValue, bindToInput } = textInput;
 
   const className = createClassName([
@@ -33,3 +33,5 @@ export const UserNameInput = React.memo<UserNameInputProps>(({ textInput, isInpu
     </div>
   );
 });
+
+export default UserNameInput;
