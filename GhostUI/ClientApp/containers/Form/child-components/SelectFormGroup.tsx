@@ -30,4 +30,6 @@ const SelectFormGroup = React.memo<SelectFormGroupProps>(({
   </div>
 ));
 
+SelectFormGroup.displayName = 'SelectFormGroup';
+
 export default SelectFormGroup;

@@ -49,4 +49,6 @@ const PasswordInput = React.memo<PasswordInputProps>(({
   );
 });
 
+PasswordInput.displayName = 'PasswordInput';
+
 export default PasswordInput;

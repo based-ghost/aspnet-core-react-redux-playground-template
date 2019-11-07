@@ -34,4 +34,6 @@ const UserNameInput = React.memo<UserNameInputProps>(({ textInput, isInputInvali
   );
 });
 
+UserNameInput.displayName = 'UserNameInput';
+
 export default UserNameInput;

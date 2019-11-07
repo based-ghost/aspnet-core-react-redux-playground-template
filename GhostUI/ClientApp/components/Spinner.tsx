@@ -55,4 +55,6 @@ const Spinner = React.memo<SpinnerProps>(({ isLoading }) => (
   </StyledSpinner>
 ));
 
+Spinner.displayName = 'Spinner';
+
 export default Spinner;

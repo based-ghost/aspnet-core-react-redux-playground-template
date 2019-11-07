@@ -24,4 +24,6 @@ const CounterFormGroup = React.memo<CounterFormGroupProps>(({ count, increment, 
   </div>
 ));
 
+CounterFormGroup.displayName = 'CounterFormGroup';
+
 export default CounterFormGroup;

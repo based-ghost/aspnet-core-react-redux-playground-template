@@ -23,4 +23,6 @@ const CheckboxFormGroup = React.memo<CheckboxFormGroupProps>(({ checked, onCheck
   </div>
 ));
 
+CheckboxFormGroup.displayName = 'CheckboxFormGroup';
+
 export default CheckboxFormGroup;

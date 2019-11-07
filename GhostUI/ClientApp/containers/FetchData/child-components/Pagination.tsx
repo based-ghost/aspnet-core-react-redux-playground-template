@@ -19,4 +19,6 @@ const Pagination = React.memo<PaginationProps>(({ startDateIndex }) => (
   </p>
 ));
 
+Pagination.displayName = 'Pagination';
+
 export default Pagination;

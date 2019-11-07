@@ -120,4 +120,6 @@ const Checkbox = React.memo<CheckboxProps>(({
   </StyledLabelWrapper>
 ));
 
+Checkbox.displayName = 'Checkbox';
+
 export default Checkbox;

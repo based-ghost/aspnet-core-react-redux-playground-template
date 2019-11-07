@@ -81,8 +81,8 @@ const Authenticator = React.memo<AuthenticatorProps>(({
 }) => {
   useEffect(() => {
     const authHandler = setTimeout(() => {
-      (authStatus === AuthStatusEnum.FAIL) && handleOnFail();
-      (authStatus === AuthStatusEnum.SUCCESS) && handleOnSuccess();
+      if (authStatus === AuthStatusEnum.FAIL) handleOnFail();
+      if (authStatus === AuthStatusEnum.SUCCESS) handleOnSuccess();
     }, delay);
 
     return () => {
@@ -102,5 +102,7 @@ const Authenticator = React.memo<AuthenticatorProps>(({
     </AuthenticatorWrapper>
   );
 });
+
+Authenticator.displayName = 'Authenticator';
 
 export default Authenticator;

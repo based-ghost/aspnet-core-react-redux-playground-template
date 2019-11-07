@@ -29,4 +29,6 @@ const ForecastTable = React.memo<ForecastTableProps>(({ forecasts }) => (
   </table>
 ));
 
+ForecastTable.displayName = 'ForecastTable';
+
 export default ForecastTable;

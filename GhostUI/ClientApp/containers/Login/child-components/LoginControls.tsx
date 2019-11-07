@@ -25,4 +25,6 @@ const LoginControls = React.memo<LoginControlsProps>(({ rememberMe, handleRememb
   </Fragment>
 ));
 
+LoginControls.displayName = 'LoginControls';
+
 export default LoginControls;

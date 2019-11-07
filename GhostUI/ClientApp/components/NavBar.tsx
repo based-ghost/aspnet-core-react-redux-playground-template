@@ -14,8 +14,8 @@ type NavBarProps = {
 const NavBar: React.FC<NavBarProps> = ({ isAuthenticated }) => {
   const navRoutes: Route[] = Object
     .keys(RoutesConfig)
-    .map((key: string) => RoutesConfig[key])
-    .filter((route: Route) => !!route.showInNav);
+    .map((key) => RoutesConfig[key])
+    .filter((route) => !!route.showInNav);
 
   return (
     <nav

@@ -9,7 +9,7 @@ import { Authenticator } from "../../components";
 import { useToggle, useTextInput } from "../../hooks";
 import { RoutesConfig } from "../../config/routes.config";
 import { UserNameInput, PasswordInput, LoginControls } from "./child-components";
-import { actionCreators, AuthStatusEnum, ICredentials, reducer } from "../../store/auth";
+import { actionCreators, AuthStatusEnum, reducer } from "../../store/auth";
 
 const BasedGhostLogo = require("../../assets/image/based-ghost-main.png") as string;
 
@@ -67,14 +67,12 @@ const Login: React.FC<LoginProps> = ({
       setIsInputInvalid(false);
       setAuthStatus(AuthStatusEnum.PROCESS);
 
-      const credentials: ICredentials = {
-        rememberMe,
-        userName: userNameInput.value,
-        password: passwordInput.value,
-      };
-
       setTimeout(() => {
-        loginUserRequest(credentials);
+        loginUserRequest({
+          rememberMe,
+          userName: userNameInput.value,
+          password: passwordInput.value,
+        });
       }, 2500);
     }
   };
