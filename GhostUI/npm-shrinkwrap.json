@@ -356,9 +356,9 @@
       "dev": true
     },
     "@types/styled-components": {
-      "version": "4.1.21",
-      "resolved": "https://registry.npmjs.org/@types/styled-components/-/styled-components-4.1.21.tgz",
-      "integrity": "sha512-uJ930+ypit+PAd9M4Mw7c7x3RRBQ4ZB15FN1bH7VjDrDSS1ECueK1xp/aAwXIOaplUrHBurN8lzBOcMpk3Je7w==",
+      "version": "4.1.22",
+      "resolved": "https://registry.npmjs.org/@types/styled-components/-/styled-components-4.1.22.tgz",
+      "integrity": "sha512-sd1bWLEuacruy3VLG9j3A6pC2cBp7rFwgnl54uCUl0zeXSgCLEMhwF259x3A/HhSYuzZ8S6ao+pX8soRi02Khg==",
       "dev": true,
       "requires": {
         "@types/react": "*",
@@ -7999,16 +7999,17 @@
       "dev": true
     },
     "react-functional-select": {
-      "version": "1.0.0-beta.14",
-      "resolved": "https://registry.npmjs.org/react-functional-select/-/react-functional-select-1.0.0-beta.14.tgz",
-      "integrity": "sha512-gxH1IICMWEAvFibjZRk4zV+xABYsAQ1Oz2NcgJQ7A+/Yh9pJwB3BB7XU+lTVizOI1FVXpyxehRLcW+O3bf9yrw=="
+      "version": "1.0.0-beta.15",
+      "resolved": "https://registry.npmjs.org/react-functional-select/-/react-functional-select-1.0.0-beta.15.tgz",
+      "integrity": "sha512-w6dN2onfFrYcXNTzSbOvgQe+e2wEqPwmYlEGrNbjccWDLImJBOy7N3Gpyo5cEGhwhten+DncUxf1GthYYGNqBQ=="
     },
     "react-hot-loader": {
-      "version": "4.12.15",
-      "resolved": "https://registry.npmjs.org/react-hot-loader/-/react-hot-loader-4.12.15.tgz",
-      "integrity": "sha512-sgkN6g+tgPE6xZzD0Ysqll7KUFYJbMX0DrczT5OxD6S7hZlSnmqSC3ceudwCkiDd65ZTtm+Ayk4Y9k5xxCvpOw==",
+      "version": "4.12.16",
+      "resolved": "https://registry.npmjs.org/react-hot-loader/-/react-hot-loader-4.12.16.tgz",
+      "integrity": "sha512-KC33uTBacgdunMtfpZFP2pgPpyvKIcCwuh0XmWESbeFrkWLqUtCFN91zyaTdU5OiAM982+E8xh1gjE5EINumaw==",
       "dev": true,
       "requires": {
+        "@types/react": "^15.0.0 || ^16.0.0",
         "fast-levenshtein": "^2.0.6",
         "global": "^4.3.0",
         "hoist-non-react-statics": "^3.3.0",
