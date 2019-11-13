@@ -8014,12 +8014,11 @@
       "integrity": "sha512-w6dN2onfFrYcXNTzSbOvgQe+e2wEqPwmYlEGrNbjccWDLImJBOy7N3Gpyo5cEGhwhten+DncUxf1GthYYGNqBQ=="
     },
     "react-hot-loader": {
-      "version": "4.12.16",
-      "resolved": "https://registry.npmjs.org/react-hot-loader/-/react-hot-loader-4.12.16.tgz",
-      "integrity": "sha512-KC33uTBacgdunMtfpZFP2pgPpyvKIcCwuh0XmWESbeFrkWLqUtCFN91zyaTdU5OiAM982+E8xh1gjE5EINumaw==",
+      "version": "4.12.17",
+      "resolved": "https://registry.npmjs.org/react-hot-loader/-/react-hot-loader-4.12.17.tgz",
+      "integrity": "sha512-nee5q4Xip6+wD8DrCWxVUH0zT488K1zRG1KezJTb8oEbRO1JZvnEizbOG7BwnRfxxjk5QSyx6fPXeBf2fToBhw==",
       "dev": true,
       "requires": {
-        "@types/react": "^15.0.0 || ^16.0.0",
         "fast-levenshtein": "^2.0.6",
         "global": "^4.3.0",
         "hoist-non-react-statics": "^3.3.0",

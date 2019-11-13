@@ -5,7 +5,7 @@ import { Route } from 'react-router-dom';
 import { useOnClickOutside } from '../hooks';
 import { IApplicationState } from '../store';
 import { actionCreators } from '../store/auth';
-import { spaNugetUrls } from '../config/constants';
+import { nugetUrlConfig } from '../config/constants';
 import { RoutesConfig } from '../config/routes.config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -25,7 +25,7 @@ const SettingsMenu: React.FC<SettingsMenuProps> = ({ handleLogout }) => (
         rel='noopener'
         target='_blank'
         className='dropdown-item'
-        href={spaNugetUrls.HEALTH_UI}
+        href={nugetUrlConfig.HEALTH_UI}
       >
         <FontAwesomeIcon icon='heart' /> Health Checks
         </a>
@@ -36,7 +36,7 @@ const SettingsMenu: React.FC<SettingsMenuProps> = ({ handleLogout }) => (
         rel='noopener'
         target='_blank'
         className='dropdown-item'
-        href={spaNugetUrls.SWAGGER_DOCS}
+        href={nugetUrlConfig.SWAGGER_DOCS}
       >
         <FontAwesomeIcon icon='file' /> Swagger API
         </a>
