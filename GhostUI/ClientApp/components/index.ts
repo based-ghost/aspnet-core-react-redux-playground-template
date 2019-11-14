@@ -1,5 +1,5 @@
 ﻿import Footer from './Footer';
-import NavBar from './NavBar';
+import Navbar from './Navbar';
 import Spinner from './Spinner';
 import Checkbox from './Checkbox';
 import Settings from './Settings';
@@ -7,7 +7,7 @@ import Authenticator from './Authenticator';
 
 export {
   Footer,
-  NavBar,
+  Navbar,
   Spinner,
   Checkbox,
   Settings,

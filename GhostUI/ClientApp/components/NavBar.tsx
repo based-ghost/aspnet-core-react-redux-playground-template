@@ -1,4 +1,4 @@
-﻿import React from 'react';
+﻿import React, { ReactNode } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { IApplicationState } from '../store';
@@ -7,11 +7,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const BulmaLogo = require('../assets/image/bulma.io-logo.png') as string;
 
-type NavBarProps = {
+type NavbarProps = {
   readonly isAuthenticated: boolean;
 };
 
-const NavBar: React.FC<NavBarProps> = ({ isAuthenticated }) => {
+const Navbar: React.FC<NavbarProps> = ({ isAuthenticated }) => {
   const navRoutes: Route[] = Object
     .keys(RoutesConfig)
     .map((key) => RoutesConfig[key])
@@ -32,18 +32,18 @@ const NavBar: React.FC<NavBarProps> = ({ isAuthenticated }) => {
           />
         </div>
         <div className='navbar-routes'>
-        {isAuthenticated && navRoutes.map((route: Route) => (
-          <NavLink
-            to={route.path}
-            key={route.path}
-            exact={route.exact}
-            className='navbar-item'
-            activeClassName='is-active'
-          >
-            <FontAwesomeIcon icon={route.icon} />
-            {route.displayName}
-          </NavLink>
-        ))}
+          {isAuthenticated && navRoutes.map((route: Route): ReactNode => (
+            <NavLink
+              to={route.path}
+              key={route.path}
+              exact={route.exact}
+              className='navbar-item'
+              activeClassName='is-active'
+            >
+              <FontAwesomeIcon icon={route.icon} />
+              {route.displayName}
+            </NavLink>
+          ))}
         </div>
       </div>
     </nav>
@@ -54,4 +54,4 @@ const mapStateToProps = (state: IApplicationState) => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps)(NavBar);
+export default connect(mapStateToProps)(Navbar);

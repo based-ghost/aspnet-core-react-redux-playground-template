@@ -13,9 +13,7 @@ class AuthService extends BaseService {
   }
 
   public static get Instance(): AuthService {
-    return (
-      this._authService || (this._authService = new this("Auth"))
-    );
+    return (this._authService || (this._authService = new this("Auth")));
   }
 
   public async logoutAsync(): Promise<AxiosResponse> {

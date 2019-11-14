@@ -1,6 +1,16 @@
 ﻿import React, { ChangeEvent } from 'react';
 import styled from 'styled-components';
 
+type CheckboxProps = {
+  readonly id?: string;
+  readonly name?: string;
+  readonly label?: string;
+  readonly checked: boolean;
+  readonly disabled?: boolean;
+  readonly readOnly?: boolean;
+  readonly onCheck: (checked: boolean) => void;
+};
+
 const _borderColor = '#dbdbdb';
 const _checkMarkColor = '#209cee';
 const _borderColorHover = '#b5b5b5';
@@ -47,6 +57,7 @@ const StyledInput = styled.input`
 `;
 
 const StyledCheckIcon = styled.i`
+  top: 0.2em;
   z-index: 0;
   width: 1rem;
   height: 1rem;
@@ -57,7 +68,6 @@ const StyledCheckIcon = styled.i`
   background-color: transparent;
   border: 0.125rem solid currentColor;
   transition: border-color 0.38s ease;
-   top: 0.2em;
 
   :after,
   :before {
@@ -86,16 +96,6 @@ const StyledCheckIcon = styled.i`
   }
 `;
 
-type CheckboxProps = {
-  readonly id?: string;
-  readonly name?: string;
-  readonly label?: string;
-  readonly checked: boolean;
-  readonly disabled?: boolean;
-  readonly readOnly?: boolean;
-  readonly onCheck: (checked: boolean) => void;
-};
-
 const Checkbox = React.memo<CheckboxProps>(({
   id,
   name,
@@ -113,7 +113,7 @@ const Checkbox = React.memo<CheckboxProps>(({
       checked={checked}
       readOnly={readOnly}
       disabled={disabled}
-      onChange={(e: ChangeEvent<HTMLInputElement>) => onCheck(!!e.target.checked)}
+      onChange={(e: ChangeEvent<HTMLInputElement>): void => onCheck(e.target.checked)}
     />
     <StyledCheckIcon />
     {label && <StyledSpan>{label}</StyledSpan>}

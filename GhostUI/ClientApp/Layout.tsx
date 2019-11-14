@@ -1,5 +1,5 @@
 import React, { Fragment, ReactNode } from 'react';
-import { Footer, NavBar, Settings } from './components';
+import { Footer, Navbar, Settings } from './components';
 
 type LayoutProps = {
   readonly children?: ReactNode;
@@ -7,7 +7,7 @@ type LayoutProps = {
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => (
   <Fragment>
-    <NavBar />
+    <Navbar />
     <Settings />
     {children}
     <Footer />

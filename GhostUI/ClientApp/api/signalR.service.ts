@@ -6,7 +6,7 @@ import { HubConnection, HubConnectionBuilder, HubConnectionState } from "@aspnet
  * SignalR hub defaults
  * BASE_URL needs full url or else prerendering fails (can't normalize /hubs/users)
  */
-const _signalrConfig = {
+const _signalrConfig = Object.freeze({
   CONNECTION_DELAY: 0,
   TOASTIFY_ICON: "info",
   HUB_MESSAGE_DELAY: 3000,
@@ -15,7 +15,7 @@ const _signalrConfig = {
   HUB_MESSAGE_TITLE: "Hub Message",
   CLOSE_EVENT: "CloseAllConnections",
   BASE_URL: "http://localhost:56717/hubs/users"
-};
+});
 
 /**
  * SignalR API abstraction layer communication - configures/manages hub connections (typescript singleton pattern)
@@ -30,9 +30,7 @@ class SignalRService {
   }
 
   public static get Instance(): SignalRService {
-    return (
-      this._signalRService || (this._signalRService = new this())
-    );
+    return (this._signalRService || (this._signalRService = new this()));
   }
 
   public startConnection(): void {

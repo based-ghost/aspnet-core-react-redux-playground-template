@@ -66,7 +66,7 @@
     <TypeScriptCompile Include="ClientApp\components\Footer.tsx" />
     <TypeScriptCompile Include="ClientApp\components\Authenticator.tsx" />
     <TypeScriptCompile Include="ClientApp\components\Spinner.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\NavBar.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\Navbar.tsx" />
     <TypeScriptCompile Include="ClientApp\components\Settings.tsx" />
     <TypeScriptCompile Include="ClientApp\config\fa.config.ts" />
     <TypeScriptCompile Include="ClientApp\types\index.d.ts" />

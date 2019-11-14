@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { isArrayWithLength } from "../../../utils";
 import { IWeatherForecast } from "../../../store/weather-forecasts";
 
@@ -17,7 +17,7 @@ const ForecastTable = React.memo<ForecastTableProps>(({ forecasts }) => (
       </tr>
     </thead>
     <tbody>
-      {isArrayWithLength(forecasts) && forecasts.map((forecast: IWeatherForecast) => (
+      {isArrayWithLength(forecasts) && forecasts.map((forecast: IWeatherForecast): ReactNode => (
         <tr key={forecast.ID}>
           <td>{forecast.DateFormatted}</td>
           <td>{forecast.TemperatureC}</td>

@@ -138,11 +138,11 @@ const Settings: React.FC<SettingsProps> = ({ isAuthenticated, logoutUserRequest 
   const [isMenuOpen, setisMenuOpen] = useState<boolean>(false);
   const settingsAnchorRef = useRef<HTMLAnchorElement | null>(null);
 
-  const onOutsideClick = useCallback(() => {
+  const onOutsideClick = useCallback((): void => {
     setisMenuOpen(false);
   }, []);
 
-  const onInsideClick = useCallback(() => {
+  const onInsideClick = useCallback((): void => {
     setisMenuOpen(prevIsMenuOpen => !prevIsMenuOpen);
   }, []);
 
