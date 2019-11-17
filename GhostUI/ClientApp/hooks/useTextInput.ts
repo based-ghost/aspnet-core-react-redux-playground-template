@@ -21,7 +21,7 @@ export const useTextInput = (
   const clear = useCallback((): void => setValue(''), []);
   const onChange = useCallback((e: ChangeEvent<HTMLInputElement>): void => setValue(e.currentTarget.value), []);
 
-  const textInput = useMemo<TextInput>(() => ({
+  return useMemo<TextInput>(() => ({
     value,
     clear,
     hasValue: !!(value && value.trim()),
@@ -31,6 +31,4 @@ export const useTextInput = (
       onChange,
     },
   }), [value, type, onChange, clear]);
-
-  return textInput;
 };
