@@ -2,8 +2,8 @@
 {
     public interface IAuthUser
     {
-        string status   { get; }
-        string token    { get; }
-        string userName { get; }
+        string Status   { get; }
+        string Token    { get; }
+        string UserName { get; }
     }
 }

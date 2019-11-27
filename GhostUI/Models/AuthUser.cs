@@ -2,15 +2,15 @@
 {
     public class AuthUser : IAuthUser
     {
-        public string status   { get; }
-        public string token    { get; }
-        public string userName { get; }
+        public string Status   { get; }
+        public string Token    { get; }
+        public string UserName { get; }
 
-        public AuthUser(string _status, string _token, string _userName)
+        public AuthUser(string status, string token, string userName)
         {
-            status = _status;
-            token = _token;
-            userName = _userName;
+            Status = status;
+            Token = token;
+            UserName = userName;
         }
     }
 }

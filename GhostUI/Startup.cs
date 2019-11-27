@@ -2,27 +2,33 @@ using System.Net;
 using GhostUI.Hubs;
 using GhostUI.Models;
 using GhostUI.Extensions;
-using Microsoft.AspNetCore.Mvc;
+using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
-using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 
 namespace GhostUI
 {
     public class Startup
     {
+        private readonly string _spaSourcePath;
+        private readonly string _corsPolicyName;
+
         public IConfiguration Configuration { get; }
 
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            _spaSourcePath = Configuration.GetValue<string>("SPA:SourcePath");
+            _corsPolicyName = Configuration.GetValue<string>("CORS:PolicyName");
         }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             // Custom healthcheck example (using nuget package .AddHealthChecksUI() to view results at {url}/healthchecks-ui)
@@ -30,34 +36,46 @@ namespace GhostUI
                 .AddHealthChecks()
                 .AddGCInfoCheck("GCInfo");
 
-            // Add CORS, Brotli/Gzip response compression (prod only), MVC, SignalR
-            services.AddCorsConfig("AllowAll")
-                .AddResponseCompressionConfig(Configuration)
-                .AddMvcConfig(CompatibilityVersion.Version_2_2)
-                .AddSignalR();
+            // Add CORS
+            services.AddCorsConfig(_corsPolicyName);
 
-            // Register the Swagger services
-            services.AddSwaggerDocument(settings => settings.Title = $"{this.GetType().Namespace} API");
+            // Register RazorPages/Controllers
+            services.AddControllers();
+
+            // Add Brotli/Gzip response compression (prod only)
+            services.AddResponseCompressionConfig(Configuration);
+
+            // Add SignalR
+            services.AddSignalR();
+
+            // IMPORTANT CONFIG CHANGE IN 3.0 - 'Async' suffix in action names get stripped by default - so, to access them by full name with 'Async' part - opt out of this feature'.
+            services.AddMvc(options => options.SuppressAsyncSuffixInActionNames = false);
+
+            // In production, the Vue files will be served from this directory
+            services.AddSpaStaticFiles(configuration => configuration.RootPath = $"{_spaSourcePath}/dist");
+
+            // Register the Swagger services (using OpenApi 3.0)
+            services.AddOpenApiDocument(configure => configure.Title = $"{this.GetType().Namespace} API");
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             // If development, enable Hot Module Replacement
             // If production, enable Brotli/Gzip response compression & strict transport security headers
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage()
-                   .UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
-                   {
-                       HotModuleReplacement = true,
-                       ReactHotModuleReplacement = true
-                   });
+                app.UseDeveloperExceptionPage();
+                // There does not yet appear to be a finalized solution to replace this obselete framework.
+                // app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
+                // {
+                //     HotModuleReplacement = true
+                // });
             }
             else
             {
                 app.UseResponseCompression();
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Error");
+                app.UseHttpsRedirection();
                 app.UseHsts();
             }
 
@@ -79,26 +97,43 @@ namespace GhostUI
                 });
             });
 
-            // Enable all custom health checks registered earlier (browse to {url}/healthchecks-ui to UI / {url}/healthchecks-json to raw JSON)
-            app.UseApiHealthChecks("/healthchecks-json")
-               .UseHealthChecksUI();
+            app.UseStaticFiles();
+            app.UseSpaStaticFiles();
+            app.UseRouting();
+
+            app.UseCors(_corsPolicyName);
 
             // Register the Swagger generator and the Swagger UI middlewares
             // NSwage.MsBuild + adding automation config in GhostUI.csproj makes this part of the build step (updates to API will be handled automatically)
+            app.UseOpenApi();
             app.UseSwaggerUi3(settings =>
             {
                 settings.Path = "/docs";
                 settings.DocumentPath = "/docs/api-specification.json";
             });
 
-            app.UseCors("AllowAll")
-               .UseStaticFiles()
-               .UseSignalR((options) => options.MapHub<UsersHub>("/hubs/users"))
-               .UseMvc(routes =>
-               {
-                   routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}")
-                         .MapSpaFallbackRoute("spa-fallback", new { controller = "Home", action = "Index" });
-               });
+            // Map controllers / SignalR hubs / HealthChecks
+            app.UseEndpoints(endpoints => 
+            {
+                endpoints.MapControllers();
+                endpoints.MapHub<UsersHub>("/hubs/users");
+
+                endpoints.MapHealthChecks("/healthchecks-json", new HealthCheckOptions
+                {
+                    Predicate = _ => true,
+                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+                });
+
+                endpoints.MapHealthChecksUI();
+            });
+
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = _spaSourcePath;
+
+                if (env.IsDevelopment())
+                    spa.UseReactDevelopmentServer(npmScript: "start");
+            });
         }
     }
 }

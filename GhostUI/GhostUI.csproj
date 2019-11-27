@@ -1,135 +1,56 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+	  <TargetFramework>netcoreapp3.0</TargetFramework>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
-    <TypeScriptToolsVersion>3.6</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <IsPackable>false</IsPackable>
-    <LangVersion>default</LangVersion>
+    <SpaRoot>ClientApp\</SpaRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+    <AssemblyName>GhostUI</AssemblyName>
+    <RootNamespace>GhostUI</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AspNetCore.HealthChecks.UI" Version="2.2.32" />
-    <PackageReference Include="Microsoft.AspNetCore.All" />
-    <PackageReference Include="NSwag.AspNetCore" Version="13.1.5" />
-    <PackageReference Include="NSwag.MSBuild" Version="13.1.5">
+    <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Content Remove="$(SpaRoot)**" />
+    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNetCore.HealthChecks.UI" Version="3.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.0.0" />
+    <PackageReference Include="NSwag.AspNetCore" Version="13.1.6" />
+    <PackageReference Include="NSwag.MSBuild" Version="13.1.6">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.1" />
-  </ItemGroup>
+  <Target Name="NSwag" AfterTargets="Build" Condition="'$(Configuration)' == 'Debug'">
+    <Copy SourceFiles="@(Reference)" DestinationFolder="$(OutDir)References" />
+    <Exec Command="$(NSwagExe_Core30) run /variables:Configuration=$(Configuration) /runtime:NetCore30" />
+    <RemoveDir Directories="$(OutDir)References" />
+  </Target>
 
-  <ItemGroup>
-    <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
-    <Content Remove="ClientApp\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="ClientApp\components\index.ts" />
-    <None Remove="ClientApp\configureStore.ts" />
-    <None Remove="ClientApp\config\constants.ts" />
-    <None Remove="ClientApp\config\fa.config.ts" />
-    <None Remove="ClientApp\config\toastify.tsx" />
-    <None Remove="ClientApp\store\auth\validation.ts" />
-    <None Remove="ClientApp\types\index.d.ts" />
-    <None Remove="ClientApp\views\index.ts" />
-    <None Remove="ClientApp\prototype\index.ts" />
-    <None Remove="ClientApp\prototype\string.extensions.ts" />
-    <None Remove="ClientApp\store\auth\actions.ts" />
-    <None Remove="ClientApp\store\auth\index.ts" />
-    <None Remove="ClientApp\store\auth\reducer.ts" />
-    <None Remove="ClientApp\store\auth\types.ts" />
-    <None Remove="ClientApp\store\form\actions.ts" />
-    <None Remove="ClientApp\store\form\index.ts" />
-    <None Remove="ClientApp\store\form\reducer.ts" />
-    <None Remove="ClientApp\store\form\types.ts" />
-    <None Remove="ClientApp\store\index.ts" />
-    <None Remove="ClientApp\store\rootReducer.ts" />
-    <None Remove="ClientApp\store\weather-forecasts\actions.ts" />
-    <None Remove="ClientApp\store\weather-forecasts\index.ts" />
-    <None Remove="ClientApp\store\weather-forecasts\reducer.ts" />
-    <None Remove="ClientApp\store\weather-forecasts\types.ts" />
-    <None Remove="ClientApp\types\redux.d.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\components\index.ts" />
-    <TypeScriptCompile Include="ClientApp\hooks\useOnClickOutside.ts" />
-    <TypeScriptCompile Include="ClientApp\config\axios.config.ts" />
-    <TypeScriptCompile Include="ClientApp\api\base.service.ts" />
-    <TypeScriptCompile Include="ClientApp\api\sample.service.ts" />
-    <TypeScriptCompile Include="ClientApp\api\signalR.service.ts" />
-    <TypeScriptCompile Include="ClientApp\components\Checkbox.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\Footer.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\Authenticator.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\Spinner.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\Navbar.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\Settings.tsx" />
-    <TypeScriptCompile Include="ClientApp\config\fa.config.ts" />
-    <TypeScriptCompile Include="ClientApp\types\index.d.ts" />
-    <TypeScriptCompile Include="ClientApp\utils\helpers.ts" />
-    <TypeScriptCompile Include="ClientApp\views\index.ts" />
-    <TypeScriptCompile Include="ClientApp\config\routes.config.ts" />
-    <TypeScriptCompile Include="ClientApp\routes.tsx" />
-    <TypeScriptCompile Include="ClientApp\store\configureStore.ts" />
-    <TypeScriptCompile Include="ClientApp\config\constants.ts" />
-    <TypeScriptCompile Include="ClientApp\utils\renderToastifyMsg.tsx" />
-    <TypeScriptCompile Include="ClientApp\views\Login.tsx" />
-    <TypeScriptCompile Include="ClientApp\prototype\index.ts" />
-    <TypeScriptCompile Include="ClientApp\prototype\extensions\string.extensions.ts" />
-    <TypeScriptCompile Include="ClientApp\store\auth\actions.ts" />
-    <TypeScriptCompile Include="ClientApp\store\auth\index.ts" />
-    <TypeScriptCompile Include="ClientApp\store\auth\reducer.ts" />
-    <TypeScriptCompile Include="ClientApp\store\auth\types.ts" />
-    <TypeScriptCompile Include="ClientApp\store\form\actions.ts" />
-    <TypeScriptCompile Include="ClientApp\store\form\index.ts" />
-    <TypeScriptCompile Include="ClientApp\store\form\reducer.ts" />
-    <TypeScriptCompile Include="ClientApp\store\form\types.ts" />
-    <TypeScriptCompile Include="ClientApp\store\index.ts" />
-    <TypeScriptCompile Include="ClientApp\store\rootReducer.ts" />
-    <TypeScriptCompile Include="ClientApp\store\weather-forecasts\actions.ts" />
-    <TypeScriptCompile Include="ClientApp\store\weather-forecasts\index.ts" />
-    <TypeScriptCompile Include="ClientApp\store\weather-forecasts\reducer.ts" />
-    <TypeScriptCompile Include="ClientApp\store\weather-forecasts\types.ts" />
-    <TypeScriptCompile Include="ClientApp\types\redux.d.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\docs\" />
-  </ItemGroup>
-
-  <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
+  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">
       <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
     </Exec>
     <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
-
-    <!-- In development, the dist files won't exist on the first run or when cloning to
-         a different machine, so rebuild them if not already present. -->
-    <Message Importance="high" Text="Performing first-run Webpack build..." />
-    <Exec Command="npm install" />
-    <Exec Command="node node_modules/webpack/bin/webpack.js" />
-  </Target>
-  
-  <Target Name="NSwag" AfterTargets="Build">
-    <!-- As part of publishing, add build step for package NSwag.MSBuild (When the project builds, the NSwag CLI will run and generate an updated API specification and TypeScript client) -->
-    <Copy SourceFiles="@(Reference)" DestinationFolder="$(OutDir)References" />
-    <Exec Command="$(NSwagExe_Core22) run /variables:Configuration=$(Configuration)" />
-    <RemoveDir Directories="$(OutDir)References" />
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
   </Target>
 
   <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
     <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
-    <Exec Command="npm install" />
-    <Exec Command="node node_modules/webpack/bin/webpack.js --env.prod" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build" />
 
     <!-- Include the newly-built files in the publish output -->
     <ItemGroup>
-      <DistFiles Include="wwwroot\dist\**; ClientApp\dist\**" />
+      <DistFiles Include="$(SpaRoot)dist\**" />
       <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
         <RelativePath>%(DistFiles.Identity)</RelativePath>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>

@@ -1,5 +1,5 @@
 ﻿{
-  "runtime": "NetCore22",
+  "runtime": "NetCore30",
   "defaultVariables": null,
   "documentGenerator": {
     "aspNetCoreToOpenApi": {
@@ -47,7 +47,7 @@
       "startupType": null,
       "allowNullableBodyParameters": true,
       "output": "wwwroot/docs/api-specification.json",
-      "outputType": "Swagger2",
+      "outputType": "OpenApi3",
       "assemblyPaths": [],
       "assemblyConfig": null,
       "referencePaths": [],

@@ -13,25 +13,10 @@ namespace GhostUI.Extensions
     {
         public static IServiceCollection AddCorsConfig(this IServiceCollection services, string name)
         {
-            services.AddCors(options =>
-                options.AddPolicy(name,
-                    corsBuilder =>
-                        corsBuilder
-                            .AllowAnyOrigin()
-                            .AllowAnyHeader()
-                            .AllowAnyMethod()));
-
-            return services;
-        }
-
-        public static IServiceCollection AddMvcConfig(this IServiceCollection services, CompatibilityVersion aspCoreVersion)
-        {
-            services.AddMvc()
-                .SetCompatibilityVersion(aspCoreVersion)
-                .AddJsonOptions(options => {
-                    options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
-                    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
-                });
+            services.AddCors(c => c.AddPolicy(name,
+                options => options.AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()));
 
             return services;
         }

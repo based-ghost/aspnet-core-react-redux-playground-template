@@ -2,7 +2,7 @@
 {
     public interface IWeatherForecast
     {
-        int    ID            { get; }
+        int    Id            { get; }
         int    TemperatureF  { get; }
         int    TemperatureC  { get; set; }
         string DateFormatted { get; set; }

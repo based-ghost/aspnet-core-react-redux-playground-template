@@ -1,6 +1,6 @@
 ﻿{
-  "x-generator": "NSwag v13.1.5.0 (NJsonSchema v10.0.27.0 (Newtonsoft.Json v11.0.0.0))",
-  "swagger": "2.0",
+  "x-generator": "NSwag v13.1.6.0 (NJsonSchema v10.0.28.0 (Newtonsoft.Json v12.0.0.0))",
+  "openapi": "3.0.0",
   "info": {
     "title": "GhostUI API",
     "version": "1.0.0"
@@ -12,29 +12,28 @@
           "Auth"
         ],
         "operationId": "Auth_Login",
-        "consumes": [
-          "application/json-patch+json",
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "parameters": [
-          {
-            "name": "request",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Credentials"
-            },
-            "x-nullable": false
-          }
-        ],
+        "requestBody": {
+          "x-name": "request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Credentials"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
         "responses": {
           "200": {
-            "x-nullable": true,
             "description": "",
-            "schema": {
-              "type": "file"
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
             }
           }
         }
@@ -48,10 +47,14 @@
         "operationId": "Auth_Logout",
         "responses": {
           "200": {
-            "x-nullable": true,
             "description": "",
-            "schema": {
-              "type": "file"
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
             }
           }
         }
@@ -63,28 +66,28 @@
           "SampleData"
         ],
         "operationId": "SampleData_WeatherForecasts",
-        "produces": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
         "parameters": [
           {
-            "type": "integer",
             "name": "startDateIndex",
             "in": "query",
-            "format": "int32",
-            "x-nullable": false
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
           }
         ],
         "responses": {
           "200": {
-            "x-nullable": false,
             "description": "",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/WeatherForecast"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
               }
             }
           }
@@ -92,49 +95,49 @@
       }
     }
   },
-  "definitions": {
-    "Credentials": {
-      "type": "object",
-      "required": [
-        "rememberMe"
-      ],
-      "properties": {
-        "userName": {
-          "type": "string"
-        },
-        "password": {
-          "type": "string"
-        },
-        "rememberMe": {
-          "type": "boolean"
+  "components": {
+    "schemas": {
+      "Credentials": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "rememberMe": {
+            "type": "boolean"
+          }
         }
-      }
-    },
-    "WeatherForecast": {
-      "type": "object",
-      "required": [
-        "TemperatureC",
-        "TemperatureF",
-        "ID"
-      ],
-      "properties": {
-        "TemperatureC": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "DateFormatted": {
-          "type": "string"
-        },
-        "Summary": {
-          "type": "string"
-        },
-        "TemperatureF": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "ID": {
-          "type": "integer",
-          "format": "int32"
+      },
+      "WeatherForecast": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "temperatureC": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dateFormatted": {
+            "type": "string",
+            "nullable": true
+          },
+          "summary": {
+            "type": "string",
+            "nullable": true
+          },
+          "temperatureF": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          }
         }
       }
     }
