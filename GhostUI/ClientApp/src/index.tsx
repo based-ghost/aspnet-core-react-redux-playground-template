@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './css/site.scss';
 import { routes } from './routes';
 import { Provider } from 'react-redux';
 import { createBrowserHistory } from 'history';
@@ -9,6 +8,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import { configureStore, IApplicationState } from './store';
 import { ToastContainer, ToastPosition } from 'react-toastify';
 import { configureAxiosInterceptors } from './config/axios.config';
+import './assets/style/scss/site.scss';
 import './config/fa.config';
 import * as serviceWorker from './serviceWorker';
 

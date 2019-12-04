@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Footer, Navbar, Settings } from './components';
+import { Footer, Navbar, Settings } from '.';
 
 const Layout: React.FC = ({ children }) => (
   <Fragment>
