@@ -1,3 +1,6 @@
+// Types reference added to fix typescript error: Property 'hot' does not exist on type 'Module'
+/// <reference types="webpack-env" />
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { routes } from './routes';
