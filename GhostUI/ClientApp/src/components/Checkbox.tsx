@@ -11,21 +11,21 @@ type CheckboxProps = {
   readonly onCheck: (checked: boolean) => void;
 };
 
-const _borderColor = '#dbdbdb';
-const _checkMarkColor = '#209cee';
-const _borderColorHover = '#b5b5b5';
+const BORDER_COLOR = '#dbdbdb';
+const CHECK_MARK_COLOR = '#209cee';
+const BORDER_COLOR_HOVER = '#b5b5b5';
 
-const StyledSpan = styled.span`
+const Label = styled.span`
   padding-left: 1.5rem;
 `;
 
-const StyledLabelWrapper = styled.label`
+const CheckboxWrapper = styled.label`
   display: flex;
   user-select: none;
   position: relative;
 `;
 
-const StyledInput = styled.input`
+const Input = styled.input`
   top: 0.2em;
   z-index: 3;
   opacity: 0;
@@ -52,17 +52,17 @@ const StyledInput = styled.input`
   }
 
   :hover ~ i {
-    border-color: ${_borderColorHover};
+    border-color: ${BORDER_COLOR_HOVER};
   }
 `;
 
-const StyledCheckIcon = styled.i`
+const CheckIcon = styled.i`
   top: 0.2em;
   z-index: 0;
   width: 1rem;
   height: 1rem;
   position: absolute;
-  color: ${_borderColor};
+  color: ${BORDER_COLOR};
   box-sizing: border-box;
   border-radius: 0.0625rem;
   background-color: transparent;
@@ -79,7 +79,7 @@ const StyledCheckIcon = styled.i`
     position: absolute;
     border-radius: 0.25rem;
     transform-origin: left top;
-    background-color: ${_checkMarkColor};
+    background-color: ${CHECK_MARK_COLOR};
     transition: opacity 0.38s ease, height 0s linear 0.38s;
   }
 
@@ -105,8 +105,8 @@ const Checkbox = React.memo<CheckboxProps>(({
   disabled,
   readOnly,
 }) => (
-  <StyledLabelWrapper>
-    <StyledInput
+  <CheckboxWrapper>
+    <Input
       id={id}
       name={name}
       type='checkbox'
@@ -115,9 +115,9 @@ const Checkbox = React.memo<CheckboxProps>(({
       disabled={disabled}
       onChange={(e: ChangeEvent<HTMLInputElement>): void => onCheck(e.target.checked)}
     />
-    <StyledCheckIcon />
-    {label && <StyledSpan>{label}</StyledSpan>}
-  </StyledLabelWrapper>
+    <CheckIcon />
+    {label && <Label>{label}</Label>}
+  </CheckboxWrapper>
 ));
 
 Checkbox.displayName = 'Checkbox';

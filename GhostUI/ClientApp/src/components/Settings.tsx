@@ -1,20 +1,20 @@
-﻿import React, { useCallback, useRef, useState, AnchorHTMLAttributes } from 'react';
+﻿import React, { useRef, AnchorHTMLAttributes } from 'react';
 import { connect } from 'react-redux';
 import { History } from 'history';
 import { Route } from 'react-router-dom';
-import { useOnClickOutside } from '../hooks';
 import { IApplicationState } from '../store';
 import { actionCreators } from '../store/auth';
 import { nugetUrlConfig } from '../config/constants';
 import styled, { keyframes } from 'styled-components';
 import { RoutesConfig } from '../config/routes.config';
+import { useOnClickOutside, useCallbackState } from '../hooks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type StyledSettingsProps = { readonly isMenuOpen: boolean };
 type MenuLinkAttributes = AnchorHTMLAttributes<HTMLAnchorElement>;
 type SettingsProps = typeof actionCreators & { readonly isAuthenticated: boolean };
 
-const _fadeIn = keyframes`
+const FADE_IN_KEYFRAMES = keyframes`
   from {
     opacity: 0;
   } to {
@@ -22,7 +22,7 @@ const _fadeIn = keyframes`
   }
 `;
 
-const _linkAttributes = Object.freeze<MenuLinkAttributes>({
+const LINK_ATTRIBUTES = Object.freeze<MenuLinkAttributes>({
   role: 'button',
   target: '_blank',
   rel: 'noopener noreferrer',
@@ -48,11 +48,18 @@ const SettingsMenuLink = styled.a`
   }
 `;
 
+const SettingsMenuButton = styled.button`
+  border: 0;
+  padding: 0;
+  outline: 0;
+  cursor: pointer;
+  background: transparent;
+`;
+
 const CogIcon = styled(FontAwesomeIcon)`
   width: auto;
   color: #fff;
-  padding: 10px;
-  border-radius: 0 0 6px 6px;
+  padding: 8px;
 `;
 
 const SettingsMenuTitle = styled.li`
@@ -68,7 +75,7 @@ const SettingsMenuTitle = styled.li`
   border-bottom: 1px solid rgba(0,0,0,.125);
 `;
 
-const StyledSettingsMenu = styled.ul`
+const SettingsMenu = styled.ul`
   top: 0;
   opacity: 1;
   left: auto;
@@ -126,7 +133,7 @@ const StyledSettings = styled.div<StyledSettingsProps>`
   animation-delay: 0.25s;
   border-radius: 8px 0 0 8px;
   transition: background 0.15s ease-in;
-  animation: ${_fadeIn} 0.25s both ease;
+  animation: ${FADE_IN_KEYFRAMES} 0.25s both ease;
   background: ${({ isMenuOpen }) => isMenuOpen ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0.45)'};
 
   :hover {
@@ -135,22 +142,10 @@ const StyledSettings = styled.div<StyledSettingsProps>`
 `;
 
 const Settings: React.FC<SettingsProps> = ({ isAuthenticated, logoutUserRequest }) => {
-  const [isMenuOpen, setisMenuOpen] = useState<boolean>(false);
-  const settingsAnchorRef = useRef<HTMLAnchorElement | null>(null);
+  const settingsButtonRef = useRef<HTMLButtonElement | null>(null);
+  const [isMenuOpen, setisMenuOpen] = useCallbackState<boolean>(false);
 
-  const onOutsideClick = useCallback((): void => {
-    setisMenuOpen(false);
-  }, []);
-
-  const onInsideClick = useCallback((): void => {
-    setisMenuOpen(prevIsMenuOpen => !prevIsMenuOpen);
-  }, []);
-
-  useOnClickOutside(
-    settingsAnchorRef,
-    onOutsideClick,
-    onInsideClick
-  );
+  useOnClickOutside(settingsButtonRef, setisMenuOpen);
 
   const handleLogout = (history: History<any>) => (): void => {
     const onLogoutCallbackFn = (() => history.push(RoutesConfig.Login.path));
@@ -163,32 +158,45 @@ const Settings: React.FC<SettingsProps> = ({ isAuthenticated, logoutUserRequest 
 
   return (
     <StyledSettings isMenuOpen={isMenuOpen}>
-      <a role='button' ref={settingsAnchorRef}>
+      <SettingsMenuButton
+        ref={settingsButtonRef}
+        onClick={() => setisMenuOpen(!isMenuOpen)}
+      >
         <CogIcon icon='cog' size='3x' />
-      </a>
+      </SettingsMenuButton>
       {isMenuOpen && (
-        <StyledSettingsMenu>
+        <SettingsMenu>
           <SettingsMenuTitle>Settings</SettingsMenuTitle>
           <li>
-            <SettingsMenuLink {..._linkAttributes} href={nugetUrlConfig.HEALTH_UI}>
+            <SettingsMenuLink
+              {...LINK_ATTRIBUTES}
+              href={nugetUrlConfig.HEALTH_UI}
+            >
               <FontAwesomeIcon icon='heart' /> Health Checks
             </SettingsMenuLink>
           </li>
           <li>
-            <SettingsMenuLink {..._linkAttributes} href={nugetUrlConfig.SWAGGER_DOCS}>
+            <SettingsMenuLink
+              {...LINK_ATTRIBUTES}
+              href={nugetUrlConfig.SWAGGER_DOCS}
+            >
               <FontAwesomeIcon icon='file' /> Swagger API
             </SettingsMenuLink>
           </li>
           <li>
             <Route
               render={({ history }) => (
-                <SettingsMenuLink role='button' onClick={handleLogout(history)}>
-                  <FontAwesomeIcon icon={RoutesConfig.Login.icon} />{` ${RoutesConfig.Login.displayName}`}
+                <SettingsMenuLink
+                  role='button'
+                  onClick={handleLogout(history)}
+                >
+                  <FontAwesomeIcon icon={RoutesConfig.Login.icon} />
+                  {` ${RoutesConfig.Login.displayName}`}
                 </SettingsMenuLink>
               )}
             />
           </li>
-        </StyledSettingsMenu>
+        </SettingsMenu>
       )}
     </StyledSettings>
   );

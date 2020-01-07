@@ -14,12 +14,12 @@ type AuthenticatorProps = {
   readonly handleOnSuccess: CallbackFunction;
 };
 
-const _childDivCount = 9;
-const _failColor = '#e74c3c';
-const _blueColor = '#3273dc';
-const _successColor = '#16E04C';
+const CHILD_DIV_COUNT = 9;
+const FAIL_COLOR = '#e74c3c';
+const BLUE_COLOR = '#3273dc';
+const SUCCESS_COLOR = '#16E04C';
 
-const _fingerprintAnimation = keyframes`
+const FINGERPRINT_KEYFRAMES = keyframes`
   100% {
     transform: rotate(360deg);
   }
@@ -35,16 +35,16 @@ const childDivTemplate = (childIndex: number): string => (`
 
 const getChildDivCSS = (): string => {
   let childDivCSS = '';
-  for (let index = 0; index < _childDivCount; index += 1) {
+  for (let index = 0; index < CHILD_DIV_COUNT; index += 1) {
     childDivCSS += childDivTemplate(index);
   }
   return childDivCSS;
 };
 
 const getChildDivBorderColor = (authStatus: AuthStatus): string => {
-  if (authStatus === AuthStatusEnum.SUCCESS) return _successColor;
-  if (authStatus === AuthStatusEnum.FAIL) return _failColor;
-  return _blueColor;
+  if (authStatus === AuthStatusEnum.SUCCESS) return SUCCESS_COLOR;
+  if (authStatus === AuthStatusEnum.FAIL) return FAIL_COLOR;
+  return BLUE_COLOR;
 };
 
 const AuthenticatorWrapper = styled.div<AuthenticatorWrapperProps>`
@@ -67,7 +67,7 @@ const AuthenticatorWrapper = styled.div<AuthenticatorWrapperProps>`
     box-sizing: border-box;
     border: 2px solid transparent;
     border-top-color: ${({ authStatus }) => getChildDivBorderColor(authStatus)};
-    animation: ${_fingerprintAnimation} 1500ms cubic-bezier(0.68, -0.75, 0.265, 1.75) infinite forwards;
+    animation: ${FINGERPRINT_KEYFRAMES} 1500ms cubic-bezier(0.68, -0.75, 0.265, 1.75) infinite forwards;
 
     ${getChildDivCSS()}
   }

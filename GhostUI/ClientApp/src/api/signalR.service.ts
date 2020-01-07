@@ -6,7 +6,7 @@ import { HubConnection, HubConnectionBuilder, HubConnectionState } from "@aspnet
  * SignalR hub defaults
  * BASE_URL needs full url or else prerendering fails (can't normalize /hubs/users)
  */
-const _signalrConfig = Object.freeze({
+const SignalR = Object.freeze({
   CONNECTION_DELAY: 0,
   TOASTIFY_ICON: "info",
   HUB_MESSAGE_DELAY: 3000,
@@ -42,48 +42,48 @@ class SignalRService {
       this._hubConnection.start().catch((error) => {
         console.error(error);
       });
-    }, _signalrConfig.CONNECTION_DELAY);
+    }, SignalR.CONNECTION_DELAY);
   }
 
   private createConnection(): void {
     this._hubConnection = new HubConnectionBuilder()
-      .withUrl(_signalrConfig.BASE_URL)
+      .withUrl(SignalR.BASE_URL)
       .build();
   }
 
   private registerOnServerEvents(): void {
-    this._hubConnection.on(_signalrConfig.LOGIN_USER_EVENT, () => {
+    this._hubConnection.on(SignalR.LOGIN_USER_EVENT, () => {
       setTimeout(() => {
         toast.info(
           renderToastifyMsg(
             "A user has logged in (SignalR)",
-            _signalrConfig.TOASTIFY_ICON
+            SignalR.TOASTIFY_ICON
           )
         );
-      }, _signalrConfig.HUB_MESSAGE_DELAY);
+      }, SignalR.HUB_MESSAGE_DELAY);
     });
 
-    this._hubConnection.on(_signalrConfig.LOGOUT_USER_EVENT, () => {
+    this._hubConnection.on(SignalR.LOGOUT_USER_EVENT, () => {
       setTimeout(() => {
         toast.info(
           renderToastifyMsg(
             "A user has logged out (SignalR)",
-            _signalrConfig.TOASTIFY_ICON
+            SignalR.TOASTIFY_ICON
           )
         );
-      }, _signalrConfig.HUB_MESSAGE_DELAY);
+      }, SignalR.HUB_MESSAGE_DELAY);
     });
 
-    this._hubConnection.on(_signalrConfig.CLOSE_EVENT, (reason: string) => {
+    this._hubConnection.on(SignalR.CLOSE_EVENT, (reason: string) => {
       this._hubConnection.stop().then(() => {
         setTimeout(() => {
           toast.info(
             renderToastifyMsg(
               `All hub connections closed (SignalR) - ${reason}`,
-              _signalrConfig.TOASTIFY_ICON
+              SignalR.TOASTIFY_ICON
             )
           );
-        }, _signalrConfig.HUB_MESSAGE_DELAY);
+        }, SignalR.HUB_MESSAGE_DELAY);
       });
     });
   }

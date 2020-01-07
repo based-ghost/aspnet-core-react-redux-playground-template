@@ -1,11 +1,11 @@
 ﻿import React from 'react';
 import styled from 'styled-components';
 
-const StyledContent = styled.div`
+const Content = styled.div`
   text-align: center;
 `;
 
-const StyledHr = styled.hr`
+const Hr = styled.hr`
   height: 1px;
   margin: 2rem 0 .75rem 0;
   background-color: rgba(0, 0, 0, 0.15);
@@ -24,8 +24,8 @@ const StyledFooter = styled.footer`
 
 const Footer: React.FC = () => (
   <StyledFooter>
-    <StyledHr />
-    <StyledContent>&copy; 2019 based-ghost LLC</StyledContent>
+    <Hr />
+    <Content>&copy; 2019 based-ghost LLC</Content>
   </StyledFooter>
 );
 
