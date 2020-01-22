@@ -26,27 +26,22 @@ const store = configureStore(history, initialState);
 // This function starts up the React app when it runs in a browser. It sets up the routing configuration and injects the app into a DOM element.
 const renderApp = (): void => {
   ReactDOM.render(
-    (
-      <AppContainer>
-        <Provider store={store}>
-          <ConnectedRouter
-            history={history}
-            children={routes}
-          />
-          <ToastContainer
-            autoClose={3500}
-            draggable={false}
-            newestOnTop={true}
-            position={ToastPosition.TOP_CENTER}
-          />
-        </Provider>
-      </AppContainer>
-    ),
+    <AppContainer>
+      <Provider store={store}>
+        <ConnectedRouter history={history} children={routes} />
+        <ToastContainer
+          autoClose={3500}
+          draggable={false}
+          newestOnTop={true}
+          position={ToastPosition.TOP_CENTER}
+        />
+      </Provider>
+    </AppContainer>,
     document.getElementById('root')
   );
 };
 
-// Execute function above to patch app to dom
+// Execute function above to patch app to DOM
 renderApp();
 
 // Allow Hot Module Replacement

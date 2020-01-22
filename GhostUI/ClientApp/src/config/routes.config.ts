@@ -6,37 +6,34 @@ export type Route = {
   readonly showInNav?: boolean;
   readonly pathAbsolute?: string;
   readonly displayName: string;
-  readonly icon: IconProp;
+  readonly icon?: IconProp;
 };
 
 export type RoutesConfig = { [key: string]: Route };
 
 export const RoutesConfig = Object.freeze<RoutesConfig>({
   Login: {
-    path: "/",
+    path: '/',
     showInNav: false,
-    displayName: "Logout",
-    icon: "sign-out-alt",
+    displayName: 'Logout',
+    icon: 'sign-out-alt',
   },
   Form: {
     exact: true,
     showInNav: true,
-    path: "/form",
-    displayName: "Form",
-    icon: "pencil-alt",
+    path: '/form',
+    displayName: 'Form',
   },
   Dashboard: {
     exact: true,
     showInNav: true,
-    path: "/dashboard",
-    displayName: "Home",
-    icon: "home",
+    path: '/dashboard',
+    displayName: 'Home',
   },
   FetchData: {
-    path: "/fetchdata",
-    pathAbsolute: "/fetchdata/:startDateIndex?",
+    path: '/fetchdata',
+    pathAbsolute: '/fetchdata/:startDateIndex?',
     showInNav: true,
-    displayName: "Fetch",
-    icon: "cloud",
+    displayName: 'Fetch',
   },
 });

@@ -1,42 +1,45 @@
 ﻿import { library } from "@fortawesome/fontawesome-svg-core";
 import {
-  faChevronLeft,
-  faChevronRight,
-  faCloud,
+  faAngleDoubleLeft,
+  faAngleDoubleRight,
   faCog,
-  faExclamation,
+  faExclamationTriangle,
   faEye,
   faEyeSlash,
   faFile,
   faHeart,
-  faHome,
-  faInfo,
+  faInfoCircle,
   faLock,
   faMinus,
-  faPencilAlt,
   faPlus,
   faSignInAlt,
   faSignOutAlt,
   faUser
 } from "@fortawesome/free-solid-svg-icons";
 
+import {
+  faGithub,
+  faMediumM,
+  faTwitter
+} from '@fortawesome/free-brands-svg-icons';
+
 library.add(
-  faChevronLeft,
-  faChevronRight,
-  faCloud,
+  faAngleDoubleLeft,
+  faAngleDoubleRight,
   faCog,
-  faExclamation,
+  faExclamationTriangle,
   faEye,
   faEyeSlash,
   faFile,
   faHeart,
-  faHome,
-  faInfo,
+  faInfoCircle,
   faLock,
   faMinus,
-  faPencilAlt,
   faPlus,
   faSignInAlt,
   faSignOutAlt,
-  faUser
+  faUser,
+  faGithub,
+  faMediumM,
+  faTwitter
 );

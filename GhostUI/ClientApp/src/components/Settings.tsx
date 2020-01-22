@@ -28,6 +28,14 @@ const LINK_ATTRIBUTES = Object.freeze<MenuLinkAttributes>({
   rel: 'noopener noreferrer',
 });
 
+const SettingsLink = styled.a`
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  padding: 0.25rem;
+  background: transparent;
+`;
+
 const SettingsMenuLink = styled.a`
   width: 100%;
   color: #555;
@@ -43,27 +51,21 @@ const SettingsMenuLink = styled.a`
   pointer-events: visible;
 
   svg {
+    opacity: 0.8;
     margin-left: 0.3rem;
     margin-right: 0.3rem;
   }
 `;
 
-const SettingsMenuButton = styled.button`
-  border: 0;
-  padding: 0;
-  outline: 0;
-  cursor: pointer;
-  background: transparent;
-`;
-
 const CogIcon = styled(FontAwesomeIcon)`
-  width: auto;
   color: #fff;
-  padding: 8px;
+  width: auto;
+  padding: 10px;
+  border-radius: 0 0 6px 6px;
 `;
 
 const SettingsMenuTitle = styled.li`
-  width: 75%;
+  width: 73%;
   color: #7f888f;
   font-size: 18px;
   margin-left: auto;
@@ -142,10 +144,13 @@ const StyledSettings = styled.div<StyledSettingsProps>`
 `;
 
 const Settings: React.FC<SettingsProps> = ({ isAuthenticated, logoutUserRequest }) => {
-  const settingsButtonRef = useRef<HTMLButtonElement | null>(null);
+  const settingsLinkRef = useRef<HTMLAnchorElement | null>(null);
   const [isMenuOpen, setisMenuOpen] = useCallbackState<boolean>(false);
 
-  useOnClickOutside(settingsButtonRef, setisMenuOpen);
+  useOnClickOutside(
+    settingsLinkRef,
+    setisMenuOpen
+  );
 
   const handleLogout = (history: History<any>) => (): void => {
     const onLogoutCallbackFn = (() => history.push(RoutesConfig.Login.path));
@@ -158,12 +163,13 @@ const Settings: React.FC<SettingsProps> = ({ isAuthenticated, logoutUserRequest 
 
   return (
     <StyledSettings isMenuOpen={isMenuOpen}>
-      <SettingsMenuButton
-        ref={settingsButtonRef}
+      <SettingsLink
+        role='button'
+        ref={settingsLinkRef}
         onClick={() => setisMenuOpen(!isMenuOpen)}
       >
         <CogIcon icon='cog' size='3x' />
-      </SettingsMenuButton>
+      </SettingsLink>
       {isMenuOpen && (
         <SettingsMenu>
           <SettingsMenuTitle>Settings</SettingsMenuTitle>

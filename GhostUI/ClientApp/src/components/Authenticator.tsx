@@ -15,9 +15,9 @@ type AuthenticatorProps = {
 };
 
 const CHILD_DIV_COUNT = 9;
-const FAIL_COLOR = '#e74c3c';
-const BLUE_COLOR = '#3273dc';
-const SUCCESS_COLOR = '#16E04C';
+const FAIL_COLOR = '#e93e60';
+const SUCCESS_COLOR = '#09d3ac';
+const DEFAULT_COLOR = 'rgba(9, 30, 66, 0.35)';
 
 const FINGERPRINT_KEYFRAMES = keyframes`
   100% {
@@ -42,9 +42,14 @@ const getChildDivCSS = (): string => {
 };
 
 const getChildDivBorderColor = (authStatus: AuthStatus): string => {
-  if (authStatus === AuthStatusEnum.SUCCESS) return SUCCESS_COLOR;
-  if (authStatus === AuthStatusEnum.FAIL) return FAIL_COLOR;
-  return BLUE_COLOR;
+  switch (authStatus) {
+    case AuthStatusEnum.FAIL:
+      return FAIL_COLOR;
+    case AuthStatusEnum.SUCCESS:
+      return SUCCESS_COLOR;
+    default:
+      return DEFAULT_COLOR;
+  }
 };
 
 const AuthenticatorWrapper = styled.div<AuthenticatorWrapperProps>`
@@ -77,12 +82,20 @@ const Authenticator = React.memo<AuthenticatorProps>(({
   authStatus,
   handleOnFail,
   handleOnSuccess,
-  delay = 1500,
+  delay = 1500
 }) => {
   useEffect(() => {
     const authHandler = setTimeout(() => {
-      if (authStatus === AuthStatusEnum.FAIL) { handleOnFail(); }
-      if (authStatus === AuthStatusEnum.SUCCESS) { handleOnSuccess(); }
+      switch (authStatus) {
+        case AuthStatusEnum.FAIL:
+          handleOnFail();
+          return;
+        case AuthStatusEnum.SUCCESS:
+          handleOnSuccess();
+          return;
+        default:
+          return;
+      }
     }, delay);
 
     return () => {

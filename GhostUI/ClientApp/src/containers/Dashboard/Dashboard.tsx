@@ -1,15 +1,18 @@
 import React from 'react';
-const AspCoreReactLogo = require('../../assets/image/aspcore-react.png') as string;
+import { IconSVG } from '../../components';
+
+const ReactCore = require('../../assets/image/ReactCore.svg') as string;
 
 const Dashboard: React.FC = () => (
   <div className='dashboard-wrapper'>
     <section className='hero is-dark'>
       <div className='hero-body'>
         <div className='is-flex is-horizontal-center'>
-          <img
-            width='300'
-            alt='aspcore-react-logo'
-            src={AspCoreReactLogo}
+          <IconSVG
+            width='260'
+            height='260'
+            src={ReactCore}
+            description='react-core-logo'
           />
         </div>
       </div>
@@ -18,11 +21,11 @@ const Dashboard: React.FC = () => (
       <div className='card'>
         <div className='card-content'>
           <div className='column'>
-            <p className='title has-text-centered'>Tech Stack</p>
+            <p className='title has-text-centered'>Technology Stack</p>
             <hr />
             <div className='columns is-multiline'>
               <div className='column dashboard-info is-half'>
-                <div className='content dashboard-content'>
+                <div className='content'>
                   <ul>
                     <li>
                       <a
@@ -67,7 +70,7 @@ const Dashboard: React.FC = () => (
                 </div>
               </div>
               <div className='column dashboard-info is-half'>
-                <div className='content dashboard-content'>
+                <div className='content'>
                   <ul>
                     <li>
                       <a

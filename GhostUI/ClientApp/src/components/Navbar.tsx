@@ -1,21 +1,20 @@
 ﻿import React, { ReactNode } from 'react';
+import IconSVG from './IconSVG';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { IApplicationState } from '../store';
 import { RoutesConfig, Route } from '../config/routes.config';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const BulmaLogo = require('../assets/image/bulma.io-logo.png') as string;
+const BulmaLogo = require('../assets/image/BulmaLogo.svg') as string;
 
 type NavbarProps = {
   readonly isAuthenticated: boolean;
 };
 
 const Navbar: React.FC<NavbarProps> = ({ isAuthenticated }) => {
-  const navRoutes: Route[] = Object
-    .keys(RoutesConfig)
-    .map((key) => RoutesConfig[key])
-    .filter((route) => !!route.showInNav);
+  const navRoutes: Route[] = Object.keys(RoutesConfig)
+    .map(key => RoutesConfig[key])
+    .filter(route => !!route.showInNav);
 
   return (
     <nav
@@ -25,10 +24,11 @@ const Navbar: React.FC<NavbarProps> = ({ isAuthenticated }) => {
     >
       <div className='navbar-wrapper'>
         <div className='brand-wrapper'>
-          <img
-            width='155'
+          <IconSVG
+            width='135'
+            height='66'
             src={BulmaLogo}
-            alt='bulma.io-logo'
+            description='bulma.io-logo'
           />
         </div>
         <div className='navbar-routes'>
@@ -40,7 +40,6 @@ const Navbar: React.FC<NavbarProps> = ({ isAuthenticated }) => {
               className='navbar-item'
               activeClassName='is-active'
             >
-              <FontAwesomeIcon icon={route.icon} />
               {route.displayName}
             </NavLink>
           ))}

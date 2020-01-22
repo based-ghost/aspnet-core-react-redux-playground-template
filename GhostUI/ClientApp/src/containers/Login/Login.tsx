@@ -22,7 +22,7 @@ const Login: React.FC<LoginProps> = ({
   history,
   resetState,
   setAuthStatus,
-  loginUserRequest,
+  loginUserRequest
 }) => {
   const toastIdRef = useRef<ToastId>('');
   const [showPassword, toggleShowPassword] = useToggle(false);
@@ -41,13 +41,8 @@ const Login: React.FC<LoginProps> = ({
     setAuthStatus(AuthStatusEnum.NONE);
   }, [resetState, setAuthStatus]);
 
-  const onSuccessfulAuth = useCallback((): void => {
-    history.push(RoutesConfig.Dashboard.path);
-  }, [history]);
-
-  const onRememberMeCheck = useCallback((checked: boolean): void => {
-    setRememberMe(checked);
-  }, []);
+  const onRememberMeCheck = useCallback((checked: boolean): void => setRememberMe(checked), []);
+  const onSuccessfulAuth = useCallback((): void => history.push(RoutesConfig.Dashboard.path), [history]);
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -59,7 +54,10 @@ const Login: React.FC<LoginProps> = ({
       // Run invalidInputs error and display toast notification (if one is not already active)
       setIsInputInvalid(true);
       if (!toast.isActive(toastIdRef.current)) {
-        toastIdRef.current = toast.error(renderToastifyMsg('Enter user name/password', 'exclamation'));
+        toastIdRef.current = toast.error(
+          renderToastifyMsg('Enter user name/password',
+          'exclamation-triangle')
+        );
       }
     } else {
       // Clear any toast notifications and prepare state for Login request stub / run login request stub
@@ -71,9 +69,9 @@ const Login: React.FC<LoginProps> = ({
         loginUserRequest({
           rememberMe,
           userName: userNameInput.value,
-          password: passwordInput.value,
+          password: passwordInput.value
         });
-      }, 2500);
+      }, 2250);
     }
   };
 
@@ -83,12 +81,12 @@ const Login: React.FC<LoginProps> = ({
         <div className="column is-4 is-offset-4">
           <h3 className="title">Login</h3>
           <p className="subtitle">Please login to proceed</p>
-          <div className="box">
+          <div className="box login-box">
             <img
-              width="180"
+              width="175"
               id="login-img"
-              alt="based-ghost-logo"
               src={BasedGhostLogo}
+              alt="based-ghost-logo"
             />
             <form onSubmit={handleLogin}>
               <UserNameInput

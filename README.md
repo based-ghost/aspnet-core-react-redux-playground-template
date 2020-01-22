@@ -25,6 +25,7 @@ After discovering the ```dotnet new reactredux``` command no longer created the 
   - [`TypeScript`](https://www.typescriptlang.org/)
   - [`Webpack`](https://github.com/webpack/webpack) for bundling of application assets and HMR (Hot Module Replacement)
   - [`Bulma CSS`](https://bulma.io/) + [`SASS`](https://github.com/sass/sass) + Font Awesome 5 (using fontawesome-svg-core)
+  - [`react-inlinesvg`] for fetching and displaying SVG images inline
   - [`styled-components`](https://www.styled-components.com/) - CSS-in-JS via template literals - Examples in this project:   `Checkbox.tsx`, `Spinner.tsx`, `Authenticator.tsx`, `Settings.tsx`, and `Footer.tsx` are written using `styled-components`.
   - [`react-functional-select`](https://github.com/based-ghost/react-functional-select) - A micro-sized & micro-optimized select component for ReactJS. Inspired by [`react-select`](https://github.com/JedWatson/react-select) and built for ultimate performance - leverages [`react-window`](https://github.com/bvaughn/react-window) to virtualize long options data and `styled-components` to handle styling via CSS-in-JS. Note: I am the author of this package.
   - [`Axios`](https://github.com/axios/axios) for REST endpoint requests

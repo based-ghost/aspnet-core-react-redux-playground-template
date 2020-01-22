@@ -10,12 +10,27 @@ body {
 }
 
 .box {
-  border-radius: 6px;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  padding: 1.75rem;
+  border-radius: 0.25rem;
+  border-color: rgba(0,0,0,.05);
+  box-shadow: 0 2px 7px 0 rgba(0,0,0,.08), 0 5px 20px 0 rgba(0,0,0,.06);
+
+  &.login-box {
+    padding: 1.5rem;
+  }
+
+  &.container-box {
+    min-height: 430px;
+  }
 }
 
 #login-img {
+  opacity: 0.9;
   padding-bottom: 0.75rem;
+}
+
+.section {
+  min-height: 60rem;
 }
 
 .section-login {
@@ -23,12 +38,12 @@ body {
 }
 
 code {
-  color: #212529;
   padding: 3px 4px;
   font-size: 0.94em;
   word-break: break-word;
   border-radius: 0.25rem;
-  background-color: rgba(187, 239, 253, 0.325);
+  color: $color-hero-is-dark;
+  background-color: rgba(9, 211, 172, 0.13);
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -50,11 +65,15 @@ code {
 
 .form-columns {
   h5 {
-    margin-bottom: 3.5rem !important;
+    margin-bottom: 3rem !important;
   }
 
   .title:not(.is-spaced) + .subtitle {
     margin-top: -1rem;
+  }
+
+  .form-control-group {
+    min-height: 65px;
   }
 }
 
@@ -65,12 +84,13 @@ code {
 
 .button {
   font-weight: 600;
+  border-radius: 3px;
 
   &.is-light {
-    background-color: #f0f0f0;
+    background-color: rgba(9,30,66,.0725);
 
     &:hover {
-      background-color: #e6e6e6;
+      background-color: rgba(9, 30, 66, 0.11);
     }
   }
 }
@@ -82,17 +102,28 @@ code {
     margin-left: auto;
     margin-right: auto;
   }
+
+  span {
+    font-size: 1.02em;
+  }
 }
 
 .incrementer-buttons {
+  align-items: initial;
+  margin-bottom: .75rem !important;
+
   > .button {
+    margin-bottom: 0;
+    min-width: 6.5rem;
+
     svg {
-      margin-right: 0.5rem;
+      margin: auto;
+      font-size: 1.4em;
     }
 
     &.plus {
       svg {
-        color: $green;
+        color: $cyan;
       }
     }
 
@@ -101,16 +132,33 @@ code {
         color: $red;
       }
     }
+
+    &:not(:last-child) {
+      margin-right: 0.75rem !important;
+    }
   }
 }
 
 .dashboard-wrapper {
+  min-height: 60rem;
   padding-bottom: 3rem;
 
+  .card-content {
+    padding: 1rem 1.5rem;
+
+    .content li + li {
+      margin-top: 1em;
+    }
+
+    .dashboard-info {
+      padding: 1.5em !important;
+    }
+  }
+
   hr {
-    width: 55%;
+    width: 50%;
     margin: 0.5rem auto;
-    background-color: rgba(0, 0, 0, 0.065);
+    background-color: rgba(0, 0, 0, 0.06);
   }
 }
 
@@ -119,94 +167,83 @@ code {
   font-weight: 700;
   padding: 0.25em 0.5em 0.25em;
   margin-right: 0.25em;
+  transition: background-color 0.2s ease-out, border-bottom-color 0.2s ease-out;
 
   &.react {
-    background-color: rgba(32, 156, 238, 0.2);
-    border-bottom: 1px solid rgba(32, 156, 238, 0.75);
+    background-color: rgba(32, 156, 238, 0.18);
+    border-bottom: 1px solid rgba(32, 156, 238, 0.725);
 
     &:hover {
-      background-color: rgba(32, 156, 238, 0.35);
-      border-bottom: 1px solid rgba(32, 156, 238, 1);
+      background-color: rgba(32, 156, 238, 0.3);
+      border-bottom-color: rgba(32, 156, 238, 1);
     }
   }
 
   &.redux {
-    background-color: rgba(118, 74, 188, 0.2);
-    border-bottom: 1px solid rgba(118, 74, 188, 0.75);
+    background-color: rgba(118, 74, 188, 0.18);
+    border-bottom: 1px solid rgba(118, 74, 188, 0.725);
 
     &:hover {
-      background-color: rgba(118, 74, 188, 0.35);
-      border-bottom: 1px solid rgba(118, 74, 188, 1);
+      background-color: rgba(118, 74, 188, 0.3);
+      border-bottom-color: rgba(118, 74, 188, 1);
     }
   }
 
   &.bulma {
-    background-color: rgba(0, 196, 167, 0.2);
-    border-bottom: 1px solid rgba(0, 196, 167, 0.75);
+    background-color: rgba(0, 196, 167, 0.18);
+    border-bottom: 1px solid rgba(0, 196, 167, 0.725);
 
     &:hover {
-      background-color: rgba(0, 196, 167, 0.35);
-      border-bottom: 1px solid rgba(0, 196, 167, 1);
+      background-color: rgba(0, 196, 167, 0.3);
+      border-bottom-color: rgba(0, 196, 167, 1);
     }
   }
 
   &.aspcore {
-    background-color: rgba(118, 74, 188, 0.2);
-    border-bottom: 1px solid rgba(118, 74, 188, 0.75);
+    background-color: rgba(118, 74, 188, 0.18);
+    border-bottom: 1px solid rgba(118, 74, 188, 0.725);
 
     &:hover {
-      background-color: rgba(118, 74, 188, 0.35);
-      border-bottom: 1px solid rgba(118, 74, 188, 1);
+      background-color: rgba(118, 74, 188, 0.3);
+      border-bottom-color: rgba(118, 74, 188, 1);
     }
   }
 
   &.sass {
-    background-color: rgba(198, 83, 140, 0.2);
-    border-bottom: 1px solid rgba(198, 83, 140, 0.75);
+    background-color: rgba(198, 83, 140, 0.18);
+    border-bottom: 1px solid rgba(198, 83, 140, 0.725);
 
     &:hover {
-      background-color: rgba(198, 83, 140, 0.35);
-      border-bottom: 1px solid rgba(198, 83, 140, 1);
+      background-color: rgba(198, 83, 140, 0.3);
+      border-bottom-color: rgba(198, 83, 140, 1);
     }
   }
 
   &.typescript {
-    background-color: rgba(41, 78, 128, 0.2);
-    border-bottom: 1px solid rgba(41, 78, 128, 0.75);
+    background-color: rgba(41, 78, 128, 0.18);
+    border-bottom: 1px solid rgba(41, 78, 128, 0.725);
 
     &:hover {
-      background-color: rgba(41, 78, 128, 0.35);
-      border-bottom: 1px solid rgba(41, 78, 128, 1);
+      background-color: rgba(41, 78, 128, 0.3);
+      border-bottom-color: rgba(41, 78, 128, 1);
     }
   }
 }
 
-.content.dashboard-content li + li {
-  margin-top: 1em;
-}
-
-.dashboard-info {
-  padding: 1.5em !important;
-}
-
 .is-pagination-group {
+  .button:not(:last-child) {
+    margin-right: 0.75rem !important;
+  }
+
   > a {
     width: 8em;
 
     &:nth-child(1) {
       margin-left: auto;
-
-      svg {
-        margin-right: 0.75rem;
-      }
     }
 
     &:nth-child(2) {
       margin-right: auto;
-
-      svg {
-        margin-left: 0.75rem;
-      }
     }
   }
 }
@@ -222,19 +259,7 @@ code {
 }
 
 .table.is-fullwidth {
-  @media (max-width: 449px) {
+  @media only screen and (max-width: 449px) {
     font-size: 0.8rem;
-  }
-}
-
-.toastify-msg {
-  svg {
-    font-size: 1.2rem;
-    margin-left: 0.5rem;
-    margin-right: 0.75rem;
-  }
-
-  span {
-    font-size: 1.075rem;
   }
 }

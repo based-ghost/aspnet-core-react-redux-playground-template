@@ -14,16 +14,14 @@ const PasswordInput = React.memo<PasswordInputProps>(({
   textInput,
   showPassword,
   isInputInvalid,
-  toggleShowPassword,
+  toggleShowPassword
 }) => {
   const { hasValue, bindToInput } = textInput;
-  const toolTipIcon = !showPassword ? 'eye' : 'eye-slash';
-  const toolTipMsg = !showPassword ? 'Show password' : 'Hide password';
 
   const className = createClassName([
     'input',
-    'is-large',
-    (isInputInvalid && !hasValue) && 'is-danger',
+    'is-medium',
+    (isInputInvalid && !hasValue) && 'is-danger'
   ]);
 
   return (
@@ -38,11 +36,11 @@ const PasswordInput = React.memo<PasswordInputProps>(({
           <FontAwesomeIcon icon="lock" />
         </span>
         <span
-          data-tooltip={toolTipMsg}
           onClick={toggleShowPassword}
           className="icon is-right icon-clickable"
+          data-tooltip={!showPassword ? 'Show password' : 'Hide password'}
         >
-          <FontAwesomeIcon icon={toolTipIcon} />
+          <FontAwesomeIcon icon={!showPassword ? 'eye' : 'eye-slash'} />
         </span>
       </div>
     </div>

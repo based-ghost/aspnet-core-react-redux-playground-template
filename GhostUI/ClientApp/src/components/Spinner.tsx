@@ -28,8 +28,9 @@ const StyledSpinner = styled.div<SpinnerProps>`
     position: absolute;
     border-radius: 50%;
     border: 0.35em solid;
+    display: inline-block;
     box-sizing: border-box;
-    border-color: #209cee transparent transparent transparent;
+    border-color: #09d3ac transparent transparent transparent;
     animation: ${SPIN_KEYFRAMES} 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
 
     :nth-child(1) {

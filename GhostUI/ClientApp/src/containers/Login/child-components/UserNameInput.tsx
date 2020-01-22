@@ -13,8 +13,8 @@ const UserNameInput = React.memo<UserNameInputProps>(({ textInput, isInputInvali
 
   const className = createClassName([
     'input',
-    'is-large',
-    (isInputInvalid && !hasValue) && 'is-danger',
+    'is-medium',
+    (isInputInvalid && !hasValue) && 'is-danger'
   ]);
 
   return (

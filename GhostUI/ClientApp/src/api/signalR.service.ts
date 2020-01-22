@@ -1,5 +1,6 @@
 ﻿import { toast } from "react-toastify";
 import { renderToastifyMsg } from "../utils";
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { HubConnection, HubConnectionBuilder, HubConnectionState } from "@aspnet/signalr";
 
 /**
@@ -8,7 +9,7 @@ import { HubConnection, HubConnectionBuilder, HubConnectionState } from "@aspnet
  */
 const SignalR = Object.freeze({
   CONNECTION_DELAY: 0,
-  TOASTIFY_ICON: "info",
+  TOASTIFY_ICON: "info-circle",
   HUB_MESSAGE_DELAY: 3000,
   LOGIN_USER_EVENT: "UserLogin",
   LOGOUT_USER_EVENT: "UserLogout",
@@ -39,9 +40,7 @@ class SignalRService {
     }
 
     setTimeout(() => {
-      this._hubConnection.start().catch((error) => {
-        console.error(error);
-      });
+      this._hubConnection.start().catch(e => console.error(e));
     }, SignalR.CONNECTION_DELAY);
   }
 
@@ -57,7 +56,7 @@ class SignalRService {
         toast.info(
           renderToastifyMsg(
             "A user has logged in (SignalR)",
-            SignalR.TOASTIFY_ICON
+            SignalR.TOASTIFY_ICON as IconProp
           )
         );
       }, SignalR.HUB_MESSAGE_DELAY);
@@ -68,7 +67,7 @@ class SignalRService {
         toast.info(
           renderToastifyMsg(
             "A user has logged out (SignalR)",
-            SignalR.TOASTIFY_ICON
+            SignalR.TOASTIFY_ICON as IconProp
           )
         );
       }, SignalR.HUB_MESSAGE_DELAY);
@@ -80,7 +79,7 @@ class SignalRService {
           toast.info(
             renderToastifyMsg(
               `All hub connections closed (SignalR) - ${reason}`,
-              SignalR.TOASTIFY_ICON
+              SignalR.TOASTIFY_ICON as IconProp
             )
           );
         }, SignalR.HUB_MESSAGE_DELAY);

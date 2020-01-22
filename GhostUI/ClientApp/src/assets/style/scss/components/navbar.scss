@@ -1,6 +1,6 @@
 ﻿.navbar {
   width: 100%;
-  height: 70px;
+  height: 66px;
   background-color: $color-nav-bar;
   padding-left: 7rem;
   padding-right: 7rem;
@@ -45,11 +45,11 @@
 
       .navbar-item {
         color: white;
-        opacity: 0.8;
+        font-weight: 600;
         background-color: transparent;
-        transition: all 0.15s ease-in;
-        border-bottom: 3px solid $color-nav-bar;
-        border-top: 3px solid $color-nav-bar;
+        transition: color 0.2s ease-out, border-bottom-color 0.2s ease-out;
+        border-bottom: 2.5px solid transparent;
+        border-top: 2.5px solid transparent;
         display: flex;
         overflow-x: auto;
         overflow-y: hidden;
@@ -69,23 +69,13 @@
         }
 
         &:hover {
-          color: white;
+          color: $color-blue-highlight;
           background-color: transparent;
-          opacity: 1;
         }
 
         &.is-active {
           color: $color-blue-highlight !important;
-          opacity: 1 !important;
-          border-bottom: 3px solid $color-blue-highlight !important;
-        }
-
-        > svg {
-          margin-right: 0.55rem;
-
-          @include renderMobileNavView {
-            display: none;
-          }
+          border-bottom-color: $color-blue-highlight !important;
         }
       }
     }

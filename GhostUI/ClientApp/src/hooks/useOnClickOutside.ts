@@ -10,9 +10,8 @@ export const useOnClickOutside = (
   useEffect(() => {
     const onClickHandler = (e: any): void => {
       if (ref.current && ref.current.contains(e.target)) {
-         return;
+        return;
       }
-
       handlerFn(false);
     };
 

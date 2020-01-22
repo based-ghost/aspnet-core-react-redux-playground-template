@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { Spinner } from "../../components";
-import { isNullOrUndefined } from "../../utils";
-import { IApplicationState } from "../../store";
-import { RouteComponentProps } from "react-router-dom";
-import { Pagination, ForecastTable } from "./child-components";
-import { actionCreators, reducer } from "../../store/weather-forecasts";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Spinner } from '../../components';
+import { isNullOrUndefined } from '../../utils';
+import { IApplicationState } from '../../store';
+import { RouteComponentProps } from 'react-router-dom';
+import { Pagination, ForecastTable } from './child-components';
+import { actionCreators, reducer } from '../../store/weather-forecasts';
 
-const _fetchDataTitle = 'Weather forecast';
-const _fetchDataSubTitle = 'This component demonstrates fetching data from the server and working with URL parameters.';
+const FETCH_DATA_TITLE = 'Weather forecast';
+const FETCH_DATA_SUBTITLE = 'This component demonstrates fetching data from the server and working with URL parameters.';
 
 type WeatherForecastProps = ReturnType<typeof reducer>
   & typeof actionCreators
@@ -35,13 +35,16 @@ const FetchData: React.FC<WeatherForecastProps> = ({
   }, [startDateIndex, nextStartDateIndex, requestWeatherForecasts]);
 
   return (
-    <section className="section">
-      <div className="container is-centered box">
-        <h3 className="title is-3">{_fetchDataTitle}</h3>
-        <h5 className="subtitle is-5">{_fetchDataSubTitle}</h5>
-        <Spinner isLoading={isLoading} />
-        <ForecastTable forecasts={forecasts} />
-        <Pagination startDateIndex={startDateIndex} />
+    <section className='section'>
+      <div className='container'>
+        <h3 className='title is-3'>Fetch Data</h3>
+        <div className='box container-box'>
+          <h3 className='title is-4'>{FETCH_DATA_TITLE}</h3>
+          <h5 className='subtitle is-5'>{FETCH_DATA_SUBTITLE}</h5>
+          <Spinner isLoading={isLoading} />
+          <ForecastTable forecasts={forecasts} />
+          <Pagination startDateIndex={startDateIndex} />
+        </div>
       </div>
     </section>
   );

@@ -8,18 +8,24 @@ type CounterFormGroupProps = {
   readonly decrement: () => ReduxAction;
 };
 
-const CounterFormGroup = React.memo<CounterFormGroupProps>(({ count, increment, decrement }) => (
-  <div className='column'>
-    <h3 className='title is-4'>Counter</h3>
-    <h5 className='subtitle is-5'>Simple example of a React component</h5>
-    <p className='subtitle is-5'>Current count: <code>{count}</code></p>
-    <p className='buttons incrementer-buttons'>
-      <button className='button is-light minus' onClick={decrement}>
-        <FontAwesomeIcon icon='minus' />Decrement
-        </button>
-      <button className='button is-light plus' onClick={increment}>
-        <FontAwesomeIcon icon='plus' />Increment
-        </button>
+const CounterFormGroup = React.memo<CounterFormGroupProps>(({
+  count,
+  increment,
+  decrement
+}) => (
+  <div className="column">
+    <h3 className="title is-4">Counter</h3>
+    <h5 className="subtitle is-5">Use buttons to update count value</h5>
+    <p className="buttons incrementer-buttons form-control-group">
+      <button onClick={decrement} className="button is-light minus">
+        <FontAwesomeIcon icon="minus" />
+      </button>
+      <button onClick={increment} className="button is-light plus">
+        <FontAwesomeIcon icon="plus" />
+      </button>
+    </p>
+    <p className="subtitle is-5">
+      Current count: <code>{count}</code>
     </p>
   </div>
 ));

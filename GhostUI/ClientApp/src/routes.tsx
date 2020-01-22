@@ -1,5 +1,5 @@
 ﻿import React, { ReactNode } from 'react';
-import { Layout } from './components';
+import Layout from './Layout';
 import { Route, Switch } from 'react-router-dom';
 import { RoutesConfig } from './config/routes.config';
 import { Dashboard, FetchData, Form, Login } from './containers';

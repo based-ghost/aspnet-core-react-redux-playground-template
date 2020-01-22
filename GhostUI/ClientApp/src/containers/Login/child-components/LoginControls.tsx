@@ -16,7 +16,7 @@ const LoginControls = React.memo<LoginControlsProps>(({ rememberMe, handleRememb
         onCheck={handleRememberMeCheck}
       />
     </div>
-    <button type="submit" className="button is-info is-large is-fullwidth">
+    <button type="submit" className="button is-info is-medium is-fullwidth">
       <span>Login</span>
       <span className="icon">
         <FontAwesomeIcon icon="sign-in-alt" />

@@ -12,8 +12,8 @@ type CheckboxProps = {
 };
 
 const BORDER_COLOR = '#dbdbdb';
-const CHECK_MARK_COLOR = '#209cee';
-const BORDER_COLOR_HOVER = '#b5b5b5';
+const CHECK_MARK_COLOR = '#09d3ac';
+const COLOR_BORDER_CHECKED = 'rgba(9, 211, 172, 0.6)';
 
 const Label = styled.span`
   padding-left: 1.5rem;
@@ -35,6 +35,8 @@ const Input = styled.input`
   position: absolute;
 
   :checked ~ i {
+    border-color: ${COLOR_BORDER_CHECKED};
+
     :after,
     :before {
       opacity: 1;
@@ -49,10 +51,6 @@ const Input = styled.input`
       height: 1.2rem;
       transition-delay: 0.15s;
     }
-  }
-
-  :hover ~ i {
-    border-color: ${BORDER_COLOR_HOVER};
   }
 `;
 
@@ -103,7 +101,7 @@ const Checkbox = React.memo<CheckboxProps>(({
   onCheck,
   checked,
   disabled,
-  readOnly,
+  readOnly
 }) => (
   <CheckboxWrapper>
     <Input

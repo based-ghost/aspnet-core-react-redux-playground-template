@@ -9,10 +9,10 @@ type PaginationProps = {
 const Pagination = React.memo<PaginationProps>(({ startDateIndex = 0 }) => (
   <p className="buttons is-pagination-group">
     <Link className="button is-info" to={`/fetchdata/${startDateIndex - 5}`}>
-      <FontAwesomeIcon icon="chevron-left" />Previous
+      <FontAwesomeIcon icon="angle-double-left" size='2x' />
     </Link>
     <Link className="button is-info" to={`/fetchdata/${startDateIndex + 5}`}>
-      Next<FontAwesomeIcon icon="chevron-right" />
+      <FontAwesomeIcon icon="angle-double-right" size='2x' />
     </Link>
   </p>
 ));
