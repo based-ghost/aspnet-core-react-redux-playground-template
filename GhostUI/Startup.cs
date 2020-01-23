@@ -97,11 +97,8 @@ namespace GhostUI
                 });
             });
 
-            app.UseStaticFiles();
-            app.UseSpaStaticFiles();
-            app.UseRouting();
-
             app.UseCors(_corsPolicyName);
+            app.UseStaticFiles();
 
             // Register the Swagger generator and the Swagger UI middlewares
             // NSwage.MsBuild + adding automation config in GhostUI.csproj makes this part of the build step (updates to API will be handled automatically)
@@ -112,8 +109,11 @@ namespace GhostUI
                 settings.DocumentPath = "/docs/api-specification.json";
             });
 
+            app.UseSpaStaticFiles();
+            app.UseRouting();
+
             // Map controllers / SignalR hubs / HealthChecks
-            app.UseEndpoints(endpoints => 
+            app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
                 endpoints.MapHub<UsersHub>("/hubs/users");
