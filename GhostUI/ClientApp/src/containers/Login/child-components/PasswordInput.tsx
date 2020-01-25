@@ -1,7 +1,7 @@
 import React from "react";
 import { TextInput } from "../../../hooks";
 import { createClassName } from "../../../utils";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIconMemo } from "../../../components";
 
 type PasswordInputProps = {
   readonly textInput: TextInput;
@@ -33,14 +33,14 @@ const PasswordInput = React.memo<PasswordInputProps>(({
           placeholder="Password"
         />
         <span className="icon is-left">
-          <FontAwesomeIcon icon="lock" />
+          <FontAwesomeIconMemo icon="lock" />
         </span>
         <span
           onClick={toggleShowPassword}
           className="icon is-right icon-clickable"
           data-tooltip={!showPassword ? 'Show password' : 'Hide password'}
         >
-          <FontAwesomeIcon icon={!showPassword ? 'eye' : 'eye-slash'} />
+          <FontAwesomeIconMemo icon={!showPassword ? 'eye' : 'eye-slash'} />
         </span>
       </div>
     </div>

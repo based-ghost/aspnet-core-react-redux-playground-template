@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
-import { Checkbox } from "../../../components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Checkbox, FontAwesomeIconMemo } from "../../../components";
 
 type LoginControlsProps = {
   readonly rememberMe: boolean;
@@ -19,7 +18,7 @@ const LoginControls = React.memo<LoginControlsProps>(({ rememberMe, handleRememb
     <button type="submit" className="button is-info is-medium is-fullwidth">
       <span>Login</span>
       <span className="icon">
-        <FontAwesomeIcon icon="sign-in-alt" />
+        <FontAwesomeIconMemo icon="sign-in-alt" />
       </span>
     </button>
   </Fragment>

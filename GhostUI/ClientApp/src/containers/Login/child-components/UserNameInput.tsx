@@ -1,7 +1,7 @@
 import React from "react";
 import { TextInput } from "../../../hooks";
 import { createClassName } from "../../../utils";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIconMemo } from "../../../components";
 
 type UserNameInputProps = {
   readonly textInput: TextInput;
@@ -27,7 +27,7 @@ const UserNameInput = React.memo<UserNameInputProps>(({ textInput, isInputInvali
           placeholder="Username"
         />
         <span className="icon is-left">
-          <FontAwesomeIcon icon="user" />
+          <FontAwesomeIconMemo icon="user" />
         </span>
       </div>
     </div>

@@ -1,6 +1,7 @@
 ﻿import React, { useRef, AnchorHTMLAttributes } from 'react';
-import { connect } from 'react-redux';
 import { History } from 'history';
+import { connect } from 'react-redux';
+import { FontAwesomeIconMemo } from '.';
 import { Route } from 'react-router-dom';
 import { IApplicationState } from '../store';
 import { actionCreators } from '../store/auth';
@@ -10,7 +11,6 @@ import { RoutesConfig } from '../config/routes.config';
 import { useOnClickOutside, useCallbackState } from '../hooks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-type StyledSettingsProps = { readonly isMenuOpen: boolean };
 type MenuLinkAttributes = AnchorHTMLAttributes<HTMLAnchorElement>;
 type SettingsProps = typeof actionCreators & { readonly isAuthenticated: boolean };
 
@@ -59,9 +59,7 @@ const SettingsMenuLink = styled.a`
 
 const CogIcon = styled(FontAwesomeIcon)`
   color: #fff;
-  width: auto;
   padding: 10px;
-  border-radius: 0 0 6px 6px;
 `;
 
 const SettingsMenuTitle = styled.li`
@@ -88,11 +86,11 @@ const SettingsMenu = styled.ul`
   min-width: 11rem;
   user-select: none;
   padding-top: 10px;
-  border-radius: 6px;
+  border-radius: 3px;
   position: absolute;
   padding-bottom: 5px;
   background-color: #fff;
-  box-shadow: 0 2px rgba(17, 16, 15, 0.1), 0 2px 10px rgba(17, 16, 15, 0.1);
+  box-shadow: 0 2px 7px 0 rgba(0,0,0,.08), 0 5px 20px 0 rgba(0,0,0,.06);
 
   :before,
   :after {
@@ -125,7 +123,7 @@ const SettingsMenu = styled.ul`
   }
 `;
 
-const StyledSettings = styled.div<StyledSettingsProps>`
+const StyledSettings = styled.div<{ isMenuOpen: boolean }>`
   right: 0;
   top: 120px;
   width: 65px;
@@ -152,14 +150,14 @@ const Settings: React.FC<SettingsProps> = ({ isAuthenticated, logoutUserRequest 
     setisMenuOpen
   );
 
+  if (!isAuthenticated) {
+    return null;
+  }
+
   const handleLogout = (history: History<any>) => (): void => {
     const onLogoutCallbackFn = (() => history.push(RoutesConfig.Login.path));
     logoutUserRequest(onLogoutCallbackFn);
   };
-
-  if (!isAuthenticated) {
-    return null;
-  }
 
   return (
     <StyledSettings isMenuOpen={isMenuOpen}>
@@ -178,7 +176,7 @@ const Settings: React.FC<SettingsProps> = ({ isAuthenticated, logoutUserRequest 
               {...LINK_ATTRIBUTES}
               href={nugetUrlConfig.HEALTH_UI}
             >
-              <FontAwesomeIcon icon='heart' /> Health Checks
+              <FontAwesomeIconMemo icon='heart' /> Health Checks
             </SettingsMenuLink>
           </li>
           <li>
@@ -186,7 +184,7 @@ const Settings: React.FC<SettingsProps> = ({ isAuthenticated, logoutUserRequest 
               {...LINK_ATTRIBUTES}
               href={nugetUrlConfig.SWAGGER_DOCS}
             >
-              <FontAwesomeIcon icon='file' /> Swagger API
+              <FontAwesomeIconMemo icon='file' /> Swagger API
             </SettingsMenuLink>
           </li>
           <li>
@@ -196,7 +194,7 @@ const Settings: React.FC<SettingsProps> = ({ isAuthenticated, logoutUserRequest 
                   role='button'
                   onClick={handleLogout(history)}
                 >
-                  <FontAwesomeIcon icon={RoutesConfig.Login.icon} />
+                  <FontAwesomeIconMemo icon={RoutesConfig.Login.icon} />
                   {` ${RoutesConfig.Login.displayName}`}
                 </SettingsMenuLink>
               )}
