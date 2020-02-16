@@ -8,8 +8,7 @@ export const actionCreators = {
   }),
   requestWeatherForecasts: (startDateIndex: number): IAppThunkAction<ReduxAction> => (dispatch, getState) => {
     // If param startDateIndex === state.startDateIndex, do not performe action
-    const startDateIndexState = getState().weatherForecasts.startDateIndex;
-    if (startDateIndex === startDateIndexState) {
+    if (startDateIndex === getState().weatherForecasts.startDateIndex) {
       return;
     }
 

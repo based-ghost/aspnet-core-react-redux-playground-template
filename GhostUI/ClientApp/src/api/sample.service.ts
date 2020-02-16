@@ -16,8 +16,7 @@ class SampleService extends BaseService {
   }
 
   public async getWeatherForecastsAsync(startDateIndex: number): Promise<IWeatherForecast[]> {
-    const url = `WeatherForecasts?startDateIndex=${startDateIndex}`;
-    const { data } = await this.$http.get<IWeatherForecast[]>(url);
+    const { data } = await this.$http.get<IWeatherForecast[]>(`WeatherForecasts?startDateIndex=${startDateIndex}`);
     return data;
   }
 }

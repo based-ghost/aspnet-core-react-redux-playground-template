@@ -17,17 +17,14 @@ const ForecastTable = React.memo<ForecastTableProps>(({ forecasts }) => (
       </tr>
     </thead>
     <tbody>
-      {isArrayWithLength(forecasts) && forecasts.map((forecast: IWeatherForecast) => {
-        const { id, summary, dateFormatted, temperatureC, temperatureF } = forecast;
-        return (
-          <tr key={id}>
-            <td>{dateFormatted}</td>
-            <td>{temperatureC}</td>
-            <td>{temperatureF}</td>
-            <td>{summary}</td>
-          </tr>
-        );
-      })}
+      {isArrayWithLength(forecasts) && forecasts.map((fc: IWeatherForecast) => (
+        <tr key={fc.id}>
+          <td>{fc.dateFormatted}</td>
+          <td>{fc.temperatureC}</td>
+          <td>{fc.temperatureF}</td>
+          <td>{fc.summary}</td>
+        </tr>
+      ))}
     </tbody>
   </table>
 ));

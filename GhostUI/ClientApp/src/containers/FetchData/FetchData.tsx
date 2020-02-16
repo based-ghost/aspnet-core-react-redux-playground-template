@@ -7,12 +7,9 @@ import { RouteComponentProps } from 'react-router-dom';
 import { Pagination, ForecastTable } from './child-components';
 import { actionCreators, reducer } from '../../store/weather-forecasts';
 
-const FETCH_DATA_TITLE = 'Weather forecast';
-const FETCH_DATA_SUBTITLE = 'This component demonstrates fetching data from the server and working with URL parameters.';
-
 type WeatherForecastProps = ReturnType<typeof reducer>
   & typeof actionCreators
-  & RouteComponentProps<{ readonly startDateIndex: string }>;
+  & RouteComponentProps<{ startDateIndex: string }>;
 
 const FetchData: React.FC<WeatherForecastProps> = ({
   isLoading,
@@ -25,6 +22,9 @@ const FetchData: React.FC<WeatherForecastProps> = ({
     }
   },
 }) => {
+  const _fetchDataTitle = 'Weather forecast';
+  const _fetchDataSubTitle = 'This component demonstrates fetching data from the server and working with URL parameters.';
+
   useEffect(() => {
     const intStartDateIndex = startDateIndex || 0;
     const intNextStartDateIndex = parseInt(nextStartDateIndex || '0', 10);
@@ -39,8 +39,8 @@ const FetchData: React.FC<WeatherForecastProps> = ({
       <div className='container'>
         <h3 className='title is-3'>Fetch Data</h3>
         <div className='box container-box'>
-          <h3 className='title is-4'>{FETCH_DATA_TITLE}</h3>
-          <h5 className='subtitle is-5'>{FETCH_DATA_SUBTITLE}</h5>
+          <h3 className='title is-4'>{_fetchDataTitle}</h3>
+          <h5 className='subtitle is-5'>{_fetchDataSubTitle}</h5>
           <Spinner isLoading={isLoading} />
           <ForecastTable forecasts={forecasts} />
           <Pagination startDateIndex={startDateIndex} />

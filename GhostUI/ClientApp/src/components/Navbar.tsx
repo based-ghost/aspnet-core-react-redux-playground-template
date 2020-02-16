@@ -1,4 +1,4 @@
-﻿import React, { ReactNode } from 'react';
+﻿import React from 'react';
 import IconSVG from './IconSVG';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
@@ -12,9 +12,12 @@ type NavbarProps = {
 };
 
 const Navbar: React.FC<NavbarProps> = ({ isAuthenticated }) => {
-  const navRoutes: Route[] = Object.keys(RoutesConfig)
-    .map(key => RoutesConfig[key])
-    .filter(route => !!route.showInNav);
+  const navRoutes = Object.keys(RoutesConfig)
+    .reduce((acc: Route[], key: string) => {
+      const route = RoutesConfig[key];
+      route.showInNav && acc.push(route);
+      return acc;
+    }, []);
 
   return (
     <nav
@@ -32,15 +35,15 @@ const Navbar: React.FC<NavbarProps> = ({ isAuthenticated }) => {
           />
         </div>
         <div className='navbar-routes'>
-          {isAuthenticated && navRoutes.map((route: Route): ReactNode => (
+          {isAuthenticated && navRoutes.map(({ path, exact, displayName }) => (
             <NavLink
-              to={route.path}
-              key={route.path}
-              exact={route.exact}
+              to={path}
+              key={path}
+              exact={exact}
               className='navbar-item'
               activeClassName='is-active'
             >
-              {route.displayName}
+              {displayName}
             </NavLink>
           ))}
         </div>
