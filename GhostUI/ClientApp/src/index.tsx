@@ -8,9 +8,9 @@ import { routes } from './routes';
 import { Provider } from 'react-redux';
 import { createBrowserHistory } from 'history';
 import { AppContainer } from 'react-hot-loader';
+import { ToastContainer } from 'react-toastify';
 import { ConnectedRouter } from 'connected-react-router';
 import { configureStore, IApplicationState } from './store';
-import { ToastContainer, ToastPosition } from 'react-toastify';
 import { configureAxiosInterceptors } from './config/axios.config';
 import './config/fa.config';
 import * as serviceWorker from './serviceWorker';
@@ -33,7 +33,7 @@ const renderApp = (): void => {
           autoClose={3500}
           draggable={false}
           newestOnTop={true}
-          position={ToastPosition.TOP_CENTER}
+          position='top-center'
         />
       </Provider>
     </AppContainer>,
@@ -50,7 +50,6 @@ if (module.hot) {
     renderApp();
   });
 }
-
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

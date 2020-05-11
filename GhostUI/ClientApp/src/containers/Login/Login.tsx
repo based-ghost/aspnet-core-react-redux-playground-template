@@ -1,15 +1,15 @@
 import React, { useEffect, useCallback, useState, useRef } from "react";
 import { History } from "history";
-import { SignalRApi } from "../../api";
 import { connect } from "react-redux";
+import { toast } from "react-toastify";
+import { SignalRApi } from "../../api";
 import { renderToastifyMsg } from "../../utils";
 import { IApplicationState } from "../../store";
-import { toast, ToastId } from "react-toastify";
 import { Authenticator } from "../../components";
 import { useToggle, useTextInput } from "../../hooks";
 import { RoutesConfig } from "../../config/routes.config";
-import { UserNameInput, PasswordInput, LoginControls } from "./child-components";
 import { actionCreators, AuthStatusEnum, reducer } from "../../store/auth";
+import { UserNameInput, PasswordInput, LoginControls } from "./child-components";
 
 const BasedGhostLogo = require("../../assets/image/based-ghost-main.png") as string;
 
@@ -24,7 +24,7 @@ const Login: React.FC<LoginProps> = ({
   setAuthStatus,
   loginUserRequest
 }) => {
-  const toastIdRef = useRef<ToastId>('');
+  const toastIdRef = useRef<string | number>('');
   const [showPassword, toggleShowPassword] = useToggle(false);
   const [rememberMe, setRememberMe] = useState<boolean>(false);
   const [isInputInvalid, setIsInputInvalid] = useState<boolean>(false);
