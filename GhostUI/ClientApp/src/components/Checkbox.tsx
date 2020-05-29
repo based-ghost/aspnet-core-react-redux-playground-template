@@ -1,4 +1,4 @@
-﻿import React, { ChangeEvent } from 'react';
+﻿import React from 'react';
 import styled from 'styled-components';
 
 type CheckboxProps = {
@@ -111,7 +111,7 @@ const Checkbox = React.memo<CheckboxProps>(({
       checked={checked}
       readOnly={readOnly}
       disabled={disabled}
-      onChange={(e: ChangeEvent<HTMLInputElement>): void => onCheck(e.target.checked)}
+      onChange={(e) => onCheck(e.target.checked)}
     />
     <CheckIcon />
     {label && <Label>{label}</Label>}

@@ -5,5 +5,5 @@ import LoginControls from "./LoginControls";
 export {
   UserNameInput,
   PasswordInput,
-  LoginControls,
+  LoginControls
 };

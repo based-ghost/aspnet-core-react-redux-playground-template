@@ -1,6 +1,6 @@
-﻿import { actionCreators } from "./actions";
-import { FunctionReturnTypes, ReduxAction } from "../";
-import { ActionType, IWeatherForecastsState } from "./types";
+﻿import { actionCreators } from './actions';
+import { FunctionReturnTypes, ReduxAction } from '../';
+import { ActionType, IWeatherForecastsState } from './types';
 
 const initialState = Object.freeze<IWeatherForecastsState>({
   forecasts: [],

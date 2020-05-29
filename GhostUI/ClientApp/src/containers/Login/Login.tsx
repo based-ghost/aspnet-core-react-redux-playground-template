@@ -1,21 +1,19 @@
-import React, { useEffect, useCallback, useState, useRef } from "react";
-import { History } from "history";
-import { connect } from "react-redux";
-import { toast } from "react-toastify";
-import { SignalRApi } from "../../api";
-import { renderToastifyMsg } from "../../utils";
-import { IApplicationState } from "../../store";
-import { Authenticator } from "../../components";
-import { useToggle, useTextInput } from "../../hooks";
-import { RoutesConfig } from "../../config/routes.config";
-import { actionCreators, AuthStatusEnum, reducer } from "../../store/auth";
-import { UserNameInput, PasswordInput, LoginControls } from "./child-components";
+import React, { useEffect, useCallback, useState, useRef } from 'react';
+import { History } from 'history';
+import { connect } from 'react-redux';
+import { toast } from 'react-toastify';
+import { SignalRApi } from '../../api';
+import { renderToastifyMsg } from '../../utils';
+import { IApplicationState } from '../../store';
+import { Authenticator } from '../../components';
+import { useToggle, useTextInput } from '../../hooks';
+import { RoutesConfig } from '../../config/routes.config';
+import { actionCreators, AuthStatusEnum, reducer } from '../../store/auth';
+import { UserNameInput, PasswordInput, LoginControls } from './child-components';
 
-const BasedGhostLogo = require("../../assets/image/based-ghost-main.png") as string;
+const BasedGhostLogo = require('../../assets/image/based-ghost-main.png') as string;
 
-type LoginProps = ReturnType<typeof reducer>
-  & typeof actionCreators
-  & { readonly history: History };
+type LoginProps = ReturnType<typeof reducer> & typeof actionCreators & { readonly history: History };
 
 const Login: React.FC<LoginProps> = ({
   status,
@@ -76,17 +74,17 @@ const Login: React.FC<LoginProps> = ({
   };
 
   return (
-    <section className="section section-login">
-      <div className="container has-text-centered">
-        <div className="column is-4 is-offset-4">
-          <h3 className="title">Login</h3>
-          <p className="subtitle">Please login to proceed</p>
-          <div className="box login-box">
+    <section className='section section-login'>
+      <div className='container has-text-centered'>
+        <div className='column is-4 is-offset-4'>
+          <h3 className='title'>Login</h3>
+          <p className='subtitle'>Please login to proceed</p>
+          <div className='box login-box'>
             <img
-              width="175"
-              id="login-img"
+              width='175'
+              id='login-img'
               src={BasedGhostLogo}
-              alt="based-ghost-logo"
+              alt='based-ghost-logo'
             />
             <form onSubmit={handleLogin}>
               <UserNameInput

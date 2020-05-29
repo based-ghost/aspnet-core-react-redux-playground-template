@@ -3,5 +3,5 @@ import ForecastTable from "./ForecastTable";
 
 export {
   Pagination,
-  ForecastTable,
+  ForecastTable
 };

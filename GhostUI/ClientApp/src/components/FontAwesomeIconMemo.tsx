@@ -5,7 +5,9 @@ import { FontAwesomeIcon, FontAwesomeIconProps } from '@fortawesome/react-fontaw
  * FontAwesomeIcon component wrapped in React.memo().
  * FontAwesomeIcon component is typically not the cheapest to rerender.
  */
-const FontAwesomeIconMemo = React.memo<FontAwesomeIconProps>((props) => <FontAwesomeIcon {...props} />);
+const FontAwesomeIconMemo = React.memo<FontAwesomeIconProps>((props) => (
+  <FontAwesomeIcon {...props} />
+));
 
 FontAwesomeIconMemo.displayName = 'FontAwesomeIconMemo';
 

@@ -1,7 +1,7 @@
-﻿import { toast } from "react-toastify";
-import { renderToastifyMsg } from "../utils";
+﻿import { toast } from 'react-toastify';
+import { renderToastifyMsg } from '../utils';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { HubConnection, HubConnectionBuilder, HubConnectionState } from "@aspnet/signalr";
+import { HubConnection, HubConnectionBuilder, HubConnectionState } from '@aspnet/signalr';
 
 /**
  * SignalR hub defaults
@@ -9,13 +9,13 @@ import { HubConnection, HubConnectionBuilder, HubConnectionState } from "@aspnet
  */
 const SignalR = Object.freeze({
   CONNECTION_DELAY: 0,
-  TOASTIFY_ICON: "info-circle",
+  TOASTIFY_ICON: 'info-circle',
   HUB_MESSAGE_DELAY: 3000,
-  LOGIN_USER_EVENT: "UserLogin",
-  LOGOUT_USER_EVENT: "UserLogout",
-  HUB_MESSAGE_TITLE: "Hub Message",
-  CLOSE_EVENT: "CloseAllConnections",
-  BASE_URL: "/hubs/users",
+  LOGIN_USER_EVENT: 'UserLogin',
+  LOGOUT_USER_EVENT: 'UserLogout',
+  HUB_MESSAGE_TITLE: 'Hub Message',
+  CLOSE_EVENT: 'CloseAllConnections',
+  BASE_URL: '/hubs/users',
 });
 
 /**
@@ -55,7 +55,7 @@ class SignalRService {
       setTimeout(() => {
         toast.info(
           renderToastifyMsg(
-            "A user has logged in (SignalR)",
+            'A user has logged in (SignalR)',
             SignalR.TOASTIFY_ICON as IconProp
           )
         );
@@ -66,7 +66,7 @@ class SignalRService {
       setTimeout(() => {
         toast.info(
           renderToastifyMsg(
-            "A user has logged out (SignalR)",
+            'A user has logged out (SignalR)',
             SignalR.TOASTIFY_ICON as IconProp
           )
         );

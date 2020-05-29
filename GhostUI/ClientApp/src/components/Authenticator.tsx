@@ -25,13 +25,13 @@ const FINGERPRINT_KEYFRAMES = keyframes`
   }
 `;
 
-const childDivTemplate = (childIndex: number): string => (`
+const childDivTemplate = (childIndex: number): string => `
   &:nth-child(${childIndex + 1}) {
     height: calc(96px / 9 + ${childIndex} * 96px / 9);
     width: calc(96px / 9 + ${childIndex} * 96px / 9);
     animation-delay: calc(50ms * ${childIndex + 1});
   }
-`);
+`;
 
 const getChildDivCSS = (): string => {
   let childDivCSS = '';
@@ -43,12 +43,9 @@ const getChildDivCSS = (): string => {
 
 const getChildDivBorderColor = (authStatus: AuthStatus): string => {
   switch (authStatus) {
-    case AuthStatusEnum.FAIL:
-      return FAIL_COLOR;
-    case AuthStatusEnum.SUCCESS:
-      return SUCCESS_COLOR;
-    default:
-      return DEFAULT_COLOR;
+    case AuthStatusEnum.FAIL: return FAIL_COLOR;
+    case AuthStatusEnum.SUCCESS: return SUCCESS_COLOR;
+    default: return DEFAULT_COLOR;
   }
 };
 
@@ -109,9 +106,15 @@ const Authenticator = React.memo<AuthenticatorProps>(({
 
   return (
     <AuthenticatorWrapper authStatus={authStatus}>
-      <div /><div /><div />
-      <div /><div /><div />
-      <div /><div /><div />
+      <div />
+      <div />
+      <div />
+      <div />
+      <div />
+      <div />
+      <div />
+      <div />
+      <div />
     </AuthenticatorWrapper>
   );
 });

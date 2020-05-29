@@ -12,7 +12,7 @@ import { useOnClickOutside, useCallbackState } from '../hooks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type MenuLinkAttributes = AnchorHTMLAttributes<HTMLAnchorElement>;
-type SettingsProps = typeof actionCreators & { readonly isAuthenticated: boolean };
+type SettingsProps = typeof actionCreators & { isAuthenticated: boolean };
 
 const FADE_IN_KEYFRAMES = keyframes`
   from {
@@ -22,11 +22,11 @@ const FADE_IN_KEYFRAMES = keyframes`
   }
 `;
 
-const LINK_ATTRIBUTES = Object.freeze<MenuLinkAttributes>({
+const LINK_ATTRIBUTES: MenuLinkAttributes = {
   role: 'button',
   target: '_blank',
   rel: 'noopener noreferrer',
-});
+};
 
 const SettingsLink = styled.a`
   border: 0;
@@ -72,7 +72,7 @@ const SettingsMenuTitle = styled.li`
   text-align: center;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
-  border-bottom: 1px solid rgba(0,0,0,.125);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 `;
 
 const SettingsMenu = styled.ul`
@@ -90,12 +90,12 @@ const SettingsMenu = styled.ul`
   position: absolute;
   padding-bottom: 5px;
   background-color: #fff;
-  box-shadow: 0 2px 7px 0 rgba(0,0,0,.08), 0 5px 20px 0 rgba(0,0,0,.06);
+  box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.08), 0 5px 20px 0 rgba(0, 0, 0, 0.06);
 
   :before,
   :after {
     top: 22px;
-    content: "";
+    content: '';
     width: 17px;
     position: absolute;
     display: inline-block;
@@ -118,7 +118,7 @@ const SettingsMenu = styled.ul`
 
   > li {
     :hover {
-      background-color: rgba(0,0,0,0.035);
+      background-color: rgba(0, 0, 0, 0.035);
     }
   }
 `;
@@ -134,28 +134,29 @@ const StyledSettings = styled.div<{ isMenuOpen: boolean }>`
   border-radius: 8px 0 0 8px;
   transition: background 0.15s ease-in;
   animation: ${FADE_IN_KEYFRAMES} 0.25s both ease;
-  background: ${({ isMenuOpen }) => isMenuOpen ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0.45)'};
+  background: ${({ isMenuOpen }) =>
+    isMenuOpen ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0.45)'};
 
   :hover {
     background: rgba(0, 0, 0, 0.6);
   }
 `;
 
-const Settings: React.FC<SettingsProps> = ({ isAuthenticated, logoutUserRequest }) => {
+const Settings: React.FC<SettingsProps> = ({
+  isAuthenticated,
+  logoutUserRequest,
+}) => {
   const settingsLinkRef = useRef<HTMLAnchorElement | null>(null);
   const [isMenuOpen, setisMenuOpen] = useCallbackState<boolean>(false);
 
-  useOnClickOutside(
-    settingsLinkRef,
-    setisMenuOpen
-  );
+  useOnClickOutside(settingsLinkRef, setisMenuOpen);
 
   if (!isAuthenticated) {
     return null;
   }
 
   const handleLogout = (history: History<any>) => (): void => {
-    const onLogoutCallbackFn = (() => history.push(RoutesConfig.Login.path));
+    const onLogoutCallbackFn = () => history.push(RoutesConfig.Login.path);
     logoutUserRequest(onLogoutCallbackFn);
   };
 
@@ -190,10 +191,7 @@ const Settings: React.FC<SettingsProps> = ({ isAuthenticated, logoutUserRequest 
           <li>
             <Route
               render={({ history }) => (
-                <SettingsMenuLink
-                  role='button'
-                  onClick={handleLogout(history)}
-                >
+                <SettingsMenuLink role='button' onClick={handleLogout(history)}>
                   <FontAwesomeIconMemo icon={RoutesConfig.Login.icon} />
                   {` ${RoutesConfig.Login.displayName}`}
                 </SettingsMenuLink>
@@ -207,7 +205,7 @@ const Settings: React.FC<SettingsProps> = ({ isAuthenticated, logoutUserRequest 
 };
 
 const mapStateToProps = (state: IApplicationState) => ({
-  isAuthenticated: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
 export default connect(mapStateToProps, actionCreators)(Settings);

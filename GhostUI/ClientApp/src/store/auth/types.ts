@@ -7,7 +7,7 @@
   readonly SET_AUTH_STATUS: string;
 }
 
-export type AuthStatus = "none" | "process" | "success" | "fail";
+export type AuthStatus = 'none' | 'process' | 'success' | 'fail';
 
 export type ICredentials = {
   userName?: string;
@@ -40,8 +40,8 @@ export const ActionType = Object.freeze<IActionType>({
 });
 
 export const AuthStatusEnum = Object.freeze<{ [key: string]: AuthStatus }>({
-  NONE: "none",
-  PROCESS: "process",
-  SUCCESS: "success",
-  FAIL: "fail"
+  NONE: 'none',
+  PROCESS: 'process',
+  SUCCESS: 'success',
+  FAIL: 'fail'
 });

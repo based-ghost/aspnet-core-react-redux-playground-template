@@ -5,5 +5,5 @@ import CheckboxFormGroup from "./CheckboxFormGroup";
 export {
   SelectFormGroup,
   CounterFormGroup,
-  CheckboxFormGroup,
+  CheckboxFormGroup
 };

@@ -34,10 +34,8 @@ export const DROPDOWN_TEST_DATA: IDropdownOption[] = [
 /**
  * HealthChecks/Swagger response path config
  */
-export type UrlConfig = { [key: string]: string };
-
-export const nugetUrlConfig = Object.freeze<UrlConfig>({
+export const nugetUrlConfig: Record<string, string> = {
   HEALTH_UI: "http://localhost:52530/healthchecks-ui",
   HEALTH_JSON: "http://localhost:52530/healthchecks-json",
   SWAGGER_DOCS: "http://localhost:52530/docs"
-});
+};

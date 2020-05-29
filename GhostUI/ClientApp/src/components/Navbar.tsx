@@ -12,19 +12,14 @@ type NavbarProps = {
 };
 
 const Navbar: React.FC<NavbarProps> = ({ isAuthenticated }) => {
-  const navRoutes = Object.keys(RoutesConfig)
-    .reduce((acc: Route[], key: string) => {
-      const route = RoutesConfig[key];
-      route.showInNav && acc.push(route);
-      return acc;
-    }, []);
+  const navRoutes: Route[] = Object.keys(RoutesConfig).reduce((acc: Route[], key: string) => {
+    const route = RoutesConfig[key];
+    route.showInNav && acc.push(route);
+    return acc;
+  }, []);
 
   return (
-    <nav
-      role='navigation'
-      className='navbar'
-      aria-label='main navigation'
-    >
+    <nav role='navigation' className='navbar' aria-label='main navigation'>
       <div className='navbar-wrapper'>
         <div className='brand-wrapper'>
           <IconSVG
@@ -35,17 +30,18 @@ const Navbar: React.FC<NavbarProps> = ({ isAuthenticated }) => {
           />
         </div>
         <div className='navbar-routes'>
-          {isAuthenticated && navRoutes.map(({ path, exact, displayName }) => (
-            <NavLink
-              to={path}
-              key={path}
-              exact={exact}
-              className='navbar-item'
-              activeClassName='is-active'
-            >
-              {displayName}
-            </NavLink>
-          ))}
+          {isAuthenticated &&
+            navRoutes.map(({ path, exact, displayName }) => (
+              <NavLink
+                to={path}
+                key={path}
+                exact={exact}
+                className='navbar-item'
+                activeClassName='is-active'
+              >
+                {displayName}
+              </NavLink>
+            ))}
         </div>
       </div>
     </nav>
@@ -53,7 +49,7 @@ const Navbar: React.FC<NavbarProps> = ({ isAuthenticated }) => {
 };
 
 const mapStateToProps = (state: IApplicationState) => ({
-  isAuthenticated: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
 export default connect(mapStateToProps)(Navbar);

@@ -1,9 +1,9 @@
-﻿import thunk from "redux-thunk";
-import { History } from "history";
-import * as RootModule from "./rootReducer";
-import { IApplicationState } from "./index";
-import { routerMiddleware } from "connected-react-router";
-import { applyMiddleware, compose, createStore, GenericStoreEnhancer, Store, StoreEnhancerStoreCreator } from "redux";
+﻿import thunk from 'redux-thunk';
+import { History } from 'history';
+import * as RootModule from './rootReducer';
+import { IApplicationState } from './index';
+import { routerMiddleware } from 'connected-react-router';
+import { applyMiddleware, compose, createStore, GenericStoreEnhancer, Store, StoreEnhancerStoreCreator } from 'redux';
 
 export const configureStore = (
   history: History,

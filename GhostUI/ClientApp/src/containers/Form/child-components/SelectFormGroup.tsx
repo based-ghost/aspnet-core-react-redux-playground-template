@@ -1,7 +1,7 @@
-import React from "react";
-import { ReduxAction } from "../../../store";
+import React from 'react';
+import { ReduxAction } from '../../../store';
 import { Select } from 'react-functional-select';
-import { IDropdownOption } from "../../../store/form";
+import { IDropdownOption } from '../../../store/form';
 
 type SelectFormGroupProps = {
   readonly themeConfig?: any;

@@ -1,6 +1,6 @@
-﻿import { FunctionReturnTypes, ReduxAction } from "../";
-import { actionCreators } from "./actions";
-import { ActionType, IAuthState, AuthStatusEnum } from "./types";
+﻿import { FunctionReturnTypes, ReduxAction } from '../';
+import { actionCreators } from './actions';
+import { ActionType, IAuthState, AuthStatusEnum } from './types';
 
 const initialState = Object.freeze<IAuthState>({
   token: '',
