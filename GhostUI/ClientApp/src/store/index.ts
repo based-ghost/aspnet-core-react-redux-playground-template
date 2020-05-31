@@ -26,5 +26,5 @@ export type FunctionReturnTypes<T> = { [K in keyof T]: T[K] extends (...args: an
 
 export {
   configureStore,
-  createRootReducer,
+  createRootReducer
 };

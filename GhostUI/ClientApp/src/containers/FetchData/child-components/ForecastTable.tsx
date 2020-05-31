@@ -7,7 +7,7 @@ type ForecastTableProps = {
 };
 
 const ForecastTable = React.memo<ForecastTableProps>(({ forecasts }) => (
-  <table className='table is-fullwidth'>
+  <table className="table is-fullwidth">
     <thead>
       <tr>
         <th>Date</th>
@@ -18,14 +18,22 @@ const ForecastTable = React.memo<ForecastTableProps>(({ forecasts }) => (
     </thead>
     <tbody>
       {isArrayWithLength(forecasts) &&
-        forecasts.map((fc: IWeatherForecast) => (
-          <tr key={fc.id}>
-            <td>{fc.dateFormatted}</td>
-            <td>{fc.temperatureC}</td>
-            <td>{fc.temperatureF}</td>
-            <td>{fc.summary}</td>
-          </tr>
-        ))}
+        forecasts.map(
+          ({
+            id,
+            summary,
+            temperatureC,
+            temperatureF,
+            dateFormatted
+          }: IWeatherForecast) => (
+            <tr key={id}>
+              <td>{dateFormatted}</td>
+              <td>{temperatureC}</td>
+              <td>{temperatureF}</td>
+              <td>{summary}</td>
+            </tr>
+          )
+        )}
     </tbody>
   </table>
 ));

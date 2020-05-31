@@ -4,7 +4,7 @@ import { ActionType, IWeatherForecast } from './types';
 
 export const actionCreators = {
   resetState: (): ReduxAction => ({
-    type: ActionType.RESET_STATE,
+    type: ActionType.RESET_STATE
   }),
   requestWeatherForecasts: (
     startDateIndex: number
@@ -17,18 +17,17 @@ export const actionCreators = {
     // Dispatch request
     dispatch({
       startDateIndex,
-      type: ActionType.REQUEST,
+      type: ActionType.REQUEST
     });
 
     // Build http request and success handler in Promise<void> wrapper
-    SampleApi.getWeatherForecastsAsync(startDateIndex).then(
-      (forecasts: IWeatherForecast[]) => {
+    SampleApi.getWeatherForecastsAsync(startDateIndex)
+      .then((forecasts: IWeatherForecast[]) => {
         dispatch({
           forecasts,
           startDateIndex,
-          type: ActionType.RECEIVE,
+          type: ActionType.RECEIVE
         });
-      }
-    );
+      });
   },
 };

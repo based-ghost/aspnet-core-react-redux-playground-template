@@ -134,8 +134,7 @@ const StyledSettings = styled.div<{ isMenuOpen: boolean }>`
   border-radius: 8px 0 0 8px;
   transition: background 0.15s ease-in;
   animation: ${FADE_IN_KEYFRAMES} 0.25s both ease;
-  background: ${({ isMenuOpen }) =>
-    isMenuOpen ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0.45)'};
+  background: ${({ isMenuOpen }) => isMenuOpen ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0.45)'};
 
   :hover {
     background: rgba(0, 0, 0, 0.6);
@@ -144,7 +143,7 @@ const StyledSettings = styled.div<{ isMenuOpen: boolean }>`
 
 const Settings: React.FC<SettingsProps> = ({
   isAuthenticated,
-  logoutUserRequest,
+  logoutUserRequest
 }) => {
   const settingsLinkRef = useRef<HTMLAnchorElement | null>(null);
   const [isMenuOpen, setisMenuOpen] = useCallbackState<boolean>(false);

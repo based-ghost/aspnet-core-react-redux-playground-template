@@ -24,7 +24,7 @@ const initialState = (window as any).initialReduxState as IApplicationState;
 const store = configureStore(history, initialState);
 
 // This function starts up the React app when it runs in a browser. It sets up the routing configuration and injects the app into a DOM element.
-const renderApp = (): void => {
+const renderApp = () => {
   ReactDOM.render(
     <AppContainer>
       <Provider store={store}>

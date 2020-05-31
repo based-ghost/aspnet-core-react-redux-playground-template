@@ -11,25 +11,19 @@ import {
 
 export const actionCreators = {
   resetState: (): ReduxAction => ({
-    type: ActionType.RESET_STATE,
+    type: ActionType.RESET_STATE
   }),
   setAuthStatus: (status: AuthStatus): ReduxAction => ({
     status,
-    type: ActionType.SET_AUTH_STATUS,
+    type: ActionType.SET_AUTH_STATUS
   }),
-  loginUserRequest: (
-    credentials: ICredentials
-  ): IAppThunkAction<ReduxAction> => (dispatch) => {
+  loginUserRequest: (credentials: ICredentials): IAppThunkAction<ReduxAction> => (dispatch) => {
     AuthApi.loginAsync(credentials).then((authUser: IAuthUser) => {
-      const { status } = authUser;
-      if (status === AuthStatusEnum.SUCCESS) {
-        dispatch({
-          authUser,
-          type: ActionType.LOGIN_SUCCESS,
-        });
-      } else {
-        dispatch({ type: ActionType.LOGIN_FAIL });
-      }
+      const dispatchBody = (authUser.status === AuthStatusEnum.SUCCESS)
+        ? { authUser, type: ActionType.LOGIN_SUCCESS }
+        : { type: ActionType.LOGIN_FAIL };
+
+      dispatch(dispatchBody);
     });
   },
   logoutUserRequest: (

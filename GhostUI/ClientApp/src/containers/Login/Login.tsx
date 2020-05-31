@@ -12,7 +12,6 @@ import { actionCreators, AuthStatusEnum, reducer } from '../../store/auth';
 import { UserNameInput, PasswordInput, LoginControls } from './child-components';
 
 const BasedGhostLogo = require('../../assets/image/based-ghost-main.png') as string;
-
 type LoginProps = ReturnType<typeof reducer> & typeof actionCreators & { readonly history: History };
 
 const Login: React.FC<LoginProps> = ({

@@ -6,7 +6,7 @@ const initialState = Object.freeze<IAuthState>({
   token: '',
   userName: '',
   isAuthenticated: false,
-  status: AuthStatusEnum.NONE,
+  status: AuthStatusEnum.NONE
 });
 
 export const reducer = (
