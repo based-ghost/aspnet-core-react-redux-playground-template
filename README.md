@@ -8,9 +8,7 @@ This template is a SPA application built using ASP.NET Core 3.1 as the REST API 
 ## General Overview
 This template is vaguley based on the original React + Redux .NET Core SPA template that was offered around the time of .NET Core 2.0 release (the existing template is a much more simplified version of what was offered in the past and the structure is quite different as well). Using that as a base, this template greatly extends the functionality provided and also uses the latest versions of all referenced libraries/packages. Keep in mind that I use this project (or others like it) as a testing ground for varying libraries/packages and it is not meant to act as a stand-alone final solution - it is more of POC. For example, the login & logout processes are stubbed to simulate the actual process (no real authentication is happening, however, it is something I plan to add to this project in the near future). I plan on keeping this up to date, and the listed technology stack may be subject to change.
 
-After discovering the ```dotnet new reactredux``` command no longer created the desired template, I eventually came across the following repository that was quite helpful and right along the lines of what I was looking for - https://github.com/RyanLamansky/react-redux-typescript-dotnet-core-ssr-hmr
-
-#### *** All components are written using `React FunctionComponents` & `React Hooks`
+> <strong><em>Note: All components are written using `FunctionComponents` & `React Hooks`. Legacy class components are not used.</em></strong><br>
 
 ## Technology Stack Overview
 - **Server**
@@ -25,7 +23,7 @@ After discovering the ```dotnet new reactredux``` command no longer created the 
   - [`TypeScript`](https://www.typescriptlang.org/)
   - [`Webpack`](https://github.com/webpack/webpack) for bundling of application assets and HMR (Hot Module Replacement)
   - [`Bulma CSS`](https://bulma.io/) + [`SASS`](https://github.com/sass/sass) + Font Awesome 5 (using fontawesome-svg-core)
-  - [`react-inlinesvg`] for fetching and displaying SVG images inline
+  - [`react-inlinesvg`](https://github.com/gilbarbara/react-inlinesvg) for fetching and displaying SVG images inline
   - [`styled-components`](https://www.styled-components.com/) - CSS-in-JS via template literals - Examples in this project:   `Checkbox.tsx`, `Spinner.tsx`, `Authenticator.tsx`, `Settings.tsx`, and `Footer.tsx` are written using `styled-components`.
   - [`react-functional-select`](https://github.com/based-ghost/react-functional-select) - A micro-sized & micro-optimized select component for ReactJS. Inspired by [`react-select`](https://github.com/JedWatson/react-select) and built for ultimate performance - leverages [`react-window`](https://github.com/bvaughn/react-window) to virtualize long options data and `styled-components` to handle styling via CSS-in-JS. Note: I am the author of this package.
   - [`Axios`](https://github.com/axios/axios) for REST endpoint requests
