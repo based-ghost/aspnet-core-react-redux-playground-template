@@ -2,8 +2,8 @@
 @import 'base/variables.scss';
 
 /* NPM package styles */
-@import '~react-toastify/scss/main.scss'; 
 @import '~bulma/bulma';
+@import '~react-toastify/scss/main.scss'; 
 
 /* Local styles */
 @import 'base/generic.scss';

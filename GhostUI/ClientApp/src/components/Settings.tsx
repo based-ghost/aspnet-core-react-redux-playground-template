@@ -45,7 +45,6 @@ const SettingsMenuLink = styled.a`
   line-height: 1.5;
   position: relative;
   white-space: nowrap;
-  padding-right: 1rem;
   display: inline-block;
   padding: 0.375rem 1rem;
   pointer-events: visible;
