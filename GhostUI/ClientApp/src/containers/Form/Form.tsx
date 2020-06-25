@@ -1,14 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { IApplicationState } from '../../store';
-import { RouteComponentProps } from 'react-router-dom';
 import { actionCreators, reducer } from '../../store/form';
 import { THEME_CONFIG, DROPDOWN_TEST_DATA } from '../../config/constants';
 import { SelectFormGroup, CounterFormGroup, CheckboxFormGroup } from "./child-components";
 
-type FormProps = ReturnType<typeof reducer>
-  & typeof actionCreators
-  & RouteComponentProps<{}>;
+type FormProps = ReturnType<typeof reducer> & typeof actionCreators;
 
 const Form: React.FC<FormProps> = ({
   count,

@@ -2,7 +2,7 @@
 import { History } from 'history';
 import { connect } from 'react-redux';
 import { FontAwesomeIconMemo } from '.';
-import { Route } from 'react-router-dom';
+import { Route } from 'react-router';
 import { IApplicationState } from '../store';
 import { actionCreators } from '../store/auth';
 import { nugetUrlConfig } from '../config/constants';

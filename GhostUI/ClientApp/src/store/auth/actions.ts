@@ -18,20 +18,22 @@ export const actionCreators = {
     type: ActionType.SET_AUTH_STATUS
   }),
   loginUserRequest: (credentials: ICredentials): IAppThunkAction<ReduxAction> => (dispatch) => {
-    AuthApi.loginAsync(credentials).then((authUser: IAuthUser) => {
-      const dispatchBody = (authUser.status === AuthStatusEnum.SUCCESS)
-        ? { authUser, type: ActionType.LOGIN_SUCCESS }
-        : { type: ActionType.LOGIN_FAIL };
+    AuthApi.loginAsync(credentials)
+      .then((authUser: IAuthUser) => {
+        const dispatchBody = (authUser.status === AuthStatusEnum.SUCCESS)
+          ? { authUser, type: ActionType.LOGIN_SUCCESS }
+          : { type: ActionType.LOGIN_FAIL };
 
-      dispatch(dispatchBody);
-    });
+        dispatch(dispatchBody);
+      });
   },
   logoutUserRequest: (
     handleRouteCallback: CallbackFunction
   ): IAppThunkAction<ReduxAction> => (dispatch) => {
-    AuthApi.logoutAsync().then(() => {
-      handleRouteCallback();
-      dispatch({ type: ActionType.RESET_STATE });
-    });
+    AuthApi.logoutAsync()
+      .then(() => {
+        handleRouteCallback();
+        dispatch({ type: ActionType.RESET_STATE });
+      });
   },
 };

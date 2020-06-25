@@ -1,8 +1,8 @@
-﻿import { reducer as FormReducer } from './form';
+﻿import createRootReducer from './rootReducer';
+import { reducer as FormReducer } from './form';
 import { reducer as AuthReducer } from './auth';
-import { configureStore } from './configureStore';
-import { createRootReducer } from './rootReducer';
 import { RouterState } from 'connected-react-router';
+import { history, configureStore } from './configureStore';
 import { reducer as WeatherForecastsReducer } from './weather-forecasts';
 
 // The top-level state object
@@ -25,6 +25,7 @@ export interface IAppThunkAction<TAction> {
 export type FunctionReturnTypes<T> = { [K in keyof T]: T[K] extends (...args: any[]) => any ? ReturnType<T[K]> : never }[keyof T];
 
 export {
+  history,
   configureStore,
   createRootReducer
 };

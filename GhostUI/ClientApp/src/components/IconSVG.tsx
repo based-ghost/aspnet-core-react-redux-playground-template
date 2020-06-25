@@ -1,16 +1,18 @@
 import React, { useMemo, ReactNode, ReactText } from 'react';
+import SVG from 'react-inlinesvg';
 import styled from 'styled-components';
 import { normalizeUnit } from '../utils';
-import SVG, { IProps } from 'react-inlinesvg';
 
 interface LoaderProps {
   width?: ReactText;
   height?: ReactText;
 }
 
-interface IconSVGProps extends IProps {
+interface IconSVGProps {
+  src: string;
   width?: ReactText;
   height?: ReactText;
+  description?: string;
 }
 
 const Loader = styled.div<LoaderProps>`

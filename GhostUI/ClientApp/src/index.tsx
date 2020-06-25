@@ -1,41 +1,39 @@
 // Types reference added to fix typescript error: Property 'hot' does not exist on type 'Module'
 /// <reference types="webpack-env" />
 
-import React from 'react';
+import { AppContainer } from 'react-hot-loader';
+import { Provider } from 'react-redux';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import './assets/style/scss/site.scss';
-import { routes } from './routes';
-import { Provider } from 'react-redux';
-import { createBrowserHistory } from 'history';
-import { AppContainer } from 'react-hot-loader';
+import App from './App';
 import { ToastContainer } from 'react-toastify';
-import { ConnectedRouter } from 'connected-react-router';
-import { configureStore, IApplicationState } from './store';
+import { history, configureStore } from './store';
 import { configureAxiosInterceptors } from './config/axios.config';
 import './config/fa.config';
 import * as serviceWorker from './serviceWorker';
 
+// Create browser history to use in the Redux store / Get the application-wide store instance, prepopulating with state from the server where available.
+const store = configureStore();
+
 // Execute any base Axios configurations (e.g. request interceptors)
 configureAxiosInterceptors();
-
-// Create browser history to use in the Redux store / Get the application-wide store instance, prepopulating with state from the server where available.
-const history = createBrowserHistory();
-const initialState = (window as any).initialReduxState as IApplicationState;
-const store = configureStore(history, initialState);
 
 // This function starts up the React app when it runs in a browser. It sets up the routing configuration and injects the app into a DOM element.
 const renderApp = () => {
   ReactDOM.render(
     <AppContainer>
-      <Provider store={store}>
-        <ConnectedRouter history={history} children={routes} />
+      <Fragment>
+        <Provider store={store}>
+          <App history={history} />
+        </Provider>
         <ToastContainer
           autoClose={3500}
           draggable={false}
           newestOnTop={true}
           position='top-center'
         />
-      </Provider>
+      </Fragment>
     </AppContainer>,
     document.getElementById('root')
   );
@@ -46,7 +44,7 @@ renderApp();
 
 // Allow Hot Module Replacement
 if (module.hot) {
-  module.hot.accept('./routes', () => {
+  module.hot.accept('./App', () => {
     renderApp();
   });
 }
