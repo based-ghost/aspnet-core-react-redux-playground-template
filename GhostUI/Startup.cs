@@ -31,10 +31,13 @@ namespace GhostUI
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // Custom healthcheck example (using nuget package .AddHealthChecksUI() to view results at {url}/healthchecks-ui)
-            services.AddHealthChecksUI()
-                .AddHealthChecks()
+            // Custom healthcheck example
+            services.AddHealthChecks()
                 .AddGCInfoCheck("GCInfo");
+
+            // Write healthcheck custom results to healthchecks-ui (use InMemory for the DB - AspNetCore.HealthChecks.UI.InMemory.Storage nuget package)
+            services.AddHealthChecksUI()
+                .AddInMemoryStorage();
 
             // Add CORS
             services.AddCorsConfig(_corsPolicyName);
@@ -99,6 +102,7 @@ namespace GhostUI
 
             app.UseCors(_corsPolicyName);
             app.UseStaticFiles();
+            app.UseHealthChecksUI();
 
             // Register the Swagger generator and the Swagger UI middlewares
             // NSwage.MsBuild + adding automation config in GhostUI.csproj makes this part of the build step (updates to API will be handled automatically)
@@ -117,14 +121,13 @@ namespace GhostUI
             {
                 endpoints.MapControllers();
                 endpoints.MapHub<UsersHub>("/hubs/users");
+            });
 
-                endpoints.MapHealthChecks("/healthchecks-json", new HealthCheckOptions
-                {
-                    Predicate = _ => true,
-                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-                });
-
-                endpoints.MapHealthChecksUI();
+            // Show/write HealthReport data from healthchecks (AspNetCore.HealthChecks.UI.Client nuget package)
+            app.UseHealthChecks("/healthchecks-json", new HealthCheckOptions()
+            {
+                Predicate = _ => true,
+                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
             });
 
             app.UseSpa(spa =>
