@@ -1,8 +1,5 @@
-﻿using Newtonsoft.Json;
-using System.IO.Compression;
-using Microsoft.AspNetCore.Mvc;
+﻿using System.IO.Compression;
 using Microsoft.AspNetCore.Builder;
-using Newtonsoft.Json.Serialization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.ResponseCompression;

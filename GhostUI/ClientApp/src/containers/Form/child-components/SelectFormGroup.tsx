@@ -28,7 +28,10 @@ const SelectFormGroup = React.memo<SelectFormGroupProps>(({
       />
     </div>
     <p className='subtitle is-5'>
-      Option: <code>{JSON.stringify(selectedOption || {}).replace(/"/g, "'")}</code>
+      Option:{' '}
+      <code>
+        {JSON.stringify(selectedOption || {}).replace(/"/g, "'")}
+      </code>
     </p>
   </div>
 ));

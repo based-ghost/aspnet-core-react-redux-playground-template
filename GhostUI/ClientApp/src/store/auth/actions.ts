@@ -1,13 +1,7 @@
 ﻿import { AuthApi } from '../../api';
 import { CallbackFunction } from '../../types';
 import { IAppThunkAction, ReduxAction } from '../';
-import {
-  ActionType,
-  IAuthUser,
-  ICredentials,
-  AuthStatusEnum,
-  AuthStatus,
-} from './types';
+import { ActionType, IAuthUser, ICredentials, AuthStatusEnum, AuthStatus } from './types';
 
 export const actionCreators = {
   resetState: (): ReduxAction => ({
@@ -27,9 +21,7 @@ export const actionCreators = {
         dispatch(dispatchBody);
       });
   },
-  logoutUserRequest: (
-    handleRouteCallback: CallbackFunction
-  ): IAppThunkAction<ReduxAction> => (dispatch) => {
+  logoutUserRequest: (handleRouteCallback: CallbackFunction): IAppThunkAction<ReduxAction> => (dispatch) => {
     AuthApi.logoutAsync()
       .then(() => {
         handleRouteCallback();

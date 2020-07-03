@@ -7,7 +7,7 @@ type ForecastTableProps = {
 };
 
 const ForecastTable = React.memo<ForecastTableProps>(({ forecasts }) => (
-  <table className="table is-fullwidth">
+  <table className='table is-fullwidth'>
     <thead>
       <tr>
         <th>Date</th>

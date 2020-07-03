@@ -22,8 +22,8 @@ const FetchData: React.FC<WeatherForecastProps> = ({
     }
   },
 }) => {
-  const _fetchDataTitle = 'Weather forecast';
-  const _fetchDataSubTitle = 'This component demonstrates fetching data from the server and working with URL parameters.';
+  const fetchDataTitle = 'Weather forecast';
+  const fetchDataSubTitle = 'This component demonstrates fetching data from the server and working with URL parameters.';
 
   useEffect(() => {
     const intStartDateIndex = startDateIndex || 0;
@@ -39,8 +39,8 @@ const FetchData: React.FC<WeatherForecastProps> = ({
       <div className='container'>
         <h3 className='title is-3'>Fetch Data</h3>
         <div className='box container-box'>
-          <h3 className='title is-4'>{_fetchDataTitle}</h3>
-          <h5 className='subtitle is-5'>{_fetchDataSubTitle}</h5>
+          <h3 className='title is-4'>{fetchDataTitle}</h3>
+          <h5 className='subtitle is-5'>{fetchDataSubTitle}</h5>
           <Spinner isLoading={isLoading} />
           <ForecastTable forecasts={forecasts} />
           <Pagination startDateIndex={startDateIndex} />

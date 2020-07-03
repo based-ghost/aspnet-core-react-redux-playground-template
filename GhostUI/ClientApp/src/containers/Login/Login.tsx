@@ -12,7 +12,10 @@ import { actionCreators, AuthStatusEnum, reducer } from '../../store/auth';
 import { UserNameInput, PasswordInput, LoginControls } from './child-components';
 
 const BasedGhostLogo = require('../../assets/image/based-ghost-main.png') as string;
-type LoginProps = ReturnType<typeof reducer> & typeof actionCreators & { readonly history: History };
+
+type LoginProps = ReturnType<typeof reducer>
+  & typeof actionCreators
+  & { readonly history: History };
 
 const Login: React.FC<LoginProps> = ({
   status,
@@ -22,6 +25,7 @@ const Login: React.FC<LoginProps> = ({
   loginUserRequest
 }) => {
   const toastIdRef = useRef<string | number>('');
+
   const [showPassword, toggleShowPassword] = useToggle(false);
   const [rememberMe, setRememberMe] = useState<boolean>(false);
   const [isInputInvalid, setIsInputInvalid] = useState<boolean>(false);

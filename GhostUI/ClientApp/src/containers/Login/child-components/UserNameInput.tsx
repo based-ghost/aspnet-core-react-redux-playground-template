@@ -13,7 +13,12 @@ const UserNameInput = React.memo<UserNameInputProps>(({
   isInputInvalid
 }) => {
   const { hasValue, bindToInput } = textInput;
-  const className = createClassName(['input', 'is-medium', (isInputInvalid && !hasValue) && 'is-danger']);
+
+  const className = createClassName([
+    'input',
+    'is-medium',
+    (isInputInvalid && !hasValue) && 'is-danger'
+  ]);
 
   return (
     <div className='field'>

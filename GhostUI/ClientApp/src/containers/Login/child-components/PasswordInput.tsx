@@ -17,7 +17,12 @@ const PasswordInput = React.memo<PasswordInputProps>(({
   toggleShowPassword
 }) => {
   const { hasValue, bindToInput } = textInput;
-  const className = createClassName(['input', 'is-medium', (isInputInvalid && !hasValue) && 'is-danger']);
+
+  const className = createClassName([
+    'input',
+    'is-medium',
+    (isInputInvalid && !hasValue) && 'is-danger',
+  ]);
 
   return (
     <div className='field'>

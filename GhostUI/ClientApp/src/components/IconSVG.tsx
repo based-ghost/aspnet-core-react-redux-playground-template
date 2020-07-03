@@ -3,17 +3,17 @@ import SVG from 'react-inlinesvg';
 import styled from 'styled-components';
 import { normalizeUnit } from '../utils';
 
-interface LoaderProps {
-  width?: ReactText;
-  height?: ReactText;
-}
+type LoaderProps = {
+  readonly width?: ReactText;
+  readonly height?: ReactText;
+};
 
-interface IconSVGProps {
-  src: string;
-  width?: ReactText;
-  height?: ReactText;
-  description?: string;
-}
+type IconSVGProps = {
+  readonly src: string;
+  readonly width?: ReactText;
+  readonly height?: ReactText;
+  readonly description?: string;
+};
 
 const Loader = styled.div<LoaderProps>`
   margin: auto;
