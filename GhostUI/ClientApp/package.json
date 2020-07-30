@@ -16,7 +16,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-functional-select": "^2.6.0",
-    "react-inlinesvg": "^2.0.0",
+    "react-inlinesvg": "^2.0.1",
     "react-redux": "^7.2.1",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
@@ -51,7 +51,7 @@
   "devDependencies": {
     "@types/history": "^4.7.7",
     "@types/jest": "^26.0.7",
-    "@types/node": "^14.0.26",
+    "@types/node": "^14.0.27",
     "@types/react": "^16.9.43",
     "@types/react-dom": "^16.9.8",
     "@types/react-redux": "^7.1.9",
