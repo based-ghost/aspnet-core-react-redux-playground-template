@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { IApplicationState } from '../../store';
 import { actionCreators, reducer } from '../../store/form';
 import { THEME_CONFIG, DROPDOWN_TEST_DATA } from '../../config/constants';
-import { SelectFormGroup, CounterFormGroup, CheckboxFormGroup } from "./child-components";
+import { SelectFormGroup, CounterFormGroup, CheckboxFormGroup } from './child-components';
 
 type FormProps = ReturnType<typeof reducer> & typeof actionCreators;
 
@@ -14,7 +14,7 @@ const Form: React.FC<FormProps> = ({
   selectOption,
   checkboxValue,
   handleOnCheck,
-  selectedDropdownOption
+  selectedDropdownOption,
 }) => (
   <section className='section'>
     <div className='container'>
@@ -32,10 +32,7 @@ const Form: React.FC<FormProps> = ({
             onSelectOption={selectOption}
             selectedOption={selectedDropdownOption}
           />
-          <CheckboxFormGroup
-            checked={checkboxValue}
-            onCheck={handleOnCheck}
-          />
+          <CheckboxFormGroup checked={checkboxValue} onCheck={handleOnCheck} />
         </div>
       </div>
     </div>

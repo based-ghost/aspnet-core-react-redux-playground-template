@@ -11,10 +11,6 @@ type CheckboxProps = {
   readonly onCheck: (checked: boolean) => void;
 };
 
-const BORDER_COLOR = '#dbdbdb';
-const CHECK_MARK_COLOR = '#09d3ac';
-const COLOR_BORDER_CHECKED = 'rgba(9, 211, 172, 0.6)';
-
 const Label = styled.span`
   padding-left: 1.5rem;
 `;
@@ -35,7 +31,7 @@ const Input = styled.input`
   position: absolute;
 
   :checked ~ i {
-    border-color: ${COLOR_BORDER_CHECKED};
+    border-color: rgba(9, 211, 172, 0.6);
 
     :after,
     :before {
@@ -59,8 +55,8 @@ const CheckIcon = styled.i`
   z-index: 0;
   width: 1rem;
   height: 1rem;
+  color: #dbdbdb;
   position: absolute;
-  color: ${BORDER_COLOR};
   box-sizing: border-box;
   border-radius: 0.0625rem;
   background-color: transparent;
@@ -76,8 +72,8 @@ const CheckIcon = styled.i`
     display: block;
     position: absolute;
     border-radius: 0.25rem;
+    background-color: #09d3ac;
     transform-origin: left top;
-    background-color: ${CHECK_MARK_COLOR};
     transition: opacity 0.38s ease, height 0s linear 0.38s;
   }
 
@@ -94,29 +90,23 @@ const CheckIcon = styled.i`
   }
 `;
 
-const Checkbox = React.memo<CheckboxProps>(({
-  id,
-  name,
-  label,
-  onCheck,
-  checked,
-  disabled,
-  readOnly
-}) => (
-  <CheckboxWrapper>
-    <Input
-      id={id}
-      name={name}
-      type='checkbox'
-      checked={checked}
-      readOnly={readOnly}
-      disabled={disabled}
-      onChange={(e) => onCheck(e.target.checked)}
-    />
-    <CheckIcon />
-    {label && <Label>{label}</Label>}
-  </CheckboxWrapper>
-));
+const Checkbox = React.memo<CheckboxProps>(
+  ({ id, name, label, onCheck, checked, disabled, readOnly }) => (
+    <CheckboxWrapper>
+      <Input
+        id={id}
+        name={name}
+        type='checkbox'
+        checked={checked}
+        readOnly={readOnly}
+        disabled={disabled}
+        onChange={(e) => onCheck(e.target.checked)}
+      />
+      <CheckIcon />
+      {label && <Label>{label}</Label>}
+    </CheckboxWrapper>
+  )
+);
 
 Checkbox.displayName = 'Checkbox';
 

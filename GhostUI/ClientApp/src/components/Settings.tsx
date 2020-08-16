@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { FontAwesomeIconMemo } from '.';
 import { IApplicationState } from '../store';
 import { actionCreators } from '../store/auth';
-import { nugetUrlConfig } from '../config/constants';
+import { NUGET_URL_CONFIG } from '../config/constants';
 import styled, { keyframes } from 'styled-components';
 import { RoutesConfig } from '../config/routes.config';
 import { useOnClickOutside, useCallbackState } from '../hooks';
@@ -144,6 +144,7 @@ const Settings: React.FC<SettingsProps> = ({
   isAuthenticated,
   logoutUserRequest
 }) => {
+  const { HEALTH_UI, SWAGGER_DOCS } = NUGET_URL_CONFIG;
   const settingsLinkRef = useRef<HTMLAnchorElement | null>(null);
   const [isMenuOpen, setisMenuOpen] = useCallbackState<boolean>(false);
 
@@ -171,18 +172,12 @@ const Settings: React.FC<SettingsProps> = ({
         <SettingsMenu>
           <SettingsMenuTitle>Settings</SettingsMenuTitle>
           <li>
-            <SettingsMenuLink
-              {...LINK_ATTRIBUTES}
-              href={nugetUrlConfig.HEALTH_UI}
-            >
+            <SettingsMenuLink href={HEALTH_UI} {...LINK_ATTRIBUTES}>
               <FontAwesomeIconMemo icon='heart' /> Health Checks
             </SettingsMenuLink>
           </li>
           <li>
-            <SettingsMenuLink
-              {...LINK_ATTRIBUTES}
-              href={nugetUrlConfig.SWAGGER_DOCS}
-            >
+            <SettingsMenuLink href={SWAGGER_DOCS} {...LINK_ATTRIBUTES}>
               <FontAwesomeIconMemo icon='file' /> Swagger API
             </SettingsMenuLink>
           </li>

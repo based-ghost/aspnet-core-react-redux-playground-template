@@ -17,9 +17,7 @@ const FetchData: React.FC<WeatherForecastProps> = ({
   startDateIndex,
   requestWeatherForecasts,
   match: {
-    params: {
-      startDateIndex: nextStartDateIndex
-    }
+    params: { startDateIndex: nextStartDateIndex },
   },
 }) => {
   const fetchDataTitle = 'Weather forecast';

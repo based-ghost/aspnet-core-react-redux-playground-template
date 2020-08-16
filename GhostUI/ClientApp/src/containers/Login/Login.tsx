@@ -22,7 +22,7 @@ const Login: React.FC<LoginProps> = ({
   history,
   resetState,
   setAuthStatus,
-  loginUserRequest
+  loginUserRequest,
 }) => {
   const toastIdRef = useRef<string | number>('');
 
@@ -42,22 +42,26 @@ const Login: React.FC<LoginProps> = ({
     setAuthStatus(AuthStatusEnum.NONE);
   }, [resetState, setAuthStatus]);
 
-  const onRememberMeCheck = useCallback((checked: boolean): void => setRememberMe(checked), []);
-  const onSuccessfulAuth = useCallback((): void => history.push(RoutesConfig.Dashboard.path), [history]);
+  const onRememberMeCheck = useCallback(
+    (checked: boolean): void => setRememberMe(checked),
+    []
+  );
+  const onSuccessfulAuth = useCallback(
+    (): void => history.push(RoutesConfig.Dashboard.path),
+    [history]
+  );
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    if (status === AuthStatusEnum.PROCESS) {
-      return;
-    }
+    if (status === AuthStatusEnum.PROCESS) return;
 
     if (!userNameInput.hasValue || !passwordInput.hasValue) {
       // Run invalidInputs error and display toast notification (if one is not already active)
       setIsInputInvalid(true);
+
       if (!toast.isActive(toastIdRef.current)) {
         toastIdRef.current = toast.error(
-          renderToastifyMsg('Enter user name/password',
-          'exclamation-triangle')
+          renderToastifyMsg('Enter user name/password', 'exclamation-triangle')
         );
       }
     } else {
@@ -70,7 +74,7 @@ const Login: React.FC<LoginProps> = ({
         loginUserRequest({
           rememberMe,
           userName: userNameInput.value,
-          password: passwordInput.value
+          password: passwordInput.value,
         });
       }, 2250);
     }

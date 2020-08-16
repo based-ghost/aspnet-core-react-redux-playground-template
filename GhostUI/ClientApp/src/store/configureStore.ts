@@ -14,13 +14,8 @@ export const configureStore = (initialState?: IApplicationState): Store<IApplica
   const store = createStore(
     createRootReducer(history),
     initialState,
-    composeEnhancer(
-      applyMiddleware(
-        thunk,
-        routerMiddleware(history),
-      ),
-    ),
-  )
+    composeEnhancer(applyMiddleware(thunk, routerMiddleware(history)))
+  );
 
   // Enable webpack hot module replacement for reducers
   if (module.hot) {

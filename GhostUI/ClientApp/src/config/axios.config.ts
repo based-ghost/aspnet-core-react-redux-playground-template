@@ -2,20 +2,6 @@
 import { toast } from 'react-toastify';
 import { renderToastifyMsg } from '../utils';
 
-export default class AxiosGlobalConfig {
-  public static setup(): void {
-    axios.interceptors.response.use(
-      (response: AxiosResponse) => {
-        return response;
-      },
-      (error: AxiosError) => {
-        handleAxiosError(error);
-        return Promise.reject(error);
-      }
-    );
-  }
-}
-
 const handleAxiosError = (error: AxiosError): void => {
   // Error Message Object
   const message = {
@@ -66,3 +52,17 @@ const handleAxiosError = (error: AxiosError): void => {
     )
   );
 };
+
+export default class AxiosGlobalConfig {
+  public static setup(): void {
+    axios.interceptors.response.use(
+      (response: AxiosResponse) => {
+        return response;
+      },
+      (error: AxiosError) => {
+        handleAxiosError(error);
+        return Promise.reject(error);
+      }
+    );
+  }
+}

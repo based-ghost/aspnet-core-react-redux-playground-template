@@ -14,12 +14,12 @@ type AuthenticatorProps = {
   readonly handleOnSuccess: CallbackFunction;
 };
 
-const CHILD_DIV_COUNT = 9;
-const FAIL_COLOR = '#e93e60';
-const SUCCESS_COLOR = '#09d3ac';
-const DEFAULT_COLOR = 'rgba(9, 30, 66, 0.35)';
+const _childDivCount = 9;
+const _failColor = '#e93e60';
+const _successColor = '#09d3ac';
+const _defaultColor = 'rgba(9, 30, 66, 0.35)';
 
-const FINGERPRINT_KEYFRAMES = keyframes`
+const _authAnimationKeyframes = keyframes`
   100% {
     transform: rotate(360deg);
   }
@@ -33,20 +33,17 @@ const childDivTemplate = (childIndex: number): string => `
   }
 `;
 
-const getChildDivCSS = (): string => {
-  let childDivCSS = '';
-  for (let index = 0; index < CHILD_DIV_COUNT; index += 1) {
-    childDivCSS += childDivTemplate(index);
-  }
-  return childDivCSS;
-};
-
 const getChildDivBorderColor = (authStatus: AuthStatus): string => {
   switch (authStatus) {
-    case AuthStatusEnum.FAIL: return FAIL_COLOR;
-    case AuthStatusEnum.SUCCESS: return SUCCESS_COLOR;
-    default: return DEFAULT_COLOR;
+    case AuthStatusEnum.FAIL: return _failColor;
+    case AuthStatusEnum.SUCCESS: return _successColor;
+    default: return _defaultColor;
   }
+};
+
+const getChildDivCSS = (): string => {
+  const divs = [...Array(_childDivCount).keys()].map((key) => childDivTemplate(key));
+  return divs.join('');
 };
 
 const AuthenticatorWrapper = styled.div<AuthenticatorWrapperProps>`
@@ -69,55 +66,46 @@ const AuthenticatorWrapper = styled.div<AuthenticatorWrapperProps>`
     box-sizing: border-box;
     border: 2px solid transparent;
     border-top-color: ${({ authStatus }) => getChildDivBorderColor(authStatus)};
-    animation: ${FINGERPRINT_KEYFRAMES} 1500ms cubic-bezier(0.68, -0.75, 0.265, 1.75) infinite forwards;
+    animation: ${_authAnimationKeyframes} 1500ms cubic-bezier(0.68, -0.75, 0.265, 1.75) infinite forwards;
 
     ${getChildDivCSS()}
   }
 `;
 
-const Authenticator = React.memo<AuthenticatorProps>(({
-  authStatus,
-  handleOnFail,
-  handleOnSuccess,
-  delay = 1500
-}) => {
-  useEffect(() => {
-    const authHandler = setTimeout(() => {
-      switch (authStatus) {
-        case AuthStatusEnum.FAIL:
-          handleOnFail();
-          return;
-        case AuthStatusEnum.SUCCESS:
-          handleOnSuccess();
-          return;
-        default:
-          return;
-      }
-    }, delay);
+const Authenticator = React.memo<AuthenticatorProps>(
+  ({ authStatus, handleOnFail, handleOnSuccess, delay = 1500 }) => {
+    useEffect(() => {
+      const authHandler = setTimeout(() => {
+        switch (authStatus) {
+          case AuthStatusEnum.FAIL:
+            handleOnFail();
+            return;
+          case AuthStatusEnum.SUCCESS:
+            handleOnSuccess();
+            return;
+          default:
+            return;
+        }
+      }, delay);
 
-    return () => {
-      clearTimeout(authHandler);
-    };
-  }, [authStatus, delay, handleOnFail, handleOnSuccess]);
+      return () => {
+        clearTimeout(authHandler);
+      };
+    }, [authStatus, delay, handleOnFail, handleOnSuccess]);
 
-  if (!authStatus || (authStatus === AuthStatusEnum.NONE)) {
-    return null;
+    if (!authStatus || authStatus === AuthStatusEnum.NONE) {
+      return null;
+    }
+
+    return (
+      <AuthenticatorWrapper authStatus={authStatus}>
+        <div /><div /><div />
+        <div /><div /><div />
+        <div /><div /><div />
+      </AuthenticatorWrapper>
+    );
   }
-
-  return (
-    <AuthenticatorWrapper authStatus={authStatus}>
-      <div />
-      <div />
-      <div />
-      <div />
-      <div />
-      <div />
-      <div />
-      <div />
-      <div />
-    </AuthenticatorWrapper>
-  );
-});
+);
 
 Authenticator.displayName = 'Authenticator';
 
