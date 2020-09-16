@@ -1,14 +1,14 @@
-﻿import React, { useRef, AnchorHTMLAttributes } from 'react';
+﻿import React, { useRef, AnchorHTMLAttributes, useState, useCallback } from 'react';
 import { History } from 'history';
 import { Route } from 'react-router';
 import { connect } from 'react-redux';
 import { FontAwesomeIconMemo } from '.';
+import { useOnClickOutside } from '../hooks';
 import { IApplicationState } from '../store';
 import { actionCreators } from '../store/auth';
 import { NUGET_URL_CONFIG } from '../config/constants';
 import styled, { keyframes } from 'styled-components';
 import { RoutesConfig } from '../config/routes.config';
-import { useOnClickOutside, useCallbackState } from '../hooks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type MenuLinkAttributes = AnchorHTMLAttributes<HTMLAnchorElement>;
@@ -145,8 +145,10 @@ const Settings: React.FC<SettingsProps> = ({
   logoutUserRequest
 }) => {
   const { HEALTH_UI, SWAGGER_DOCS } = NUGET_URL_CONFIG;
+
   const settingsLinkRef = useRef<HTMLAnchorElement | null>(null);
-  const [isMenuOpen, setisMenuOpen] = useCallbackState<boolean>(false);
+  const [isMenuOpen, setisMenuOpen] = useState<boolean>(false);
+  const onToggleMenuOpen = useCallback((open: boolean): void => setisMenuOpen(open), [])
 
   useOnClickOutside(settingsLinkRef, setisMenuOpen);
 
@@ -164,7 +166,7 @@ const Settings: React.FC<SettingsProps> = ({
       <SettingsLink
         role='button'
         ref={settingsLinkRef}
-        onClick={() => setisMenuOpen(!isMenuOpen)}
+        onClick={() => onToggleMenuOpen(!isMenuOpen)}
       >
         <CogIcon icon='cog' size='3x' />
       </SettingsLink>
