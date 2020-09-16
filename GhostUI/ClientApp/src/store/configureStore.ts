@@ -1,13 +1,11 @@
 ﻿import thunk from 'redux-thunk';
 import { IApplicationState } from './index';
 import createRootReducer from './rootReducer';
-import { createBrowserHistory } from 'history';
+import { History } from 'history';
 import { routerMiddleware } from 'connected-react-router';
 import { applyMiddleware, compose, createStore, Store } from 'redux';
 
-export const history = createBrowserHistory();
-
-export const configureStore = (initialState?: IApplicationState): Store<IApplicationState> => {
+export const configureStore = (history: History, initialState?: IApplicationState): Store<IApplicationState> => {
   const windowIfDefined: any = (typeof window === 'undefined') ? null : (window as any);
   const composeEnhancer: typeof compose = (windowIfDefined && windowIfDefined.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ) || compose;
 

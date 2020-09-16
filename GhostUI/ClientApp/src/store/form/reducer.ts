@@ -3,16 +3,16 @@ import { actionCreators } from './actions';
 import { ActionType, IFormState } from './types';
 import { DROPDOWN_TEST_DATA } from '../../config/constants';
 
-const initialState = Object.freeze<IFormState>({
+const initialState: IFormState = {
   count: 0,
   checkboxValue: false,
   selectedDropdownOption: DROPDOWN_TEST_DATA[0]
-});
+};
 
 export const reducer = (
   state: IFormState = initialState,
   action: FunctionReturnTypes<typeof actionCreators>
-) => {
+): IFormState => {
   switch (action.type) {
     case ActionType.INCREMENT:
       return {

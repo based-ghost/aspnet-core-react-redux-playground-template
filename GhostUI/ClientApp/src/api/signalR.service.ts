@@ -7,16 +7,16 @@ import { HubConnection, HubConnectionBuilder, HubConnectionState } from '@micros
  * SignalR hub defaults
  * BASE_URL needs full url or else prerendering fails (can't normalize /hubs/users)
  */
-const SignalR = Object.freeze({
+const SignalrConfig = {
   CONNECTION_DELAY: 0,
-  TOASTIFY_ICON: 'info-circle',
   HUB_MESSAGE_DELAY: 3000,
+  BASE_URL: '/hubs/users',
+  TOASTIFY_ICON: 'info-circle',
   LOGIN_USER_EVENT: 'UserLogin',
   LOGOUT_USER_EVENT: 'UserLogout',
   HUB_MESSAGE_TITLE: 'Hub Message',
-  CLOSE_EVENT: 'CloseAllConnections',
-  BASE_URL: '/hubs/users',
-});
+  CLOSE_EVENT: 'CloseAllConnections'
+};
 
 /**
  * SignalR API abstraction layer communication - configures/manages hub connections (typescript singleton pattern)
@@ -35,54 +35,52 @@ class SignalRService {
   }
 
   public startConnection(): void {
-    if (this._hubConnection.state === HubConnectionState.Connected) {
-      return;
+    if (this._hubConnection.state === HubConnectionState.Disconnected) {
+      setTimeout(() => {
+        this._hubConnection.start().catch(e => console.error(e));
+      }, SignalrConfig.CONNECTION_DELAY);
     }
-
-    setTimeout(() => {
-      this._hubConnection.start().catch(e => console.error(e));
-    }, SignalR.CONNECTION_DELAY);
   }
 
   private createConnection(): void {
     this._hubConnection = new HubConnectionBuilder()
-      .withUrl(SignalR.BASE_URL)
+      .withUrl(SignalrConfig.BASE_URL)
       .build();
   }
 
   private registerOnServerEvents(): void {
-    this._hubConnection.on(SignalR.LOGIN_USER_EVENT, () => {
+    this._hubConnection.on(SignalrConfig.LOGIN_USER_EVENT, () => {
       setTimeout(() => {
         toast.info(
           renderToastifyMsg(
             'A user has logged in (SignalR)',
-            SignalR.TOASTIFY_ICON as IconProp
+            SignalrConfig.TOASTIFY_ICON as IconProp
           )
         );
-      }, SignalR.HUB_MESSAGE_DELAY);
+      }, SignalrConfig.HUB_MESSAGE_DELAY);
     });
 
-    this._hubConnection.on(SignalR.LOGOUT_USER_EVENT, () => {
+    this._hubConnection.on(SignalrConfig.LOGOUT_USER_EVENT, () => {
       setTimeout(() => {
         toast.info(
           renderToastifyMsg(
             'A user has logged out (SignalR)',
-            SignalR.TOASTIFY_ICON as IconProp
+            SignalrConfig.TOASTIFY_ICON as IconProp
           )
         );
-      }, SignalR.HUB_MESSAGE_DELAY);
+      }, SignalrConfig.HUB_MESSAGE_DELAY);
     });
 
-    this._hubConnection.on(SignalR.CLOSE_EVENT, (reason: string) => {
+    this._hubConnection.on(SignalrConfig.CLOSE_EVENT, (reason: string) => {
       this._hubConnection.stop().then(() => {
         setTimeout(() => {
           toast.info(
             renderToastifyMsg(
               `All hub connections closed (SignalR) - ${reason}`,
-              SignalR.TOASTIFY_ICON as IconProp
+              SignalrConfig.TOASTIFY_ICON as IconProp
             )
           );
-        }, SignalR.HUB_MESSAGE_DELAY);
+        }, SignalrConfig.HUB_MESSAGE_DELAY);
       });
     });
   }

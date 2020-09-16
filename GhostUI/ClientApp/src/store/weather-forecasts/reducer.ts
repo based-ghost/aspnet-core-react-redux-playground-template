@@ -2,15 +2,15 @@
 import { FunctionReturnTypes, ReduxAction } from '../';
 import { ActionType, IWeatherForecastsState } from './types';
 
-const initialState = Object.freeze<IWeatherForecastsState>({
+const initialState: IWeatherForecastsState = {
   forecasts: [],
   isLoading: false
-});
+};
 
 export const reducer = (
   state: IWeatherForecastsState = initialState,
   incomingAction: FunctionReturnTypes<typeof actionCreators>
-) => {
+): IWeatherForecastsState => {
   const action = incomingAction as ReduxAction;
 
   switch (action.type) {

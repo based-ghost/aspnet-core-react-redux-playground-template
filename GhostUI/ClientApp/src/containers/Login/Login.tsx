@@ -3,10 +3,10 @@ import { History } from 'history';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import { SignalRApi } from '../../api';
+import { useTextInput } from '../../hooks';
 import { renderToastifyMsg } from '../../utils';
 import { IApplicationState } from '../../store';
 import { Authenticator } from '../../components';
-import { useToggle, useTextInput } from '../../hooks';
 import { RoutesConfig } from '../../config/routes.config';
 import { actionCreators, AuthStatusEnum, reducer } from '../../store/auth';
 import { UserNameInput, PasswordInput, LoginControls } from './child-components';
@@ -15,7 +15,7 @@ const BasedGhostLogo = require('../../assets/image/based-ghost-main.png') as str
 
 type LoginProps = ReturnType<typeof reducer>
   & typeof actionCreators
-  & { readonly history: History };
+  & { history: History };
 
 const Login: React.FC<LoginProps> = ({
   status,
@@ -26,8 +26,8 @@ const Login: React.FC<LoginProps> = ({
 }) => {
   const toastIdRef = useRef<string | number>('');
 
-  const [showPassword, toggleShowPassword] = useToggle(false);
   const [rememberMe, setRememberMe] = useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
   const [isInputInvalid, setIsInputInvalid] = useState<boolean>(false);
 
   const userNameInput = useTextInput('');
@@ -42,14 +42,9 @@ const Login: React.FC<LoginProps> = ({
     setAuthStatus(AuthStatusEnum.NONE);
   }, [resetState, setAuthStatus]);
 
-  const onRememberMeCheck = useCallback(
-    (checked: boolean): void => setRememberMe(checked),
-    []
-  );
-  const onSuccessfulAuth = useCallback(
-    (): void => history.push(RoutesConfig.Dashboard.path),
-    [history]
-  );
+  const onRememberMeCheck = useCallback((checked: boolean): void => setRememberMe(checked), []);
+  const onSuccessfulAuth = useCallback((): void => history.push(RoutesConfig.Dashboard.path), [history]);
+  const onToggleShowPassword = useCallback((): void => setShowPassword((prevShow: boolean) => !prevShow), []);
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -102,7 +97,7 @@ const Login: React.FC<LoginProps> = ({
                 textInput={passwordInput}
                 showPassword={showPassword}
                 isInputInvalid={isInputInvalid}
-                toggleShowPassword={toggleShowPassword}
+                toggleShowPassword={onToggleShowPassword}
               />
               <LoginControls
                 rememberMe={rememberMe}
@@ -121,8 +116,6 @@ const Login: React.FC<LoginProps> = ({
   );
 };
 
-const mapStateToProps = (state: IApplicationState) => ({
-  status: state.auth.status
-});
+const mapStateToProps = (state: IApplicationState) => state.auth;
 
 export default connect(mapStateToProps, actionCreators)(Login);

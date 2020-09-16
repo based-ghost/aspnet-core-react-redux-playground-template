@@ -2,6 +2,7 @@ import React from 'react';
 import { ReduxAction } from '../../../store';
 import { Select } from 'react-functional-select';
 import { IDropdownOption } from '../../../store/form';
+import { stringifyJavaScriptObj } from '../../../utils';
 
 type SelectFormGroupProps = {
   readonly themeConfig?: any;
@@ -24,10 +25,7 @@ const SelectFormGroup = React.memo<SelectFormGroupProps>(
         />
       </div>
       <p className='subtitle is-5'>
-        Option:{' '}
-        <code>
-          {JSON.stringify(selectedOption || {}).replace(/"/g, "'")}
-        </code>
+        Option: <code>{stringifyJavaScriptObj(selectedOption || {})}</code>
       </p>
     </div>
   )

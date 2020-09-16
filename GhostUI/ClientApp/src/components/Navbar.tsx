@@ -12,14 +12,11 @@ type NavbarProps = {
 };
 
 const Navbar: React.FC<NavbarProps> = ({ isAuthenticated }) => {
-  const navRoutes: Route[] = Object.keys(RoutesConfig).reduce(
-    (acc: Route[], key: string) => {
-      const route = RoutesConfig[key];
-      route.showInNav && acc.push(route);
-      return acc;
-    },
-    []
-  );
+  const navRoutes: Route[] = Object.keys(RoutesConfig).reduce((acc, key) => {
+    const route = RoutesConfig[key];
+    route.showInNav && acc.push(route);
+    return acc;
+  }, [] as Route[]);
 
   return (
     <nav role='navigation' className='navbar' aria-label='main navigation'>

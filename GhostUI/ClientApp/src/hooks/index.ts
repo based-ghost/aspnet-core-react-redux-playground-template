@@ -1,4 +1,3 @@
-import { useToggle } from './useToggle';
 import { useCallbackState } from './useCallbackState';
 import { useOnClickOutside } from './useOnClickOutside';
 import {
@@ -11,7 +10,6 @@ export type TextInput = ITextInput;
 export type TextInputType = ITextInputType;
 
 export {
-  useToggle,
   useTextInput,
   useCallbackState,
   useOnClickOutside

@@ -1,4 +1,4 @@
-import FetchData from "./FetchData";
+import FetchData from './FetchData';
 
 export {
   FetchData

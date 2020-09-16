@@ -1,5 +1,5 @@
-import Pagination from "./Pagination";
-import ForecastTable from "./ForecastTable";
+import Pagination from './Pagination';
+import ForecastTable from './ForecastTable';
 
 export {
   Pagination,

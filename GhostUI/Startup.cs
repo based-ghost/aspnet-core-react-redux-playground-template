@@ -43,7 +43,7 @@ namespace GhostUI
             services.AddCorsConfig(_corsPolicyName);
 
             // Register RazorPages/Controllers
-            services.AddControllers();
+            services.AddControllersWithViews();
 
             // Add Brotli/Gzip response compression (prod only)
             services.AddResponseCompressionConfig(Configuration);
@@ -78,7 +78,6 @@ namespace GhostUI
             {
                 app.UseResponseCompression();
                 app.UseExceptionHandler("/Error");
-                app.UseHttpsRedirection();
                 app.UseHsts();
             }
 
@@ -101,8 +100,14 @@ namespace GhostUI
             });
 
             app.UseCors(_corsPolicyName);
-            app.UseStaticFiles();
+
+            // Show/write HealthReport data from healthchecks (AspNetCore.HealthChecks.UI.Client nuget package)
             app.UseHealthChecksUI();
+            app.UseHealthChecks("/healthchecks-json", new HealthCheckOptions()
+            {
+                Predicate = _ => true,
+                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            });
 
             // Register the Swagger generator and the Swagger UI middlewares
             // NSwage.MsBuild + adding automation config in GhostUI.csproj makes this part of the build step (updates to API will be handled automatically)
@@ -113,21 +118,20 @@ namespace GhostUI
                 settings.DocumentPath = "/docs/api-specification.json";
             });
 
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
             app.UseSpaStaticFiles();
             app.UseRouting();
 
             // Map controllers / SignalR hubs / HealthChecks
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
-                endpoints.MapHub<UsersHub>("/hubs/users");
-            });
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller}/{action=Index}/{id?}"
+                );
 
-            // Show/write HealthReport data from healthchecks (AspNetCore.HealthChecks.UI.Client nuget package)
-            app.UseHealthChecks("/healthchecks-json", new HealthCheckOptions()
-            {
-                Predicate = _ => true,
-                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+                endpoints.MapHub<UsersHub>("/hubs/users");
             });
 
             app.UseSpa(spa =>
