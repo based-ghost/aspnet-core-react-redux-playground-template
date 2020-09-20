@@ -1,17 +1,15 @@
-﻿import React, { useRef, AnchorHTMLAttributes, useState, useCallback } from 'react';
+﻿import React, { useRef, useState, useCallback } from 'react';
 import { History } from 'history';
 import { Route } from 'react-router';
 import { connect } from 'react-redux';
-import { FontAwesomeIconMemo } from '.';
 import { useOnClickOutside } from '../hooks';
 import { IApplicationState } from '../store';
 import { actionCreators } from '../store/auth';
-import { NUGET_URL_CONFIG } from '../config/constants';
 import styled, { keyframes } from 'styled-components';
 import { RoutesConfig } from '../config/routes.config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { NUGET_URL_CONFIG, LINK_ATTRIBUTES } from '../config/constants';
 
-type MenuLinkAttributes = AnchorHTMLAttributes<HTMLAnchorElement>;
 type SettingsProps = typeof actionCreators & { isAuthenticated: boolean };
 
 const FADE_IN_KEYFRAMES = keyframes`
@@ -22,11 +20,10 @@ const FADE_IN_KEYFRAMES = keyframes`
   }
 `;
 
-const LINK_ATTRIBUTES: MenuLinkAttributes = {
-  role: 'button',
-  target: '_blank',
-  rel: 'noopener noreferrer',
-};
+const CogIcon = styled(FontAwesomeIcon)`
+  color: #fff;
+  padding: 10px;
+`;
 
 const SettingsLink = styled.a`
   border: 0;
@@ -51,24 +48,19 @@ const SettingsMenuLink = styled.a`
 
   svg {
     opacity: 0.8;
-    margin-left: 0.3rem;
-    margin-right: 0.3rem;
+    margin: 0 0.3rem;
   }
 `;
 
-const CogIcon = styled(FontAwesomeIcon)`
-  color: #fff;
-  padding: 10px;
-`;
-
 const SettingsMenuTitle = styled.li`
-  width: 73%;
   color: #7f888f;
   font-size: 18px;
+  font-weight: 600;
   margin-left: auto;
   line-height: 35px;
   margin-right: auto;
   text-align: center;
+  padding-bottom: 3px;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
@@ -82,13 +74,12 @@ const SettingsMenu = styled.ul`
   width: 11rem;
   z-index: 1000;
   display: block;
+  padding: 5px 0;
   min-width: 11rem;
   user-select: none;
-  padding-top: 10px;
-  border-radius: 3px;
   position: absolute;
-  padding-bottom: 5px;
   background-color: #fff;
+  border-radius: 0.25rem;
   box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.08), 0 5px 20px 0 rgba(0, 0, 0, 0.06);
 
   :before,
@@ -115,9 +106,11 @@ const SettingsMenu = styled.ul`
     border-left: 16px solid #fff;
   }
 
-  > li {
+  > li:not(:first-of-type) {
+    transition: background-color .2s ease-out;
+
     :hover {
-      background-color: rgba(0, 0, 0, 0.035);
+      background-color: #f5f5f5;
     }
   }
 `;
@@ -144,17 +137,17 @@ const Settings: React.FC<SettingsProps> = ({
   isAuthenticated,
   logoutUserRequest
 }) => {
-  const { HEALTH_UI, SWAGGER_DOCS } = NUGET_URL_CONFIG;
-
   const settingsLinkRef = useRef<HTMLAnchorElement | null>(null);
   const [isMenuOpen, setisMenuOpen] = useState<boolean>(false);
-  const onToggleMenuOpen = useCallback((open: boolean): void => setisMenuOpen(open), [])
+  const onMenuClickOutside = useCallback((): void => setisMenuOpen(false), []);
 
-  useOnClickOutside(settingsLinkRef, setisMenuOpen);
+  useOnClickOutside(settingsLinkRef, onMenuClickOutside);
 
   if (!isAuthenticated) {
     return null;
   }
+
+  const { HEALTH_UI, SWAGGER_DOCS } = NUGET_URL_CONFIG;
 
   const handleLogout = (history: History<any>) => (): void => {
     const onLogoutCallbackFn = () => history.push(RoutesConfig.Login.path);
@@ -166,7 +159,7 @@ const Settings: React.FC<SettingsProps> = ({
       <SettingsLink
         role='button'
         ref={settingsLinkRef}
-        onClick={() => onToggleMenuOpen(!isMenuOpen)}
+        onClick={() => setisMenuOpen((prevIsMenuOpen) => !prevIsMenuOpen)}
       >
         <CogIcon icon='cog' size='3x' />
       </SettingsLink>
@@ -175,19 +168,19 @@ const Settings: React.FC<SettingsProps> = ({
           <SettingsMenuTitle>Settings</SettingsMenuTitle>
           <li>
             <SettingsMenuLink href={HEALTH_UI} {...LINK_ATTRIBUTES}>
-              <FontAwesomeIconMemo icon='heart' /> Health Checks
+              <FontAwesomeIcon icon='heart' /> Health Checks
             </SettingsMenuLink>
           </li>
           <li>
             <SettingsMenuLink href={SWAGGER_DOCS} {...LINK_ATTRIBUTES}>
-              <FontAwesomeIconMemo icon='file' /> Swagger API
+              <FontAwesomeIcon icon='file' /> Swagger API
             </SettingsMenuLink>
           </li>
           <li>
             <Route
               render={({ history }) => (
                 <SettingsMenuLink role='button' onClick={handleLogout(history)}>
-                  <FontAwesomeIconMemo icon={RoutesConfig.Login.icon} />
+                  <FontAwesomeIcon icon={RoutesConfig.Login.icon} />
                   {` ${RoutesConfig.Login.displayName}`}
                 </SettingsMenuLink>
               )}

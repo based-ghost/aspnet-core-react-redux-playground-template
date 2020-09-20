@@ -1,15 +1,9 @@
-﻿export interface IActionType {
-  readonly REQUEST: string;
-  readonly RECEIVE: string;
-  readonly RESET_STATE: string;
-}
-
-export type IWeatherForecast = {
+﻿export type IWeatherForecast = {
   readonly id: number;
-  readonly dateFormatted: string;
+  readonly summary: string;
   readonly temperatureC: number;
   readonly temperatureF: number;
-  readonly summary: string;
+  readonly dateFormatted: string;
 };
 
 export type IWeatherForecastsState = {
@@ -18,10 +12,8 @@ export type IWeatherForecastsState = {
   readonly forecasts: IWeatherForecast[];
 };
 
-const _namespace = 'weather';
-
-export const ActionType = Object.freeze<IActionType>({
-  REQUEST: `${_namespace}/fetch`,
-  RECEIVE: `${_namespace}/receive`,
-  RESET_STATE: `${_namespace}/resetState`
-});
+export enum WeatherActionType {
+  REQUEST = 'weather/fetch',
+  RECEIVE = 'weather/receive',
+  RESET_STATE = 'weather/resetState'
+};

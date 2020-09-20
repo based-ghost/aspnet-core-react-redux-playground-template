@@ -8,8 +8,8 @@ const StyledFooter = styled.footer`
   margin: auto;
   display: block;
   font-size: 1.15rem;
+  padding: 3rem 1.5rem;
   background-color: #33363b;
-  padding: 3rem 1.5rem 3rem;
 
   @media only screen and (max-width: 769px) {
     font-size: 1rem;
@@ -43,9 +43,7 @@ const FooterLink = styled.a`
   color: #fff;
   margin-bottom: 0;
   font-size: 1.25rem;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  padding-bottom: 0.75rem;
+  padding: 0 0.5em 0.75rem;
   border-color: transparent;
   margin-right: 0 !important;
   background-color: transparent;

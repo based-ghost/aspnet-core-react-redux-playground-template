@@ -5,7 +5,6 @@ import IconSVG from './IconSVG';
 import Checkbox from './Checkbox';
 import Settings from './Settings';
 import Authenticator from './Authenticator';
-import FontAwesomeIconMemo from './FontAwesomeIconMemo';
 
 export {
   Footer,
@@ -14,6 +13,5 @@ export {
   IconSVG,
   Checkbox,
   Settings,
-  Authenticator,
-  FontAwesomeIconMemo
+  Authenticator
 };

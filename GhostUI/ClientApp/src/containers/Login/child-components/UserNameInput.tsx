@@ -1,11 +1,11 @@
 import React from 'react';
-import { TextInput } from '../../../hooks';
+import { useTextInput } from '../../../hooks';
 import { createClassName } from '../../../utils';
-import { FontAwesomeIconMemo } from '../../../components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type UserNameInputProps = {
-  readonly textInput: TextInput;
   readonly isInputInvalid: boolean;
+  readonly textInput: ReturnType<typeof useTextInput>;
 };
 
 const UserNameInput = React.memo<UserNameInputProps>(
@@ -28,7 +28,7 @@ const UserNameInput = React.memo<UserNameInputProps>(
             placeholder='Username'
           />
           <span className='icon is-left'>
-            <FontAwesomeIconMemo icon='user' />
+            <FontAwesomeIcon icon='user' />
           </span>
         </div>
       </div>

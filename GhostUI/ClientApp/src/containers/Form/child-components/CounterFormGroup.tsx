@@ -1,11 +1,11 @@
 import React from 'react';
-import { ReduxAction } from '../../../store';
-import { FontAwesomeIconMemo } from '../../../components';
+import { actionCreators } from '../../../store/form';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type CounterFormGroupProps = {
   readonly count: number;
-  readonly increment: () => ReduxAction;
-  readonly decrement: () => ReduxAction;
+  readonly increment: typeof actionCreators.increment;
+  readonly decrement: typeof actionCreators.decrement;
 };
 
 const CounterFormGroup = React.memo<CounterFormGroupProps>(
@@ -15,10 +15,10 @@ const CounterFormGroup = React.memo<CounterFormGroupProps>(
       <h5 className='subtitle is-5'>Use buttons to update count value</h5>
       <p className='buttons incrementer-buttons form-control-group'>
         <button onClick={decrement} className='button is-light minus'>
-          <FontAwesomeIconMemo icon='minus' />
+          <FontAwesomeIcon icon='minus' />
         </button>
         <button onClick={increment} className='button is-light plus'>
-          <FontAwesomeIconMemo icon='plus' />
+          <FontAwesomeIcon icon='plus' />
         </button>
       </p>
       <p className='subtitle is-5'>

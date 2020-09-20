@@ -1,47 +1,29 @@
-﻿export interface IActionType {
-  readonly LOGIN: string;
-  readonly LOGIN_SUCCESS: string;
-  readonly LOGIN_FAIL: string;
-  readonly LOGOUT: string;
-  readonly RESET_STATE: string;
-  readonly SET_AUTH_STATUS: string;
-}
-
-export type AuthStatus = 'none' | 'process' | 'success' | 'fail';
-
-export type ICredentials = {
+﻿export type ICredentials = {
   userName?: string;
   password?: string;
   rememberMe?: boolean;
 };
 
+export enum AuthStatusEnum {
+  FAIL = 'fail',
+  NONE = 'none',
+  PROCESS = 'process',
+  SUCCESS = 'success'
+};
+
 export type IAuthUser = {
   token?: string;
   userName?: string;
-  status?: AuthStatus;
+  status?: AuthStatusEnum;
 };
 
-export type IAuthState = {
-  readonly isAuthenticated: boolean;
-  readonly token?: string;
-  readonly userName?: string;
-  readonly status?: AuthStatus;
+export enum AuthActionType {
+  LOGIN = 'auth/login',
+  LOGOUT = 'auth/logout',
+  LOGIN_FAIL = 'auth/loginFail',
+  RESET_STATE = 'auth/resetState',
+  LOGIN_SUCCESS = 'auth/loginSuccess',
+  SET_AUTH_STATUS = 'auth/setAuthStatus'
 };
 
-const _namespace = 'auth';
-
-export const ActionType = Object.freeze<IActionType>({
-  LOGIN: `${_namespace}/login`,
-  LOGIN_SUCCESS: `${_namespace}/loginSuccess`,
-  LOGIN_FAIL: `${_namespace}/loginFail`,
-  LOGOUT: `${_namespace}/logout`,
-  RESET_STATE: `${_namespace}/resetState`,
-  SET_AUTH_STATUS: `${_namespace}/setAuthStatus`
-});
-
-export const AuthStatusEnum = Object.freeze<{ [key: string]: AuthStatus }>({
-  NONE: 'none',
-  PROCESS: 'process',
-  SUCCESS: 'success',
-  FAIL: 'fail'
-});
+export type IAuthState = IAuthUser & { isAuthenticated: boolean; };

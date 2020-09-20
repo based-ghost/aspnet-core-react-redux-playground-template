@@ -1,13 +1,13 @@
 import React from 'react';
-import { TextInput } from '../../../hooks';
+import { useTextInput } from '../../../hooks';
 import { createClassName } from '../../../utils';
-import { FontAwesomeIconMemo } from '../../../components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type PasswordInputProps = {
-  readonly textInput: TextInput;
   readonly showPassword: boolean;
   readonly isInputInvalid: boolean;
   readonly toggleShowPassword: () => void;
+  readonly textInput: ReturnType<typeof useTextInput>;
 };
 
 const PasswordInput = React.memo<PasswordInputProps>(
@@ -29,14 +29,14 @@ const PasswordInput = React.memo<PasswordInputProps>(
             placeholder='Password'
           />
           <span className='icon is-left'>
-            <FontAwesomeIconMemo icon='lock' />
+            <FontAwesomeIcon icon='lock' />
           </span>
           <span
             onClick={toggleShowPassword}
             className='icon is-right icon-clickable'
             data-tooltip={!showPassword ? 'Show password' : 'Hide password'}
           >
-            <FontAwesomeIconMemo icon={!showPassword ? 'eye' : 'eye-slash'} />
+            <FontAwesomeIcon icon={!showPassword ? 'eye' : 'eye-slash'} />
           </span>
         </div>
       </div>

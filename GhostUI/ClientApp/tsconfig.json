@@ -6,9 +6,10 @@
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext"
+      "esnext",
+      "scripthost"
     ],
-    "allowJs": true,
+    "allowJs": false,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -26,9 +27,10 @@
     ],
   },
   "include": [
-    "src/**/*"
+    "src"
   ],
   "exclude": [
+    "bin",
     "node_modules"
   ]
 }

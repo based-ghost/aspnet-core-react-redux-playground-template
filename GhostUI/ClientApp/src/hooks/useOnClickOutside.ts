@@ -8,10 +8,7 @@ export const useOnClickOutside = (
   handlerFn: CallbackFunction
 ): void => {
   useEffect(() => {
-    const onClickHandler = (e: any): void => {
-      if (ref.current && ref.current.contains(e.target)) return;
-      handlerFn(false);
-    };
+    const onClickHandler = (e: Event): any => !ref.current?.contains(e.target as Node) && handlerFn();
 
     document.addEventListener('click', onClickHandler);
     document.addEventListener('touchend', onClickHandler);

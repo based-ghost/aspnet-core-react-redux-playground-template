@@ -1,9 +1,11 @@
-﻿import { IDropdownOption } from '../store/form';
+﻿import { AnchorHTMLAttributes } from 'react';
+import { IDropdownOption } from '../store/form';
+import { Theme } from 'react-functional-select';
 
 /**
  * react-functional-select 'themeConfig' property
  */
-export const THEME_CONFIG = {
+export const THEME_CONFIG: Theme = {
   color: {
     primary: '#09d3ac'
   },
@@ -19,6 +21,17 @@ export const THEME_CONFIG = {
     }
   }
  };
+
+/**
+ * HTML attributes to spread on anchor elements in Settings.tsx component
+ */
+export type MenuLinkAttributes = AnchorHTMLAttributes<HTMLAnchorElement>;
+
+export const LINK_ATTRIBUTES: MenuLinkAttributes = {
+  role: 'button',
+  target: '_blank',
+  rel: 'noopener noreferrer',
+};
 
 /**
  * Dropdown test data

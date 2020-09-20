@@ -1,6 +1,6 @@
-﻿import axios, { AxiosError, AxiosResponse } from 'axios';
-import { toast } from 'react-toastify';
+﻿import { toast } from 'react-toastify';
 import { renderToastifyMsg } from '../utils';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 
 const handleAxiosError = (error: AxiosError): void => {
   // Error Message Object
@@ -10,25 +10,29 @@ const handleAxiosError = (error: AxiosError): void => {
     status: 500
   };
 
-  //Setup Error Message
-  if (typeof error !== 'undefined') {
-    if (error.hasOwnProperty('message')) {
-      message.body = error.message;
-    }
+  // Setup Error Message
+  if (typeof error !== 'undefined' && error.hasOwnProperty('message')) {
+    message.body = error.message;
   }
 
   if (typeof error.response !== 'undefined') {
     // Setup Generic Response Messages
-    if (error.response.status === 401) {
-      message.body = 'UnAuthorized';
-    } else if (error.response.status === 404) {
-      message.body = 'API Route is Missing or Undefined';
-    } else if (error.response.status === 405) {
-      message.body = 'API Route Method Not Allowed';
-    } else if (error.response.status === 422) {
-      //Validation Message
-    } else if (error.response.status >= 500) {
-      message.body = 'Internal Server Error';
+    switch (error.response.status) {
+      case 401:
+        message.body = 'UnAuthorized';
+        break;
+      case 404:
+        message.body = 'API Route is Missing or Undefined';
+        break;
+      case 405:
+        message.body = 'API Route Method Not Allowed';
+        break;
+      case 422:
+        break;
+      case 500:
+      default:
+        message.body = 'Internal Server Error';
+        break;
     }
 
     // Assign error status code
@@ -37,10 +41,13 @@ const handleAxiosError = (error: AxiosError): void => {
     }
 
     // Try to Use the Response Message
-    if (error.hasOwnProperty('response') && error.response.hasOwnProperty('data')) {
-      if (error.response.data.hasOwnProperty('message') && error.response.data.message.length > 0) {
-        message.body = error.response.data.message;
-      }
+    if (
+      error.hasOwnProperty('response') &&
+      error.response.hasOwnProperty('data') &&
+      error.response.data.hasOwnProperty('message') &&
+      !!error.response.data.message.length
+    ) {
+      message.body = error.response.data.message;
     }
   }
 

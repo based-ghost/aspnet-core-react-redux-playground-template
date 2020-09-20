@@ -1,15 +1,15 @@
 ﻿import React, { useEffect } from 'react';
 import { CallbackFunction } from '../types';
+import { AuthStatusEnum } from '../store/auth/types';
 import styled, { keyframes } from 'styled-components';
-import { AuthStatusEnum, AuthStatus } from '../store/auth/types';
 
 type AuthenticatorWrapperProps = {
-  readonly authStatus?: AuthStatus;
+  readonly authStatus?: AuthStatusEnum;
 };
 
 type AuthenticatorProps = {
   readonly delay?: number;
-  readonly authStatus?: AuthStatus;
+  readonly authStatus?: AuthStatusEnum;
   readonly handleOnFail: CallbackFunction;
   readonly handleOnSuccess: CallbackFunction;
 };
@@ -33,7 +33,7 @@ const childDivTemplate = (childIndex: number): string => `
   }
 `;
 
-const getChildDivBorderColor = (authStatus: AuthStatus): string => {
+const getChildDivBorderColor = (authStatus: AuthStatusEnum): string => {
   switch (authStatus) {
     case AuthStatusEnum.FAIL: return _failColor;
     case AuthStatusEnum.SUCCESS: return _successColor;

@@ -1,9 +1,8 @@
 import React from 'react';
-import { isArrayWithLength } from '../../../utils';
 import { IWeatherForecast } from '../../../store/weather-forecasts';
 
 type ForecastTableProps = {
-  readonly forecasts?: IWeatherForecast[];
+  readonly forecasts: IWeatherForecast[];
 };
 
 const ForecastTable = React.memo<ForecastTableProps>(({ forecasts }) => (
@@ -17,17 +16,14 @@ const ForecastTable = React.memo<ForecastTableProps>(({ forecasts }) => (
       </tr>
     </thead>
     <tbody>
-      {isArrayWithLength(forecasts) &&
-        forecasts.map(
-          ({ id, summary, temperatureC, temperatureF, dateFormatted }: IWeatherForecast) => (
-            <tr key={id}>
-              <td>{dateFormatted}</td>
-              <td>{temperatureC}</td>
-              <td>{temperatureF}</td>
-              <td>{summary}</td>
-            </tr>
-          )
-        )}
+      {forecasts.map(({ id, summary, temperatureC, temperatureF, dateFormatted }: IWeatherForecast) => (
+        <tr key={id}>
+          <td>{dateFormatted}</td>
+          <td>{temperatureC}</td>
+          <td>{temperatureF}</td>
+          <td>{summary}</td>
+        </tr>
+      ))}
     </tbody>
   </table>
 ));

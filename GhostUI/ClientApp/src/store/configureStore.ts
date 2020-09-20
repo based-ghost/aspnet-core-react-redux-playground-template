@@ -1,13 +1,17 @@
 ﻿import thunk from 'redux-thunk';
+import { History } from 'history';
 import { IApplicationState } from './index';
 import createRootReducer from './rootReducer';
-import { History } from 'history';
 import { routerMiddleware } from 'connected-react-router';
 import { applyMiddleware, compose, createStore, Store } from 'redux';
 
-export const configureStore = (history: History, initialState?: IApplicationState): Store<IApplicationState> => {
-  const windowIfDefined: any = (typeof window === 'undefined') ? null : (window as any);
-  const composeEnhancer: typeof compose = (windowIfDefined && windowIfDefined.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ) || compose;
+export const configureStore = (
+  history: History,
+  initialState?: IApplicationState
+): Store<IApplicationState> => {
+  const composeEnhancer: typeof compose =
+    (window as any)?.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ||
+    compose;
 
   const store = createStore(
     createRootReducer(history),
@@ -17,7 +21,7 @@ export const configureStore = (history: History, initialState?: IApplicationStat
 
   // Enable webpack hot module replacement for reducers
   if (module.hot) {
-    module.hot.accept('./rootReducer', () => {
+    module.hot.accept("./rootReducer", () => {
       store.replaceReducer(createRootReducer(history));
     });
   }

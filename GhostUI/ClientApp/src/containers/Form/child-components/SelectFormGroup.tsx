@@ -1,14 +1,13 @@
 import React from 'react';
-import { ReduxAction } from '../../../store';
-import { Select } from 'react-functional-select';
-import { IDropdownOption } from '../../../store/form';
+import { Select, Theme } from 'react-functional-select';
 import { stringifyJavaScriptObj } from '../../../utils';
+import { IDropdownOption, actionCreators } from '../../../store/form';
 
 type SelectFormGroupProps = {
-  readonly themeConfig?: any;
+  readonly themeConfig?: Theme;
   readonly options: IDropdownOption[];
   readonly selectedOption: IDropdownOption;
-  readonly onSelectOption: (option: IDropdownOption) => ReduxAction;
+  readonly onSelectOption: typeof actionCreators.selectOption;
 };
 
 const SelectFormGroup = React.memo<SelectFormGroupProps>(
@@ -25,7 +24,7 @@ const SelectFormGroup = React.memo<SelectFormGroupProps>(
         />
       </div>
       <p className='subtitle is-5'>
-        Option: <code>{stringifyJavaScriptObj(selectedOption || {})}</code>
+        Option: <code>{stringifyJavaScriptObj(selectedOption)}</code>
       </p>
     </div>
   )

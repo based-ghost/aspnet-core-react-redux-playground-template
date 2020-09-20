@@ -1,22 +1,22 @@
 ﻿import { AuthApi } from '../../api';
 import { CallbackFunction } from '../../types';
 import { IAppThunkAction, ReduxAction } from '../';
-import { ActionType, IAuthUser, ICredentials, AuthStatusEnum, AuthStatus } from './types';
+import { AuthActionType, IAuthUser, ICredentials, AuthStatusEnum } from './types';
 
 export const actionCreators = {
   resetState: (): ReduxAction => ({
-    type: ActionType.RESET_STATE
+    type: AuthActionType.RESET_STATE
   }),
-  setAuthStatus: (status: AuthStatus): ReduxAction => ({
+  setAuthStatus: (status: AuthStatusEnum): ReduxAction => ({
     status,
-    type: ActionType.SET_AUTH_STATUS
+    type: AuthActionType.SET_AUTH_STATUS
   }),
   loginUserRequest: (credentials: ICredentials): IAppThunkAction<ReduxAction> => (dispatch) => {
     AuthApi.loginAsync(credentials)
       .then((authUser: IAuthUser) => {
         const dispatchBody = (authUser.status === AuthStatusEnum.SUCCESS)
-          ? { authUser, type: ActionType.LOGIN_SUCCESS }
-          : { type: ActionType.LOGIN_FAIL };
+          ? { authUser, type: AuthActionType.LOGIN_SUCCESS }
+          : { type: AuthActionType.LOGIN_FAIL };
 
         dispatch(dispatchBody);
       });
@@ -25,7 +25,7 @@ export const actionCreators = {
     AuthApi.logoutAsync()
       .then(() => {
         handleRouteCallback();
-        dispatch({ type: ActionType.RESET_STATE });
+        dispatch({ type: AuthActionType.RESET_STATE });
       });
   },
 };

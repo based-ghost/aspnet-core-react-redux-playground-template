@@ -1,10 +1,10 @@
 import React from 'react';
-import { ReduxAction } from '../../../store';
 import { Checkbox } from '../../../components';
+import { actionCreators } from '../../../store/form';
 
 type CheckboxFormGroupProps = {
   readonly checked: boolean;
-  readonly onCheck: (checked: boolean) => ReduxAction;
+  readonly onCheck: typeof actionCreators.handleOnCheck;
 };
 
 const CheckboxFormGroup = React.memo<CheckboxFormGroupProps>(
