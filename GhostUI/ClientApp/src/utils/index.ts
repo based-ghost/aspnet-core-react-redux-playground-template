@@ -3,7 +3,7 @@ import { createClassName } from './createClassName';
 import { isNullOrUndefined } from './isNullOrUndefined';
 import { isArrayWithLength } from './isArrayWithLength';
 import { renderToastifyMsg } from './renderToastifyMsg';
-import { stringifyJavaScriptObj } from './stringifyJavaScriptObj';
+import { formatJavaScriptObj } from './formatJavaScriptObj';
 
 export {
   normalizeUnit,
@@ -11,5 +11,5 @@ export {
   isNullOrUndefined,
   isArrayWithLength,
   renderToastifyMsg,
-  stringifyJavaScriptObj
+  formatJavaScriptObj
 };

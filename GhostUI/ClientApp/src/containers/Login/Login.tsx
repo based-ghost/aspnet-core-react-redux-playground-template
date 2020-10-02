@@ -1,8 +1,7 @@
-import React, { useEffect, useCallback, useState, useRef } from 'react';
+import React, { useCallback, useState, useRef } from 'react';
 import { History } from 'history';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
-import { SignalRApi } from '../../api';
 import { useTextInput } from '../../hooks';
 import { renderToastifyMsg } from '../../utils';
 import { IApplicationState } from '../../store';
@@ -32,10 +31,6 @@ const Login: React.FC<LoginProps> = ({
 
   const userNameInput = useTextInput('');
   const passwordInput = useTextInput('', showPassword ? 'text' : 'password');
-
-  useEffect(() => {
-    SignalRApi.startConnection();
-  }, []);
 
   const onFailedAuth = useCallback((): void => {
     resetState();

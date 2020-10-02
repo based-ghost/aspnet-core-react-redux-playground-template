@@ -1,6 +1,6 @@
 import React from 'react';
+import { formatJavaScriptObj } from '../../../utils';
 import { Select, Theme } from 'react-functional-select';
-import { stringifyJavaScriptObj } from '../../../utils';
 import { IDropdownOption, actionCreators } from '../../../store/form';
 
 type SelectFormGroupProps = {
@@ -24,7 +24,7 @@ const SelectFormGroup = React.memo<SelectFormGroupProps>(
         />
       </div>
       <p className='subtitle is-5'>
-        Option: <code>{stringifyJavaScriptObj(selectedOption)}</code>
+        Option: <code>{formatJavaScriptObj(selectedOption)}</code>
       </p>
     </div>
   )
