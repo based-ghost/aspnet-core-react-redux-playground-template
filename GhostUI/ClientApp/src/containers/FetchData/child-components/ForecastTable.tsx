@@ -16,7 +16,7 @@ const ForecastTable = React.memo<ForecastTableProps>(({ forecasts }) => (
       </tr>
     </thead>
     <tbody>
-      {forecasts.map(({ id, summary, temperatureC, temperatureF, dateFormatted }: IWeatherForecast) => (
+      {forecasts.map(({ id, summary, temperatureC, temperatureF, dateFormatted }) => (
         <tr key={id}>
           <td>{dateFormatted}</td>
           <td>{temperatureC}</td>

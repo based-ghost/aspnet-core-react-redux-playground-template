@@ -6,13 +6,14 @@ import { IWeatherForecast } from '../store/weather-forecasts';
  */
 class SampleService extends BaseService {
   private static _sampleService: SampleService;
+  private static _controllerName: string = 'SampleData';
 
   private constructor(controllerName: string) {
     super(controllerName);
   }
 
   public static get Instance(): SampleService {
-    return this._sampleService || (this._sampleService = new this('SampleData'));
+    return this._sampleService || (this._sampleService = new this(this._controllerName));
   }
 
   public async getWeatherForecastsAsync(startDateIndex: number): Promise<IWeatherForecast[]> {

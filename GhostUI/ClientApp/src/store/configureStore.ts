@@ -21,7 +21,7 @@ export const configureStore = (
 
   // Enable webpack hot module replacement for reducers
   if (module.hot) {
-    module.hot.accept("./rootReducer", () => {
+    module.hot.accept('./rootReducer', () => {
       store.replaceReducer(createRootReducer(history));
     });
   }

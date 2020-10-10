@@ -7,6 +7,7 @@ const ToastifyMsg = styled.div`
   span {
     font-size: 1.075rem;
   }
+
   svg {
     font-size: 1.25rem;
     margin: 0 .75rem 0 .5rem;

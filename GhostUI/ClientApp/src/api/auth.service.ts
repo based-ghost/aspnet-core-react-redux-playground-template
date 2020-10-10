@@ -7,13 +7,14 @@ import { IAuthUser, ICredentials } from '../store/auth/types';
  */
 class AuthService extends BaseService {
   private static _authService: AuthService;
+  private static _controllerName: string = 'Auth';
 
   private constructor(controllerName: string) {
     super(controllerName);
   }
 
   public static get Instance(): AuthService {
-    return this._authService || (this._authService = new this('Auth'));
+    return this._authService || (this._authService = new this(this._controllerName));
   }
 
   public async logoutAsync(): Promise<AxiosResponse> {

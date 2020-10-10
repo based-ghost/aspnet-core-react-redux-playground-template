@@ -21,7 +21,7 @@ const Login: React.FC<LoginProps> = ({
   history,
   resetState,
   setAuthStatus,
-  loginUserRequest,
+  loginUserRequest
 }) => {
   const toastIdRef = useRef<string | number>('');
 

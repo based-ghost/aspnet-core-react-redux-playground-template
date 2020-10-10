@@ -147,8 +147,6 @@ const Settings: React.FC<SettingsProps> = ({
     return null;
   }
 
-  const { HEALTH_UI, SWAGGER_DOCS } = NUGET_URL_CONFIG;
-
   const handleLogout = (history: History<any>) => (): void => {
     const onLogoutCallbackFn = () => history.push(RoutesConfig.Login.path);
     logoutUserRequest(onLogoutCallbackFn);
@@ -167,12 +165,12 @@ const Settings: React.FC<SettingsProps> = ({
         <SettingsMenu>
           <SettingsMenuTitle>Settings</SettingsMenuTitle>
           <li>
-            <SettingsMenuLink href={HEALTH_UI} {...LINK_ATTRIBUTES}>
+            <SettingsMenuLink href={NUGET_URL_CONFIG.HealthUi} {...LINK_ATTRIBUTES}>
               <FontAwesomeIcon icon='heart' /> Health Checks
             </SettingsMenuLink>
           </li>
           <li>
-            <SettingsMenuLink href={SWAGGER_DOCS} {...LINK_ATTRIBUTES}>
+            <SettingsMenuLink href={NUGET_URL_CONFIG.SwaggerDocs} {...LINK_ATTRIBUTES}>
               <FontAwesomeIcon icon='file' /> Swagger API
             </SettingsMenuLink>
           </li>

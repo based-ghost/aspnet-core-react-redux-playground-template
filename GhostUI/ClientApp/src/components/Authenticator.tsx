@@ -15,9 +15,6 @@ type AuthenticatorProps = {
 };
 
 const _childDivCount = 9;
-const _failColor = '#e93e60';
-const _successColor = '#09d3ac';
-const _defaultColor = 'rgba(9, 30, 66, 0.35)';
 
 const _authAnimationKeyframes = keyframes`
   100% {
@@ -25,25 +22,26 @@ const _authAnimationKeyframes = keyframes`
   }
 `;
 
-const childDivTemplate = (childIndex: number): string => `
-  &:nth-child(${childIndex + 1}) {
-    height: calc(96px / 9 + ${childIndex} * 96px / 9);
-    width: calc(96px / 9 + ${childIndex} * 96px / 9);
-    animation-delay: calc(50ms * ${childIndex + 1});
-  }
-`;
-
 const getChildDivBorderColor = (authStatus: AuthStatusEnum): string => {
   switch (authStatus) {
-    case AuthStatusEnum.FAIL: return _failColor;
-    case AuthStatusEnum.SUCCESS: return _successColor;
-    default: return _defaultColor;
+    case AuthStatusEnum.FAIL: return '#e93e60';
+    case AuthStatusEnum.SUCCESS: return '#09d3ac';
+    default: return 'rgba(9, 30, 66, 0.35)';
   }
 };
 
 const getChildDivCSS = (): string => {
-  const divs = [...Array(_childDivCount).keys()].map((key) => childDivTemplate(key));
-  return divs.join('');
+  const childDivTemplate = (childIndex: number): string => `
+    &:nth-child(${childIndex + 1}) {
+      height: calc(96px / 9 + ${childIndex} * 96px / 9);
+      width: calc(96px / 9 + ${childIndex} * 96px / 9);
+      animation-delay: calc(50ms * ${childIndex + 1});
+    }
+  `;
+
+  return [...Array(_childDivCount).keys()]
+    .map((key) => childDivTemplate(key))
+    .join('');
 };
 
 const AuthenticatorWrapper = styled.div<AuthenticatorWrapperProps>`

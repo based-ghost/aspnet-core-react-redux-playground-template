@@ -14,7 +14,7 @@ const Form: React.FC<FormProps> = ({
   selectOption,
   checkboxValue,
   handleOnCheck,
-  selectedDropdownOption,
+  selectedDropdownOption
 }) => (
   <section className='section'>
     <div className='container'>

@@ -1,10 +1,8 @@
 import { useState, useCallback, useMemo, ChangeEvent } from 'react';
 
-export type TextInputType = 'text' | 'password';
-
 export const useTextInput = (
   initial: string = '',
-  type: TextInputType = 'text',
+  type: 'text' | 'password' = 'text',
 ) => {
   const [value, setValue] = useState<string>(initial);
   const clear = useCallback((): void => setValue(''), []);

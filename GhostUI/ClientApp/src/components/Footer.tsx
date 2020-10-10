@@ -2,6 +2,11 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+const BrandContent = styled.div`
+  text-align: center;
+  word-spacing: 0.05rem;
+`;
+
 const StyledFooter = styled.footer`
   color: #fff;
   width: 100%;
@@ -14,11 +19,6 @@ const StyledFooter = styled.footer`
   @media only screen and (max-width: 769px) {
     font-size: 1rem;
   }
-`;
-
-const BrandContent = styled.div`
-  text-align: center;
-  word-spacing: 0.05rem;
 `;
 
 const FooterButtons = styled.div`
