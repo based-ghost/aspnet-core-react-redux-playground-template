@@ -1,4 +1,4 @@
-﻿import { BaseService } from './base.service';
+import { BaseService } from './base.service';
 import { IWeatherForecast } from '../store/weather-forecasts';
 
 /**

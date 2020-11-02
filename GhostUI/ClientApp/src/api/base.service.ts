@@ -1,4 +1,4 @@
-﻿import axios, { AxiosInstance } from 'axios';
+import axios, { AxiosInstance } from 'axios';
 
 /**
  * Service API base class - configures default settings/error handling for inheriting class

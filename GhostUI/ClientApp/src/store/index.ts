@@ -1,4 +1,4 @@
-﻿import createRootReducer from './rootReducer';
+import createRootReducer from './rootReducer';
 import { reducer as FormReducer } from './form';
 import { reducer as AuthReducer } from './auth';
 import { configureStore } from './configureStore';

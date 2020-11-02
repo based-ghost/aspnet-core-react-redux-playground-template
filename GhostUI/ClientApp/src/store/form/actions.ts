@@ -1,4 +1,4 @@
-﻿import { FormActionType, IDropdownOption } from './types';
+import { FormActionType, IDropdownOption } from './types';
 
 export const actionCreators = {
   increment: () => ({

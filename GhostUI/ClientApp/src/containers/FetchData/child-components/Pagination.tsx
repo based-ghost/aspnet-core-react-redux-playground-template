@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-type PaginationProps = {
-  readonly startDateIndex?: number;
-};
+type PaginationProps = Readonly<{
+  startDateIndex?: number;
+}>;
 
 const Pagination = React.memo<PaginationProps>(({ startDateIndex = 0 }) => (
   <p className='buttons pagination-group'>

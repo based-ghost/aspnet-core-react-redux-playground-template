@@ -1,4 +1,4 @@
-﻿import { AuthApi } from '../../api';
+import { AuthApi } from '../../api';
 import { CallbackFunction } from '../../types';
 import { IAppThunkAction, ReduxAction } from '../';
 import { AuthActionType, IAuthUser, ICredentials, AuthStatusEnum } from './types';

@@ -1,4 +1,4 @@
-﻿export type ICredentials = {
+export type ICredentials = {
   userName?: string;
   password?: string;
   rememberMe?: boolean;

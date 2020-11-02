@@ -1,9 +1,9 @@
-﻿import React from 'react';
+import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
-type SpinnerProps = {
-  readonly isLoading?: boolean;
-};
+type SpinnerProps = Readonly<{
+  isLoading?: boolean;
+}>;
 
 const SPIN_KEYFRAMES = keyframes`
   0% {

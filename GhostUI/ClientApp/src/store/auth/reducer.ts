@@ -1,4 +1,4 @@
-﻿import { FunctionReturnTypes, ReduxAction } from '../';
+import { FunctionReturnTypes, ReduxAction } from '../';
 import { actionCreators } from './actions';
 import { AuthActionType, IAuthUser, IAuthState, AuthStatusEnum } from './types';
 

@@ -1,4 +1,4 @@
-﻿import React, { useRef, useState, useCallback } from 'react';
+import React, { useRef, useState, useCallback } from 'react';
 import { History } from 'history';
 import { Route } from 'react-router';
 import { connect } from 'react-redux';

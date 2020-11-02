@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Layout from './Layout';
 import { History } from 'history';
+import { hot } from 'react-hot-loader/root';
 import { Route, Switch } from 'react-router';
 import { SignalRApi } from './api/signalR.service';
 import { RoutesConfig } from './config/routes.config';
@@ -26,4 +27,4 @@ const App: React.FC<{ history: History }> = ({ history }) => {
   );
 };
 
-export default App;
+export default hot(App);

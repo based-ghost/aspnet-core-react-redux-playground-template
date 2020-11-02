@@ -1,13 +1,13 @@
-﻿export type IDropdownOption = {
-  readonly value: number;
-  readonly label: string;
-};
+export type IDropdownOption = Readonly<{
+  value: number;
+  label: string;
+}>;
 
-export type IFormState = {
-  readonly count: number;
-  readonly checkboxValue: boolean;
-  readonly selectedDropdownOption: IDropdownOption;
-};
+export type IFormState = Readonly<{
+  count: number;
+  checkboxValue: boolean;
+  selectedDropdownOption: IDropdownOption;
+}>;
 
 export enum FormActionType {
   INCREMENT = 'form/increment',

@@ -2,10 +2,10 @@ import React from 'react';
 import { Checkbox } from '../../../components';
 import { actionCreators } from '../../../store/form';
 
-type CheckboxFormGroupProps = {
-  readonly checked: boolean;
-  readonly onCheck: typeof actionCreators.handleOnCheck;
-};
+type CheckboxFormGroupProps = Readonly<{
+  checked: boolean;
+  onCheck: typeof actionCreators.handleOnCheck;
+}>;
 
 const CheckboxFormGroup = React.memo<CheckboxFormGroupProps>(
   ({ checked, onCheck }) => (

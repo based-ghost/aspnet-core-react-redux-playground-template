@@ -1,4 +1,4 @@
-﻿import { useEffect, MutableRefObject } from 'react';
+import { useEffect, MutableRefObject } from 'react';
 import { CallbackFunction } from '../types';
 
 // Wrap the handleOutsideClick & handleInsideClick in useCallback prior to passing to this hook to optimize ...

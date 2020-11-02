@@ -3,12 +3,12 @@ import { formatJavaScriptObj } from '../../../utils';
 import { Select, Theme } from 'react-functional-select';
 import { IDropdownOption, actionCreators } from '../../../store/form';
 
-type SelectFormGroupProps = {
-  readonly themeConfig?: Theme;
-  readonly options: IDropdownOption[];
-  readonly selectedOption: IDropdownOption;
-  readonly onSelectOption: typeof actionCreators.selectOption;
-};
+type SelectFormGroupProps = Readonly<{
+  themeConfig?: Theme;
+  options: IDropdownOption[];
+  selectedOption: IDropdownOption;
+  onSelectOption: typeof actionCreators.selectOption;
+}>;
 
 const SelectFormGroup = React.memo<SelectFormGroupProps>(
   ({ options, themeConfig, selectedOption, onSelectOption }) => (

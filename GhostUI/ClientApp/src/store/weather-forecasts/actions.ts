@@ -1,4 +1,4 @@
-﻿import { SampleApi } from '../../api';
+import { SampleApi } from '../../api';
 import { IAppThunkAction, ReduxAction } from '../';
 import { WeatherActionType, IWeatherForecast } from './types';
 

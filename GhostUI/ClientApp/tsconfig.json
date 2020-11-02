@@ -17,6 +17,7 @@
     "noImplicitAny": false,
     "noImplicitThis": true,
     "jsx": "react",
+    "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -24,7 +25,7 @@
     "typeRoots": [
       "node_modules/@types",
       "src/types"
-    ],
+    ]
   },
   "include": [
     "src"

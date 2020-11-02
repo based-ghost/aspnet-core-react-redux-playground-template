@@ -1,13 +1,13 @@
-﻿import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
-export type Route = {
-  readonly path: string;
-  readonly icon?: IconProp;
-  readonly exact?: boolean;
-  readonly displayName: string;
-  readonly showInNav?: boolean;
-  readonly pathAbsolute?: string;
-};
+export type Route = Readonly<{
+  path: string;
+  icon?: IconProp;
+  exact?: boolean;
+  displayName: string;
+  showInNav?: boolean;
+  pathAbsolute?: string;
+}>;
 
 export const RoutesConfig = Object.freeze<Record<string, Route>>({
   Login: {

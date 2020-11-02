@@ -2,10 +2,10 @@ import React, { Fragment } from 'react';
 import { Checkbox } from '../../../components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-type LoginControlsProps = {
-  readonly rememberMe: boolean;
-  readonly handleRememberMeCheck: (checked: boolean) => void;
-};
+type LoginControlsProps = Readonly<{
+  rememberMe: boolean;
+  handleRememberMeCheck: (checked: boolean) => void;
+}>;
 
 const LoginControls = React.memo<LoginControlsProps>(
   ({ rememberMe, handleRememberMeCheck }) => (

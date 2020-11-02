@@ -1,18 +1,16 @@
 import React from 'react';
-import { IconSVG } from '../../components';
-
-const ReactCore = require('../../assets/image/ReactCore.svg') as string;
+import { ReactComponent as ReactCoreSvg } from '../../assets/image/ReactCore.svg';
 
 const Dashboard: React.FC = () => (
   <div className='dashboard-wrapper'>
     <section className='hero is-dark'>
       <div className='hero-body'>
         <div className='is-flex is-horizontal-center'>
-          <IconSVG
+          <ReactCoreSvg
             width='260'
             height='260'
-            src={ReactCore}
-            description='react-core-logo'
+            aria-hidden
+            title='react-core-logo'
           />
         </div>
       </div>

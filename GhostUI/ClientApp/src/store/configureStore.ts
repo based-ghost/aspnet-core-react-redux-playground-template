@@ -19,12 +19,5 @@ export const configureStore = (
     composeEnhancer(applyMiddleware(thunk, routerMiddleware(history)))
   );
 
-  // Enable webpack hot module replacement for reducers
-  if (module.hot) {
-    module.hot.accept('./rootReducer', () => {
-      store.replaceReducer(createRootReducer(history));
-    });
-  }
-
   return store;
 };

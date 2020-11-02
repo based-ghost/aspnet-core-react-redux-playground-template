@@ -6,25 +6,24 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-brands-svg-icons": "^5.15.1",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
-    "@fortawesome/react-fontawesome": "^0.1.11",
+    "@fortawesome/react-fontawesome": "^0.1.12",
     "@microsoft/signalr": "^3.1.9",
-    "axios": "^0.20.0",
+    "axios": "^0.21.0",
     "bulma": "^0.9.1",
     "connected-react-router": "^6.8.0",
     "history": "^4.10.1",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "react-functional-select": "^2.9.1",
-    "react-inlinesvg": "^2.1.1",
-    "react-redux": "^7.2.1",
+    "react-redux": "^7.2.2",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.4",
+    "react-scripts": "^4.0.0",
     "react-toastify": "^6.0.9",
-    "react-window": "^1.8.5",
+    "react-window": "^1.8.6",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^5.2.0"
+    "styled-components": "^5.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -50,9 +49,9 @@
   "devDependencies": {
     "@types/history": "^4.7.8",
     "@types/jest": "^26.0.15",
-    "@types/node": "^14.14.0",
-    "@types/react": "^16.9.53",
-    "@types/react-dom": "^16.9.8",
+    "@types/node": "^14.14.6",
+    "@types/react": "^16.9.55",
+    "@types/react-dom": "^16.9.9",
     "@types/react-redux": "^7.1.9",
     "@types/react-router": "^5.1.8",
     "@types/react-router-dom": "^5.1.6",
@@ -60,6 +59,6 @@
     "@types/webpack-env": "^1.15.3",
     "node-sass": "^4.14.1",
     "react-hot-loader": "^4.13.0",
-    "typescript": "^4.0.3"
+    "typescript": "^4.0.5"
   }
 }

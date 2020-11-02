@@ -1,4 +1,4 @@
-﻿import { actionCreators } from './actions';
+import { actionCreators } from './actions';
 import { FunctionReturnTypes, ReduxAction } from '../';
 import { WeatherActionType, IWeatherForecastsState } from './types';
 

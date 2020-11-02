@@ -1,16 +1,16 @@
-﻿export type IWeatherForecast = {
-  readonly id: number;
-  readonly summary: string;
-  readonly temperatureC: number;
-  readonly temperatureF: number;
-  readonly dateFormatted: string;
-};
+export type IWeatherForecast = Readonly<{
+  id: number;
+  summary: string;
+  temperatureC: number;
+  temperatureF: number;
+  dateFormatted: string;
+}>;
 
-export type IWeatherForecastsState = {
-  readonly isLoading: boolean;
-  readonly startDateIndex?: number;
-  readonly forecasts: IWeatherForecast[];
-};
+export type IWeatherForecastsState = Readonly<{
+  isLoading: boolean;
+  startDateIndex?: number;
+  forecasts: IWeatherForecast[];
+}>;
 
 export enum WeatherActionType {
   REQUEST = 'weather/fetch',

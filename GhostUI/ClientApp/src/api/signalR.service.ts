@@ -1,4 +1,4 @@
-﻿import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { renderToastifyMsg } from '../utils';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { HubConnection, HubConnectionBuilder, HubConnectionState } from '@microsoft/signalr';

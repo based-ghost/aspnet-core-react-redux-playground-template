@@ -2,11 +2,11 @@ import React from 'react';
 import { actionCreators } from '../../../store/form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-type CounterFormGroupProps = {
-  readonly count: number;
-  readonly increment: typeof actionCreators.increment;
-  readonly decrement: typeof actionCreators.decrement;
-};
+type CounterFormGroupProps = Readonly<{
+  count: number;
+  increment: typeof actionCreators.increment;
+  decrement: typeof actionCreators.decrement;
+}>;
 
 const CounterFormGroup = React.memo<CounterFormGroupProps>(
   ({ count, increment, decrement }) => (

@@ -10,7 +10,7 @@ import { RoutesConfig } from '../../config/routes.config';
 import { actionCreators, AuthStatusEnum, reducer } from '../../store/auth';
 import { UserNameInput, PasswordInput, LoginControls } from './child-components';
 
-const BasedGhostLogo = require('../../assets/image/based-ghost-main.png') as string;
+import BasedGhostLogoPng from '../../assets/image/based-ghost-main.png';
 
 type LoginProps = ReturnType<typeof reducer>
   & typeof actionCreators
@@ -79,9 +79,10 @@ const Login: React.FC<LoginProps> = ({
           <div className='box login-box'>
             <img
               width='175'
+              aria-hidden
               id='login-img'
-              src={BasedGhostLogo}
               alt='based-ghost-logo'
+              src={BasedGhostLogoPng}
             />
             <form onSubmit={handleLogin}>
               <UserNameInput

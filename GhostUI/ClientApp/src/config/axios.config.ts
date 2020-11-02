@@ -1,4 +1,4 @@
-﻿import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { renderToastifyMsg } from '../utils';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 

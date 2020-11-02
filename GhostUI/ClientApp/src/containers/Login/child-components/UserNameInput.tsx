@@ -3,10 +3,10 @@ import { useTextInput } from '../../../hooks';
 import { createClassName } from '../../../utils';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-type UserNameInputProps = {
-  readonly isInputInvalid: boolean;
-  readonly textInput: ReturnType<typeof useTextInput>;
-};
+type UserNameInputProps = Readonly<{
+  isInputInvalid: boolean;
+  textInput: ReturnType<typeof useTextInput>;
+}>;
 
 const UserNameInput = React.memo<UserNameInputProps>(
   ({ textInput, isInputInvalid }) => {

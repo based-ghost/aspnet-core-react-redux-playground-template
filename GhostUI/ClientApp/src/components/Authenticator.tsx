@@ -1,18 +1,19 @@
-﻿import React, { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { CallbackFunction } from '../types';
 import { AuthStatusEnum } from '../store/auth/types';
 import styled, { keyframes } from 'styled-components';
 
-type AuthenticatorWrapperProps = {
-  readonly authStatus?: AuthStatusEnum;
-};
 
-type AuthenticatorProps = {
-  readonly delay?: number;
-  readonly authStatus?: AuthStatusEnum;
-  readonly handleOnFail: CallbackFunction;
-  readonly handleOnSuccess: CallbackFunction;
-};
+type AuthenticatorWrapperProps = Readonly<{
+  authStatus?: AuthStatusEnum;
+}>;
+
+type AuthenticatorProps = Readonly<{
+  delay?: number;
+  authStatus?: AuthStatusEnum;
+  handleOnFail: CallbackFunction;
+  handleOnSuccess: CallbackFunction;
+}>;
 
 const _childDivCount = 9;
 

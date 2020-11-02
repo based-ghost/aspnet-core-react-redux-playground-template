@@ -1,9 +1,9 @@
 import React from 'react';
 import { IWeatherForecast } from '../../../store/weather-forecasts';
 
-type ForecastTableProps = {
-  readonly forecasts: IWeatherForecast[];
-};
+type ForecastTableProps = Readonly<{
+  forecasts: IWeatherForecast[];
+}>;
 
 const ForecastTable = React.memo<ForecastTableProps>(({ forecasts }) => (
   <table className='table is-fullwidth'>

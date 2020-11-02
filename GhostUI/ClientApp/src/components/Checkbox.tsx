@@ -1,15 +1,15 @@
-﻿import React from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-type CheckboxProps = {
-  readonly id?: string;
-  readonly name?: string;
-  readonly label?: string;
-  readonly checked: boolean;
-  readonly disabled?: boolean;
-  readonly readOnly?: boolean;
-  readonly onCheck: (checked: boolean) => void;
-};
+type CheckboxProps = Readonly<{
+  id?: string;
+  name?: string;
+  label?: string;
+  checked: boolean;
+  disabled?: boolean;
+  readOnly?: boolean;
+  onCheck: (checked: boolean) => void;
+}>;
 
 const Label = styled.span`
   padding-left: 1.5rem;

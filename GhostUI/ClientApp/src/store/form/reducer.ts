@@ -1,4 +1,4 @@
-﻿import { FunctionReturnTypes } from '../';
+import { FunctionReturnTypes } from '../';
 import { actionCreators } from './actions';
 import { FormActionType, IFormState } from './types';
 import { DROPDOWN_TEST_DATA } from '../../config/constants';

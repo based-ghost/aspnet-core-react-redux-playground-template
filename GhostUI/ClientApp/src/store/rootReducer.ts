@@ -1,4 +1,4 @@
-﻿import { History } from 'history';
+import { History } from 'history';
 import { combineReducers } from 'redux';
 import { IApplicationState } from './index';
 import { reducer as FormReducer } from './form';

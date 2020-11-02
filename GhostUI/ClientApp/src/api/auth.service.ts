@@ -1,4 +1,4 @@
-﻿import { AxiosResponse } from 'axios';
+import { AxiosResponse } from 'axios';
 import { BaseService } from './base.service';
 import { IAuthUser, ICredentials } from '../store/auth/types';
 
