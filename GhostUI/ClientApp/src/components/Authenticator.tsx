@@ -1,16 +1,11 @@
-import React, { useEffect } from 'react';
+﻿import { useEffect, memo } from 'react';
 import { CallbackFunction } from '../types';
 import { AuthStatusEnum } from '../store/auth/types';
 import styled, { keyframes } from 'styled-components';
 
-
-type AuthenticatorWrapperProps = Readonly<{
-  authStatus?: AuthStatusEnum;
-}>;
-
 type AuthenticatorProps = Readonly<{
   delay?: number;
-  authStatus?: AuthStatusEnum;
+  authStatus: AuthStatusEnum;
   handleOnFail: CallbackFunction;
   handleOnSuccess: CallbackFunction;
 }>;
@@ -45,7 +40,7 @@ const getChildDivCSS = (): string => {
     .join('');
 };
 
-const AuthenticatorWrapper = styled.div<AuthenticatorWrapperProps>`
+const AuthenticatorWrapper = styled.div<Pick<AuthenticatorProps, 'authStatus'>>`
   width: 100px;
   height: 100px;
   padding: 2px;
@@ -71,40 +66,49 @@ const AuthenticatorWrapper = styled.div<AuthenticatorWrapperProps>`
   }
 `;
 
-const Authenticator = React.memo<AuthenticatorProps>(
-  ({ authStatus, handleOnFail, handleOnSuccess, delay = 1500 }) => {
-    useEffect(() => {
-      const authHandler = setTimeout(() => {
-        switch (authStatus) {
-          case AuthStatusEnum.FAIL:
-            handleOnFail();
-            return;
-          case AuthStatusEnum.SUCCESS:
-            handleOnSuccess();
-            return;
-          default:
-            return;
-        }
-      }, delay);
+const Authenticator = memo<AuthenticatorProps>(({
+  authStatus,
+  handleOnFail,
+  handleOnSuccess,
+  delay = 1500
+}) => {
+  useEffect(() => {
+    const authHandler = setTimeout(() => {
+      switch (authStatus) {
+        case AuthStatusEnum.FAIL:
+          handleOnFail();
+          return;
+        case AuthStatusEnum.SUCCESS:
+          handleOnSuccess();
+          return;
+        default:
+          return;
+      }
+    }, delay);
 
-      return () => {
-        clearTimeout(authHandler);
-      };
-    }, [authStatus, delay, handleOnFail, handleOnSuccess]);
+    return () => {
+      clearTimeout(authHandler);
+    };
+  }, [authStatus, delay, handleOnFail, handleOnSuccess]);
 
-    if (!authStatus || authStatus === AuthStatusEnum.NONE) {
-      return null;
-    }
-
-    return (
-      <AuthenticatorWrapper authStatus={authStatus}>
-        <div /><div /><div />
-        <div /><div /><div />
-        <div /><div /><div />
-      </AuthenticatorWrapper>
-    );
+  if (!authStatus || authStatus === AuthStatusEnum.NONE) {
+    return null;
   }
-);
+
+  return (
+    <AuthenticatorWrapper authStatus={authStatus}>
+      <div />
+      <div />
+      <div />
+      <div />
+      <div />
+      <div />
+      <div />
+      <div />
+      <div />
+    </AuthenticatorWrapper>
+  );
+});
 
 Authenticator.displayName = 'Authenticator';
 

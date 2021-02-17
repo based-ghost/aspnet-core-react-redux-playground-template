@@ -1,20 +1,8 @@
-export type ICredentials = {
-  userName?: string;
-  password?: string;
-  rememberMe?: boolean;
-};
-
-export enum AuthStatusEnum {
+﻿export enum AuthStatusEnum {
   FAIL = 'fail',
   NONE = 'none',
   PROCESS = 'process',
   SUCCESS = 'success'
-};
-
-export type IAuthUser = {
-  token?: string;
-  userName?: string;
-  status?: AuthStatusEnum;
 };
 
 export enum AuthActionType {
@@ -26,4 +14,18 @@ export enum AuthActionType {
   SET_AUTH_STATUS = 'auth/setAuthStatus'
 };
 
+export type ICredentials = {
+  userName?: string;
+  password?: string;
+  rememberMe?: boolean;
+};
+
+export type IAuthUser = {
+  token?: string;
+  userName?: string;
+  status: AuthStatusEnum;
+};
+
 export type IAuthState = IAuthUser & { isAuthenticated: boolean; };
+
+export type AuthPayload = Partial<IAuthState>;

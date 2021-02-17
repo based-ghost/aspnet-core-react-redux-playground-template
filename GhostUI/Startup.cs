@@ -43,7 +43,7 @@ namespace GhostUI
             services.AddCorsConfig(_corsPolicyName);
 
             // Register RazorPages/Controllers
-            services.AddControllersWithViews();
+            services.AddControllers();
 
             // Add Brotli/Gzip response compression (prod only)
             services.AddResponseCompressionConfig(Configuration);
@@ -51,11 +51,11 @@ namespace GhostUI
             // Add SignalR
             services.AddSignalR();
 
-            // IMPORTANT CONFIG CHANGE IN 3.0 - 'Async' suffix in action names get stripped by default - so, to access them by full name with 'Async' part - opt out of this feature'.
-            services.AddMvc(options => options.SuppressAsyncSuffixInActionNames = false);
+            // Config change in asp.net core 3.0+ - 'Async' suffix in action names get stripped by default - so, to access them by full name with 'Async' part - opt out of this feature.
+            services.AddMvc(opt => opt.SuppressAsyncSuffixInActionNames = false);
 
             // In production, the Vue files will be served from this directory
-            services.AddSpaStaticFiles(configuration => configuration.RootPath = $"{_spaSourcePath}/dist");
+            services.AddSpaStaticFiles(opt => opt.RootPath = $"{_spaSourcePath}/dist");
 
             // Register the Swagger services (using OpenApi 3.0)
             services.AddOpenApiDocument(configure => configure.Title = $"{this.GetType().Namespace} API");
@@ -68,11 +68,6 @@ namespace GhostUI
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                // There does not yet appear to be a finalized solution to replace this obselete framework.
-                // app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
-                // {
-                //     HotModuleReplacement = true
-                // });
             }
             else
             {
@@ -126,11 +121,7 @@ namespace GhostUI
             // Map controllers / SignalR hubs / HealthChecks
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller}/{action=Index}/{id?}"
-                );
-
+                endpoints.MapControllers();
                 endpoints.MapHub<UsersHub>("/hubs/users");
             });
 

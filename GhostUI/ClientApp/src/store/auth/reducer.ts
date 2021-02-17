@@ -1,6 +1,5 @@
-import { FunctionReturnTypes, ReduxAction } from '../';
-import { actionCreators } from './actions';
-import { AuthActionType, IAuthUser, IAuthState, AuthStatusEnum } from './types';
+﻿import { ReduxAction } from '../';
+import { AuthActionType, AuthPayload, IAuthUser, IAuthState, AuthStatusEnum } from './types';
 
 const initialState: IAuthState = {
   token: '',
@@ -11,28 +10,30 @@ const initialState: IAuthState = {
 
 export const reducer = (
   state: IAuthState = initialState,
-  incomingAction: FunctionReturnTypes<typeof actionCreators>
+  action: ReduxAction<AuthPayload>
 ): IAuthState => {
-  const action = incomingAction as ReduxAction;
-
   switch (action.type) {
-    case AuthActionType.SET_AUTH_STATUS:
+    case AuthActionType.SET_AUTH_STATUS: {
       return {
         ...state,
-        status: action.status
+        status: action!.payload!.status!
       };
-    case AuthActionType.LOGIN_SUCCESS:
-      const authUser = (action.authUser as IAuthUser);
+    }
+    case AuthActionType.LOGIN_SUCCESS: {
+      const authUser = (action!.payload as IAuthUser);
+
       return {
         ...authUser,
         isAuthenticated: true
       };
+    }
     case AuthActionType.LOGOUT:
     case AuthActionType.LOGIN_FAIL:
-    case AuthActionType.RESET_STATE:
+    case AuthActionType.RESET_STATE: {
       return {
         ...initialState
       };
+    }
     case AuthActionType.LOGIN:
     default:
       return state;

@@ -1,7 +1,3 @@
-const formatJavaScriptObj = (data: any): string => {
-  return JSON.stringify(data || {}).replace(/"/g, "'");
-};
+const formatJavaScriptObj = (data: any = {}): string => JSON.stringify(data).replace(/"/g, "'");
 
-export {
-  formatJavaScriptObj
-};
+export { formatJavaScriptObj };

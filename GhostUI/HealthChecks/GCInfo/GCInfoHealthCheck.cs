@@ -33,12 +33,12 @@ namespace GhostUI.HealthChecks
 
             // Report failure if the allocated memory is >= the threshold.
             // Using context.Registration.FailureStatus means that the application developer can configure how they want failures to appear.
-            var result = allocated >= options.Threshold
+            var status = allocated >= options.Threshold
                 ? context.Registration.FailureStatus
                 : HealthStatus.Healthy;
 
             return Task.FromResult(new HealthCheckResult(
-                result,
+                status,
                 description: "reports degraded status if allocated bytes >= 1gb",
                 data: data));
         }

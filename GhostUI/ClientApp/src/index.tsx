@@ -1,12 +1,11 @@
 import 'react-hot-loader'; // Must be imported befire React and ReactDOM
-import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import './assets/style/scss/site.scss';
 import App from './App';
 import { createBrowserHistory } from 'history';
 import { ToastContainer } from 'react-toastify';
-import { configureStore, IApplicationState } from './store';
+import { configureStore, RootState } from './store';
 import AxiosGlobalConfig from './config/axios.config';
 import './config/fa.config';
 import * as serviceWorker from './serviceWorker';
@@ -16,17 +15,17 @@ AxiosGlobalConfig.setup();
 
 // Create browser history & initial store state (if exists) to use in the redux store
 const history = createBrowserHistory();
-const initialState: IApplicationState = (window as any)?.initialReduxState;
+const initialState: RootState = (window as any)?.initialReduxState;
 const store = configureStore(history, initialState);
 
 ReactDOM.render(
   <Provider store={store}>
     <App history={history} />
     <ToastContainer
-     autoClose={3500}
-     draggable={false}
-     newestOnTop={true}
-     position='top-center'
+      newestOnTop
+      autoClose={3500}
+      draggable={false}
+      position='top-center'
     />
   </Provider>,
   document.getElementById('root')

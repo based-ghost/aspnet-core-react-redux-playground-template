@@ -1,20 +1,13 @@
-import React from 'react';
-import { connect } from 'react-redux';
+﻿import { FunctionComponent } from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { IApplicationState } from '../store';
-import { ReactComponent as BulmaLogoSvg } from '../assets/image/BulmaLogo.svg';
+import { RootState } from '../store';
 import { RoutesConfig, Route } from '../config/routes.config';
+import { ReactComponent as BulmaLogoSvg } from '../assets/image/BulmaLogo.svg';
 
-type NavbarProps = Readonly<{
-  isAuthenticated: boolean;
-}>;
-
-const Navbar: React.FC<NavbarProps> = ({ isAuthenticated }) => {
-  const navRoutes: Route[] = Object.keys(RoutesConfig).reduce((acc, key) => {
-    const route = RoutesConfig[key];
-    route.showInNav && acc.push(route);
-    return acc;
-  }, [] as Route[]);
+const Navbar: FunctionComponent = () => {
+  const navRoutes: Route[] = Object.values(RoutesConfig).filter((x) => x.showInNav);
+  const isAuthenticated = useSelector<RootState, boolean>(state => state.auth.isAuthenticated);
 
   return (
     <nav role='navigation' className='navbar' aria-label='main navigation'>
@@ -45,9 +38,4 @@ const Navbar: React.FC<NavbarProps> = ({ isAuthenticated }) => {
     </nav>
   );
 };
-
-const mapStateToProps = (state: IApplicationState) => ({
-  isAuthenticated: state.auth.isAuthenticated,
-});
-
-export default connect(mapStateToProps)(Navbar);
+export default Navbar;

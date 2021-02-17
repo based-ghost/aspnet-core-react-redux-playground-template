@@ -1,4 +1,4 @@
-import { useEffect, MutableRefObject } from 'react';
+﻿import { useEffect, MutableRefObject } from 'react';
 import { CallbackFunction } from '../types';
 
 // Wrap the handleOutsideClick & handleInsideClick in useCallback prior to passing to this hook to optimize ...
@@ -8,7 +8,7 @@ export const useOnClickOutside = (
   handlerFn: CallbackFunction
 ): void => {
   useEffect(() => {
-    const onClickHandler = (e: Event): any => !ref.current?.contains(e.target as Node) && handlerFn();
+    const onClickHandler = (e: Event) => !ref.current?.contains(e.target as Node) && handlerFn();
 
     document.addEventListener('click', onClickHandler);
     document.addEventListener('touchend', onClickHandler);

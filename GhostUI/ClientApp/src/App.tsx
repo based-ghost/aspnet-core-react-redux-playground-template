@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect, FunctionComponent } from 'react';
 import Layout from './Layout';
 import { History } from 'history';
 import { hot } from 'react-hot-loader/root';
@@ -8,7 +8,7 @@ import { RoutesConfig } from './config/routes.config';
 import { ConnectedRouter } from 'connected-react-router';
 import { Dashboard, FetchData, Form, Login } from './containers';
 
-const App: React.FC<{ history: History }> = ({ history }) => {
+const App: FunctionComponent<{ history: History }> = ({ history }) => {
   useEffect(() => {
     SignalRApi.startConnection();
   }, []);

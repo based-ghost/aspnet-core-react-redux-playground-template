@@ -1,7 +1,7 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 import { ReactComponent as ReactCoreSvg } from '../../assets/image/ReactCore.svg';
 
-const Dashboard: React.FC = () => (
+const Dashboard: FunctionComponent = () => (
   <div className='dashboard-wrapper'>
     <section className='hero is-dark'>
       <div className='hero-body'>
@@ -27,10 +27,10 @@ const Dashboard: React.FC = () => (
                   <ul>
                     <li>
                       <a
-                        className='dashboard-link react'
                         target='_blank'
                         rel='noopener noreferrer'
                         href='https://reactjs.org/'
+                        className='dashboard-link react'
                       >
                         React
                       </a>
@@ -41,10 +41,10 @@ const Dashboard: React.FC = () => (
                     </li>
                     <li>
                       <a
-                        className='dashboard-link redux'
                         target='_blank'
                         rel='noopener noreferrer'
                         href='https://redux.js.org/'
+                        className='dashboard-link redux'
                       >
                         Redux
                       </a>
@@ -54,10 +54,10 @@ const Dashboard: React.FC = () => (
                     </li>
                     <li>
                       <a
-                        className='dashboard-link bulma'
                         target='_blank'
                         rel='noopener noreferrer'
                         href='https://bulma.io/'
+                        className='dashboard-link bulma'
                       >
                         Bulma
                       </a>
@@ -72,10 +72,10 @@ const Dashboard: React.FC = () => (
                   <ul>
                     <li>
                       <a
-                        className='dashboard-link aspcore'
                         target='_blank'
                         rel='noopener noreferrer'
                         href='https://www.asp.net/'
+                        className='dashboard-link aspcore'
                       >
                         ASP.NET Core
                       </a>
@@ -86,10 +86,10 @@ const Dashboard: React.FC = () => (
                     </li>
                     <li>
                       <a
-                        className='dashboard-link sass'
                         target='_blank'
                         rel='noopener noreferrer'
                         href='https://sass-lang.com/'
+                        className='dashboard-link sass'
                       >
                         SASS
                       </a>
@@ -100,10 +100,10 @@ const Dashboard: React.FC = () => (
                     </li>
                     <li>
                       <a
-                        className='dashboard-link typescript'
                         target='_blank'
                         rel='noopener noreferrer'
                         href='https://www.typescriptlang.org/'
+                        className='dashboard-link typescript'
                       >
                         TypeScript
                       </a>

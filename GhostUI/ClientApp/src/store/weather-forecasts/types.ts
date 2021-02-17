@@ -1,3 +1,9 @@
+﻿export enum WeatherActionType {
+  REQUEST = 'weather/fetch',
+  RECEIVE = 'weather/receive',
+  RESET_STATE = 'weather/resetState'
+};
+
 export type IWeatherForecast = Readonly<{
   id: number;
   summary: string;
@@ -12,8 +18,4 @@ export type IWeatherForecastsState = Readonly<{
   forecasts: IWeatherForecast[];
 }>;
 
-export enum WeatherActionType {
-  REQUEST = 'weather/fetch',
-  RECEIVE = 'weather/receive',
-  RESET_STATE = 'weather/resetState'
-};
+export type WeatherForecastPayload = Partial<IWeatherForecastsState>;

@@ -1,4 +1,4 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -58,7 +58,7 @@ const FooterLink = styled.a`
   }
 `;
 
-const Footer: React.FC = () => (
+const Footer: FunctionComponent = () => (
   <StyledFooter>
     <FooterButtons>
       <FooterLink

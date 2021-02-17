@@ -1,18 +1,19 @@
+﻿import { ReduxAction } from '../';
 import { FormActionType, IDropdownOption } from './types';
 
 export const actionCreators = {
-  increment: () => ({
+  increment: (): ReduxAction => ({
     type: FormActionType.INCREMENT
   }),
-  decrement: () => ({
+  decrement: (): ReduxAction => ({
     type: FormActionType.DECREMENT
   }),
-  handleOnCheck: (checked: boolean) => ({
-    checked,
+  handleOnCheck: (checked: boolean): ReduxAction<{ checked: boolean }> => ({
+    payload: { checked },
     type: FormActionType.CHECKBOX_CHECK
   }),
-  selectOption: (option: IDropdownOption) => ({
-    option,
+  selectOption: (option: IDropdownOption): ReduxAction<{ option: IDropdownOption }> => ({
+    payload: { option },
     type: FormActionType.DROPDOWN_SELECT
   })
 };

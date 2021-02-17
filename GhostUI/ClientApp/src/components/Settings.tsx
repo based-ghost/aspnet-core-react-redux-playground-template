@@ -1,18 +1,16 @@
-import React, { useRef, useState, useCallback } from 'react';
-import { History } from 'history';
-import { Route } from 'react-router';
-import { connect } from 'react-redux';
+﻿import { useRef, useState, useCallback, FunctionComponent } from 'react';
+import { AuthApi } from '../api';
+import { RootState } from '../store';
 import { useOnClickOutside } from '../hooks';
-import { IApplicationState } from '../store';
-import { actionCreators } from '../store/auth';
+import { useHistory } from 'react-router-dom';
+import { AuthActionType } from '../store/auth';
 import styled, { keyframes } from 'styled-components';
 import { RoutesConfig } from '../config/routes.config';
+import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NUGET_URL_CONFIG, LINK_ATTRIBUTES } from '../config/constants';
 
-type SettingsProps = typeof actionCreators & { isAuthenticated: boolean };
-
-const FADE_IN_KEYFRAMES = keyframes`
+const _fadeInKeyframes = keyframes`
   from {
     opacity: 0;
   } to {
@@ -125,7 +123,7 @@ const StyledSettings = styled.div<{ isMenuOpen: boolean }>`
   animation-delay: 0.25s;
   border-radius: 8px 0 0 8px;
   transition: background 0.15s ease-in;
-  animation: ${FADE_IN_KEYFRAMES} 0.25s both ease;
+  animation: ${_fadeInKeyframes} 0.25s both ease;
   background: ${({ isMenuOpen }) => isMenuOpen ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0.45)'};
 
   :hover {
@@ -133,23 +131,29 @@ const StyledSettings = styled.div<{ isMenuOpen: boolean }>`
   }
 `;
 
-const Settings: React.FC<SettingsProps> = ({
-  isAuthenticated,
-  logoutUserRequest
-}) => {
+const Settings: FunctionComponent = () => {
+  // Local component state/actions
   const settingsLinkRef = useRef<HTMLAnchorElement | null>(null);
   const [isMenuOpen, setisMenuOpen] = useState<boolean>(false);
   const onMenuClickOutside = useCallback((): void => setisMenuOpen(false), []);
 
   useOnClickOutside(settingsLinkRef, onMenuClickOutside);
 
+  // react-redux hooks state/actions
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector<RootState, boolean>(state => state.auth.isAuthenticated);
+
   if (!isAuthenticated) {
     return null;
   }
 
-  const handleLogout = (history: History<any>) => (): void => {
-    const onLogoutCallbackFn = () => history.push(RoutesConfig.Login.path);
-    logoutUserRequest(onLogoutCallbackFn);
+  const handleLogout = (): void => {
+    AuthApi.logoutAsync()
+      .then(() => {
+        dispatch({ type: AuthActionType.RESET_STATE });
+        history.push(RoutesConfig.Login.path);
+      });
   };
 
   return (
@@ -175,14 +179,9 @@ const Settings: React.FC<SettingsProps> = ({
             </SettingsMenuLink>
           </li>
           <li>
-            <Route
-              render={({ history }) => (
-                <SettingsMenuLink role='button' onClick={handleLogout(history)}>
-                  <FontAwesomeIcon icon={RoutesConfig.Login.icon} />
-                  {` ${RoutesConfig.Login.displayName}`}
-                </SettingsMenuLink>
-              )}
-            />
+            <SettingsMenuLink role='button' onClick={handleLogout}>
+              <FontAwesomeIcon icon={RoutesConfig.Login.icon!} />{' '}{RoutesConfig.Login.displayName}
+            </SettingsMenuLink>
           </li>
         </SettingsMenu>
       )}
@@ -190,8 +189,4 @@ const Settings: React.FC<SettingsProps> = ({
   );
 };
 
-const mapStateToProps = (state: IApplicationState) => ({
-  isAuthenticated: state.auth.isAuthenticated,
-});
-
-export default connect(mapStateToProps, actionCreators)(Settings);
+export default Settings;

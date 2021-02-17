@@ -6,17 +6,15 @@
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext",
-      "scripthost"
+      "esnext"
     ],
-    "allowJs": false,
+    "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
+    "importHelpers": true,
     "allowSyntheticDefaultImports": true,
-    "strict": false,
-    "noImplicitAny": false,
-    "noImplicitThis": true,
-    "jsx": "react",
+    "strict": true,
+    "jsx": "react-jsx",
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
@@ -31,7 +29,6 @@
     "src"
   ],
   "exclude": [
-    "bin",
     "node_modules"
   ]
 }

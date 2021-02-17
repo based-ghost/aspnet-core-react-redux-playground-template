@@ -1,27 +1,33 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useEffect, FunctionComponent } from 'react';
+import Pagination from './Pagination';
+import { RootState } from '../../store';
 import { Spinner } from '../../components';
+import ForecastTable from './ForecastTable';
 import { isNullOrUndefined } from '../../utils';
-import { IApplicationState } from '../../store';
+import { connect, ConnectedProps } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
-import { Pagination, ForecastTable } from './child-components';
-import { actionCreators, reducer } from '../../store/weather-forecasts';
+import { actionCreators } from '../../store/weather-forecasts';
 
-type WeatherForecastProps = ReturnType<typeof reducer>
-  & typeof actionCreators
-  & RouteComponentProps<{ startDateIndex: string }>;
+// DEFINE REDUX CONNECT HOC
+const { requestWeatherForecasts } = actionCreators;
+const mapDispatchToProps = { requestWeatherForecasts };
+const mapStateToProps = (state: RootState) => state.weatherForecasts;
+const connector = connect(mapStateToProps, mapDispatchToProps);
 
-const FetchData: React.FC<WeatherForecastProps> = ({
+// INFER CONNECTOR HOC TYPE & EXTEND BY ADDING CUSTOM COMPONENT PROPS
+type WeatherForecastReduxProps = ConnectedProps<typeof connector>;
+type WeatherForecastProps = WeatherForecastReduxProps & RouteComponentProps<{ startDateIndex: string }>;
+
+// DEFINE COMPONENT
+const FetchData: FunctionComponent<WeatherForecastProps> = ({
+  match,
   isLoading,
   forecasts,
   startDateIndex,
-  requestWeatherForecasts,
-  match: {
-    params: {
-      startDateIndex: nextStartDateIndex
-    }
-  }
+  requestWeatherForecasts
 }) => {
+  const nextStartDateIndex = match?.params?.startDateIndex;
+
   useEffect(() => {
     const intStartDateIndex = startDateIndex || 0;
     const intNextStartDateIndex = parseInt(nextStartDateIndex || '0', 10);
@@ -49,6 +55,4 @@ const FetchData: React.FC<WeatherForecastProps> = ({
   );
 };
 
-const mapStateToProps = (state: IApplicationState) => state.weatherForecasts;
-
-export default connect(mapStateToProps, actionCreators)(FetchData);
+export default connector(FetchData);

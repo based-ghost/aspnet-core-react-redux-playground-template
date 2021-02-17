@@ -1,6 +1,5 @@
-import { actionCreators } from './actions';
-import { FunctionReturnTypes, ReduxAction } from '../';
-import { WeatherActionType, IWeatherForecastsState } from './types';
+﻿import { ReduxAction } from '../';
+import { WeatherActionType, WeatherForecastPayload, IWeatherForecastsState } from './types';
 
 const initialState: IWeatherForecastsState = {
   forecasts: [],
@@ -9,22 +8,26 @@ const initialState: IWeatherForecastsState = {
 
 export const reducer = (
   state: IWeatherForecastsState = initialState,
-  incomingAction: FunctionReturnTypes<typeof actionCreators>
+  action: ReduxAction<WeatherForecastPayload>
 ): IWeatherForecastsState => {
-  const action = incomingAction as ReduxAction;
-
   switch (action.type) {
-    case WeatherActionType.REQUEST:
-      const { startDateIndex } = action;
+    case WeatherActionType.REQUEST: {
+      const { startDateIndex } = action.payload as WeatherForecastPayload;
+
       return {
         ...state,
         startDateIndex,
         isLoading: true
       };
-    case WeatherActionType.RECEIVE:
+    }
+    case WeatherActionType.RECEIVE: {
+      const {
+        startDateIndex,
+        forecasts = []
+      } = action.payload as WeatherForecastPayload;
+
       // Only accept the incoming data if it matches the most recent request. This ensures we correctly handle out-of-order responses.
-      if (action.startDateIndex === state.startDateIndex) {
-        const { forecasts, startDateIndex } = action;
+      if (startDateIndex === state.startDateIndex) {
         return {
           forecasts,
           startDateIndex,
@@ -33,6 +36,7 @@ export const reducer = (
       }
 
       return state;
+    }
     default:
       return state;
   }

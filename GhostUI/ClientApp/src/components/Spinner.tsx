@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import styled, { keyframes } from 'styled-components';
 
 type SpinnerProps = Readonly<{
@@ -47,7 +47,7 @@ const StyledSpinner = styled.div<SpinnerProps>`
   }
 `;
 
-const Spinner = React.memo<SpinnerProps>(({ isLoading }) => (
+const Spinner = memo<SpinnerProps>(({ isLoading }) => (
   <StyledSpinner isLoading={isLoading}>
     <div />
     <div />

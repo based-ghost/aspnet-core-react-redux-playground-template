@@ -18,7 +18,10 @@ namespace GhostUI.Extensions
             return services;
         }
 
-        public static IServiceCollection AddResponseCompressionConfig(this IServiceCollection services, IConfiguration config, CompressionLevel compressionLvl = CompressionLevel.Fastest)
+        public static IServiceCollection AddResponseCompressionConfig(
+            this IServiceCollection services,
+            IConfiguration config,
+            CompressionLevel compressionLvl = CompressionLevel.Fastest)
         {
             var enableForHttps = config.GetValue<bool>("Compression:EnableForHttps");
             var gzipMimeTypes = config.GetSection("Compression:MimeTypes").Get<string[]>();

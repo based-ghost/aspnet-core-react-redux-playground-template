@@ -1,13 +1,15 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 import { connect } from 'react-redux';
-import { IApplicationState } from '../../store';
+import { RootState } from '../../store';
+import SelectFormGroup from './SelectFormGroup';
+import CounterFormGroup from './CounterFormGroup';
+import CheckboxFormGroup from './CheckboxFormGroup';
 import { actionCreators, reducer } from '../../store/form';
 import { THEME_CONFIG, DROPDOWN_TEST_DATA } from '../../config/constants';
-import { SelectFormGroup, CounterFormGroup, CheckboxFormGroup } from './child-components';
 
 type FormProps = ReturnType<typeof reducer> & typeof actionCreators;
 
-const Form: React.FC<FormProps> = ({
+const Form: FunctionComponent<FormProps> = ({
   count,
   increment,
   decrement,
@@ -32,13 +34,16 @@ const Form: React.FC<FormProps> = ({
             onSelectOption={selectOption}
             selectedOption={selectedDropdownOption}
           />
-          <CheckboxFormGroup checked={checkboxValue} onCheck={handleOnCheck} />
+          <CheckboxFormGroup
+            checked={checkboxValue}
+            onCheck={handleOnCheck}
+          />
         </div>
       </div>
     </div>
   </section>
 );
 
-const mapStateToProps = (state: IApplicationState) => state.form;
+const mapStateToProps = (state: RootState) => state.form;
 
 export default connect(mapStateToProps, actionCreators)(Form);

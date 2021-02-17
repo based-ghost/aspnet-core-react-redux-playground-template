@@ -1,28 +1,20 @@
-import React, { useCallback, useState, useRef } from 'react';
-import { History } from 'history';
-import { connect } from 'react-redux';
+import { useCallback, useState, useRef, FunctionComponent } from 'react';
+import { AuthApi } from '../../api';
 import { toast } from 'react-toastify';
+import { RootState } from '../../store';
 import { useTextInput } from '../../hooks';
+import LoginControls from './LoginControls';
+import UserNameInput from './UserNameInput';
+import PasswordInput from './PasswordInput';
+import { useHistory } from 'react-router-dom';
 import { renderToastifyMsg } from '../../utils';
-import { IApplicationState } from '../../store';
 import { Authenticator } from '../../components';
+import { useDispatch, useSelector } from 'react-redux';
 import { RoutesConfig } from '../../config/routes.config';
-import { actionCreators, AuthStatusEnum, reducer } from '../../store/auth';
-import { UserNameInput, PasswordInput, LoginControls } from './child-components';
-
 import BasedGhostLogoPng from '../../assets/image/based-ghost-main.png';
+import { actionCreators, AuthActionType, AuthStatusEnum, IAuthUser, ICredentials } from '../../store/auth';
 
-type LoginProps = ReturnType<typeof reducer>
-  & typeof actionCreators
-  & { history: History };
-
-const Login: React.FC<LoginProps> = ({
-  status,
-  history,
-  resetState,
-  setAuthStatus,
-  loginUserRequest
-}) => {
+const Login: FunctionComponent = () => {
   const toastIdRef = useRef<string | number>('');
 
   const [rememberMe, setRememberMe] = useState<boolean>(false);
@@ -32,10 +24,22 @@ const Login: React.FC<LoginProps> = ({
   const userNameInput = useTextInput('');
   const passwordInput = useTextInput('', showPassword ? 'text' : 'password');
 
+  // react-redux hooks state/actions
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const status = useSelector<RootState, AuthStatusEnum>(state => state.auth.status);
+
+  const dispatchAuthStatus = useCallback((status: AuthStatusEnum): void => {
+    dispatch({
+      payload: { status },
+      type: AuthActionType.SET_AUTH_STATUS
+    });
+  }, [dispatch]);
+
   const onFailedAuth = useCallback((): void => {
-    resetState();
-    setAuthStatus(AuthStatusEnum.NONE);
-  }, [resetState, setAuthStatus]);
+    dispatchAuthStatus(AuthStatusEnum.NONE);
+    dispatch({ type: AuthActionType.RESET_STATE });
+  }, [dispatch, dispatchAuthStatus]);
 
   const onRememberMeCheck = useCallback((checked: boolean): void => setRememberMe(checked), []);
   const onSuccessfulAuth = useCallback((): void => history.push(RoutesConfig.Dashboard.path), [history]);
@@ -58,14 +62,19 @@ const Login: React.FC<LoginProps> = ({
       // Clear any toast notifications and prepare state for Login request stub / run login request stub
       toast.dismiss();
       setIsInputInvalid(false);
-      setAuthStatus(AuthStatusEnum.PROCESS);
+      dispatchAuthStatus(AuthStatusEnum.PROCESS);
 
       setTimeout(() => {
-        loginUserRequest({
+        const credentials: ICredentials = {
           rememberMe,
           userName: userNameInput.value,
           password: passwordInput.value,
-        });
+        };
+
+        AuthApi.loginAsync(credentials)
+          .then((authUser: IAuthUser) => {
+            dispatch(actionCreators.updateUserInfo(authUser));
+          });
       }, 2250);
     }
   };
@@ -112,6 +121,4 @@ const Login: React.FC<LoginProps> = ({
   );
 };
 
-const mapStateToProps = (state: IApplicationState) => state.auth;
-
-export default connect(mapStateToProps, actionCreators)(Login);
+export default Login;

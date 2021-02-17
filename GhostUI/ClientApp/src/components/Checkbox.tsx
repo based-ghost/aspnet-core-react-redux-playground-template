@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import { memo } from 'react';
 import styled from 'styled-components';
 
 type CheckboxProps = Readonly<{
@@ -90,23 +90,29 @@ const CheckIcon = styled.i`
   }
 `;
 
-const Checkbox = React.memo<CheckboxProps>(
-  ({ id, name, label, onCheck, checked, disabled, readOnly }) => (
-    <CheckboxWrapper>
-      <Input
-        id={id}
-        name={name}
-        type='checkbox'
-        checked={checked}
-        readOnly={readOnly}
-        disabled={disabled}
-        onChange={(e) => onCheck(e.target.checked)}
-      />
-      <CheckIcon />
-      {label && <Label>{label}</Label>}
-    </CheckboxWrapper>
-  )
-);
+const Checkbox = memo<CheckboxProps>(({
+  id,
+  name,
+  label,
+  onCheck,
+  checked,
+  disabled,
+  readOnly
+}) => (
+  <CheckboxWrapper>
+    <Input
+      id={id}
+      name={name}
+      type='checkbox'
+      checked={checked}
+      readOnly={readOnly}
+      disabled={disabled}
+      onChange={(e) => onCheck(e.target.checked)}
+    />
+    <CheckIcon />
+    {label && <Label>{label}</Label>}
+  </CheckboxWrapper>
+));
 
 Checkbox.displayName = 'Checkbox';
 
