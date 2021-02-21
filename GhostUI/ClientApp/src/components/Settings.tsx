@@ -3,7 +3,7 @@ import { AuthApi } from '../api';
 import { RootState } from '../store';
 import { useOnClickOutside } from '../hooks';
 import { useHistory } from 'react-router-dom';
-import { AuthActionType } from '../store/auth';
+import { actionCreators } from '../store/auth';
 import styled, { keyframes } from 'styled-components';
 import { RoutesConfig } from '../config/routes.config';
 import { useDispatch, useSelector } from 'react-redux';
@@ -151,8 +151,8 @@ const Settings: FunctionComponent = () => {
   const handleLogout = (): void => {
     AuthApi.logoutAsync()
       .then(() => {
-        dispatch({ type: AuthActionType.RESET_STATE });
         history.push(RoutesConfig.Login.path);
+        dispatch(actionCreators.resetState());
       });
   };
 

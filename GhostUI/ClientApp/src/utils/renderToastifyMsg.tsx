@@ -21,4 +21,4 @@ const renderToastifyMsg = (message: string, icon?: IconProp): ReactNode => (
   </ToastifyMsg>
 );
 
-export { renderToastifyMsg };
+export default renderToastifyMsg;

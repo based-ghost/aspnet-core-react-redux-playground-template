@@ -1,11 +1,10 @@
 ﻿import { useEffect, MutableRefObject } from 'react';
-import { CallbackFunction } from '../types';
 
 // Wrap the handleOutsideClick & handleInsideClick in useCallback prior to passing to this hook to optimize ...
 // ... otherwise the event listeners will be created and torn down on every render
 export const useOnClickOutside = (
   ref: MutableRefObject<HTMLElement | null>,
-  handlerFn: CallbackFunction
+  handlerFn: (...args: any[]) => any
 ): void => {
   useEffect(() => {
     const onClickHandler = (e: Event) => !ref.current?.contains(e.target as Node) && handlerFn();

@@ -6,12 +6,8 @@ import App from './App';
 import { createBrowserHistory } from 'history';
 import { ToastContainer } from 'react-toastify';
 import { configureStore, RootState } from './store';
-import AxiosGlobalConfig from './config/axios.config';
 import './config/fa.config';
 import * as serviceWorker from './serviceWorker';
-
-// Execute global Axios configurations (e.g. request interceptors)
-AxiosGlobalConfig.setup();
 
 // Create browser history & initial store state (if exists) to use in the redux store
 const history = createBrowserHistory();

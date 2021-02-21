@@ -1,5 +1,4 @@
 import { useCallback, useState, useRef, FunctionComponent } from 'react';
-import { AuthApi } from '../../api';
 import { toast } from 'react-toastify';
 import { RootState } from '../../store';
 import { useTextInput } from '../../hooks';
@@ -12,7 +11,7 @@ import { Authenticator } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
 import { RoutesConfig } from '../../config/routes.config';
 import BasedGhostLogoPng from '../../assets/image/based-ghost-main.png';
-import { actionCreators, AuthActionType, AuthStatusEnum, IAuthUser, ICredentials } from '../../store/auth';
+import { actionCreators, AuthStatusEnum, ICredentials } from '../../store/auth';
 
 const Login: FunctionComponent = () => {
   const toastIdRef = useRef<string | number>('');
@@ -30,15 +29,12 @@ const Login: FunctionComponent = () => {
   const status = useSelector<RootState, AuthStatusEnum>(state => state.auth.status);
 
   const dispatchAuthStatus = useCallback((status: AuthStatusEnum): void => {
-    dispatch({
-      payload: { status },
-      type: AuthActionType.SET_AUTH_STATUS
-    });
+    dispatch(actionCreators.setAuthStatus(status));
   }, [dispatch]);
 
   const onFailedAuth = useCallback((): void => {
     dispatchAuthStatus(AuthStatusEnum.NONE);
-    dispatch({ type: AuthActionType.RESET_STATE });
+    dispatch(actionCreators.resetState());
   }, [dispatch, dispatchAuthStatus]);
 
   const onRememberMeCheck = useCallback((checked: boolean): void => setRememberMe(checked), []);
@@ -47,7 +43,10 @@ const Login: FunctionComponent = () => {
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    if (status === AuthStatusEnum.PROCESS) return;
+
+    if (status === AuthStatusEnum.PROCESS) {
+      return;
+    }
 
     if (!userNameInput.hasValue || !passwordInput.hasValue) {
       // Run invalidInputs error and display toast notification (if one is not already active)
@@ -71,10 +70,7 @@ const Login: FunctionComponent = () => {
           password: passwordInput.value,
         };
 
-        AuthApi.loginAsync(credentials)
-          .then((authUser: IAuthUser) => {
-            dispatch(actionCreators.updateUserInfo(authUser));
-          });
+        dispatch(actionCreators.login(credentials));
       }, 2250);
     }
   };

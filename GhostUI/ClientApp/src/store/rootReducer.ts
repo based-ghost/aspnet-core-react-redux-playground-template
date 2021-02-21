@@ -6,13 +6,11 @@ import { reducer as AuthReducer } from './auth';
 import { connectRouter } from 'connected-react-router';
 import { reducer as WeatherForecastsReducer } from './weather-forecasts';
 
-const rootReducer = (history: History) => {
-  return combineReducers<RootState>({
-    auth: AuthReducer,
-    form: FormReducer,
-    router: connectRouter(history),
-    weatherForecasts: WeatherForecastsReducer,
-  });
-};
+const rootReducer = (history: History) => combineReducers<RootState>({
+  auth: AuthReducer,
+  form: FormReducer,
+  router: connectRouter(history),
+  weatherForecasts: WeatherForecastsReducer,
+});
 
 export default rootReducer;

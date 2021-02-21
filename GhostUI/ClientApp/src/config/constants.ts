@@ -1,4 +1,4 @@
-import { AnchorHTMLAttributes } from 'react';
+﻿import { AnchorHTMLAttributes } from 'react';
 import { IDropdownOption } from '../store/form';
 import { Theme } from 'react-functional-select';
 
@@ -23,17 +23,6 @@ export const THEME_CONFIG: Theme = {
  };
 
 /**
- * HTML attributes to spread on anchor elements in Settings.tsx component
- */
-export type MenuLinkAttributes = AnchorHTMLAttributes<HTMLAnchorElement>;
-
-export const LINK_ATTRIBUTES: MenuLinkAttributes = {
-  role: 'button',
-  target: '_blank',
-  rel: 'noopener noreferrer',
-};
-
-/**
  * Dropdown test data
  */
 export const DROPDOWN_TEST_DATA: IDropdownOption[] = [
@@ -51,4 +40,13 @@ export const NUGET_URL_CONFIG = {
   HealthUi: 'http://localhost:52530/healthchecks-ui',
   HealthJson: 'http://localhost:52530/healthchecks-json',
   SwaggerDocs: 'http://localhost:52530/docs'
+};
+
+/**
+ * HTML attributes to spread on anchor elements in Settings.tsx component
+ */
+export const LINK_ATTRIBUTES: AnchorHTMLAttributes<HTMLAnchorElement> = {
+  role: 'button',
+  target: '_blank',
+  rel: 'noopener noreferrer'
 };

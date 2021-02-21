@@ -1,13 +1,12 @@
 ﻿import { useEffect, memo } from 'react';
-import { CallbackFunction } from '../types';
 import { AuthStatusEnum } from '../store/auth/types';
 import styled, { keyframes } from 'styled-components';
 
 type AuthenticatorProps = Readonly<{
   delay?: number;
   authStatus: AuthStatusEnum;
-  handleOnFail: CallbackFunction;
-  handleOnSuccess: CallbackFunction;
+  handleOnFail: (...args: any[]) => any;
+  handleOnSuccess: (...args: any[]) => any;
 }>;
 
 const _childDivCount = 9;

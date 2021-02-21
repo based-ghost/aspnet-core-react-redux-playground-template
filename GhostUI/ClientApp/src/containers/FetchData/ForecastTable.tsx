@@ -14,7 +14,13 @@ const ForecastTable = memo<ForecastTableProps>(({ forecasts }) => (
       </tr>
     </thead>
     <tbody>
-      {forecasts.map(({ id, summary, temperatureC, temperatureF, dateFormatted }) => (
+      {forecasts.map(({
+        id,
+        summary,
+        temperatureC,
+        temperatureF,
+        dateFormatted
+      }) => (
         <tr key={id}>
           <td>{dateFormatted}</td>
           <td>{temperatureC}</td>

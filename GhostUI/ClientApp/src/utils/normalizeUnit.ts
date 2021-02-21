@@ -7,4 +7,4 @@ const normalizeUnit = (size?: ReactText): string => {
   return /^\d$/.test(size[size.length - 1]) ? `${size}px` : size;
 };
 
-export { normalizeUnit };
+export default normalizeUnit;

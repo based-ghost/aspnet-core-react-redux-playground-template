@@ -1,6 +1,6 @@
 import { memo } from 'react';
+import { classNames } from '../../utils';
 import { useTextInput } from '../../hooks';
-import { createClassName } from '../../utils';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type UserNameInputProps = Readonly<{
@@ -11,7 +11,7 @@ type UserNameInputProps = Readonly<{
 const UserNameInput = memo<UserNameInputProps>(({ textInput, isInputInvalid }) => {
   const { hasValue, bindToInput } = textInput;
 
-  const className = createClassName([
+  const className = classNames([
     'input',
     'is-medium',
     (isInputInvalid && !hasValue) && 'is-danger',

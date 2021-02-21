@@ -1,24 +1,25 @@
-﻿import { ReduxAction } from '../';
-import { AuthActionType, AuthPayload, IAuthUser, AuthStatusEnum } from './types';
+﻿import { AuthApi } from '../../api';
+import { AppThunk, ReduxAction } from '../';
+import { AuthActionType, AuthPayload, ICredentials, AuthStatusEnum } from './types';
 
 export const actionCreators = {
   resetState: (): ReduxAction => ({
     type: AuthActionType.RESET_STATE,
   }),
-  setAuthStatus: (
-    status: AuthStatusEnum
-  ): ReduxAction<AuthPayload> => ({
+  setAuthStatus: (status: AuthStatusEnum): ReduxAction<AuthPayload> => ({
     payload: { status },
     type: AuthActionType.SET_AUTH_STATUS,
   }),
-  updateUserInfo: (authUser: IAuthUser): ReduxAction<AuthPayload> => {
-    const success = authUser?.status === AuthStatusEnum.SUCCESS;
-    const type = success ? AuthActionType.LOGIN_SUCCESS : AuthActionType.LOGIN_FAIL;
-    const payload = success ? { ...authUser } : undefined;
+  login: (credentials: ICredentials): AppThunk<AuthPayload> => async (dispatch) => {
+    try {
+      const authUser = await AuthApi.loginAsync(credentials);
+      const success = authUser?.status === 'success';
+      const payload = success ? authUser : undefined;
+      const type = success ? AuthActionType.LOGIN_SUCCESS : AuthActionType.LOGIN_FAIL;
 
-    return {
-      type,
-      payload
+      dispatch({ type, payload });
+    } catch (e) {
+      dispatch({ type: AuthActionType.LOGIN_FAIL });
     }
   },
 };
