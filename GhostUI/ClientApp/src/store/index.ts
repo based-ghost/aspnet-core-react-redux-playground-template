@@ -1,10 +1,10 @@
-﻿import { Action } from 'redux';
+import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import createRootReducer from './rootReducer';
 import configureStore from './configureStore';
-import { RouterState } from 'connected-react-router';
 import { reducer as FormReducer } from './form';
 import { reducer as AuthReducer } from './auth';
+import { RouterState } from 'connected-react-router';
 import { reducer as WeatherForecastsReducer } from './weather-forecasts';
 
 // The top-level state object

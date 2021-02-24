@@ -1,4 +1,4 @@
-﻿import thunk from 'redux-thunk';
+import thunk from 'redux-thunk';
 import { History } from 'history';
 import { RootState } from './index';
 import createRootReducer from './rootReducer';

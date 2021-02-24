@@ -1,4 +1,4 @@
-﻿import { ReduxAction } from '../';
+import { ReduxAction } from '../';
 import { FormActionType, IDropdownOption } from './types';
 
 export const actionCreators = {

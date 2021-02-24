@@ -1,4 +1,4 @@
-﻿import { useEffect, memo } from 'react';
+import { useEffect, memo } from 'react';
 import { AuthStatusEnum } from '../store/auth/types';
 import styled, { keyframes } from 'styled-components';
 

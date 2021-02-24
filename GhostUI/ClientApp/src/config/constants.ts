@@ -1,4 +1,4 @@
-﻿import { AnchorHTMLAttributes } from 'react';
+import { AnchorHTMLAttributes } from 'react';
 import { IDropdownOption } from '../store/form';
 import { Theme } from 'react-functional-select';
 

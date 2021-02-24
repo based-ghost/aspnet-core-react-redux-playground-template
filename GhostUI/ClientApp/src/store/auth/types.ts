@@ -1,4 +1,4 @@
-﻿export enum AuthStatusEnum {
+export enum AuthStatusEnum {
   FAIL = 'fail',
   NONE = 'none',
   PROCESS = 'process',

@@ -1,4 +1,4 @@
-﻿import { ReduxAction } from '../';
+import { ReduxAction } from '../';
 import { AuthActionType, AuthPayload, IAuthUser, IAuthState, AuthStatusEnum } from './types';
 
 const initialState: IAuthState = {

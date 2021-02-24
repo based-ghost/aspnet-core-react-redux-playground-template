@@ -1,4 +1,4 @@
-﻿import { AuthApi } from '../../api';
+import { AuthApi } from '../../api';
 import { AppThunk, ReduxAction } from '../';
 import { AuthActionType, AuthPayload, ICredentials, AuthStatusEnum } from './types';
 

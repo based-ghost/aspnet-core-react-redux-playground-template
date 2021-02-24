@@ -1,6 +1,5 @@
-﻿import { ReduxAction } from '../';
-import { actionCreators } from './actions';
-import { FormActionType, FormPayload, IFormState } from './types';
+import { ReduxAction } from '../';
+import { FormActionType, IFormState } from './types';
 import { DROPDOWN_TEST_DATA } from '../../config/constants';
 
 const initialState: IFormState = {

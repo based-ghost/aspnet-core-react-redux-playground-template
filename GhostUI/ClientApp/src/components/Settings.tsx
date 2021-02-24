@@ -1,4 +1,4 @@
-﻿import { useRef, useState, useCallback, FunctionComponent } from 'react';
+import { useRef, useState, useCallback, FunctionComponent } from 'react';
 import { AuthApi } from '../api';
 import { RootState } from '../store';
 import { useOnClickOutside } from '../hooks';

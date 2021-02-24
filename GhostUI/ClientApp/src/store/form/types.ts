@@ -1,4 +1,4 @@
-﻿import { actionCreators } from './actions';
+import { actionCreators } from './actions';
 
 const { increment, decrement, handleOnCheck, selectOption } = actionCreators;
 

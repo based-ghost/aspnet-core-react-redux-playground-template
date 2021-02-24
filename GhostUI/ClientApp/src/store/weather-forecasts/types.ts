@@ -1,4 +1,4 @@
-﻿export enum WeatherActionType {
+export enum WeatherActionType {
   REQUEST = 'weather/fetch',
   RECEIVE = 'weather/receive',
   RESET_STATE = 'weather/resetState'
