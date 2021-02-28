@@ -11,7 +11,10 @@ const handleAxiosError = (error: AxiosError): void => {
   };
 
   // Setup Error Message
-  if (typeof error !== 'undefined' && error.hasOwnProperty('message')) {
+  if (
+    typeof error !== 'undefined' &&
+    Object.prototype.hasOwnProperty.call(error, 'message')
+  ) {
     message.body = error.message;
   }
 
@@ -42,9 +45,9 @@ const handleAxiosError = (error: AxiosError): void => {
 
     // Try to Use the Response Message
     if (
-      error.hasOwnProperty('response') &&
-      error.response.hasOwnProperty('data') &&
-      error.response.data.hasOwnProperty('message') &&
+      Object.prototype.hasOwnProperty.call(error, 'response') &&
+      Object.prototype.hasOwnProperty.call(error.response, 'data') &&
+      Object.prototype.hasOwnProperty.call(error.response.data, 'message') &&
       !!error.response.data.message.length
     ) {
       message.body = error.response.data.message;
@@ -60,7 +63,7 @@ const handleAxiosError = (error: AxiosError): void => {
   );
 };
 
-export default class AxiosGlobalConfig {
+export class AxiosGlobalConfig {
   public static setup(): void {
     axios.interceptors.response.use(
       (response: AxiosResponse) => {

@@ -2,6 +2,7 @@ import { useCallback, useState, useRef, FunctionComponent } from 'react';
 import { toast } from 'react-toastify';
 import { RootState } from '../../store';
 import { useTextInput } from '../../hooks';
+import { RoutesConfig } from '../../config';
 import LoginControls from './LoginControls';
 import UserNameInput from './UserNameInput';
 import PasswordInput from './PasswordInput';
@@ -9,7 +10,6 @@ import { useHistory } from 'react-router-dom';
 import { renderToastifyMsg } from '../../utils';
 import { Authenticator } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
-import { RoutesConfig } from '../../config/routes.config';
 import BasedGhostLogoPng from '../../assets/image/based-ghost-main.png';
 import { actionCreators, AuthStatusEnum, ICredentials } from '../../store/auth';
 

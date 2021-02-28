@@ -5,7 +5,7 @@ import SelectFormGroup from './SelectFormGroup';
 import CounterFormGroup from './CounterFormGroup';
 import CheckboxFormGroup from './CheckboxFormGroup';
 import { actionCreators, reducer } from '../../store/form';
-import { THEME_CONFIG, DROPDOWN_TEST_DATA } from '../../config/constants';
+import { THEME_CONFIG, DROPDOWN_TEST_DATA } from '../../config';
 
 type FormProps = ReturnType<typeof reducer> & typeof actionCreators;
 

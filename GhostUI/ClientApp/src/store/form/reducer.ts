@@ -1,6 +1,6 @@
 import { ReduxAction } from '../';
+import { DROPDOWN_TEST_DATA } from '../../config';
 import { FormActionType, IFormState } from './types';
-import { DROPDOWN_TEST_DATA } from '../../config/constants';
 
 const initialState: IFormState = {
   count: 0,

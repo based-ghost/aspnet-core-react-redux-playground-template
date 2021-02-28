@@ -12,26 +12,24 @@ export type Route = Readonly<{
 export const RoutesConfig = Object.freeze<Record<string, Route>>({
   Login: {
     path: '/',
-    showInNav: false,
+    exact: true,
     icon: 'sign-out-alt',
     displayName: 'Logout',
   },
   Form: {
-    exact: true,
     path: '/form',
     showInNav: true,
     displayName: 'Form',
   },
   Dashboard: {
-    exact: true,
     showInNav: true,
     path: '/dashboard',
     displayName: 'Home',
   },
   FetchData: {
     showInNav: true,
-    path: '/fetchdata',
     displayName: 'Fetch',
+    path: '/fetchdata',
     pathAbsolute: '/fetchdata/:startDateIndex?',
   },
 });

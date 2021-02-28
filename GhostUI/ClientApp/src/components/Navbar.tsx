@@ -1,8 +1,8 @@
 import { FunctionComponent } from 'react';
+import { RootState } from '../store';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { RootState } from '../store';
-import { RoutesConfig, Route } from '../config/routes.config';
+import { RoutesConfig, Route } from '../config';
 import { ReactComponent as BulmaLogoSvg } from '../assets/image/BulmaLogo.svg';
 
 const Navbar: FunctionComponent = () => {
@@ -10,7 +10,11 @@ const Navbar: FunctionComponent = () => {
   const isAuthenticated = useSelector<RootState, boolean>(state => state.auth.isAuthenticated);
 
   return (
-    <nav role='navigation' className='navbar' aria-label='main navigation'>
+    <nav
+      role='navigation'
+      className='navbar'
+      aria-label='main navigation'
+    >
       <div className='navbar-wrapper'>
         <div className='brand-wrapper'>
           <BulmaLogoSvg

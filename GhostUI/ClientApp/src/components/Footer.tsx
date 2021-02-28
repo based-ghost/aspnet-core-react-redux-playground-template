@@ -69,10 +69,16 @@ const Footer: FunctionComponent = () => (
       >
         <FontAwesomeIcon icon={['fab', 'github']} />
       </FooterLink>
-      <FooterLink href='#/' aria-label='Twitter'>
+      <FooterLink
+        href='#/'
+        aria-label='Twitter'
+      >
         <FontAwesomeIcon icon={['fab', 'twitter']} />
       </FooterLink>
-      <FooterLink href='#/' aria-label='Medium'>
+      <FooterLink
+        href='#/'
+        aria-label='Medium'
+      >
         <FontAwesomeIcon icon={['fab', 'medium-m']} />
       </FooterLink>
     </FooterButtons>

@@ -5,10 +5,9 @@ import { useOnClickOutside } from '../hooks';
 import { useHistory } from 'react-router-dom';
 import { actionCreators } from '../store/auth';
 import styled, { keyframes } from 'styled-components';
-import { RoutesConfig } from '../config/routes.config';
 import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { NUGET_URL_CONFIG, LINK_ATTRIBUTES } from '../config/constants';
+import { RoutesConfig, NUGET_URL_CONFIG, LINK_ATTRIBUTES } from '../config';
 
 const _fadeInKeyframes = keyframes`
   from {
