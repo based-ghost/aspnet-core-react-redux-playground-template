@@ -7,8 +7,8 @@ import LoginControls from './LoginControls';
 import UserNameInput from './UserNameInput';
 import PasswordInput from './PasswordInput';
 import { useHistory } from 'react-router-dom';
-import { renderToastifyMsg } from '../../utils';
 import { Authenticator } from '../../components';
+import { renderToastifyContent } from '../../utils';
 import { useDispatch, useSelector } from 'react-redux';
 import BasedGhostLogoPng from '../../assets/image/based-ghost-main.png';
 import { actionCreators, AuthStatusEnum, ICredentials } from '../../store/auth';
@@ -53,9 +53,8 @@ const Login: FunctionComponent = () => {
       setIsInputInvalid(true);
 
       if (!toast.isActive(toastIdRef.current)) {
-        toastIdRef.current = toast.error(
-          renderToastifyMsg('Enter user name/password', 'exclamation-triangle')
-        );
+        const errorToastContent = renderToastifyContent('Enter user name/password', 'exclamation-triangle');
+        toastIdRef.current = toast.error(errorToastContent);
       }
     } else {
       // Clear any toast notifications and prepare state for Login request stub / run login request stub

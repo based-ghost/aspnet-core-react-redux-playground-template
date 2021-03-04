@@ -74,14 +74,9 @@ const Authenticator = memo<AuthenticatorProps>(({
   useEffect(() => {
     const authHandler = setTimeout(() => {
       switch (authStatus) {
-        case AuthStatusEnum.FAIL:
-          handleOnFail();
-          return;
-        case AuthStatusEnum.SUCCESS:
-          handleOnSuccess();
-          return;
-        default:
-          return;
+        case AuthStatusEnum.FAIL: return handleOnFail();
+        case AuthStatusEnum.SUCCESS: return handleOnSuccess();
+        default: return;
       }
     }, delay);
 

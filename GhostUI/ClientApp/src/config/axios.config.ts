@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import { renderToastifyMsg } from '../utils';
+import { renderToastifyContent } from '../utils';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 
 const handleAxiosError = (error: AxiosError): void => {
@@ -56,7 +56,7 @@ const handleAxiosError = (error: AxiosError): void => {
 
   // Log in console or use toastify notification
   toast.error(
-    renderToastifyMsg(
+    renderToastifyContent(
       `XHR Error - ${message.status} (${message.body})`,
       'exclamation'
     )

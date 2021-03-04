@@ -134,8 +134,8 @@ const Settings: FunctionComponent = () => {
   // Local component state/actions
   const settingsLinkRef = useRef<HTMLAnchorElement | null>(null);
   const [isMenuOpen, setisMenuOpen] = useState<boolean>(false);
-  const onMenuClickOutside = useCallback((): void => setisMenuOpen(false), []);
 
+  const onMenuClickOutside = useCallback((): void => setisMenuOpen(false), []);
   useOnClickOutside(settingsLinkRef, onMenuClickOutside);
 
   // react-redux hooks state/actions
@@ -150,8 +150,8 @@ const Settings: FunctionComponent = () => {
   const handleLogout = (): void => {
     AuthApi.logoutAsync()
       .then(() => {
-        history.push(RoutesConfig.Login.path);
         dispatch(actionCreators.resetState());
+        history.push(RoutesConfig.Login.path);
       });
   };
 
