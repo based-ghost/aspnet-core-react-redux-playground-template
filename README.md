@@ -23,7 +23,6 @@ This template is vaguley based on the original React + Redux .NET Core SPA templ
   - [`TypeScript`](https://www.typescriptlang.org/)
   - [`Webpack`](https://github.com/webpack/webpack) for bundling of application assets and HMR (Hot Module Replacement)
   - [`Bulma CSS`](https://bulma.io/) + [`SASS`](https://github.com/sass/sass) + Font Awesome 5 (using fontawesome-svg-core)
-  - [`react-inlinesvg`](https://github.com/gilbarbara/react-inlinesvg) for fetching and displaying SVG images inline
   - [`styled-components`](https://www.styled-components.com/) - CSS-in-JS via template literals - Examples in this project:   `Checkbox.tsx`, `Spinner.tsx`, `Authenticator.tsx`, `Settings.tsx`, and `Footer.tsx` are written using `styled-components`.
   - [`react-functional-select`](https://github.com/based-ghost/react-functional-select) - A micro-sized & micro-optimized select component for ReactJS. Inspired by [`react-select`](https://github.com/JedWatson/react-select) and built for ultimate performance - leverages [`react-window`](https://github.com/bvaughn/react-window) to virtualize long options data and `styled-components` to handle styling via CSS-in-JS. Note: I am the author of this package.
   - [`Axios`](https://github.com/axios/axios) for REST endpoint requests
@@ -31,7 +30,7 @@ This template is vaguley based on the original React + Redux .NET Core SPA templ
   - connected-react-router/react-router-dom/react-router-redux
   - Custom, reusable Dropdown & Checkbox components that provide full functionality w/ state management (without a JQuery dependency).
   - Two different loader components (spinner & authentication animation w/ callback for success/fail)
-  
+
 ## Setup
   - [Node.js version >= 10](https://nodejs.org/en/download/)
   - [`.NET 5.0 SDK`](https://dotnet.microsoft.com/download/dotnet/5.0)
