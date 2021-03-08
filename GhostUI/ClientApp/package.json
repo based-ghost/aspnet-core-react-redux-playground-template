@@ -23,7 +23,20 @@
     "react-window": "^1.8.6",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "web-vitals": "^1.1.0",
+    "workbox-background-sync": "^6.1.1",
+    "workbox-broadcast-update": "^6.1.1",
+    "workbox-cacheable-response": "^6.1.1",
+    "workbox-core": "^6.1.1",
+    "workbox-expiration": "^6.1.1",
+    "workbox-google-analytics": "^6.1.1",
+    "workbox-navigation-preload": "^6.1.1",
+    "workbox-precaching": "^6.1.1",
+    "workbox-range-requests": "^6.1.1",
+    "workbox-routing": "^6.1.1",
+    "workbox-strategies": "^6.1.1",
+    "workbox-streams": "^6.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -49,8 +62,8 @@
   "devDependencies": {
     "@types/history": "^4.7.8",
     "@types/jest": "^26.0.20",
-    "@types/node": "^14.14.31",
-    "@types/react": "^17.0.2",
+    "@types/node": "^14.14.32",
+    "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.1",
     "@types/react-redux": "^7.1.16",
     "@types/react-router": "^5.1.12",
