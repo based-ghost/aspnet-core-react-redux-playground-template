@@ -147,12 +147,14 @@ const Settings: FunctionComponent = () => {
     return null;
   }
 
-  const handleLogout = (): void => {
-    AuthApi.logoutAsync()
-      .then(() => {
-        dispatch(actionCreators.resetState());
-        history.push(RoutesConfig.Login.path);
-      });
+  const handleLogout = async () => {
+    try {
+      await AuthApi.logoutAsync();
+      dispatch(actionCreators.resetState());
+      history.push(RoutesConfig.Login.path);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (

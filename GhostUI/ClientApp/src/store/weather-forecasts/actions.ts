@@ -1,6 +1,6 @@
 import { SampleApi } from '../../api';
 import { ReduxAction, AppThunk } from '../';
-import { WeatherActionType, IWeatherForecast, WeatherForecastPayload } from './types';
+import { WeatherActionType, WeatherForecastPayload } from './types';
 
 export const actionCreators = {
   resetState: (): ReduxAction<WeatherForecastPayload> => ({
@@ -17,16 +17,19 @@ export const actionCreators = {
     // Dispatch request
     dispatch({
       payload: { startDateIndex },
-      type: WeatherActionType.REQUEST,
+      type: WeatherActionType.REQUEST
     });
 
     // Build http request and success handler in Promise<void> wrapper
-    SampleApi.getWeatherForecastsAsync(startDateIndex)
-      .then((forecasts: IWeatherForecast[]) => {
-        dispatch({
-          type: WeatherActionType.RECEIVE,
-          payload: { forecasts, startDateIndex },
-        });
+    try {
+      const forecasts = await SampleApi.getWeatherForecastsAsync(startDateIndex);
+
+      dispatch({
+        type: WeatherActionType.RECEIVE,
+        payload: { forecasts, startDateIndex }
       });
+    } catch (e) {
+      console.error(e);
+    }
   },
 };

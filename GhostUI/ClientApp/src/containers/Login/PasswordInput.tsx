@@ -21,7 +21,7 @@ const PasswordInput = memo<PasswordInputProps>(({
   const className = classNames([
     'input',
     'is-medium',
-    (isInputInvalid && !hasValue) && 'is-danger',
+    (isInputInvalid && !hasValue) && 'is-danger'
   ]);
 
   return (

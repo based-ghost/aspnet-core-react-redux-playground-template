@@ -14,7 +14,7 @@ const UserNameInput = memo<UserNameInputProps>(({ textInput, isInputInvalid }) =
   const className = classNames([
     'input',
     'is-medium',
-    (isInputInvalid && !hasValue) && 'is-danger',
+    (isInputInvalid && !hasValue) && 'is-danger'
   ]);
 
   return (
