@@ -4,7 +4,7 @@ import { IWeatherForecastsState } from '../../store/weather-forecasts';
 type ForecastTableProps = Pick<IWeatherForecastsState, 'forecasts'>;
 
 const ForecastTable = memo<ForecastTableProps>(({ forecasts }) => (
-  <table className='table is-fullwidth'>
+  <table className="table is-fullwidth">
     <thead>
       <tr>
         <th>Date</th>
@@ -14,20 +14,16 @@ const ForecastTable = memo<ForecastTableProps>(({ forecasts }) => (
       </tr>
     </thead>
     <tbody>
-      {forecasts.map(({
-        id,
-        summary,
-        temperatureC,
-        temperatureF,
-        dateFormatted
-      }) => (
-        <tr key={id}>
-          <td>{dateFormatted}</td>
-          <td>{temperatureC}</td>
-          <td>{temperatureF}</td>
-          <td>{summary}</td>
-        </tr>
-      ))}
+      {forecasts.map(
+        ({ id, summary, temperatureC, temperatureF, dateFormatted }) => (
+          <tr key={id}>
+            <td>{dateFormatted}</td>
+            <td>{temperatureC}</td>
+            <td>{temperatureF}</td>
+            <td>{summary}</td>
+          </tr>
+        )
+      )}
     </tbody>
   </table>
 ));

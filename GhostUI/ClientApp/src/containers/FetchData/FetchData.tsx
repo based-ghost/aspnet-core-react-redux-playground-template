@@ -4,28 +4,19 @@ import { RootState } from '../../store';
 import { Spinner } from '../../components';
 import ForecastTable from './ForecastTable';
 import { isNullOrUndefined } from '../../utils';
-import { connect, ConnectedProps } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
-import { actionCreators } from '../../store/weather-forecasts';
+import { actionCreators, IWeatherForecast } from '../../store/weather-forecasts';
 
-// DEFINE REDUX CONNECT HOC
-const { requestWeatherForecasts } = actionCreators;
-const mapDispatchToProps = { requestWeatherForecasts };
-const mapStateToProps = (state: RootState) => state.weatherForecasts;
-const connector = connect(mapStateToProps, mapDispatchToProps);
+type FetchDataProps = RouteComponentProps<{ startDateIndex: string }>;
 
-// INFER CONNECTOR HOC TYPE & EXTEND BY ADDING CUSTOM COMPONENT PROPS
-type WeatherForecastReduxProps = ConnectedProps<typeof connector>;
-type WeatherForecastProps = WeatherForecastReduxProps & RouteComponentProps<{ startDateIndex: string }>;
+const FetchData: FunctionComponent<FetchDataProps> = ({ match }) => {
+  const dispatch = useDispatch();
 
-// DEFINE COMPONENT
-const FetchData: FunctionComponent<WeatherForecastProps> = ({
-  match,
-  isLoading,
-  forecasts,
-  startDateIndex,
-  requestWeatherForecasts
-}) => {
+  const isLoading = useSelector<RootState, boolean>((state) => state.weatherForecasts.isLoading);
+  const forecasts = useSelector<RootState, IWeatherForecast[]>((state) => state.weatherForecasts.forecasts);
+  const startDateIndex = useSelector<RootState, number | undefined>((state) => state.weatherForecasts.startDateIndex);
+
   const nextStartDateIndex = match?.params?.startDateIndex;
 
   useEffect(() => {
@@ -33,9 +24,9 @@ const FetchData: FunctionComponent<WeatherForecastProps> = ({
     const intNextStartDateIndex = parseInt(nextStartDateIndex || '0', 10);
 
     if (isNullOrUndefined(nextStartDateIndex) || (intStartDateIndex !== intNextStartDateIndex)) {
-      requestWeatherForecasts(intNextStartDateIndex);
+      dispatch(actionCreators.requestWeatherForecasts(intNextStartDateIndex));
     }
-  }, [startDateIndex, nextStartDateIndex, requestWeatherForecasts]);
+  }, [dispatch, startDateIndex, nextStartDateIndex]);
 
   return (
     <section className='section'>
@@ -55,4 +46,4 @@ const FetchData: FunctionComponent<WeatherForecastProps> = ({
   );
 };
 
-export default connector(FetchData);
+export default FetchData;
