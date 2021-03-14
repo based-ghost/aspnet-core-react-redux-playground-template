@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 import { RootState } from '../../store';
-import { FormActionType } from '../../store/form';
+import { actionCreators } from '../../store/form';
 import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -15,13 +15,13 @@ const CounterFormGroup: FunctionComponent = () => {
       <p className='buttons incrementer-buttons form-control-group'>
         <button
           className='button is-light minus'
-          onClick={() => dispatch({ type: FormActionType.DECREMENT })}
+          onClick={() => dispatch(actionCreators.decrement())}
         >
           <FontAwesomeIcon icon='minus' />
         </button>
         <button
           className='button is-light plus'
-          onClick={() => dispatch({ type: FormActionType.INCREMENT })}
+          onClick={() => dispatch(actionCreators.increment())}
         >
           <FontAwesomeIcon icon='plus' />
         </button>
