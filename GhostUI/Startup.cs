@@ -125,6 +125,8 @@ namespace GhostUI
                 endpoints.MapHub<UsersHub>("/hubs/users");
             });
 
+            // PERSISTING ISSUE STILL IN .NET 5:
+            // Killing .NET debug session does not kill spawned Node.js process (have to manually kill)
             app.UseSpa(spa =>
             {
                 spa.Options.SourcePath = _spaSourcePath;
