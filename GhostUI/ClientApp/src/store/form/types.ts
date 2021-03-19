@@ -1,19 +1,13 @@
-import { actionCreators } from './actions';
+/* eslint-disable @typescript-eslint/no-redeclare */
 
-const { increment, decrement, handleOnCheck, selectOption } = actionCreators;
+export const FormActionType = {
+  INCREMENT: 'form/increment',
+  DECREMENT: 'form/decrement',
+  CHECKBOX_CHECK: 'form/checkbox_check',
+  DROPDOWN_SELECT: 'form/dropdown_select'
+} as const;
 
-export type FormPayload =
-  | ReturnType<typeof increment>
-  | ReturnType<typeof decrement>
-  | ReturnType<typeof handleOnCheck>
-  | ReturnType<typeof selectOption>;
-
-export enum FormActionType {
-  INCREMENT = 'form/increment',
-  DECREMENT = 'form/decrement',
-  CHECKBOX_CHECK = 'form/checkbox_check',
-  DROPDOWN_SELECT = 'form/dropdown_select'
-};
+export type FormActionType = typeof FormActionType[keyof typeof FormActionType];
 
 export type IDropdownOption = Readonly<{
   value: number;

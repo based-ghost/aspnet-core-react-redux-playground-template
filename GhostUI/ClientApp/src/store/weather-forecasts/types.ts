@@ -1,8 +1,12 @@
-export enum WeatherActionType {
-  REQUEST = 'weather/fetch',
-  RECEIVE = 'weather/receive',
-  RESET_STATE = 'weather/resetState'
-};
+/* eslint-disable @typescript-eslint/no-redeclare */
+
+export const WeatherActionType = {
+  REQUEST: 'weather/fetch',
+  RECEIVE: 'weather/receive',
+  RESET_STATE: 'weather/resetState'
+} as const;
+
+export type WeatherActionType = typeof WeatherActionType[keyof typeof WeatherActionType];
 
 export type IWeatherForecast = Readonly<{
   id: number;
