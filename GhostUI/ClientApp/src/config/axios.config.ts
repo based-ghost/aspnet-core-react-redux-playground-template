@@ -1,6 +1,7 @@
+import axios from 'axios';
 import { toast } from 'react-toastify';
 import { renderToastifyContent } from '../utils';
-import axios, { AxiosError, AxiosResponse } from 'axios';
+import type { AxiosError, AxiosResponse } from 'axios';
 
 const handleAxiosError = (error: AxiosError): void => {
   // Error Message Object

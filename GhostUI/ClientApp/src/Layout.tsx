@@ -1,5 +1,7 @@
-import { FunctionComponent, Fragment } from 'react';
+import { Fragment } from 'react';
 import { Footer, Navbar, Settings } from './components';
+
+import type { FunctionComponent } from 'react';
 
 const Layout: FunctionComponent = ({ children }) => (
   <Fragment>

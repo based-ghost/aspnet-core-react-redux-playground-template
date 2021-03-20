@@ -1,7 +1,8 @@
 import { Fragment } from 'react';
 import styled from 'styled-components';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import type { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const ToastMessage = styled.span`
   font-size: 1.075rem;

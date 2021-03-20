@@ -1,6 +1,5 @@
-import { useRef, useState, useCallback, FunctionComponent } from 'react';
+import { useRef, useState, useCallback } from 'react';
 import { AuthApi } from '../api';
-import { RootState } from '../store';
 import { useOnClickOutside } from '../hooks';
 import { useHistory } from 'react-router-dom';
 import { actionCreators } from '../store/auth';
@@ -8,6 +7,9 @@ import styled, { keyframes } from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { RoutesConfig, NUGET_URL_CONFIG, LINK_ATTRIBUTES } from '../config';
+
+import type { RootState } from '../store';
+import type { FunctionComponent } from 'react';
 
 const _fadeInKeyframes = keyframes`
   from {
@@ -164,23 +166,35 @@ const Settings: FunctionComponent = () => {
         ref={settingsLinkRef}
         onClick={() => setisMenuOpen((prevIsMenuOpen) => !prevIsMenuOpen)}
       >
-        <CogIcon icon='cog' size='3x' />
+        <CogIcon
+          icon='cog'
+          size='3x'
+        />
       </SettingsLink>
       {isMenuOpen && (
         <SettingsMenu>
           <SettingsMenuTitle>Settings</SettingsMenuTitle>
           <li>
-            <SettingsMenuLink href={NUGET_URL_CONFIG.HealthUi} {...LINK_ATTRIBUTES}>
+            <SettingsMenuLink
+              {...LINK_ATTRIBUTES}
+              href={NUGET_URL_CONFIG.HealthUi}
+            >
               <FontAwesomeIcon icon='heart' /> Health Checks
             </SettingsMenuLink>
           </li>
           <li>
-            <SettingsMenuLink href={NUGET_URL_CONFIG.SwaggerDocs} {...LINK_ATTRIBUTES}>
+            <SettingsMenuLink
+              {...LINK_ATTRIBUTES}
+              href={NUGET_URL_CONFIG.SwaggerDocs}
+            >
               <FontAwesomeIcon icon='file' /> Swagger API
             </SettingsMenuLink>
           </li>
           <li>
-            <SettingsMenuLink role='button' onClick={handleLogout}>
+            <SettingsMenuLink
+              role='button'
+              onClick={handleLogout}
+            >
               <FontAwesomeIcon icon={RoutesConfig.Login.icon!} />{' '}{RoutesConfig.Login.displayName}
             </SettingsMenuLink>
           </li>

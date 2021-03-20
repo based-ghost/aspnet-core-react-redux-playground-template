@@ -1,5 +1,7 @@
-import { ReduxAction } from '../';
-import { WeatherActionType, WeatherForecastPayload, IWeatherForecastsState } from './types';
+import { WeatherActionType } from './types';
+
+import type { ReduxAction } from '../';
+import type { WeatherForecastPayload, IWeatherForecastsState } from './types';
 
 const initialState: IWeatherForecastsState = {
   forecasts: [],

@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { IWeatherForecastsState } from '../../store/weather-forecasts';
+import type { IWeatherForecastsState } from '../../store/weather-forecasts';
 
 type PaginationProps = Pick<IWeatherForecastsState, 'startDateIndex'>;
 
@@ -11,13 +11,19 @@ const Pagination = memo<PaginationProps>(({ startDateIndex = 0 }) => (
       className='button is-info'
       to={`/fetchdata/${startDateIndex - 5}`}
     >
-      <FontAwesomeIcon icon='angle-double-left' size='2x' />
+      <FontAwesomeIcon
+        size='2x'
+        icon='angle-double-left'
+      />
     </Link>
     <Link
       className='button is-info'
       to={`/fetchdata/${startDateIndex + 5}`}
     >
-      <FontAwesomeIcon icon='angle-double-right' size='2x' />
+      <FontAwesomeIcon
+        size='2x'
+        icon='angle-double-right'
+      />
     </Link>
   </p>
 ));

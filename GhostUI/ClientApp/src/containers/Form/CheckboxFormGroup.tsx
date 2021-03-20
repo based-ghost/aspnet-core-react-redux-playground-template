@@ -1,8 +1,10 @@
-import { FunctionComponent, useCallback } from 'react';
-import { RootState } from '../../store';
+import { useCallback } from 'react';
 import { Checkbox } from '../../components';
 import { actionCreators } from '../../store/form';
 import { useDispatch, useSelector } from 'react-redux';
+
+import type { RootState } from '../../store';
+import type { FunctionComponent } from 'react';
 
 const CheckboxFormGroup: FunctionComponent = () => {
   const dispatch = useDispatch();

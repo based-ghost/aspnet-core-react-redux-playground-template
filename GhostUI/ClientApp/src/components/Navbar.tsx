@@ -1,9 +1,11 @@
-import { FunctionComponent } from 'react';
-import { RootState } from '../store';
+import { RoutesConfig } from '../config';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { RoutesConfig, Route } from '../config';
 import { ReactComponent as BulmaLogoSvg } from '../assets/image/BulmaLogo.svg';
+
+import type { Route } from '../config';
+import type { RootState } from '../store';
+import type { FunctionComponent } from 'react';
 
 const Navbar: FunctionComponent = () => {
   const navRoutes: Route[] = Object.values(RoutesConfig).filter((x) => x.showInNav);

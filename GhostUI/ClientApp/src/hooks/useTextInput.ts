@@ -1,4 +1,5 @@
-import { useState, useCallback, useMemo, ChangeEvent } from 'react';
+import { useState, useCallback, useMemo } from 'react';
+import type { ChangeEvent } from 'react';
 
 export const useTextInput = (
   initial: string = '',

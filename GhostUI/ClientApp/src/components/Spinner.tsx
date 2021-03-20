@@ -5,7 +5,7 @@ type SpinnerProps = Readonly<{
   isLoading?: boolean;
 }>;
 
-const SPIN_KEYFRAMES = keyframes`
+const _spinKeyframes = keyframes`
   0% {
     transform: rotate(0deg);
   } 100% {
@@ -31,7 +31,7 @@ const StyledSpinner = styled.div<SpinnerProps>`
     display: inline-block;
     box-sizing: border-box;
     border-color: #09d3ac transparent transparent transparent;
-    animation: ${SPIN_KEYFRAMES} 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    animation: ${_spinKeyframes} 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
 
     :nth-child(1) {
        animation-delay: -0.45s;

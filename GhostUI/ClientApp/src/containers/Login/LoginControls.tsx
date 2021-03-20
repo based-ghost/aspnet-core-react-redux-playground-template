@@ -19,7 +19,10 @@ const LoginControls = memo<LoginControlsProps>(({
         onCheck={handleRememberMeCheck}
       />
     </div>
-    <button type='submit' className='button is-info is-medium is-fullwidth'>
+    <button
+      type='submit'
+      className='button is-info is-medium is-fullwidth'
+    >
       <span>Login</span>
       <span className='icon'>
         <FontAwesomeIcon icon='sign-in-alt' />

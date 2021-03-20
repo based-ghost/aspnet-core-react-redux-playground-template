@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { IWeatherForecastsState } from '../../store/weather-forecasts';
+import type { IWeatherForecastsState } from '../../store/weather-forecasts';
 
 type ForecastTableProps = Pick<IWeatherForecastsState, 'forecasts'>;
 

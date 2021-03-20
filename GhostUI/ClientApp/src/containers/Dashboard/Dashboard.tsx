@@ -1,5 +1,5 @@
-import { FunctionComponent } from 'react';
 import { ReactComponent as ReactCoreSvg } from '../../assets/image/ReactCore.svg';
+import type { FunctionComponent } from 'react';
 
 const Dashboard: FunctionComponent = () => (
   <div className='dashboard-wrapper'>

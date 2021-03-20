@@ -1,10 +1,13 @@
-import { FunctionComponent, useCallback } from 'react';
-import { RootState } from '../../store';
+import { useCallback } from 'react';
 import { Select } from 'react-functional-select';
 import { formatJavaScriptObj } from '../../utils';
+import { actionCreators } from '../../store/form';
 import { useDispatch, useSelector } from 'react-redux';
 import { THEME_CONFIG, DROPDOWN_TEST_DATA } from '../../config';
-import { IDropdownOption, actionCreators } from '../../store/form';
+
+import type { RootState } from '../../store';
+import type { FunctionComponent } from 'react';
+import type { IDropdownOption } from '../../store/form';
 
 const SelectFormGroup: FunctionComponent = () => {
   const dispatch = useDispatch();

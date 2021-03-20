@@ -1,6 +1,5 @@
-import { useCallback, useState, useRef, FunctionComponent } from 'react';
+import { useCallback, useState, useRef } from 'react';
 import { toast } from 'react-toastify';
-import { RootState } from '../../store';
 import { useTextInput } from '../../hooks';
 import { RoutesConfig } from '../../config';
 import LoginControls from './LoginControls';
@@ -10,8 +9,12 @@ import { useHistory } from 'react-router-dom';
 import { Authenticator } from '../../components';
 import { renderToastifyContent } from '../../utils';
 import { useDispatch, useSelector } from 'react-redux';
+import { actionCreators, AuthStatusEnum } from '../../store/auth';
 import BasedGhostLogoPng from '../../assets/image/based-ghost-main.png';
-import { actionCreators, AuthStatusEnum, ICredentials } from '../../store/auth';
+
+import type { RootState } from '../../store';
+import type { FunctionComponent } from 'react';
+import type { ICredentials } from '../../store/auth';
 
 const Login: FunctionComponent = () => {
   const toastIdRef = useRef<string | number>('');

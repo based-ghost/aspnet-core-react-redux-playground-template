@@ -1,5 +1,7 @@
-import { ReduxAction } from '../';
-import { AuthActionType, AuthPayload, IAuthUser, IAuthState, AuthStatusEnum } from './types';
+import { AuthActionType, AuthStatusEnum } from './types';
+
+import type { ReduxAction } from '../';
+import type { AuthPayload, IAuthUser, IAuthState } from './types';
 
 const initialState: IAuthState = {
   token: '',
