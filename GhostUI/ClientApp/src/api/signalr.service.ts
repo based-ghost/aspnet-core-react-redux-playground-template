@@ -65,11 +65,13 @@ class SignalRService {
       this.hubToastMessage('A user has logged out (SignalR)');
     });
 
-    this._hubConnection?.on(SIGNALR_CONFIG.events.closeConnections, (reason: string) => {
-      this._hubConnection?.stop()
-        .then(() => {
-          this.hubToastMessage(`All hub connections closed (SignalR) - ${reason}`);
-        });
+    this._hubConnection?.on(SIGNALR_CONFIG.events.closeConnections, async (reason: string) => {
+      try {
+        await this._hubConnection?.stop();
+        this.hubToastMessage(`All hub connections closed (SignalR) - ${reason}`);
+      } catch (e) {
+        console.error(e);
+      }
     });
   }
 }
