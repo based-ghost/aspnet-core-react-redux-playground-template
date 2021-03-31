@@ -19,14 +19,13 @@ namespace GhostUI
     {
         private readonly string _spaSourcePath;
         private readonly string _corsPolicyName;
-
-        public IConfiguration Configuration { get; }
+        private readonly IConfiguration _configuration;
 
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
-            _spaSourcePath = Configuration.GetValue<string>("SPA:SourcePath");
-            _corsPolicyName = Configuration.GetValue<string>("CORS:PolicyName");
+            _configuration = configuration;
+            _spaSourcePath = _configuration.GetValue<string>("SPA:SourcePath");
+            _corsPolicyName = _configuration.GetValue<string>("CORS:PolicyName");
         }
 
         public void ConfigureServices(IServiceCollection services)
@@ -46,7 +45,7 @@ namespace GhostUI
             services.AddControllers();
 
             // Add Brotli/Gzip response compression (prod only)
-            services.AddResponseCompressionConfig(Configuration);
+            services.AddResponseCompressionConfig(_configuration);
 
             // Add SignalR
             services.AddSignalR();
