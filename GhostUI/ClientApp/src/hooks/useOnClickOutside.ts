@@ -1,25 +1,33 @@
-import { useEffect } from 'react';
-import type { MutableRefObject } from 'react';
+import { useRef, useEffect } from 'react';
 
-// Wrap the handleOutsideClick & handleInsideClick in useCallback prior to passing to this hook to optimize ...
-// ... otherwise the event listeners will be created and torn down on every render
-export const useOnClickOutside = (
-  ref: MutableRefObject<HTMLElement | null>,
-  handlerFn?: (...args: any[]) => any
+import type { RefObject } from 'react';
+
+// Events to addEventListener for if not specified
+const _defaultEvents = ['mousedown', 'touchstart'];
+
+const useOnClickOutside = (
+  ref: RefObject<HTMLElement | null>,
+  onClickAway: (...args: any[]) => any,
+  events: string[] = _defaultEvents
 ): void => {
-  useEffect(() => {
-    const onClickHandler = (e: Event) => {
-      if (!ref.current?.contains(e.target as Node)) {
-        handlerFn?.();
-      }
-    }
+  const onClickAwayRef = useRef(onClickAway);
 
-    document.addEventListener('click', onClickHandler);
-    document.addEventListener('touchend', onClickHandler);
+  useEffect(() => {
+    onClickAwayRef.current = onClickAway;
+  }, [onClickAway]);
+
+  useEffect(() => {
+    const onClickHandler = (event: Event): void => {
+      const { current: el } = ref;
+      !el?.contains(event.target as Node) && onClickAwayRef.current(event);
+    };
+
+    events.forEach((e) => document.addEventListener(e, onClickHandler));
 
     return () => {
-      document.removeEventListener('click', onClickHandler);
-      document.removeEventListener('touchend', onClickHandler);
+      events.forEach((e) => document?.removeEventListener(e, onClickHandler));
     };
-  }, [ref, handlerFn]);
+  }, [ref, events]);
 };
+
+export default useOnClickOutside;

@@ -1,13 +1,13 @@
 import { useState, useCallback, useMemo } from 'react';
 import type { ChangeEvent } from 'react';
 
-export const useTextInput = (
+const useTextInput = (
   initial: string = '',
   type: 'text' | 'password' = 'text',
 ) => {
   const [value, setValue] = useState<string>(initial);
-  const clear = useCallback((): void => setValue(''), []);
-  const onChange = useCallback((e: ChangeEvent<HTMLInputElement>): void => setValue(e.currentTarget.value), []);
+  const clear = useCallback(() => setValue(''), []);
+  const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => setValue(e.currentTarget.value), []);
 
   return useMemo(() => ({
     value,
@@ -20,3 +20,5 @@ export const useTextInput = (
     }
   }), [value, type, onChange, clear]);
 };
+
+export default useTextInput;

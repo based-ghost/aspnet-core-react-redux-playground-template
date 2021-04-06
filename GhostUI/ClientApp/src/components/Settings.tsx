@@ -11,6 +11,8 @@ import { RoutesConfig, NUGET_URL_CONFIG, LINK_ATTRIBUTES } from '../config';
 import type { RootState } from '../store';
 import type { FunctionComponent } from 'react';
 
+const _clickOutsideEvents = ['click', 'touchend'];
+
 const _fadeInKeyframes = keyframes`
   from {
     opacity: 0;
@@ -133,12 +135,19 @@ const StyledSettings = styled.div<{ isMenuOpen: boolean }>`
 `;
 
 const Settings: FunctionComponent = () => {
-  // Local component state/actions
   const settingsLinkRef = useRef<HTMLAnchorElement | null>(null);
   const [isMenuOpen, setisMenuOpen] = useState<boolean>(false);
 
-  const onMenuClickOutside = useCallback((): void => setisMenuOpen(false), []);
-  useOnClickOutside(settingsLinkRef, onMenuClickOutside);
+  // Deps list has "isMenuOpen" to limit extraneous setStates causing rerenders on every outside click
+  const onMenuClickOutside = useCallback(() => isMenuOpen && setisMenuOpen(false), [
+    isMenuOpen,
+  ]);
+
+  useOnClickOutside(
+    settingsLinkRef,
+    onMenuClickOutside,
+    _clickOutsideEvents
+  );
 
   // react-redux hooks state/actions
   const history = useHistory();
