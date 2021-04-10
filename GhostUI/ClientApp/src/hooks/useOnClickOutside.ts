@@ -17,15 +17,15 @@ const useOnClickOutside = (
   }, [onClickAway]);
 
   useEffect(() => {
-    const onClickHandler = (event: Event): void => {
+    const onClickHandler = (e: Event): void => {
       const { current: el } = ref;
-      !el?.contains(event.target as Node) && onClickAwayRef.current(event);
+      !el?.contains(e.target as Node) && onClickAwayRef.current(e);
     };
 
-    events.forEach((e) => document.addEventListener(e, onClickHandler));
+    events.forEach((evtName) => document.addEventListener(evtName, onClickHandler));
 
     return () => {
-      events.forEach((e) => document?.removeEventListener(e, onClickHandler));
+      events.forEach((evtName) => document?.removeEventListener(evtName, onClickHandler));
     };
   }, [ref, events]);
 };
