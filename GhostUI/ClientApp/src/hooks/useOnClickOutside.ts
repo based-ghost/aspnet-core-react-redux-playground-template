@@ -3,12 +3,12 @@ import { useRef, useEffect } from 'react';
 import type { RefObject } from 'react';
 
 // Events to addEventListener for if not specified
-const _defaultEvents = ['mousedown', 'touchstart'];
+const DEFAULT_EVENTS = ['mousedown', 'touchstart'];
 
 const useOnClickOutside = (
   ref: RefObject<HTMLElement | null>,
   onClickAway: (...args: any[]) => any,
-  events: string[] = _defaultEvents
+  events: string[] = DEFAULT_EVENTS
 ): void => {
   const onClickAwayRef = useRef(onClickAway);
 

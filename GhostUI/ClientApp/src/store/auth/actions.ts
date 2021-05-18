@@ -17,9 +17,11 @@ export const actionCreators = {
       const authUser = await AuthApi.loginAsync(credentials);
       const success = authUser?.status === 'success';
       const payload = success ? authUser : undefined;
-      const type = success ? AuthActionType.LOGIN_SUCCESS : AuthActionType.LOGIN_FAIL;
 
-      dispatch({ type, payload });
+      dispatch({
+        type: success ? AuthActionType.LOGIN_SUCCESS : AuthActionType.LOGIN_FAIL,
+        payload
+      });
     } catch (e) {
       dispatch({ type: AuthActionType.LOGIN_FAIL });
     }

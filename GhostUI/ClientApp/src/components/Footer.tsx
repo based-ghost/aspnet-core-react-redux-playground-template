@@ -82,7 +82,7 @@ const Footer: FunctionComponent = () => (
         <FontAwesomeIcon icon={['fab', 'medium-m']} />
       </FooterLink>
     </FooterButtons>
-    <BrandContent>based-ghost LLC &copy; 2021</BrandContent>
+    <BrandContent>based-ghost LLC © 2021</BrandContent>
   </StyledFooter>
 );
 

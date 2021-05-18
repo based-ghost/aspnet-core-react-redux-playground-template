@@ -9,7 +9,7 @@ import type { RootState } from './index';
 
 const configureStore = (
   history: History,
-  initialState?: RootState
+  initialState?: any
 ): Store<RootState> => {
   const composeEnhancer: typeof compose =
     (window as any)?.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

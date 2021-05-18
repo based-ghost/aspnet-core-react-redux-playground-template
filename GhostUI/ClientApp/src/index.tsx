@@ -1,6 +1,6 @@
 import 'react-hot-loader'; // Must be imported befire React and ReactDOM
 import ReactDOM from 'react-dom';
-import { StrictMode } from 'react';
+import { StrictMode, Fragment } from 'react';
 import { Provider } from 'react-redux';
 import './assets/style/scss/site.scss';
 import App from './App';
@@ -17,9 +17,11 @@ const initialState: RootState = (window as any)?.initialReduxState;
 const store = configureStore(history, initialState);
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Fragment>
     <StrictMode>
-      <App history={history} />
+      <Provider store={store}>
+        <App history={history} />
+      </Provider>
     </StrictMode>
     <ToastContainer
       newestOnTop
@@ -27,7 +29,7 @@ ReactDOM.render(
       draggable={false}
       position='top-center'
     />
-  </Provider>,
+  </Fragment>,
   document.getElementById('root')
 );
 

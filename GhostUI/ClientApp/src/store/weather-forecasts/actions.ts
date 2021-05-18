@@ -16,16 +16,15 @@ export const actionCreators = {
       return;
     }
 
-    // Dispatch request
+    // Dispatch request to intialize loading phase
     dispatch({
       payload: { startDateIndex },
       type: WeatherActionType.REQUEST
     });
 
-    // Build http request and success handler in Promise<void> wrapper
+    // Build http request and success handler in Promise<void> wrapper / complete processing
     try {
       const forecasts = await SampleApi.getWeatherForecastsAsync(startDateIndex);
-
       dispatch({
         type: WeatherActionType.RECEIVE,
         payload: { forecasts, startDateIndex }

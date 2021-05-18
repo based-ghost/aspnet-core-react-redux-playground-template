@@ -11,9 +11,9 @@ import { RoutesConfig, NUGET_URL_CONFIG, LINK_ATTRIBUTES } from '../config';
 import type { RootState } from '../store';
 import type { FunctionComponent } from 'react';
 
-const _clickOutsideEvents = ['click', 'touchend'];
+const CLICK_OUTSIDE_EVENTS = ['click', 'touchend'];
 
-const _fadeInKeyframes = keyframes`
+const FADE_IN_KEYFRAMES = keyframes`
   from {
     opacity: 0;
   } to {
@@ -126,8 +126,8 @@ const StyledSettings = styled.div<{ isMenuOpen: boolean }>`
   animation-delay: 0.25s;
   border-radius: 8px 0 0 8px;
   transition: background 0.15s ease-in;
-  animation: ${_fadeInKeyframes} 0.25s both ease;
-  background: ${({ isMenuOpen }) => isMenuOpen ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0.45)'};
+  animation: ${FADE_IN_KEYFRAMES} 0.25s both ease;
+  background: ${({ isMenuOpen }) => `rgba(0, 0, 0, ${isMenuOpen ? 0.6 : 0.45})`};
 
   :hover {
     background: rgba(0, 0, 0, 0.6);
@@ -146,7 +146,7 @@ const Settings: FunctionComponent = () => {
   useOnClickOutside(
     settingsLinkRef,
     onMenuClickOutside,
-    _clickOutsideEvents
+    CLICK_OUTSIDE_EVENTS
   );
 
   // react-redux hooks state/actions

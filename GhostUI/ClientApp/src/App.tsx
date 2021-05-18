@@ -1,6 +1,5 @@
 import { useEffect, FunctionComponent } from 'react';
 import Layout from './Layout';
-import { History } from 'history';
 import { hot } from 'react-hot-loader/root';
 import { Route, Switch } from 'react-router';
 import { SignalRApi } from './api/signalr.service';
@@ -8,10 +7,16 @@ import { ConnectedRouter } from 'connected-react-router';
 import { AxiosGlobalConfig, RoutesConfig } from './config';
 import { Dashboard, FetchData, Form, Login } from './containers';
 
+import type { History } from 'history';
+
 const App: FunctionComponent<{ history: History }> = ({ history }) => {
   useEffect(() => {
-    AxiosGlobalConfig.setup();
-    SignalRApi.startConnection();
+    const bootstrapApp = async () => {
+      AxiosGlobalConfig.setup();
+      await SignalRApi.startConnection();
+    };
+
+    bootstrapApp();
   }, []);
 
   return (

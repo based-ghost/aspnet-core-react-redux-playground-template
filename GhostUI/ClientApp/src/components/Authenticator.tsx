@@ -9,9 +9,9 @@ type AuthenticatorProps = Readonly<{
   handleOnSuccess: (...args: any[]) => any;
 }>;
 
-const _childDivCount = 9;
+const CHILD_DIV_COUNT = 9;
 
-const _authAnimationKeyframes = keyframes`
+const ROTATE_KEYFRAMES = keyframes`
   100% {
     transform: rotate(360deg);
   }
@@ -34,7 +34,7 @@ const getChildDivCSS = (): string => {
     }
   `;
 
-  return [...Array(_childDivCount).keys()]
+  return [...Array(CHILD_DIV_COUNT).keys()]
     .map((key) => childDivTemplate(key))
     .join('');
 };
@@ -59,7 +59,7 @@ const AuthenticatorWrapper = styled.div<Pick<AuthenticatorProps, 'authStatus'>>`
     box-sizing: border-box;
     border: 2px solid transparent;
     border-top-color: ${({ authStatus }) => getChildDivBorderColor(authStatus)};
-    animation: ${_authAnimationKeyframes} 1500ms cubic-bezier(0.68, -0.75, 0.265, 1.75) infinite forwards;
+    animation: ${ROTATE_KEYFRAMES} 1500ms cubic-bezier(0.68, -0.75, 0.265, 1.75) infinite forwards;
 
     ${getChildDivCSS()}
   }
@@ -80,9 +80,7 @@ const Authenticator = memo<AuthenticatorProps>(({
       }
     }, delay);
 
-    return () => {
-      clearTimeout(authHandler);
-    };
+    return () => clearTimeout(authHandler);
   }, [authStatus, delay, handleOnFail, handleOnSuccess]);
 
   if (!authStatus || authStatus === AuthStatusEnum.NONE) {
