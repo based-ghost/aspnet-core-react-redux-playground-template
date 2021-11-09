@@ -1,0 +1,101 @@
+// START: fade transition
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 250ms ease;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+// END: fade transition
+
+// START: page-slide transitions
+.page-slide-right-enter {
+  opacity: 0;
+  transform: translate3d(150px, 0, 0);
+}
+
+.page-slide-left-enter {
+  opacity: 0;
+  transform: translate3d(-150px, 0, 0);
+}
+
+.page-slide-right-enter-active,
+.page-slide-left-enter-active {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition: opacity 350ms cubic-bezier(0.4, 0, 0, 1.5),
+    transform 350ms cubic-bezier(0.4, 0, 0, 1.5);
+}
+
+.page-slide-right-exit,
+.page-slide-left-exit {
+  opacity: 1;
+}
+
+.page-slide-right-exit-active,
+.page-slide-left-exit-active {
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+// END: page-slide transitions
+
+// START: react-toastify custom transitions
+.custom__toast__animate__bounceIn {
+  animation: toast_bounceIn 1s both;
+}
+
+.custom__toast__animate__bounceOut {
+  animation: toast_bounceOut 0.85s both;
+}
+
+@keyframes toast_bounceOut {
+  20% {
+    transform: scale3d(0.9, 0.9, 0.9);
+  } 50%,
+    55% {
+    opacity: 1;
+    transform: scale3d(1.1, 1.1, 1.1);
+  } to {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+}
+
+@keyframes toast_bounceIn {
+  from,
+  20%,
+  40%,
+  60%,
+  80%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  0% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  } 20% {
+    transform: scale3d(1.1, 1.1, 1.1);
+  } 40% {
+    transform: scale3d(0.9, 0.9, 0.9);
+  } 60% {
+    opacity: 1;
+    transform: scale3d(1.03, 1.03, 1.03);
+  } 80% {
+    transform: scale3d(0.97, 0.97, 0.97);
+  } to {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+// END: react-toastify custom transitions

@@ -26,11 +26,11 @@ const getChildDivBorderColor = (authStatus: AuthStatusEnum): string => {
 };
 
 const getChildDivCSS = (): string => {
-  const childDivTemplate = (childIndex: number): string => `
-    &:nth-child(${childIndex + 1}) {
-      height: calc(96px / 9 + ${childIndex} * 96px / 9);
-      width: calc(96px / 9 + ${childIndex} * 96px / 9);
-      animation-delay: calc(50ms * ${childIndex + 1});
+  const childDivTemplate = (idx: number): string => `
+    &:nth-child(${idx + 1}) {
+      height: calc(96px / 9 + ${idx} * 96px / 9);
+      width: calc(96px / 9 + ${idx} * 96px / 9);
+      animation-delay: calc(50ms * ${idx + 1});
     }
   `;
 
@@ -80,7 +80,9 @@ const Authenticator = memo<AuthenticatorProps>(({
       }
     }, delay);
 
-    return () => clearTimeout(authHandler);
+    return () => {
+      clearTimeout(authHandler);
+    }
   }, [authStatus, delay, handleOnFail, handleOnSuccess]);
 
   if (!authStatus || authStatus === AuthStatusEnum.NONE) {

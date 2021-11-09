@@ -2,7 +2,7 @@ import { memo } from 'react';
 import styled, { keyframes } from 'styled-components';
 
 type SpinnerProps = Readonly<{
-  isLoading?: boolean;
+  isLoading: boolean;
 }>;
 
 const SPIN_KEYFRAMES = keyframes`

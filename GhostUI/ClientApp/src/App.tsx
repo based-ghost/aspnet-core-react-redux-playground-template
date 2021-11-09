@@ -1,51 +1,46 @@
-import { useEffect, FunctionComponent } from 'react';
+import { useEffect } from 'react';
 import Layout from './Layout';
 import { hot } from 'react-hot-loader/root';
-import { Route, Switch } from 'react-router';
+import { Route, Routes } from 'react-router';
+import { useLocation } from 'react-router-dom';
 import { SignalRApi } from './api/signalr.service';
-import { ConnectedRouter } from 'connected-react-router';
-import { AxiosGlobalConfig, RoutesConfig } from './config';
-import { Dashboard, FetchData, Form, Login } from './containers';
+import { Routes as routes, TRANSITION_DEFAULT } from './config';
+import { CSSTransition, SwitchTransition } from 'react-transition-group';
 
-import type { History } from 'history';
+import type { FunctionComponent } from 'react';
 
-const App: FunctionComponent<{ history: History }> = ({ history }) => {
+const App: FunctionComponent = () => {
   useEffect(() => {
-    const bootstrapApp = async () => {
-      AxiosGlobalConfig.setup();
+    setTimeout(async () => {
       await SignalRApi.startConnection();
-    };
-
-    bootstrapApp();
+    }, 250);
   }, []);
 
+  const location = useLocation();
+  const cssKey = location.pathname?.split('/')[1] || '/';
+  const curRoute = routes.find((x) => (x.path === cssKey) || (x.name.toLowerCase() === cssKey.toLowerCase()));
+  const { timeout, classNames } = curRoute?.transition ?? TRANSITION_DEFAULT;
+
   return (
-    <ConnectedRouter history={history}>
-      <Layout>
-        <Switch>
-          <Route
-            path={RoutesConfig.Login.path}
-            exact={RoutesConfig.Login.exact}
-            component={Login}
-          />
-          <Route
-            path={RoutesConfig.Form.path}
-            exact={RoutesConfig.Form.exact}
-            component={Form}
-          />
-          <Route
-            path={RoutesConfig.Dashboard.path}
-            exact={RoutesConfig.Dashboard.exact}
-            component={Dashboard}
-          />
-          <Route
-            path={RoutesConfig.FetchData.pathAbsolute}
-            exact={RoutesConfig.FetchData.exact}
-            component={FetchData}
-          />
-        </Switch>
-      </Layout>
-    </ConnectedRouter>
+    <Layout>
+      <SwitchTransition mode="out-in">
+        <CSSTransition
+          key={cssKey}
+          timeout={timeout}
+          classNames={classNames}
+        >
+          <Routes location={location}>
+            {routes.map(({ path, Component }) => (
+              <Route
+                key={path}
+                path={path}
+                element={<Component />}
+              />
+            ))}
+          </Routes>
+        </CSSTransition>
+      </SwitchTransition>
+    </Layout>
   );
 };
 

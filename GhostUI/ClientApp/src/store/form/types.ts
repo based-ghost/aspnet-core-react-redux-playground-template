@@ -16,6 +16,8 @@ export type IDropdownOption = Readonly<{
 
 export type IFormState = Readonly<{
   count: number;
-  checkboxValue: boolean;
-  selectedDropdownOption: IDropdownOption;
+  checked: boolean;
+  selectedOption: IDropdownOption;
 }>;
+
+export type FormPayload = Partial<IFormState>;

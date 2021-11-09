@@ -1,11 +1,4 @@
-import { Form } from './Form';
-import { Login } from './Login';
-import { Dashboard } from './Dashboard';
-import { FetchData } from './FetchData';
-
-export {
-  Form,
-  Login,
-  Dashboard,
-  FetchData,
-};
+export { default as Form } from './Form';
+export { default as Login } from './Login';
+export { default as Dashboard } from './Dashboard';
+export { default as FetchData } from './FetchData';

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import type { FunctionComponent } from 'react';
 
 const BrandContent = styled.div`
@@ -16,7 +17,7 @@ const StyledFooter = styled.footer`
   padding: 3rem 1.5rem;
   background-color: #33363b;
 
-  @media only screen and (max-width: 769px) {
+  @media all and (max-width: 769px) {
     font-size: 1rem;
   }
 `;

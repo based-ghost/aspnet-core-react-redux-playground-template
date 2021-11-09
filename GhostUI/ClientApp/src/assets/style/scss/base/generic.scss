@@ -1,12 +1,29 @@
-﻿/* react-toastify NPM PACKAGE CSS OVERRIDES */
+﻿/* REACT-TOASTIFY NPM PACKAGE CSS OVERRIDES */
 .Toastify__toast {
-  border-radius: $rt-toast-border-radius;
+  border-radius: $toastify-toast-border-radius;
+}
+
+.Toastify__toast-theme--colored.Toastify__toast--error {
+  background-color: $toastify-color-error;
 }
 
 /* OVERRIDES & GENERAL STYLES */
 html,
 body {
   background-color: $color-body-bg;
+}
+
+hr {
+  height: 1.5px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+  color: $color-subtitle;
+}
+
+.title:not(.is-spaced) + .subtitle.is-5 {
+  margin-top: -1rem;
 }
 
 .box {
@@ -20,7 +37,7 @@ body {
   }
 
   &.container-box {
-    min-height: 430px;
+    min-height: 446px;
   }
 }
 
@@ -38,20 +55,24 @@ body {
 }
 
 code {
-  padding: 3px 4px;
-  font-size: 0.94em;
+  padding: 0.275em 0.45em;
+  font-size: 0.9em;
   word-break: break-word;
-  border-radius: 0.25rem;
-  color: $color-hero-is-dark;
-  background-color: rgba(9, 211, 172, 0.13);
+  border-radius: 3px;
+  color: $color-code;
+  background-color: #ebedf0;
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  &.form-value {
+    margin-left: 5px;
+  }
 }
 
 .hero.is-dark {
   background-color: $color-hero-is-dark;
 
   .hero-body {
-    padding: 1.5rem;
+    padding: 1.25rem;
 
     img {
       user-select: none;
@@ -73,7 +94,8 @@ code {
   }
 
   .form-control-group {
-    min-height: 65px;
+    width: 95%;
+    min-height: 60px;
   }
 }
 
@@ -84,20 +106,9 @@ code {
 
 .button {
   font-weight: 600;
-  border-radius: 3px;
-
-  &.is-light {
-    background-color: rgba(9,30,66,.0725);
-
-    &:hover {
-      background-color: rgba(9, 30, 66, 0.11);
-    }
-  }
 }
 
 .remember-me-field {
-  display: flex;
-
   label {
     margin-left: auto;
     margin-right: auto;
@@ -114,23 +125,11 @@ code {
 
   > .button {
     margin-bottom: 0;
-    min-width: 6.5rem;
+    min-width: 6.25rem;
 
     svg {
       margin: auto;
       font-size: 1.4em;
-    }
-
-    &.plus {
-      svg {
-        color: $cyan;
-      }
-    }
-
-    &.minus {
-      svg {
-        color: $red;
-      }
     }
 
     &:not(:last-child) {
@@ -144,34 +143,37 @@ code {
   padding-bottom: 3rem;
 
   .card-content {
-    padding: 1rem 1.5rem;
+    padding: 1rem;
+
+    .title {
+      margin-bottom: 1.25rem;
+    }
 
     .content li + li {
-      margin-top: 1em;
+      margin-top: 0.75em;
     }
 
     .dashboard-info {
-      padding: 1.5em !important;
+      padding: 1.25em !important;
     }
   }
 
   hr {
-    width: 50%;
-    margin: 0.5rem auto;
-    background-color: rgba(0, 0, 0, 0.06);
+    width: 55%;
+    margin: 0 auto 0.45rem;
   }
 }
 
 .dashboard-link {
-  color: #363636;
+  color: $color-code;
   font-weight: 700;
-  padding: 0.25em 0.5em 0.25em;
+  padding: 0.15em 0.35em 0.15em;
   margin-right: 0.25em;
   transition: background-color 0.2s ease-out, border-bottom-color 0.2s ease-out;
 
   &.react {
-    background-color: rgba(32, 156, 238, 0.18);
-    border-bottom: 1px solid rgba(32, 156, 238, 0.725);
+    background-color: rgba(32, 156, 238, 0.16);
+    border-bottom: 1px solid rgba(32, 156, 238, 0.25);
 
     &:hover {
       background-color: rgba(32, 156, 238, 0.3);
@@ -180,8 +182,8 @@ code {
   }
 
   &.redux {
-    background-color: rgba(118, 74, 188, 0.18);
-    border-bottom: 1px solid rgba(118, 74, 188, 0.725);
+    background-color: rgba(118, 74, 188, 0.16);
+    border-bottom: 1px solid rgba(118, 74, 188, 0.25);
 
     &:hover {
       background-color: rgba(118, 74, 188, 0.3);
@@ -190,8 +192,8 @@ code {
   }
 
   &.bulma {
-    background-color: rgba(0, 196, 167, 0.18);
-    border-bottom: 1px solid rgba(0, 196, 167, 0.725);
+    background-color: rgba(0, 196, 167, 0.16);
+    border-bottom: 1px solid rgba(0, 196, 167, 0.25);
 
     &:hover {
       background-color: rgba(0, 196, 167, 0.3);
@@ -200,8 +202,8 @@ code {
   }
 
   &.aspcore {
-    background-color: rgba(118, 74, 188, 0.18);
-    border-bottom: 1px solid rgba(118, 74, 188, 0.725);
+    background-color: rgba(118, 74, 188, 0.16);
+    border-bottom: 1px solid rgba(118, 74, 188, 0.25);
 
     &:hover {
       background-color: rgba(118, 74, 188, 0.3);
@@ -210,8 +212,8 @@ code {
   }
 
   &.sass {
-    background-color: rgba(198, 83, 140, 0.18);
-    border-bottom: 1px solid rgba(198, 83, 140, 0.725);
+    background-color: rgba(198, 83, 140, 0.16);
+    border-bottom: 1px solid rgba(198, 83, 140, 0.25);
 
     &:hover {
       background-color: rgba(198, 83, 140, 0.3);
@@ -220,8 +222,8 @@ code {
   }
 
   &.typescript {
-    background-color: rgba(41, 78, 128, 0.18);
-    border-bottom: 1px solid rgba(41, 78, 128, 0.725);
+    background-color: rgba(41, 78, 128, 0.16);
+    border-bottom: 1px solid rgba(41, 78, 128, 0.25);
 
     &:hover {
       background-color: rgba(41, 78, 128, 0.3);
@@ -259,7 +261,7 @@ code {
 }
 
 .table.is-fullwidth {
-  @media only screen and (max-width: 449px) {
+  @media all and (max-width: 449px) {
     font-size: 0.8rem;
   }
 }

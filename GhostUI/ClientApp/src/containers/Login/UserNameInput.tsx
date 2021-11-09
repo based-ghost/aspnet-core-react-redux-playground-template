@@ -8,7 +8,10 @@ type UserNameInputProps = Readonly<{
   textInput: ReturnType<typeof useTextInput>;
 }>;
 
-const UserNameInput = memo<UserNameInputProps>(({ textInput, isInputInvalid }) => {
+const UserNameInput = memo<UserNameInputProps>(({
+  textInput,
+  isInputInvalid
+}) => {
   const { hasValue, bindToInput } = textInput;
 
   const className = classNames([

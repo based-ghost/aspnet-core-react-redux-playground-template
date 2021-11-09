@@ -1,16 +1,15 @@
-import createRootReducer from './rootReducer';
-import configureStore from './configureStore';
 import { reducer as FormReducer } from './form';
 import { reducer as AuthReducer } from './auth';
 import { reducer as WeatherForecastsReducer } from './weather-forecasts';
 
 import type { Action } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
-import type { RouterState } from 'connected-react-router';
+
+export { default as createRootReducer } from './rootReducer';
+export { default as configureStore } from './configureStore';
 
 // The top-level state object
 export type RootState = Readonly<{
-  router: RouterState;
   auth: ReturnType<typeof AuthReducer>;
   form: ReturnType<typeof FormReducer>;
   weatherForecasts: ReturnType<typeof WeatherForecastsReducer>;
@@ -28,8 +27,3 @@ export type AppThunk<T = undefined> = ThunkAction<
   unknown,
   ReduxAction<T>
 >;
-
-export {
-  configureStore,
-  createRootReducer
-};

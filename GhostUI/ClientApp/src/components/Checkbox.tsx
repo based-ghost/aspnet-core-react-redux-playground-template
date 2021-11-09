@@ -16,13 +16,13 @@ const Label = styled.span`
 `;
 
 const CheckboxWrapper = styled.label`
-  display: flex;
+  display: inline-flex;
   user-select: none;
   position: relative;
 `;
 
 const Input = styled.input`
-  top: 0.2em;
+  top: 0.25rem;
   z-index: 3;
   opacity: 0;
   width: 1rem;
@@ -36,7 +36,7 @@ const Input = styled.input`
     :after,
     :before {
       opacity: 1;
-      transition: height 0.38s ease;
+      transition: height 0.33s ease;
     }
 
     :after {
@@ -45,23 +45,23 @@ const Input = styled.input`
 
     :before {
       height: 1.2rem;
-      transition-delay: 0.15s;
+      transition-delay: 0.1s;
     }
   }
 `;
 
 const CheckIcon = styled.i`
-  top: 0.2em;
+  top: 0.25rem;
   z-index: 0;
   width: 1rem;
   height: 1rem;
-  color: #dbdbdb;
+  color: #ced4da;
   position: absolute;
   box-sizing: border-box;
-  border-radius: 0.0625rem;
+  border-radius: 2px;
   background-color: transparent;
-  border: 0.125rem solid currentColor;
-  transition: border-color 0.38s ease;
+  border: 1.5px solid currentColor;
+  transition: border-color 0.33s ease;
 
   :after,
   :before {
@@ -74,7 +74,7 @@ const CheckIcon = styled.i`
     border-radius: 0.25rem;
     background-color: #09d3ac;
     transform-origin: left top;
-    transition: opacity 0.38s ease, height 0s linear 0.38s;
+    transition: opacity 0.33s ease, height 0s linear 0.33s;
   }
 
   :after {

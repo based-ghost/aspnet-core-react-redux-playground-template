@@ -1,15 +1,6 @@
-import Footer from './Footer';
-import Navbar from './Navbar';
-import Spinner from './Spinner';
-import Checkbox from './Checkbox';
-import Settings from './Settings';
-import Authenticator from './Authenticator';
-
-export {
-  Footer,
-  Navbar,
-  Spinner,
-  Checkbox,
-  Settings,
-  Authenticator
-};
+export { default as Footer } from './Footer';
+export { default as Navbar } from './Navbar';
+export { default as Spinner } from './Spinner';
+export { default as Checkbox } from './Checkbox';
+export { default as Settings } from './Settings';
+export { default as Authenticator } from './Authenticator';

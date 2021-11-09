@@ -3,13 +3,7 @@
     "baseUrl": ".",
     "target": "esnext",
     "module": "esnext",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
     "moduleResolution": "node",
-    "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "importHelpers": true,
@@ -20,7 +14,13 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "noEmit": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true
   },
   "include": [
     "src"

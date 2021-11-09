@@ -1,3 +1,1 @@
-const isArrayWithLength = (test: any): boolean => Array.isArray(test) && !!test.length;
-
-export default isArrayWithLength;
+export const isArrayWithLength = (val: unknown): boolean => Array.isArray(val) && !!val.length;

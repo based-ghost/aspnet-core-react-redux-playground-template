@@ -8,7 +8,7 @@ import type { FunctionComponent } from 'react';
 
 const CheckboxFormGroup: FunctionComponent = () => {
   const dispatch = useDispatch();
-  const checked = useSelector<RootState, boolean>((state) => state.form.checkboxValue);
+  const checked = useSelector<RootState, boolean>((state) => state.form.checked);
 
   const onCheckEvent = useCallback((checked: boolean) => {
     dispatch(actionCreators.handleOnCheck(checked));
@@ -25,7 +25,7 @@ const CheckboxFormGroup: FunctionComponent = () => {
         />
       </div>
       <p className="subtitle is-5">
-        Checked: <code>{checked.toString()}</code>
+        Value: <code className="form-value">{checked.toString()}</code>
       </p>
     </div>
   );

@@ -16,9 +16,11 @@ export const reducer = (
 ): IAuthState => {
   switch (action.type) {
     case AuthActionType.SET_AUTH_STATUS: {
+      const status = action?.payload?.status || AuthStatusEnum.NONE;
+
       return {
         ...state,
-        status: action!.payload!.status!
+        status
       };
     }
     case AuthActionType.LOGIN_SUCCESS: {
@@ -32,9 +34,7 @@ export const reducer = (
     case AuthActionType.LOGOUT:
     case AuthActionType.LOGIN_FAIL:
     case AuthActionType.RESET_STATE: {
-      return {
-        ...initialState
-      };
+      return { ...initialState };
     }
     case AuthActionType.LOGIN:
     default:

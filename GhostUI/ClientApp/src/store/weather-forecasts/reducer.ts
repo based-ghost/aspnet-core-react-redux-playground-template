@@ -5,7 +5,8 @@ import type { WeatherForecastPayload, IWeatherForecastsState } from './types';
 
 const initialState: IWeatherForecastsState = {
   forecasts: [],
-  isLoading: false
+  isLoading: false,
+  startDateIndex: 5
 };
 
 export const reducer = (
@@ -14,7 +15,7 @@ export const reducer = (
 ): IWeatherForecastsState => {
   switch (action.type) {
     case WeatherActionType.REQUEST: {
-      const { startDateIndex } = action.payload as WeatherForecastPayload;
+      const { startDateIndex = 0 } = action.payload as WeatherForecastPayload;
 
       return {
         ...state,

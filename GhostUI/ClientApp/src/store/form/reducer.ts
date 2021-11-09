@@ -6,8 +6,8 @@ import type { IFormState } from './types';
 
 const initialState: IFormState = {
   count: 0,
-  checkboxValue: false,
-  selectedDropdownOption: DROPDOWN_TEST_DATA[0]
+  checked: false,
+  selectedOption: DROPDOWN_TEST_DATA[0]
 };
 
 export const reducer = (
@@ -28,11 +28,11 @@ export const reducer = (
       };
     }
     case FormActionType.DROPDOWN_SELECT: {
-      const { option = DROPDOWN_TEST_DATA[0] } = action.payload;
+      const { selectedOption } = action.payload;
 
       return {
         ...state,
-        selectedDropdownOption: option
+        selectedOption
       };
     }
     case FormActionType.CHECKBOX_CHECK: {
@@ -40,7 +40,7 @@ export const reducer = (
 
       return {
         ...state,
-        checkboxValue: !!checked
+        checked
       };
     }
     default:

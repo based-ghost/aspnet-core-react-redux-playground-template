@@ -18,7 +18,7 @@ export type IWeatherForecast = Readonly<{
 
 export type IWeatherForecastsState = Readonly<{
   isLoading: boolean;
-  startDateIndex?: number;
+  startDateIndex: number;
   forecasts: IWeatherForecast[];
 }>;
 

@@ -1,14 +1,13 @@
 import { useRef, useState, useCallback } from 'react';
 import { AuthApi } from '../api';
-import { useOnClickOutside } from '../hooks';
-import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { actionCreators } from '../store/auth';
 import styled, { keyframes } from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
+import { useIsLoggedIn, useOnClickOutside } from '../hooks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { RoutesConfig, NUGET_URL_CONFIG, LINK_ATTRIBUTES } from '../config';
+import { Routes, NUGET_URL_CONFIG, LINK_ATTRIBUTES } from '../config';
 
-import type { RootState } from '../store';
 import type { FunctionComponent } from 'react';
 
 const CLICK_OUTSIDE_EVENTS = ['click', 'touchend'];
@@ -64,7 +63,7 @@ const SettingsMenuTitle = styled.li`
   padding-bottom: 3px;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
 const SettingsMenu = styled.ul`
@@ -135,13 +134,14 @@ const StyledSettings = styled.div<{ isMenuOpen: boolean }>`
 `;
 
 const Settings: FunctionComponent = () => {
+  const isLoggedIn = useIsLoggedIn();
   const settingsLinkRef = useRef<HTMLAnchorElement | null>(null);
   const [isMenuOpen, setisMenuOpen] = useState<boolean>(false);
 
   // Deps list has "isMenuOpen" to limit extraneous setStates causing rerenders on every outside click
-  const onMenuClickOutside = useCallback(() => isMenuOpen && setisMenuOpen(false), [
-    isMenuOpen,
-  ]);
+  const onMenuClickOutside = useCallback(() => {
+    isMenuOpen && setisMenuOpen(false);
+  }, [isMenuOpen]);
 
   useOnClickOutside(
     settingsLinkRef,
@@ -150,19 +150,24 @@ const Settings: FunctionComponent = () => {
   );
 
   // react-redux hooks state/actions
-  const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const isAuthenticated = useSelector<RootState, boolean>(state => state.auth.isAuthenticated);
 
-  if (!isAuthenticated) {
+  if (!isLoggedIn) {
     return null;
   }
+
+  const {
+    path: loginPath,
+    icon: loginIcon,
+    name: loginName
+  } = Routes.find(({ path }) => path === '/')!;
 
   const handleLogout = async () => {
     try {
       await AuthApi.logoutAsync();
       dispatch(actionCreators.resetState());
-      history.push(RoutesConfig.Login.path);
+      navigate(loginPath);
     } catch (e) {
       console.error(e);
     }
@@ -182,7 +187,9 @@ const Settings: FunctionComponent = () => {
       </SettingsLink>
       {isMenuOpen && (
         <SettingsMenu>
-          <SettingsMenuTitle>Settings</SettingsMenuTitle>
+          <SettingsMenuTitle>
+            Settings
+          </SettingsMenuTitle>
           <li>
             <SettingsMenuLink
               {...LINK_ATTRIBUTES}
@@ -204,7 +211,7 @@ const Settings: FunctionComponent = () => {
               role='button'
               onClick={handleLogout}
             >
-              <FontAwesomeIcon icon={RoutesConfig.Login.icon!} />{' '}{RoutesConfig.Login.displayName}
+              <FontAwesomeIcon icon={loginIcon!} />{` ${loginName}`}
             </SettingsMenuLink>
           </li>
         </SettingsMenu>

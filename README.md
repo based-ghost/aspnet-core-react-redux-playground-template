@@ -1,8 +1,8 @@
-# ASP.NET Core 5.0 + React + Redux + TypeScript + Hot Module Replacement (HMR)
+# ASP.NET Core 5.0.XX + React + Redux + TypeScript + Hot Module Replacement (HMR)
 This template is a SPA application built using ASP.NET Core 5.0 as the REST API server and React/Redux/TypeScript as the web client (Bulma + SASS + styled-components for UI styling). You can find a similar version using Vue + Vuex (and associated libraries) here: [aspnet-core-vue-vuex-playground-template](https://github.com/based-ghost/aspnet-core-vue-vuex-playground-template)
 
 
-![](https://j.gifs.com/NLjyN2.gif)
+![demo](./demo/react_dot_net_52530-2021.gif)
 
 
 ## General Overview
@@ -12,7 +12,7 @@ This template is vaguley based on the original React + Redux .NET Core SPA templ
 
 ## Technology Stack Overview
 - **Server**
-  - ASP.NET Core 5.0
+  - ASP.NET Core 5.0.XX
   - SignalR
   - HealthChecks + [AspNetCore.HealthChecks.UI package](https://github.com/xabaril/AspNetCore.Diagnostics.HealthChecks) - this provides  a nicely formatted UI for viewing the results of the HealthCheck modules in use and is accessed on ```/health-ui``` (also, provide an option for viewing the raw JSON data that the UI package prettifies for you at ```/healthchecks-json```). Access this view in the application via the floating settings cog on right screen by clicking the "Health Checks" link.
   - API Documentation using Swagger UI - using package [NSwag.AspNetCore](http://NSwag.org) to prettify the specification output and display at ```/docs``` & [NSwag.MSBuild](http://NSwag.org) to handle automatic updates - so that when the project builds, the NSwag CLI will run and generate an updated API specification. Access this view in the application via the floating settings cog on right screen by clicking the "Swagger API" link.
@@ -27,13 +27,13 @@ This template is vaguley based on the original React + Redux .NET Core SPA templ
   - [`react-functional-select`](https://github.com/based-ghost/react-functional-select) - A micro-sized & micro-optimized select component for ReactJS. Inspired by [`react-select`](https://github.com/JedWatson/react-select) and built for ultimate performance - leverages [`react-window`](https://github.com/bvaughn/react-window) to virtualize long options data and `styled-components` to handle styling via CSS-in-JS. Note: I am the author of this package.
   - [`Axios`](https://github.com/axios/axios) for REST endpoint requests
   - [`react-toastify`](https://github.com/fkhadra/react-toastify) - a highly configurable toast notification library - comes hooked up to display login error & SignalR hub push notifications examples.
-  - connected-react-router/react-router-dom/react-router-redux
+  - react-router/react-router-dom
   - Custom, reusable Dropdown & Checkbox components that provide full functionality w/ state management (without a JQuery dependency).
   - Two different loader components (spinner & authentication animation w/ callback for success/fail)
 
 ## Setup
   - [Node.js version >= 10](https://nodejs.org/en/download/)
-  - [`.NET 5.0 SDK`](https://dotnet.microsoft.com/download/dotnet/5.0)
+  - [`.NET 5.0.XX SDK`](https://dotnet.microsoft.com/download/dotnet/5.0)
   - Clone the repository and run ```npm install``` from the root of the ```ClientApp``` directory to properly install all node packages/dependencies.
   - Opening the solution in VisualStudio should automatically trigger nuget package and other dependencies to be restored (assuming latest version of VisualStudio and installation of .NET Core version mentioned aboved). If issues are encountered, attempting to refresh the dependencies or executing a ```rebuild solution``` should resolve them.
   - A solution.sln file is added to act as an entry point to open the application in Visual Studio. Visual Studio 2019 and up.

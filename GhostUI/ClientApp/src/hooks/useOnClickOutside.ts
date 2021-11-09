@@ -22,10 +22,10 @@ const useOnClickOutside = (
       !el?.contains(e.target as Node) && onClickAwayRef.current(e);
     };
 
-    events.forEach((evtName) => document.addEventListener(evtName, onClickHandler));
+    events.forEach((evt) => document.addEventListener(evt, onClickHandler));
 
     return () => {
-      events.forEach((evtName) => document?.removeEventListener(evtName, onClickHandler));
+      events.forEach((evt) => document?.removeEventListener(evt, onClickHandler));
     };
   }, [ref, events]);
 };

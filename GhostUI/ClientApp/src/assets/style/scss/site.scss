@@ -3,9 +3,8 @@
 
 /* NPM package styles */
 @import '~bulma/bulma';
-@import '~react-toastify/scss/main.scss'; 
+@import '~react-toastify/scss/main.scss';
 
 /* Local styles */
-@import 'base/generic.scss';
-@import 'components/navbar.scss';
-@import 'components/tool-tip.scss';
+@import 'base/generic', 'base/transition';
+@import 'components/navbar', 'components/tool-tip';

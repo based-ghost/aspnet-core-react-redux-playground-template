@@ -1,6 +1,5 @@
 import { useCallback } from 'react';
 import { Select } from 'react-functional-select';
-import { formatJavaScriptObj } from '../../utils';
 import { actionCreators } from '../../store/form';
 import { useDispatch, useSelector } from 'react-redux';
 import { THEME_CONFIG, DROPDOWN_TEST_DATA } from '../../config';
@@ -11,7 +10,7 @@ import type { IDropdownOption } from '../../store/form';
 
 const SelectFormGroup: FunctionComponent = () => {
   const dispatch = useDispatch();
-  const selectedOption = useSelector<RootState, IDropdownOption>((state) => state.form.selectedDropdownOption);
+  const selectedOption = useSelector<RootState, IDropdownOption>((state) => state.form.selectedOption);
 
   const onOptionChange = useCallback((option: IDropdownOption) => {
     dispatch(actionCreators.selectOption(option));
@@ -30,7 +29,7 @@ const SelectFormGroup: FunctionComponent = () => {
         />
       </div>
       <p className='subtitle is-5'>
-        Option: <code>{formatJavaScriptObj(selectedOption)}</code>
+        Value: <code className="form-value">{selectedOption?.label}</code>
       </p>
     </div>
   );

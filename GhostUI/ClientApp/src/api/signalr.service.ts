@@ -1,9 +1,21 @@
 import { toast } from 'react-toastify';
-import { SIGNALR_CONFIG } from '../config';
-import { renderToastifyContent } from '../utils';
-import { HubConnection, HubConnectionBuilder, HubConnectionState, LogLevel } from '@microsoft/signalr';
+import {
+  LogLevel,
+  HubConnection,
+  HubConnectionState,
+  HubConnectionBuilder
+} from '@microsoft/signalr';
 
-import type { IconProp } from '@fortawesome/fontawesome-svg-core';
+const SIGNALR_CONFIG = {
+  messageDelay: 3000,
+  baseUrl: '/hubs/users',
+  toastIcon: 'info-circle',
+  events: {
+    login: 'UserLogin',
+    logout: 'UserLogout',
+    closeConnections: 'CloseAllConnections'
+  }
+};
 
 /**
  * SignalR API abstraction layer communication.
@@ -47,13 +59,9 @@ class SignalRService {
 
   private hubToastMessage(
     message: string,
-    icon: IconProp = SIGNALR_CONFIG.toastIcon,
     delay: number = SIGNALR_CONFIG.messageDelay
   ): void {
-    setTimeout(() => {
-      const toastContent = renderToastifyContent(message, icon);
-      toast.info(toastContent);
-    }, delay);
+    setTimeout(() => toast.info(message), delay);
   }
 
   private registerOnServerEvents(): void {
@@ -65,14 +73,17 @@ class SignalRService {
       this.hubToastMessage('A user has logged out (SignalR)');
     });
 
-    this._hubConnection?.on(SIGNALR_CONFIG.events.closeConnections, async (reason: string) => {
-      try {
-        await this._hubConnection?.stop();
-        this.hubToastMessage(`All hub connections closed (SignalR) - ${reason}`);
-      } catch (e) {
-        console.error(e);
+    this._hubConnection?.on(
+      SIGNALR_CONFIG.events.closeConnections,
+      async (reason: string) => {
+        try {
+          await this._hubConnection?.stop();
+          this.hubToastMessage(`All hub connections closed (SignalR) - ${reason}`);
+        } catch (e) {
+          console.error(e);
+        }
       }
-    });
+    );
   }
 }
 

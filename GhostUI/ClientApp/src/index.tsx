@@ -1,35 +1,44 @@
 import 'react-hot-loader'; // Must be imported befire React and ReactDOM
-import ReactDOM from 'react-dom';
-import { StrictMode, Fragment } from 'react';
+import { render } from 'react-dom';
+import { StrictMode } from 'react';
 import { Provider } from 'react-redux';
-import './assets/style/scss/site.scss';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
-import { createBrowserHistory } from 'history';
-import { ToastContainer } from 'react-toastify';
-import { configureStore, RootState } from './store';
+import './assets/style/scss/site.scss';
 import './config/fa.config';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import { configureStore, RootState } from './store';
+import { cssTransition, ToastContainer } from 'react-toastify';
 import reportWebVitals from './reportWebVitals';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
-// Create browser history & initial store state (if exists) to use in the redux store
-const history = createBrowserHistory();
 const initialState: RootState = (window as any)?.initialReduxState;
-const store = configureStore(history, initialState);
+const store = configureStore(initialState);
 
-ReactDOM.render(
-  <Fragment>
-    <StrictMode>
+const transition = cssTransition({
+  enter: 'custom__toast__animate__bounceIn',
+  exit: 'custom__toast__animate__bounceOut'
+});
+
+const ToastElement = (
+  <ToastContainer
+    newestOnTop
+    theme='colored'
+    autoClose={1500}
+    draggable={false}
+    position='top-center'
+    transition={transition}
+  />
+);
+
+render(
+  <StrictMode>
+    <BrowserRouter>
       <Provider store={store}>
-        <App history={history} />
+        <App />
       </Provider>
-    </StrictMode>
-    <ToastContainer
-      newestOnTop
-      autoClose={3500}
-      draggable={false}
-      position='top-center'
-    />
-  </Fragment>,
+    </BrowserRouter>
+    {ToastElement}
+  </StrictMode>,
   document.getElementById('root')
 );
 

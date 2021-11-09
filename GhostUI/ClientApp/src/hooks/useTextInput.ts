@@ -1,4 +1,5 @@
 import { useState, useCallback, useMemo } from 'react';
+
 import type { ChangeEvent } from 'react';
 
 const useTextInput = (
@@ -6,7 +7,6 @@ const useTextInput = (
   type: 'text' | 'password' = 'text',
 ) => {
   const [value, setValue] = useState<string>(initial);
-
   const clear = useCallback(() => setValue(''), []);
   const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => setValue(e.currentTarget.value), []);
 

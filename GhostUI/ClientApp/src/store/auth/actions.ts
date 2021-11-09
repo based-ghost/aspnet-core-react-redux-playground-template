@@ -12,18 +12,22 @@ export const actionCreators = {
     payload: { status },
     type: AuthActionType.SET_AUTH_STATUS,
   }),
-  login: (credentials: ICredentials): AppThunk<AuthPayload> => async (dispatch) => {
-    try {
-      const authUser = await AuthApi.loginAsync(credentials);
-      const success = authUser?.status === 'success';
-      const payload = success ? authUser : undefined;
+  login:
+    (credentials: ICredentials): AppThunk<AuthPayload> =>
+    async (dispatch) => {
+      try {
+        const authUser = await AuthApi.loginAsync(credentials);
+        const success = authUser?.status === "success";
+        const payload = success ? authUser : undefined;
 
-      dispatch({
-        type: success ? AuthActionType.LOGIN_SUCCESS : AuthActionType.LOGIN_FAIL,
-        payload
-      });
-    } catch (e) {
-      dispatch({ type: AuthActionType.LOGIN_FAIL });
-    }
-  },
+        dispatch({
+          payload,
+          type: success ? AuthActionType.LOGIN_SUCCESS : AuthActionType.LOGIN_FAIL,
+        });
+      } catch (e) {
+        dispatch({
+          type: AuthActionType.LOGIN_FAIL,
+        });
+      }
+    },
 };

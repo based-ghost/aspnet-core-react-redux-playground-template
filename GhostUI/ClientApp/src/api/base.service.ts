@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import type { AxiosInstance } from 'axios';
 
 /**
@@ -7,10 +8,10 @@ import type { AxiosInstance } from 'axios';
 export abstract class BaseService {
   protected readonly $http: AxiosInstance;
 
-  protected constructor(controllerName: string, requestTimeout: number = 50000) {
+  protected constructor(controller: string, timeout: number = 50000) {
     this.$http = axios.create({
-      timeout: requestTimeout,
-      baseURL: `http://localhost:52530/api/${controllerName}/`
+      timeout,
+      baseURL: `http://localhost:52530/api/${controller}/`
     });
   }
 }

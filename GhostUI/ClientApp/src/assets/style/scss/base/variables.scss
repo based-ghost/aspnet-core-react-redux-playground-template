@@ -9,33 +9,34 @@ $color-nav-bar: #33363b;
 $color-hero-is-dark: #1f2227;
 $color-blue-highlight: $cyan;
 
+$color-subtitle: #646464;
+$color-code: #363636;
+
 /* REACT-TOASTIFY OVERRIDES */
-$rt-toast-min-height: 78px;
-$rt-toast-border-radius: 3px;
-$rt-color-info: #3298dc;
-$rt-color-error: $red;
+$toastify-color-error: $red;
+$toastify-toast-border-radius: 3px;
 
 /* MIXINS */
 @mixin renderTabletNavView {
-  @media only screen and (max-width: 950px) and (min-width: 600px) {
+  @media all and (max-width: 950px) and (min-width: 600px) {
     @content;
   }
 }
 
 @mixin renderMobileNavView {
-  @media only screen and (max-width: 599px) {
+  @media all and (max-width: 599px) {
     @content;
   }
 }
 
 @mixin removeNavBarPadding {
-  @media only screen and (max-width: 1099px) {
+  @media all and (max-width: 1099px) {
     @content;
   }
 }
 
 @mixin reduceNavBarPadding {
-  @media only screen and (max-width: 1472px) and (min-width: 1100px) {
+  @media all and (max-width: 1472px) and (min-width: 1100px) {
     @content;
   }
 }

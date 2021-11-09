@@ -1,35 +1,63 @@
+import { Login, Dashboard, FetchData, Form } from '../containers';
+
+import type { ComponentType } from 'react';
+import type { Params } from 'react-router';
 import type { IconProp } from '@fortawesome/fontawesome-svg-core';
 
+export const TRANSITION_DEFAULT = {
+  classNames: 'fade',
+  timeout: { enter: 250, exit: 250 }
+};
+
+export type RouteComponent = ComponentType<any>;
+export type TransitionMetaData = typeof TRANSITION_DEFAULT;
+
 export type Route = Readonly<{
+  name: string;
   path: string;
   icon?: IconProp;
-  exact?: boolean;
-  displayName: string;
   showInNav?: boolean;
-  pathAbsolute?: string;
+  Component: RouteComponent;
+  transition: TransitionMetaData;
+  params?: Readonly<Params<string>>;
 }>;
 
-export const RoutesConfig = Object.freeze<Record<string, Route>>({
-  Login: {
+export const Routes: Route[] = [
+  {
     path: '/',
-    exact: true,
     icon: 'sign-out-alt',
-    displayName: 'Logout',
+    name: 'Logout',
+    Component: Login,
+    transition: TRANSITION_DEFAULT
   },
-  Form: {
+  {
     path: '/form',
     showInNav: true,
-    displayName: 'Form',
+    name: 'Form',
+    Component: Form,
+    transition: {
+      classNames: 'page-slide-left',
+      timeout: { enter: 350, exit: 250 }
+    }
   },
-  Dashboard: {
+  {
     showInNav: true,
-    path: '/dashboard',
-    displayName: 'Home',
+    path: '/home',
+    name: 'Home',
+    Component: Dashboard,
+    transition: TRANSITION_DEFAULT
   },
-  FetchData: {
+  {
     showInNav: true,
-    displayName: 'Fetch',
-    path: '/fetchdata',
-    pathAbsolute: '/fetchdata/:startDateIndex?',
-  },
-});
+    name: 'Fetch',
+    path: '/fetch/:startDateIndex',
+    Component: FetchData,
+    transition: {
+      classNames: 'page-slide-right',
+      timeout: { enter: 350, exit: 250 }
+    },
+    params: {
+      startDateIndex: '0'
+    }
+  }
+];
