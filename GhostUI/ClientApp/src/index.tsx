@@ -6,29 +6,14 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import './assets/style/scss/site.scss';
 import './config/fa.config';
+import { toastifyProps } from './config';
 import { configureStore, RootState } from './store';
-import { cssTransition, ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 const initialState: RootState = (window as any)?.initialReduxState;
 const store = configureStore(initialState);
-
-const transition = cssTransition({
-  enter: 'custom__toast__animate__bounceIn',
-  exit: 'custom__toast__animate__bounceOut'
-});
-
-const ToastElement = (
-  <ToastContainer
-    newestOnTop
-    theme='colored'
-    autoClose={1500}
-    draggable={false}
-    position='top-center'
-    transition={transition}
-  />
-);
 
 render(
   <StrictMode>
@@ -37,7 +22,7 @@ render(
         <App />
       </Provider>
     </BrowserRouter>
-    {ToastElement}
+    <ToastContainer {...toastifyProps} />
   </StrictMode>,
   document.getElementById('root')
 );

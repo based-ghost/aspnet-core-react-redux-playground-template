@@ -3,16 +3,10 @@ import { Routes as routes } from '../config';
 import { NavLink, generatePath } from 'react-router-dom';
 import { ReactComponent as BulmaLogoSVG } from '../assets/image/BulmaLogo.svg';
 
-import type { Route } from '../config';
 import type { FunctionComponent } from 'react';
 
 const Navbar: FunctionComponent = () => {
   const isLoggedIn = useIsLoggedIn();
-
-  const navRoutes = routes.reduce((acc: Route[], r: Route) => {
-    r.showInNav && acc.push(r);
-    return acc;
-  }, []);
 
   return (
     <nav
@@ -31,15 +25,17 @@ const Navbar: FunctionComponent = () => {
         </div>
         <div className='navbar-routes'>
           {isLoggedIn &&
-            navRoutes.map(({ path, name, params }) => (
-              <NavLink
-                key={name}
-                to={generatePath(path, params)}
-                className={({ isActive }) => 'navbar-item' + (isActive ? ' is-active' : '')}
-              >
-                {name}
-              </NavLink>
-            ))}
+            routes
+              .filter((x) => x.showInNav)
+              .map(({ path, name, params }) => (
+                <NavLink
+                  key={name}
+                  to={generatePath(path, params)}
+                  className={({ isActive }) => 'navbar-item' + (isActive ? ' is-active' : '')}
+                >
+                  {name}
+                </NavLink>
+              ))}
         </div>
       </div>
     </nav>

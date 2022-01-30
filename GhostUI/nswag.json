@@ -1,5 +1,5 @@
 ﻿{
-  "runtime": "Net50",
+  "runtime": "Net60",
   "defaultVariables": null,
   "documentGenerator": {
     "aspNetCoreToOpenApi": {
@@ -46,8 +46,8 @@
       "createWebHostBuilderMethod": null,
       "startupType": null,
       "allowNullableBodyParameters": true,
-      "output": "wwwroot/docs/api-specification.json",
-      "outputType": "OpenApi3",
+      "output": "openapi.json",
+      "outputType": "Swagger2",
       "assemblyPaths": [],
       "assemblyConfig": null,
       "referencePaths": [],

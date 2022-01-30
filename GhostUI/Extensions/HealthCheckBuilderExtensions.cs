@@ -1,4 +1,5 @@
-﻿using GhostUI.HealthChecks;
+﻿using System.Linq;
+using GhostUI.HealthChecks;
 using System.Collections.Generic;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
@@ -11,10 +12,13 @@ namespace GhostUI.Extensions
             this IHealthChecksBuilder builder,
             string name,
             HealthStatus? failureStatus = null,
-            IEnumerable<string> tags = null,
+            IEnumerable<string>? tags = null,
             long? thresholdInBytes = null)
         {
-            builder.AddCheck<GCInfoHealthCheck>(name, failureStatus ?? HealthStatus.Degraded, tags);
+            builder.AddCheck<GCInfoHealthCheck>(
+                name, 
+                failureStatus ?? HealthStatus.Degraded, 
+                tags ?? Enumerable.Empty<string>());
 
             if (thresholdInBytes.HasValue)
                 builder.Services.Configure<GCInfoOptions>(name, options => options.Threshold = thresholdInBytes.Value);

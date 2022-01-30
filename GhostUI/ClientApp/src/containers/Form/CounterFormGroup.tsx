@@ -6,9 +6,9 @@ import type { RootState } from '../../store';
 import type { FunctionComponent } from 'react';
 
 const CounterFormGroup: FunctionComponent = () => {
+  const dispatch = useDispatch();
   const count = useSelector<RootState, number>((state) => state.form.count);
 
-  const dispatch = useDispatch();
   const decrement = () => dispatch(actionCreators.decrement());
   const increment = () => dispatch(actionCreators.increment());
 

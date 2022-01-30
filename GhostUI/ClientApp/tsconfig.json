@@ -20,10 +20,10 @@
       "dom.iterable",
       "esnext"
     ],
-    "allowJs": true
+    // "allowJs": true
   },
   "include": [
-    "src"
+    "src/**/*"
   ],
   "exclude": [
     "node_modules"

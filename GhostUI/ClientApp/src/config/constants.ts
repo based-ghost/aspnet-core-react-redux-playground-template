@@ -39,7 +39,7 @@ export const DROPDOWN_TEST_DATA: IDropdownOption[] = [
 export const NUGET_URL_CONFIG = {
   HealthUi: 'http://localhost:52530/healthchecks-ui',
   HealthJson: 'http://localhost:52530/healthchecks-json',
-  SwaggerDocs: 'http://localhost:52530/docs'
+  SwaggerDocs: 'http://localhost:52530/swagger'
 };
 
 /**

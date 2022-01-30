@@ -23,7 +23,7 @@ namespace GhostUI.Controllers
         public async Task<IActionResult> Login([FromBody]Credentials request)
         {
             await _hubContext.Clients.All.SendAsync("UserLogin");
-            var authUser = new AuthUser("success", "38595847A485DJSHND94857", request?.userName);
+            var authUser = new AuthUser("success", "38595847A485DJSHND94857", request?.userName ?? "");
             return Ok(authUser);
         }
 
