@@ -20,7 +20,7 @@ import {
 
 import {
   faGithub,
-  faMediumM,
+  faEtsy,
   faTwitter
 } from '@fortawesome/free-brands-svg-icons';
 
@@ -41,6 +41,6 @@ library.add(
   faSignOutAlt,
   faUser,
   faGithub,
-  faMediumM,
+  faEtsy,
   faTwitter
 );

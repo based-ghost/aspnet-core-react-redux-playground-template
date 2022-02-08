@@ -23,6 +23,7 @@ const FADE_IN_KEYFRAMES = keyframes`
 const CogIcon = styled(FontAwesomeIcon)`
   color: #fff;
   padding: 10px;
+  font-size: 1.75em;
 `;
 
 const SettingsLink = styled.a`
@@ -180,10 +181,7 @@ const Settings: FunctionComponent = () => {
         ref={settingsLinkRef}
         onClick={() => setisMenuOpen((prevIsMenuOpen) => !prevIsMenuOpen)}
       >
-        <CogIcon
-          icon='cog'
-          size='3x'
-        />
+        <CogIcon icon='cog' />
       </SettingsLink>
       {isMenuOpen && (
         <SettingsMenu>

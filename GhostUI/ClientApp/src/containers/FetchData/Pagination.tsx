@@ -12,13 +12,13 @@ const Pagination = memo<PaginationProps>(({ startDateIndex = 0 }) => (
       className='button is-info'
       to={`/fetch/${startDateIndex - 5}`}
     >
-      <FontAwesomeIcon size='2x' icon='angle-double-left'/>
+      <FontAwesomeIcon icon='angle-double-left' />
     </Link>
     <Link
       className='button is-info'
       to={`/fetch/${startDateIndex + 5}`}
     >
-      <FontAwesomeIcon size='2x' icon='angle-double-right'/>
+      <FontAwesomeIcon icon='angle-double-right' />
     </Link>
   </p>
 ));

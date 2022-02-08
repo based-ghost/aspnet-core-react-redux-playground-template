@@ -233,19 +233,20 @@ code {
 }
 
 .pagination-group {
-  .button:not(:last-child) {
-    margin-right: 0.75rem !important;
-  }
-
   > a {
     width: 8em;
 
     &:nth-child(1) {
       margin-left: auto;
+      margin-right: 0.75rem !important;
     }
 
     &:nth-child(2) {
       margin-right: auto;
+    }
+
+    svg {
+      font-size: 1.65em;
     }
   }
 }

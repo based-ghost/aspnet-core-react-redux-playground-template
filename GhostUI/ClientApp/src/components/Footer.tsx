@@ -80,10 +80,12 @@ const Footer: FunctionComponent = () => (
         href='#/'
         aria-label='Medium'
       >
-        <FontAwesomeIcon icon={['fab', 'medium-m']} />
+        <FontAwesomeIcon icon={['fab', 'etsy']} />
       </FooterLink>
     </FooterButtons>
-    <BrandContent>based-ghost LLC © 2021</BrandContent>
+    <BrandContent>
+      {`based-ghost LLC © ${new Date().getFullYear()}`}
+    </BrandContent>
   </StyledFooter>
 );
 
