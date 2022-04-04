@@ -3,7 +3,7 @@ import { AuthActionType, AuthStatusEnum } from './types';
 import type { ReduxAction } from '../';
 import type { AuthPayload, IAuthUser, IAuthState } from './types';
 
-const initialState: IAuthState = {
+const INIT_STATE: IAuthState = {
   token: '',
   userName: '',
   isAuthenticated: false,
@@ -11,12 +11,12 @@ const initialState: IAuthState = {
 };
 
 export const reducer = (
-  state: IAuthState = initialState,
+  state: IAuthState = INIT_STATE,
   action: ReduxAction<AuthPayload>
 ): IAuthState => {
   switch (action.type) {
     case AuthActionType.SET_AUTH_STATUS: {
-      const status = action?.payload?.status || AuthStatusEnum.NONE;
+      const status = action.payload?.status || INIT_STATE.status;
 
       return {
         ...state,
@@ -24,7 +24,7 @@ export const reducer = (
       };
     }
     case AuthActionType.LOGIN_SUCCESS: {
-      const authUser = (action!.payload as IAuthUser);
+      const authUser = action.payload as IAuthUser;
 
       return {
         ...authUser,
@@ -34,7 +34,7 @@ export const reducer = (
     case AuthActionType.LOGOUT:
     case AuthActionType.LOGIN_FAIL:
     case AuthActionType.RESET_STATE: {
-      return { ...initialState };
+      return { ...INIT_STATE };
     }
     case AuthActionType.LOGIN:
     default:

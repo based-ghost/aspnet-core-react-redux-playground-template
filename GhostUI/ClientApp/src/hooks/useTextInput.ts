@@ -2,9 +2,11 @@ import { useState, useCallback, useMemo } from 'react';
 
 import type { ChangeEvent } from 'react';
 
+type InputType = 'text' | 'password';
+
 const useTextInput = (
   initial: string = '',
-  type: 'text' | 'password' = 'text',
+  type: InputType = 'text'
 ) => {
   const [value, setValue] = useState<string>(initial);
   const clear = useCallback(() => setValue(''), []);

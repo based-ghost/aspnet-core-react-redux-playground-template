@@ -1,4 +1,5 @@
-﻿using GhostUI.Hubs;
+﻿using System;
+using GhostUI.Hubs;
 using GhostUI.Models;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -23,7 +24,10 @@ namespace GhostUI.Controllers
         public async Task<IActionResult> Login([FromBody]Credentials request)
         {
             await _hubContext.Clients.All.SendAsync("UserLogin");
-            var authUser = new AuthUser("success", "38595847A485DJSHND94857", request?.userName ?? "");
+
+            var token = Guid.NewGuid().ToString();
+            var authUser = new AuthUser("success", token, request?.userName ?? "");
+
             return Ok(authUser);
         }
 

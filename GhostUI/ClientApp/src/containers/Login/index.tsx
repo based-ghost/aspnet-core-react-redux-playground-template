@@ -17,7 +17,6 @@ import type { ICredentials } from '../../store/auth';
 
 const Login: FunctionComponent = () => {
   const toastIdRef = useRef<string | number>('');
-
   const [rememberMe, setRememberMe] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [isInputInvalid, setIsInputInvalid] = useState<boolean>(false);

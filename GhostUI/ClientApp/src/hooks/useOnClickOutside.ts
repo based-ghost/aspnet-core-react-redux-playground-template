@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react';
 
 import type { RefObject } from 'react';
 
-// Events to addEventListener for if not specified
+// Events to addEventListener for if 'events' param not specified
 const DEFAULT_EVENTS = ['mousedown', 'touchstart'];
 
 const useOnClickOutside = (
@@ -22,10 +22,10 @@ const useOnClickOutside = (
       !el?.contains(e.target as Node) && onClickAwayRef.current(e);
     };
 
-    events.forEach((evt) => document.addEventListener(evt, onClickHandler));
+    events.forEach((e) => document.addEventListener(e, onClickHandler));
 
     return () => {
-      events.forEach((evt) => document?.removeEventListener(evt, onClickHandler));
+      events.forEach((e) => document.removeEventListener(e, onClickHandler));
     };
   }, [ref, events]);
 };

@@ -1,6 +1,6 @@
 import 'react-hot-loader'; // Must be imported befire React and ReactDOM
 import { createRoot } from 'react-dom/client';
-import { StrictMode, useEffect } from 'react';
+import { useEffect, StrictMode } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
@@ -13,11 +13,10 @@ import { ToastContainer } from 'react-toastify';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
+const container = document.getElementById('root');
+const root = createRoot(container as HTMLElement);
 const initialState: RootState = (window as any)?.initialReduxState;
 const store = configureStore(initialState);
-
-const container = document.getElementById('root') as Element | DocumentFragment;
-const root = createRoot(container);
 
 function AppRenderer(): JSX.Element {
   useEffect(() => {

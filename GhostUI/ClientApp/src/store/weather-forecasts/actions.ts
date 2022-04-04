@@ -25,7 +25,6 @@ export const actionCreators = {
       // Build http request and success handler in Promise<void> wrapper / complete processing
       try {
         const forecasts = await SampleApi.getWeatherForecastsAsync(startDateIndex);
-
         dispatch({
           type: WeatherActionType.RECEIVE,
           payload: { forecasts, startDateIndex },

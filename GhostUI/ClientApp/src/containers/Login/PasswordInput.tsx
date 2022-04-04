@@ -39,7 +39,7 @@ const PasswordInput = memo<PasswordInputProps>(({
         <span
           onClick={toggleShowPassword}
           className='icon is-right icon-clickable'
-          data-tooltip={!showPassword ? 'Show password' : 'Hide password'}
+          data-tooltip={`${!showPassword ? 'Show' : 'Hide'} password`}
         >
           <FontAwesomeIcon icon={!showPassword ? 'eye' : 'eye-slash'} />
         </span>

@@ -2,17 +2,17 @@ import { FormActionType } from './types';
 import { DROPDOWN_TEST_DATA } from '../../config';
 
 import type { ReduxAction } from '../';
-import type { IFormState } from './types';
+import type { IFormState, FormPayload } from './types';
 
-const initialState: IFormState = {
+const INIT_STATE: IFormState = {
   count: 0,
   checked: false,
   selectedOption: DROPDOWN_TEST_DATA[0]
 };
 
 export const reducer = (
-  state: IFormState = initialState,
-  action: ReduxAction<any>
+  state: IFormState = INIT_STATE,
+  action: ReduxAction<FormPayload>
 ): IFormState => {
   switch (action.type) {
     case FormActionType.INCREMENT: {
@@ -28,7 +28,7 @@ export const reducer = (
       };
     }
     case FormActionType.DROPDOWN_SELECT: {
-      const { selectedOption } = action.payload;
+      const { selectedOption = INIT_STATE.selectedOption } = action.payload!;
 
       return {
         ...state,
@@ -36,7 +36,7 @@ export const reducer = (
       };
     }
     case FormActionType.CHECKBOX_CHECK: {
-      const { checked } = action.payload;
+      const { checked = INIT_STATE.checked } = action.payload!;
 
       return {
         ...state,

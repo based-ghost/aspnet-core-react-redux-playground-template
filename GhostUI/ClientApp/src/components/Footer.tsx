@@ -84,7 +84,7 @@ const Footer: FunctionComponent = () => (
       </FooterLink>
     </FooterButtons>
     <BrandContent>
-      {`based-ghost LLC © ${new Date().getFullYear()}`}
+      {`Copyright © ${new Date().getFullYear()} based-ghost LLC`}
     </BrandContent>
   </StyledFooter>
 );

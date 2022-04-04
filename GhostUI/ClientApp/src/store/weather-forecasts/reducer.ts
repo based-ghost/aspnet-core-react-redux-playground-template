@@ -3,19 +3,19 @@ import { WeatherActionType } from './types';
 import type { ReduxAction } from '../';
 import type { WeatherForecastPayload, IWeatherForecastsState } from './types';
 
-const initialState: IWeatherForecastsState = {
+const INIT_STATE: IWeatherForecastsState = {
   forecasts: [],
   isLoading: false,
   startDateIndex: 5
 };
 
 export const reducer = (
-  state: IWeatherForecastsState = initialState,
+  state: IWeatherForecastsState = INIT_STATE,
   action: ReduxAction<WeatherForecastPayload>
 ): IWeatherForecastsState => {
   switch (action.type) {
     case WeatherActionType.REQUEST: {
-      const { startDateIndex = 0 } = action.payload as WeatherForecastPayload;
+      const { startDateIndex = 0 } = action.payload!;
 
       return {
         ...state,
@@ -24,10 +24,7 @@ export const reducer = (
       };
     }
     case WeatherActionType.RECEIVE: {
-      const {
-        startDateIndex,
-        forecasts = []
-      } = action.payload as WeatherForecastPayload;
+      const { startDateIndex = 0, forecasts = [] } = action.payload!;
 
       // Only accept the incoming data if it matches the most recent request. This ensures we correctly handle out-of-order responses.
       if (startDateIndex === state.startDateIndex) {
