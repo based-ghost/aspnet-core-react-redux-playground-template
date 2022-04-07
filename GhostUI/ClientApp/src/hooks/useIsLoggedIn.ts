@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
-
 import type { RootState } from '../store';
 
 const useIsLoggedIn = (): boolean => {

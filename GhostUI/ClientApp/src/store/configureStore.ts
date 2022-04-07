@@ -1,8 +1,6 @@
 import thunk from 'redux-thunk';
 import createRootReducer from './rootReducer';
-import { applyMiddleware, compose, createStore } from 'redux';
-
-import type { Store } from 'redux';
+import { applyMiddleware, compose, createStore, type Store } from 'redux';
 import type { RootState } from './index';
 
 const configureStore = (initialState?: RootState): Store<RootState> => {

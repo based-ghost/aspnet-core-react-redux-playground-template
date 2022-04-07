@@ -1,5 +1,4 @@
 import { BaseService } from './base.service';
-
 import type { IWeatherForecast } from '../store/weather-forecasts';
 
 /**

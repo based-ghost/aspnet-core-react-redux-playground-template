@@ -1,6 +1,4 @@
-import { useRef, useEffect } from 'react';
-
-import type { RefObject } from 'react';
+import { useRef, useEffect, type RefObject } from 'react';
 
 // Events to addEventListener for if 'events' param not specified
 const DEFAULT_EVENTS = ['mousedown', 'touchstart'];

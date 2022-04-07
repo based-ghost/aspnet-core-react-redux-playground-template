@@ -1,4 +1,4 @@
-import { useCallback, useState, useRef } from 'react';
+import { useCallback, useState, useRef, type FunctionComponent } from 'react';
 import { Routes } from '../../config';
 import { toast } from 'react-toastify';
 import { useTextInput } from '../../hooks';
@@ -8,12 +8,9 @@ import PasswordInput from './PasswordInput';
 import { useNavigate } from 'react-router-dom';
 import { Authenticator } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
-import { actionCreators, AuthStatusEnum } from '../../store/auth';
+import { actionCreators, AuthStatusEnum, type ICredentials } from '../../store/auth';
 import BasedGhostLogoPNG from '../../assets/image/based-ghost-main.png';
-
 import type { RootState } from '../../store';
-import type { FunctionComponent } from 'react';
-import type { ICredentials } from '../../store/auth';
 
 const Login: FunctionComponent = () => {
   const toastIdRef = useRef<string | number>('');

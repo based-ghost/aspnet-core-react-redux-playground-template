@@ -1,7 +1,5 @@
-import { AuthActionType, AuthStatusEnum } from './types';
-
+import { AuthActionType, AuthStatusEnum, type AuthPayload, type IAuthUser, type IAuthState } from './types';
 import type { ReduxAction } from '../';
-import type { AuthPayload, IAuthUser, IAuthState } from './types';
 
 const INIT_STATE: IAuthState = {
   token: '',

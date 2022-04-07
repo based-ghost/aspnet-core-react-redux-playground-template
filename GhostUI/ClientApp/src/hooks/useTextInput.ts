@@ -1,6 +1,4 @@
-import { useState, useCallback, useMemo } from 'react';
-
-import type { ChangeEvent } from 'react';
+import { useState, useCallback, useMemo, type ChangeEvent } from 'react';
 
 type InputType = 'text' | 'password';
 

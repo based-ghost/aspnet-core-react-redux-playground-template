@@ -1,7 +1,6 @@
 import { actionCreators } from '../../store/form';
 import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import type { RootState } from '../../store';
 import type { FunctionComponent } from 'react';
 

@@ -1,14 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, type FunctionComponent } from 'react';
 import Pagination from './Pagination';
 import { Spinner } from '../../components';
 import ForecastTable from './ForecastTable';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { actionCreators } from '../../store/weather-forecasts';
-
+import { actionCreators, type IWeatherForecast } from '../../store/weather-forecasts';
 import type { RootState } from '../../store';
-import type { FunctionComponent } from 'react';
-import type { IWeatherForecast } from '../../store/weather-forecasts';
 
 const FetchData: FunctionComponent = () => {
   const dispatch = useDispatch();

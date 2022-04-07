@@ -1,9 +1,8 @@
 export { reducer } from './reducer';
 export { actionCreators } from './actions';
-export { WeatherActionType } from './types';
-
-export type {
-  IWeatherForecast,
-  IWeatherForecastsState,
-  WeatherForecastPayload
+export {
+  WeatherActionType,
+  type IWeatherForecast,
+  type IWeatherForecastsState,
+  type WeatherForecastPayload
 } from './types';

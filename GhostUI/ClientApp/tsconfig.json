@@ -13,6 +13,7 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
+    "preserveValueImports": true,
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,

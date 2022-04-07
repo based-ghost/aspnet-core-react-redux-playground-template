@@ -1,4 +1,4 @@
-import { ReactText } from 'react';
+import type { ReactText } from 'react';
 
 export const normalizeUnit = (size?: ReactText): string => {
   if (!size) return '0';

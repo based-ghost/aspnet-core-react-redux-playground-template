@@ -8,7 +8,7 @@ import './assets/style/scss/site.scss';
 import './config/fa.config';
 import { toastifyProps } from './config';
 import { SignalRApi } from './api/signalr.service';
-import { configureStore, RootState } from './store';
+import { configureStore, type RootState } from './store';
 import { ToastContainer } from 'react-toastify';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';

@@ -1,7 +1,6 @@
 import SelectFormGroup from './SelectFormGroup';
 import CounterFormGroup from './CounterFormGroup';
 import CheckboxFormGroup from './CheckboxFormGroup';
-
 import type { FunctionComponent } from 'react';
 
 const Form: FunctionComponent = () => (

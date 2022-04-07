@@ -4,7 +4,6 @@ import { Route, Routes } from 'react-router';
 import { useLocation } from 'react-router-dom';
 import { Routes as routes, TRANSITION_DEFAULT } from './config';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
-
 import type { FunctionComponent } from 'react';
 
 const App: FunctionComponent = () => {

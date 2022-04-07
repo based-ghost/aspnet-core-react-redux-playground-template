@@ -1,10 +1,10 @@
 export { reducer } from './reducer';
 export { actionCreators } from './actions';
-export { AuthActionType, AuthStatusEnum } from './types';
-
-export type {
-  AuthPayload,
-  IAuthUser,
-  IAuthState,
-  ICredentials
+export {
+  AuthActionType,
+  AuthStatusEnum,
+  type AuthPayload,
+  type IAuthUser,
+  type IAuthState,
+  type ICredentials
 } from './types';

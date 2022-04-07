@@ -1,5 +1,4 @@
 import { BaseService } from './base.service';
-
 import type { AxiosResponse } from 'axios';
 import type { IAuthUser, ICredentials } from '../store/auth/types';
 

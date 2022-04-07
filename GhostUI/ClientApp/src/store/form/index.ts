@@ -1,5 +1,3 @@
 export { reducer } from './reducer';
-export { FormActionType } from './types';
 export { actionCreators } from './actions';
-
-export type { IFormState, IDropdownOption } from './types';
+export { FormActionType, type IFormState, type IDropdownOption } from './types';

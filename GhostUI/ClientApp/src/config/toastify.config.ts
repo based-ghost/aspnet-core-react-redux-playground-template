@@ -1,6 +1,4 @@
-import { cssTransition } from 'react-toastify';
-
-import type { ToastContainerProps } from 'react-toastify';
+import { cssTransition, type ToastContainerProps } from 'react-toastify';
 
 const transition = cssTransition({
   enter: 'custom__toast__animate__bounceIn',
