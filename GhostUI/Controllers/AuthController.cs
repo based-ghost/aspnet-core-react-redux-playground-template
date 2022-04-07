@@ -26,7 +26,7 @@ namespace GhostUI.Controllers
             await _hubContext.Clients.All.SendAsync("UserLogin");
 
             var token = Guid.NewGuid().ToString();
-            var authUser = new AuthUser("success", token, request?.userName ?? "");
+            var authUser = new AuthUser("success", token, request?.UserName ?? "");
 
             return Ok(authUser);
         }

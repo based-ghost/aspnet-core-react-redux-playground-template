@@ -2,8 +2,8 @@
 {
     public interface ICredentials
     {
-        string? userName   { get; set; }
-        string? password   { get; set; }
-        bool    rememberMe { get; set; }
+        string? UserName   { get; set; }
+        string? Password   { get; set; }
+        bool    RememberMe { get; set; }
     }
 }
