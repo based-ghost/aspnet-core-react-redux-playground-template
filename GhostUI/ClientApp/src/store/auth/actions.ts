@@ -1,6 +1,6 @@
 import { AuthApi } from '../../api';
-import { AuthActionType, type AuthPayload, type ICredentials, type AuthStatusEnum } from './types';
 import type { AppThunk, ReduxAction } from '../';
+import { AuthActionType, type AuthPayload, type ICredentials, type AuthStatusEnum } from './types';
 
 export const actionCreators = {
   resetState: (): ReduxAction => ({

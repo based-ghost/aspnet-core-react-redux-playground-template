@@ -18,7 +18,7 @@ const root = createRoot(container as HTMLElement);
 const initialState: RootState = (window as any)?.initialReduxState;
 const store = configureStore(initialState);
 
-function AppRenderer(): JSX.Element {
+function AppRenderer() {
   useEffect(() => {
     setTimeout(async () => {
       await SignalRApi.startConnection();

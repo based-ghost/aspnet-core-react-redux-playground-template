@@ -1,6 +1,6 @@
 import { SampleApi } from '../../api';
-import { WeatherActionType, type WeatherForecastPayload } from './types';
 import type { ReduxAction, AppThunk } from '../';
+import { WeatherActionType, type WeatherForecastPayload } from './types';
 
 export const actionCreators = {
   resetState: (): ReduxAction<WeatherForecastPayload> => ({

@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import type { FunctionComponent } from 'react';
 import styled, { keyframes } from 'styled-components';
 
 type SpinnerProps = Readonly<{
@@ -47,15 +47,13 @@ const StyledSpinner = styled.div<SpinnerProps>`
   }
 `;
 
-const Spinner = memo<SpinnerProps>(({ isLoading }) => (
+const Spinner: FunctionComponent<SpinnerProps> = ({ isLoading }) => (
   <StyledSpinner isLoading={isLoading}>
     <div />
     <div />
     <div />
     <div />
   </StyledSpinner>
-));
-
-Spinner.displayName = 'Spinner';
+);
 
 export default Spinner;

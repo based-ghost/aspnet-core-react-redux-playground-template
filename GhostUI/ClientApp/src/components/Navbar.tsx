@@ -40,4 +40,5 @@ const Navbar: FunctionComponent = () => {
     </nav>
   );
 };
+
 export default Navbar;

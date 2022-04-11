@@ -1,5 +1,5 @@
-import { FormActionType, type FormPayload, type IDropdownOption } from './types';
 import type { ReduxAction } from '../';
+import { FormActionType, type FormPayload, type IDropdownOption } from './types';
 
 export const actionCreators = {
   increment: (): ReduxAction => ({
