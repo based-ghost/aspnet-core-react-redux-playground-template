@@ -62,9 +62,9 @@
   "devDependencies": {
     "@types/history": "^4.7.11",
     "@types/jest": "^27.4.1",
-    "@types/node": "^17.0.23",
-    "@types/react": "^18.0.4",
-    "@types/react-dom": "^18.0.0",
+    "@types/node": "^17.0.24",
+    "@types/react": "^18.0.5",
+    "@types/react-dom": "^18.0.1",
     "@types/react-redux": "^7.1.24",
     "@types/react-router": "^5.1.18",
     "@types/react-router-dom": "^5.3.3",
