@@ -1,5 +1,5 @@
 import { BaseService } from './base.service';
-import type { IWeatherForecast } from '../store/weatherSlice';
+import type { WeatherForecast } from '../store/weatherSlice';
 
 /**
  * SampleData API abstraction layer communication via Axios (typescript singleton pattern)
@@ -16,9 +16,9 @@ class SampleService extends BaseService {
     return this._sampleService || (this._sampleService = new this(this._controller));
   }
 
-  public async getForecastsAsync(startDateIndex: number): Promise<IWeatherForecast[]> {
+  public async getForecastsAsync(startDateIndex: number): Promise<WeatherForecast[]> {
     const url = `WeatherForecasts?startDateIndex=${startDateIndex}`;
-    const { data } = await this.$http.get<IWeatherForecast[]>(url);
+    const { data } = await this.$http.get<WeatherForecast[]>(url);
 
     return data;
   }

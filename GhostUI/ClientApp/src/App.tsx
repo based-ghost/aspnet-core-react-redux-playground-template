@@ -1,5 +1,4 @@
 import Layout from './Layout';
-import { hot } from 'react-hot-loader/root';
 import { Route, Routes } from 'react-router';
 import { useLocation } from 'react-router-dom';
 import type { FunctionComponent } from 'react';
@@ -35,4 +34,4 @@ const App: FunctionComponent = () => {
   );
 };
 
-export default hot(App);
+export default App;

@@ -1,4 +1,4 @@
-import { useCallback, useState, useRef, type FunctionComponent } from 'react';
+import { useCallback, useState, useRef, type ReactText, type FunctionComponent } from 'react';
 import { Routes } from '../../config';
 import { toast } from 'react-toastify';
 import { useTextInput } from '../../hooks';
@@ -9,10 +9,10 @@ import { useNavigate } from 'react-router-dom';
 import { Authenticator } from '../../components';
 import { useAppDispatch, useAppSelector } from '../../store';
 import BasedGhostLogoPNG from '../../assets/image/based-ghost-main.png';
-import { loginAsync, setAuthStatus, resetState, AuthStatusEnum, type ICredentials } from '../../store/authSlice';
+import { loginAsync, setAuthStatus, resetState, AuthStatusEnum, type Credentials } from '../../store/authSlice';
 
 const Login: FunctionComponent = () => {
-  const toastIdRef = useRef<string | number>('');
+  const toastIdRef = useRef<ReactText>('');
   const [rememberMe, setRememberMe] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [isInputInvalid, setIsInputInvalid] = useState<boolean>(false);
@@ -62,7 +62,7 @@ const Login: FunctionComponent = () => {
       dispatchAuthStatus(AuthStatusEnum.PROCESS);
 
       setTimeout(() => {
-        const credentials: ICredentials = {
+        const credentials: Credentials = {
           rememberMe,
           userName: userNameInput.value,
           password: passwordInput.value,

@@ -1,7 +1,6 @@
-import 'react-hot-loader'; // Must be imported befire React and ReactDOM
+import { Provider } from 'react-redux';
 import { createRoot } from 'react-dom/client';
 import { useEffect, StrictMode } from 'react';
-import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import './assets/style/scss/site.scss';

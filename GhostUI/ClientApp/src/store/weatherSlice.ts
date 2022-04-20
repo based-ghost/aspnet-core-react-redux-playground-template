@@ -1,7 +1,7 @@
 import { SampleApi } from 'src/api';
 import { createAsyncThunk, createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
-export type IWeatherForecast = Readonly<{
+export type WeatherForecast = Readonly<{
   id: number;
   summary: string;
   temperatureC: number;
@@ -9,15 +9,15 @@ export type IWeatherForecast = Readonly<{
   dateFormatted: string;
 }>;
 
-export type IWeatherState = Readonly<{
+export type WeatherState = Readonly<{
   isLoading: boolean;
   startDateIndex: number;
-  forecasts: IWeatherForecast[];
+  forecasts: WeatherForecast[];
 }>;
 
-export type ReceiveForecastsPayload = Pick<IWeatherState, "forecasts" | "startDateIndex">;
+export type ReceiveForecastsPayload = Pick<WeatherState, "forecasts" | "startDateIndex">;
 
-const initialState: IWeatherState = {
+const initialState: WeatherState = {
   forecasts: [],
   isLoading: false,
   startDateIndex: 5
@@ -48,7 +48,7 @@ export const getForecastsAsync = createAsyncThunk(
   'weather/getForecastsAsync',
   async (startDateIndex: number, { dispatch, getState }) => {
     // If param startDateIndex === state.startDateIndex, do not perform action
-    const { startDateIndex: stateIdx } = (getState as () => IWeatherState)();
+    const { startDateIndex: stateIdx } = (getState as () => WeatherState)();
     if (startDateIndex === stateIdx) {
       return;
     }

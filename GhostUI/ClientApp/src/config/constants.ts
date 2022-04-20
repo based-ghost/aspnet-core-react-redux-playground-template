@@ -1,6 +1,6 @@
 import type { AnchorHTMLAttributes } from 'react';
 import type { Theme } from 'react-functional-select';
-import type { IDropdownOption } from '../store/formSlice';
+import type { SelectOption } from '../store/formSlice';
 
 /**
  * react-functional-select 'themeConfig' property
@@ -23,9 +23,9 @@ export const THEME_CONFIG: Theme = {
  };
 
 /**
- * Dropdown test data
+ * Select control test data
  */
-export const DROPDOWN_TEST_DATA: IDropdownOption[] = [
+export const DROPDOWN_TEST_DATA: SelectOption[] = [
   { value: 1, label: 'Option 1' },
   { value: 2, label: 'Option 2' },
   { value: 3, label: 'Option 3' },

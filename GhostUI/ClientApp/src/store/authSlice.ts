@@ -11,21 +11,21 @@ export const AuthStatusEnum = {
 
 export type AuthStatusEnum = typeof AuthStatusEnum[keyof typeof AuthStatusEnum];
 
-export type ICredentials = {
+export type Credentials = {
   userName?: string;
   password?: string;
   rememberMe?: boolean;
 };
 
-export type IAuthUser = {
+export type AuthUser = {
   token?: string;
   userName?: string;
   status: AuthStatusEnum;
 };
 
-export type IAuthState = IAuthUser & { isAuthenticated: boolean; };
+export type AuthState = AuthUser & { isAuthenticated: boolean; };
 
-const initialState: IAuthState = {
+const initialState: AuthState = {
   token: '',
   userName: '',
   isAuthenticated: false,
@@ -33,8 +33,8 @@ const initialState: IAuthState = {
 };
 
 const replaceState = (
-  state: IAuthState,
-  { status, token, userName, isAuthenticated }: IAuthState
+  state: AuthState,
+  { status, token, userName, isAuthenticated }: AuthState
 ) => {
   state.token = token;
   state.status = status;
@@ -49,7 +49,7 @@ export const authSlice = createSlice({
     setAuthStatus: (state, action: PayloadAction<AuthStatusEnum>) => {
       state.status = action.payload;
     },
-    setUserLogin: (state, action: PayloadAction<IAuthState>) => {
+    setUserLogin: (state, action: PayloadAction<AuthState>) => {
       replaceState(state, action.payload);
     },
     resetState: (state) => {
@@ -60,7 +60,7 @@ export const authSlice = createSlice({
 
 export const loginAsync = createAsyncThunk(
   'auth/loginAsync',
-  async (credentials: ICredentials, { dispatch }) => {
+  async (credentials: Credentials, { dispatch }) => {
     try {
       const authUser = await AuthApi.loginAsync(credentials);
       const payload = { ...authUser, isAuthenticated: true };

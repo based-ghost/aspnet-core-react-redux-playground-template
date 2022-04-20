@@ -1,3 +1,2 @@
-export * from './classNames';
-export * from './normalizeUnit';
-export * from './isArrayWithLength';
+export { classNames } from './classNames';
+export { isArrayWithLength } from './isArrayWithLength';

@@ -2,13 +2,13 @@ import { Select } from 'react-functional-select';
 import { useCallback, type FunctionComponent } from 'react';
 import { useAppSelector, useAppDispatch } from '../../store';
 import { THEME_CONFIG, DROPDOWN_TEST_DATA } from '../../config';
-import { selectOption, type IDropdownOption } from '../../store/formSlice';
+import { selectOption, type SelectOption } from '../../store/formSlice';
 
 const SelectFormGroup: FunctionComponent = () => {
   const dispatch = useAppDispatch();
-  const selectedOption = useAppSelector<IDropdownOption>((state) => state.form.selectedOption);
+  const selectedOption = useAppSelector<SelectOption>((state) => state.form.selectedOption);
 
-  const onOptionChange = useCallback((option: IDropdownOption) => {
+  const onOptionChange = useCallback((option: SelectOption) => {
     dispatch(selectOption(option));
   }, [dispatch]);
 

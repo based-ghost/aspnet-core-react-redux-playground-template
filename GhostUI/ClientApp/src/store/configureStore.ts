@@ -14,5 +14,5 @@ export const store = configureStore({
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
 
-// Inferred type: {auth: IAuthState, form: IFormState, weather: IWeatherState}
+// Inferred type: {auth: AuthState, form: FormState, weather: WeatherState}
 export type AppDispatch = typeof store.dispatch;

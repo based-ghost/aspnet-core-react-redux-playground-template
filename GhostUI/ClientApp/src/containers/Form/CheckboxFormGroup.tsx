@@ -1,5 +1,5 @@
 import { Checkbox } from '../../components';
-import { handleOnCheck } from '../../store/formSlice';
+import { setChecked } from '../../store/formSlice';
 import { useCallback, type FunctionComponent } from 'react';
 import { useAppSelector, useAppDispatch } from '../../store';
 
@@ -7,8 +7,8 @@ const CheckboxFormGroup: FunctionComponent = () => {
   const dispatch = useAppDispatch();
   const checked = useAppSelector<boolean>((state) => state.form.checked);
 
-  const onCheckEvent = useCallback((checked: boolean) => {
-    dispatch(handleOnCheck(checked));
+  const handleOnCheck = useCallback((checked: boolean) => {
+    dispatch(setChecked(checked));
   }, [dispatch]);
 
   return (
@@ -18,7 +18,7 @@ const CheckboxFormGroup: FunctionComponent = () => {
       <div className="field form-control-group">
         <Checkbox
           checked={checked}
-          onCheck={onCheckEvent}
+          onCheck={handleOnCheck}
         />
       </div>
       <p className="subtitle is-5">
