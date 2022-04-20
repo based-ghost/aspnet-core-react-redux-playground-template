@@ -32,27 +32,28 @@ const initialState: IAuthState = {
   status: AuthStatusEnum.NONE
 };
 
+const replaceState = (
+  state: IAuthState,
+  { status, token, userName, isAuthenticated }: IAuthState
+) => {
+  state.token = token;
+  state.status = status;
+  state.userName = userName;
+  state.isAuthenticated = isAuthenticated;
+};
+
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
     setAuthStatus: (state, action: PayloadAction<AuthStatusEnum>) => {
-      const status = action.payload || initialState.status;
-      state.status = status;
+      state.status = action.payload;
     },
     setUserLogin: (state, action: PayloadAction<IAuthState>) => {
-      const { status, token, userName, isAuthenticated } = action.payload;
-      state.token = token;
-      state.status = status;
-      state.userName = userName;
-      state.isAuthenticated = isAuthenticated;
+      replaceState(state, action.payload);
     },
     resetState: (state) => {
-      const { status, token, userName, isAuthenticated } = initialState;
-      state.token = token;
-      state.status = status;
-      state.userName = userName;
-      state.isAuthenticated = isAuthenticated;
+      replaceState(state, initialState);
     }
   }
 });
@@ -62,12 +63,9 @@ export const loginAsync = createAsyncThunk(
   async (credentials: ICredentials, { dispatch }) => {
     try {
       const authUser = await AuthApi.loginAsync(credentials);
-      dispatch(
-        setUserLogin({
-          ...authUser,
-          isAuthenticated: true,
-        })
-      );
+      const payload = { ...authUser, isAuthenticated: true };
+
+      dispatch(setUserLogin(payload));
     } catch (e) {
       dispatch(setAuthStatus(AuthStatusEnum.FAIL));
     }

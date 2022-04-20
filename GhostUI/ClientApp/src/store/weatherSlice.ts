@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-redeclare */
 import { SampleApi } from 'src/api';
 import { createAsyncThunk, createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
@@ -10,15 +9,15 @@ export type IWeatherForecast = Readonly<{
   dateFormatted: string;
 }>;
 
-export type IWeatherForecastsState = Readonly<{
+export type IWeatherState = Readonly<{
   isLoading: boolean;
   startDateIndex: number;
   forecasts: IWeatherForecast[];
 }>;
 
-export type ReceiveForecastsPayload = Pick<IWeatherForecastsState, "forecasts" | "startDateIndex">;
+export type ReceiveForecastsPayload = Pick<IWeatherState, "forecasts" | "startDateIndex">;
 
-const initialState: IWeatherForecastsState = {
+const initialState: IWeatherState = {
   forecasts: [],
   isLoading: false,
   startDateIndex: 5
@@ -48,9 +47,8 @@ export const weatherSlice = createSlice({
 export const getForecastsAsync = createAsyncThunk(
   'weather/getForecastsAsync',
   async (startDateIndex: number, { dispatch, getState }) => {
-    const { startDateIndex: stateIdx } = (getState as () => IWeatherForecastsState)();
-
     // If param startDateIndex === state.startDateIndex, do not perform action
+    const { startDateIndex: stateIdx } = (getState as () => IWeatherState)();
     if (startDateIndex === stateIdx) {
       return;
     }
@@ -61,7 +59,9 @@ export const getForecastsAsync = createAsyncThunk(
     // Build http request and success handler in Promise<void> wrapper / complete processing
     try {
       const forecasts = await SampleApi.getForecastsAsync(startDateIndex);
-      dispatch(receiveForecasts({ forecasts, startDateIndex }));
+      const payload = { forecasts, startDateIndex };
+
+      dispatch(receiveForecasts(payload));
     } catch (e) {
       console.error(e);
     }

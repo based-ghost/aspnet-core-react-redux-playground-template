@@ -1,7 +1,7 @@
 import { memo } from 'react';
-import type { IWeatherForecastsState } from '../../store/weatherSlice';
+import type { IWeatherState } from '../../store/weatherSlice';
 
-type ForecastTableProps = Pick<IWeatherForecastsState, 'forecasts'>;
+type ForecastTableProps = Pick<IWeatherState, 'forecasts'>;
 
 const ForecastTable = memo<ForecastTableProps>(({ forecasts }) => (
   <table className="table is-fullwidth">

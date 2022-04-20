@@ -1,9 +1,9 @@
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
+import type { IWeatherState } from '../../store/weatherSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import type { IWeatherForecastsState } from '../../store/weatherSlice';
 
-type PaginationProps = Pick<IWeatherForecastsState, 'startDateIndex'>;
+type PaginationProps = Pick<IWeatherState, 'startDateIndex'>;
 
 const Pagination = memo<PaginationProps>(({ startDateIndex = 0 }) => (
   <p className='buttons pagination-group'>
