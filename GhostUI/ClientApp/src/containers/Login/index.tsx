@@ -7,10 +7,9 @@ import UserNameInput from './UserNameInput';
 import PasswordInput from './PasswordInput';
 import { useNavigate } from 'react-router-dom';
 import { Authenticator } from '../../components';
-import { useDispatch, useSelector } from 'react-redux';
-import { actionCreators, AuthStatusEnum, type ICredentials } from '../../store/auth';
+import { useAppDispatch, useAppSelector } from '../../store';
 import BasedGhostLogoPNG from '../../assets/image/based-ghost-main.png';
-import type { RootState } from '../../store';
+import { loginAsync, setAuthStatus, resetState, AuthStatusEnum, type ICredentials } from '../../store/authSlice';
 
 const Login: FunctionComponent = () => {
   const toastIdRef = useRef<string | number>('');
@@ -23,16 +22,16 @@ const Login: FunctionComponent = () => {
 
   // react-redux hooks state/actions
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const status = useSelector<RootState, AuthStatusEnum>(state => state.auth.status);
+  const dispatch = useAppDispatch();
+  const status = useAppSelector<AuthStatusEnum>((state) => state.auth.status);
 
   const dispatchAuthStatus = useCallback((status: AuthStatusEnum): void => {
-    dispatch(actionCreators.setAuthStatus(status));
+    dispatch(setAuthStatus(status));
   }, [dispatch]);
 
   const onFailedAuth = useCallback((): void => {
     dispatchAuthStatus(AuthStatusEnum.NONE);
-    dispatch(actionCreators.resetState());
+    dispatch(resetState());
   }, [dispatch, dispatchAuthStatus]);
 
   const onSuccessfulAuth = useCallback((): void => {
@@ -69,7 +68,7 @@ const Login: FunctionComponent = () => {
           password: passwordInput.value,
         };
 
-        dispatch(actionCreators.login(credentials));
+        dispatch(loginAsync(credentials));
       }, 2000);
     }
   };

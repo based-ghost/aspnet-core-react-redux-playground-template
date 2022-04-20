@@ -1,16 +1,15 @@
-import { useCallback, type FunctionComponent } from 'react';
 import { Select } from 'react-functional-select';
-import { useDispatch, useSelector } from 'react-redux';
+import { useCallback, type FunctionComponent } from 'react';
+import { useAppSelector, useAppDispatch } from '../../store';
 import { THEME_CONFIG, DROPDOWN_TEST_DATA } from '../../config';
-import { actionCreators, type IDropdownOption } from '../../store/form';
-import type { RootState } from '../../store';
+import { selectOption, type IDropdownOption } from '../../store/formSlice';
 
 const SelectFormGroup: FunctionComponent = () => {
-  const dispatch = useDispatch();
-  const selectedOption = useSelector<RootState, IDropdownOption>((state) => state.form.selectedOption);
+  const dispatch = useAppDispatch();
+  const selectedOption = useAppSelector<IDropdownOption>((state) => state.form.selectedOption);
 
   const onOptionChange = useCallback((option: IDropdownOption) => {
-    dispatch(actionCreators.selectOption(option));
+    dispatch(selectOption(option));
   }, [dispatch]);
 
   return (

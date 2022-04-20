@@ -1,15 +1,14 @@
-import { useCallback, type FunctionComponent } from 'react';
 import { Checkbox } from '../../components';
-import { actionCreators } from '../../store/form';
-import { useDispatch, useSelector } from 'react-redux';
-import type { RootState } from '../../store';
+import { handleOnCheck } from '../../store/formSlice';
+import { useCallback, type FunctionComponent } from 'react';
+import { useAppSelector, useAppDispatch } from '../../store';
 
 const CheckboxFormGroup: FunctionComponent = () => {
-  const dispatch = useDispatch();
-  const checked = useSelector<RootState, boolean>((state) => state.form.checked);
+  const dispatch = useAppDispatch();
+  const checked = useAppSelector<boolean>((state) => state.form.checked);
 
   const onCheckEvent = useCallback((checked: boolean) => {
-    dispatch(actionCreators.handleOnCheck(checked));
+    dispatch(handleOnCheck(checked));
   }, [dispatch]);
 
   return (

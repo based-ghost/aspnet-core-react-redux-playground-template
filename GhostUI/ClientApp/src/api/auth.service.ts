@@ -1,6 +1,6 @@
 import { BaseService } from './base.service';
 import type { AxiosResponse } from 'axios';
-import type { IAuthUser, ICredentials } from '../store/auth/types';
+import type { IAuthUser, ICredentials } from '../store/authSlice';
 
 /**
  * Auth API abstraction layer communication via Axios (typescript singleton pattern)

@@ -3,23 +3,22 @@ import Pagination from './Pagination';
 import { Spinner } from '../../components';
 import ForecastTable from './ForecastTable';
 import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { actionCreators, type IWeatherForecast } from '../../store/weather-forecasts';
-import type { RootState } from '../../store';
+import { useAppSelector, useAppDispatch } from '../../store';
+import { getForecastsAsync, type IWeatherForecast } from '../../store/weatherSlice';
 
 const FetchData: FunctionComponent = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const { startDateIndex: startDateIndexDefault = '0' } = useParams();
   const intNextStartDateIndex = parseInt(startDateIndexDefault, 10);
 
-  const isLoading = useSelector<RootState, boolean>((state) => state.weatherForecasts.isLoading);
-  const forecasts = useSelector<RootState, IWeatherForecast[]>((state) => state.weatherForecasts.forecasts);
-  const startDateIndex = useSelector<RootState, number>((state) => state.weatherForecasts.startDateIndex);
+  const isLoading = useAppSelector<boolean>((state) => state.weather.isLoading);
+  const forecasts = useAppSelector<IWeatherForecast[]>((state) => state.weather.forecasts);
+  const startDateIndex = useAppSelector<number>((state) => state.weather.startDateIndex);
 
   useEffect(() => {
     if (startDateIndex !== intNextStartDateIndex) {
-      dispatch(actionCreators.requestWeatherForecasts(intNextStartDateIndex));
+      dispatch(getForecastsAsync(intNextStartDateIndex));
     }
   }, [dispatch, startDateIndex, intNextStartDateIndex]);
 

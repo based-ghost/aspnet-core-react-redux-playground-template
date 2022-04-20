@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import type { FunctionComponent } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const BrandContent = styled.div`
   text-align: center;

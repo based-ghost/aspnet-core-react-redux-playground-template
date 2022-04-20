@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import type { IWeatherForecastsState } from '../../store/weather-forecasts';
+import type { IWeatherForecastsState } from '../../store/weatherSlice';
 
 type ForecastTableProps = Pick<IWeatherForecastsState, 'forecasts'>;
 
@@ -14,18 +14,12 @@ const ForecastTable = memo<ForecastTableProps>(({ forecasts }) => (
       </tr>
     </thead>
     <tbody>
-      {forecasts.map(({
-        id,
-        summary,
-        temperatureC,
-        temperatureF,
-        dateFormatted
-      }) => (
-        <tr key={id}>
-          <td>{dateFormatted}</td>
-          <td>{temperatureC}</td>
-          <td>{temperatureF}</td>
-          <td>{summary}</td>
+      {forecasts.map((x) => (
+        <tr key={x.id}>
+          <td>{x.dateFormatted}</td>
+          <td>{x.temperatureC}</td>
+          <td>{x.temperatureF}</td>
+          <td>{x.summary}</td>
         </tr>
       ))}
     </tbody>

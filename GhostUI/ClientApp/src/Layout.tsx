@@ -1,5 +1,5 @@
-import { Fragment, type FunctionComponent, type PropsWithChildren } from 'react';
 import { Footer, Navbar, Settings } from './components';
+import { Fragment, type FunctionComponent, type PropsWithChildren } from 'react';
 
 type LayoutProps = PropsWithChildren<unknown>;
 

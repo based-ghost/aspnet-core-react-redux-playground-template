@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import type { IWeatherForecastsState } from '../../store/weather-forecasts';
+import type { IWeatherForecastsState } from '../../store/weatherSlice';
 
 type PaginationProps = Pick<IWeatherForecastsState, 'startDateIndex'>;
 

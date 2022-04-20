@@ -1,12 +1,12 @@
-import { useRef, useState, useCallback, type FunctionComponent } from 'react';
 import { AuthApi } from '../api';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '../store';
 import { useNavigate } from 'react-router-dom';
-import { actionCreators } from '../store/auth';
+import { resetState } from '../store/authSlice';
 import styled, { keyframes } from 'styled-components';
 import { useIsLoggedIn, useOnClickOutside } from '../hooks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Routes, NUGET_URL_CONFIG, LINK_ATTRIBUTES } from '../config';
+import { useRef, useState, useCallback, type FunctionComponent } from 'react';
 
 const CLICK_OUTSIDE_EVENTS = ['click', 'touchend'];
 
@@ -150,7 +150,7 @@ const Settings: FunctionComponent = () => {
 
   // react-redux hooks state/actions
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   if (!isLoggedIn) {
     return null;
@@ -165,7 +165,7 @@ const Settings: FunctionComponent = () => {
   const handleLogout = async () => {
     try {
       await AuthApi.logoutAsync();
-      dispatch(actionCreators.resetState());
+      dispatch(resetState());
       navigate(loginPath);
     } catch (e) {
       console.error(e);

@@ -1,5 +1,5 @@
 import { useEffect, memo } from 'react';
-import { AuthStatusEnum } from '../store/auth';
+import { AuthStatusEnum } from '../store/authSlice';
 import styled, { keyframes } from 'styled-components';
 
 type AuthenticatorProps = Readonly<{

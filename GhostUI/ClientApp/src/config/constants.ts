@@ -1,6 +1,6 @@
 import type { AnchorHTMLAttributes } from 'react';
-import type { IDropdownOption } from '../store/form';
 import type { Theme } from 'react-functional-select';
+import type { IDropdownOption } from '../store/formSlice';
 
 /**
  * react-functional-select 'themeConfig' property

@@ -5,18 +5,17 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import './assets/style/scss/site.scss';
-import './config/fa.config';
-import { toastifyProps } from './config';
-import { SignalRApi } from './api/signalr.service';
-import { configureStore, type RootState } from './store';
+import { store } from './store';
 import { ToastContainer } from 'react-toastify';
 import reportWebVitals from './reportWebVitals';
+import { SignalRApi } from './api/signalr.service';
+import { toastifyProps, registerIcons } from './config';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+
+registerIcons();
 
 const container = document.getElementById('root');
 const root = createRoot(container as HTMLElement);
-const initialState: RootState = (window as any)?.initialReduxState;
-const store = configureStore(initialState);
 
 function AppRenderer() {
   useEffect(() => {

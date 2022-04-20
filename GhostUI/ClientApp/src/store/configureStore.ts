@@ -1,19 +1,18 @@
-import thunk from 'redux-thunk';
-import createRootReducer from './rootReducer';
-import { applyMiddleware, compose, createStore, type Store } from 'redux';
-import type { RootState } from './index';
+import authReducer from './authSlice';
+import formReducer from './formSlice';
+import weatherReducer from './weatherSlice';
+import { configureStore } from '@reduxjs/toolkit'
 
-const configureStore = (initialState?: RootState): Store<RootState> => {
-  const composeEnhancer: typeof compose =
-    (window as any)?.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+export const store = configureStore({
+  reducer: {
+    auth: authReducer,
+    form: formReducer,
+    weather: weatherReducer,
+  },
+})
 
-  const store = createStore(
-    createRootReducer(),
-    initialState,
-    composeEnhancer(applyMiddleware(thunk))
-  );
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type RootState = ReturnType<typeof store.getState>;
 
-  return store;
-};
-
-export default configureStore;
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+export type AppDispatch = typeof store.dispatch;

@@ -1,15 +1,11 @@
-import { actionCreators } from '../../store/form';
-import { useDispatch, useSelector } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import type { RootState } from '../../store';
 import type { FunctionComponent } from 'react';
+import { increment, decrement } from '../../store/formSlice';
+import { useAppSelector, useAppDispatch } from '../../store';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const CounterFormGroup: FunctionComponent = () => {
-  const count = useSelector<RootState, number>((state) => state.form.count);
-
-  const dispatch = useDispatch();
-  const decrement = () => dispatch(actionCreators.decrement());
-  const increment = () => dispatch(actionCreators.increment());
+  const dispatch = useAppDispatch();
+  const count = useAppSelector<number>((state) => state.form.count);
 
   return (
     <div className='column'>
@@ -17,14 +13,14 @@ const CounterFormGroup: FunctionComponent = () => {
       <h5 className='subtitle is-5'>Use buttons to increment/decrement</h5>
       <p className='buttons incrementer-buttons form-control-group'>
         <button
-          onClick={decrement}
           className='button is-info'
+          onClick={() => dispatch(decrement())}
         >
           <FontAwesomeIcon icon='minus' />
         </button>
         <button
-          onClick={increment}
           className='button is-info'
+          onClick={() => dispatch(increment())}
         >
           <FontAwesomeIcon icon='plus' />
         </button>
