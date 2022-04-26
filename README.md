@@ -32,7 +32,7 @@ This template is vaguley based on the original React + Redux .NET Core SPA templ
   - Two different loader components (spinner & authentication animation w/ callback for success/fail)
 
 ## Setup
-  - [Node.js version >= 10](https://nodejs.org/en/download/)
+  - [Node.js version >= 14](https://nodejs.org/en/download/)
   - [`.NET 6.0 SDK`](https://dotnet.microsoft.com/download/dotnet/6.0)
   - Clone the repository and run ```npm install``` from the root of the ```ClientApp``` directory to properly install all node packages/dependencies.
   - Opening the solution in VisualStudio should automatically trigger nuget package and other dependencies to be restored (assuming latest version of VisualStudio and installation of .NET Core version mentioned aboved). If issues are encountered, attempting to refresh the dependencies or executing a ```rebuild solution``` should resolve them.
