@@ -1,10 +1,10 @@
-﻿/* Overrides for bulma & react-toastify defaults */
-@import 'base/variables.scss';
+﻿/* overrides for bulma & react-toastify defaults */
+@import 'base/variables';
 
-/* NPM package styles */
-@import '~bulma/bulma';
-@import '~react-toastify/scss/main.scss';
+/* node_modules imports */
+@import 'bulma/bulma';
+@import 'react-toastify/dist/ReactToastify.css';
 
-/* Local styles */
+/* local styles */
 @import 'base/generic', 'base/transition';
 @import 'components/navbar', 'components/tool-tip';
