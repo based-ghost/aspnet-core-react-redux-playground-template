@@ -23,16 +23,16 @@ const FetchData: FunctionComponent = () => {
   }, [dispatch, startDateIndex, intNextStartDateIndex]);
 
   return (
-    <div className='section'>
-      <div className='container'>
-        <h3 className='title is-3'>
+    <div className="section">
+      <div className="container">
+        <h3 className="title is-3">
           Fetch Data
         </h3>
-        <div className='box container-box'>
-          <h3 className='title is-4'>
+        <div className="box container-box">
+          <h3 className="title is-4">
             Weather forecast
           </h3>
-          <h5 className='subtitle is-5'>
+          <h5 className="subtitle is-5">
             This component demonstrates fetching data from the server and working with URL parameters.
           </h5>
           <Spinner isLoading={isLoading} />

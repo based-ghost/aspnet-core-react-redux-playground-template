@@ -25,20 +25,20 @@ const PasswordInput = memo<PasswordInputProps>(({
   ]);
 
   return (
-    <div className='field'>
-      <div className='control has-icons-left has-icons-right'>
+    <div className="field">
+      <div className="control has-icons-left has-icons-right">
         <input
           {...bindToInput}
           className={className}
-          placeholder='Password'
-          autoComplete='password'
+          placeholder="Password"
+          autoComplete="password"
         />
-        <span className='icon is-left'>
-          <FontAwesomeIcon icon='lock' />
+        <span className="icon is-left">
+          <FontAwesomeIcon icon="lock" />
         </span>
         <span
           onClick={toggleShowPassword}
-          className='icon is-right icon-clickable'
+          className="icon is-right icon-clickable"
           data-tooltip={`${!showPassword ? 'Show' : 'Hide'} password`}
         >
           <FontAwesomeIcon icon={!showPassword ? 'eye' : 'eye-slash'} />

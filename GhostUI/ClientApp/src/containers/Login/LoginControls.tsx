@@ -12,20 +12,20 @@ const LoginControls = memo<LoginControlsProps>(({
   handleRememberMeCheck
 }) => (
   <Fragment>
-    <div className='field remember-me-field'>
+    <div className="field remember-me-field">
       <Checkbox
-        label='Remember me'
+        label="Remember me"
         checked={rememberMe}
         onCheck={handleRememberMeCheck}
       />
     </div>
     <button
-      type='submit'
-      className='button is-info is-medium is-fullwidth'
+      type="submit"
+      className="button is-info is-medium is-fullwidth"
     >
       <span>Login</span>
-      <span className='icon'>
-        <FontAwesomeIcon icon='sign-in-alt' />
+      <span className="icon">
+        <FontAwesomeIcon icon="sign-in-alt" />
       </span>
     </button>
   </Fragment>

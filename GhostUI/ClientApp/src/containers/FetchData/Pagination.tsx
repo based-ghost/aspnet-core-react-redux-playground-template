@@ -6,18 +6,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 type PaginationProps = Pick<WeatherState, 'startDateIndex'>;
 
 const Pagination = memo<PaginationProps>(({ startDateIndex = 0 }) => (
-  <p className='buttons pagination-group'>
+  <p className="buttons pagination-group">
     <Link
-      className='button is-info'
+      className="button is-info"
       to={`/fetch/${startDateIndex - 5}`}
     >
-      <FontAwesomeIcon icon='angle-double-left' />
+      <FontAwesomeIcon icon="angle-double-left" />
     </Link>
     <Link
-      className='button is-info'
+      className="button is-info"
       to={`/fetch/${startDateIndex + 5}`}
     >
-      <FontAwesomeIcon icon='angle-double-right' />
+      <FontAwesomeIcon icon="angle-double-right" />
     </Link>
   </p>
 ));

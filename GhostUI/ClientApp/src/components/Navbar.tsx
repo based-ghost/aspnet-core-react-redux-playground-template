@@ -9,20 +9,20 @@ const Navbar: FunctionComponent = () => {
 
   return (
     <nav
-      role='navigation'
-      className='navbar'
-      aria-label='main navigation'
+      role="navigation"
+      className="navbar"
+      aria-label="main navigation"
     >
-      <div className='navbar-wrapper'>
-        <div className='brand-wrapper'>
+      <div className="navbar-wrapper">
+        <div className="brand-wrapper">
           <BulmaLogoSVG
-            width='130'
-            height='65'
+            width="130"
+            height="65"
             aria-hidden={true}
-            title='bulma.io-logo'
+            title="bulma.io-logo"
           />
         </div>
-        <div className='navbar-routes'>
+        <div className="navbar-routes">
           {isLoggedIn &&
             routes
               .filter((x) => x.showInNav)

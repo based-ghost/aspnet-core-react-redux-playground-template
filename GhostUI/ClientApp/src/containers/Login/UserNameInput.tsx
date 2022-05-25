@@ -21,16 +21,16 @@ const UserNameInput = memo<UserNameInputProps>(({
   ]);
 
   return (
-    <div className='field'>
-      <div className='control has-icons-left'>
+    <div className="field">
+      <div className="control has-icons-left">
         <input
           autoFocus
           {...bindToInput}
           className={className}
-          placeholder='Username'
+          placeholder="Username"
         />
-        <span className='icon is-left'>
-          <FontAwesomeIcon icon='user' />
+        <span className="icon is-left">
+          <FontAwesomeIcon icon="user" />
         </span>
       </div>
     </div>

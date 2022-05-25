@@ -62,22 +62,22 @@ const Footer: FunctionComponent = () => (
   <StyledFooter>
     <FooterButtons>
       <FooterLink
-        target='_blank'
-        aria-label='GitHub'
-        rel='noopener noreferrer'
-        href='https://github.com/based-ghost'
+        target="_blank"
+        aria-label="GitHub"
+        rel="noopener noreferrer"
+        href="https://github.com/based-ghost"
       >
         <FontAwesomeIcon icon={['fab', 'github']} />
       </FooterLink>
       <FooterLink
-        href='#/'
-        aria-label='Twitter'
+        href="#/"
+        aria-label="Twitter"
       >
         <FontAwesomeIcon icon={['fab', 'twitter']} />
       </FooterLink>
       <FooterLink
-        href='#/'
-        aria-label='Medium'
+        href="#/"
+        aria-label="Medium"
       >
         <FontAwesomeIcon icon={['fab', 'etsy']} />
       </FooterLink>

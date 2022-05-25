@@ -2,35 +2,35 @@ import type { FunctionComponent } from 'react';
 import { ReactComponent as ReactCoreSVG } from '../../assets/image/ReactCore.svg';
 
 const Dashboard: FunctionComponent = () => (
-  <div className='dashboard-wrapper'>
-    <section className='hero is-dark'>
-      <div className='hero-body'>
-        <div className='is-flex is-horizontal-center'>
+  <div className="dashboard-wrapper">
+    <section className="hero is-dark">
+      <div className="hero-body">
+        <div className="is-flex is-horizontal-center">
           <ReactCoreSVG
-            width='230'
-            height='230'
+            width="230"
+            height="230"
             aria-hidden
-            title='react-core-logo'
+            title="react-core-logo"
           />
         </div>
       </div>
     </section>
-    <section className='container'>
-      <div className='card'>
-        <div className='card-content'>
-          <div className='column'>
-            <p className='title has-text-centered'>Technology Stack</p>
+    <section className="container">
+      <div className="card">
+        <div className="card-content">
+          <div className="column">
+            <p className="title has-text-centered">Technology Stack</p>
             <hr />
-            <div className='columns is-multiline'>
-              <div className='column dashboard-info is-half'>
-                <div className='content'>
+            <div className="columns is-multiline">
+              <div className="column dashboard-info is-half">
+                <div className="content">
                   <ul>
                     <li>
                       <a
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        href='https://reactjs.org/'
-                        className='dashboard-link react'
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://reactjs.org/"
+                        className="dashboard-link react"
                       >
                         React
                       </a>
@@ -41,23 +41,23 @@ const Dashboard: FunctionComponent = () => (
                     </li>
                     <li>
                       <a
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        href='https://redux.js.org/'
-                        className='dashboard-link redux'
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://redux.js.org/"
+                        className="dashboard-link redux"
                       >
                         Redux
                       </a>
-                      centralizes your application's state and logic and helps
+                      centralizes your application"s state and logic and helps
                       you write applications that behave consistently and are
                       easy to test.
                     </li>
                     <li>
                       <a
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        href='https://bulma.io/'
-                        className='dashboard-link bulma'
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://bulma.io/"
+                        className="dashboard-link bulma"
                       >
                         Bulma
                       </a>
@@ -67,15 +67,15 @@ const Dashboard: FunctionComponent = () => (
                   </ul>
                 </div>
               </div>
-              <div className='column dashboard-info is-half'>
-                <div className='content'>
+              <div className="column dashboard-info is-half">
+                <div className="content">
                   <ul>
                     <li>
                       <a
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        href='https://www.asp.net/'
-                        className='dashboard-link aspcore'
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://www.asp.net/"
+                        className="dashboard-link aspcore"
                       >
                         ASP.NET Core
                       </a>
@@ -86,10 +86,10 @@ const Dashboard: FunctionComponent = () => (
                     </li>
                     <li>
                       <a
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        href='https://sass-lang.com/'
-                        className='dashboard-link sass'
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://sass-lang.com/"
+                        className="dashboard-link sass"
                       >
                         SASS
                       </a>
@@ -98,10 +98,10 @@ const Dashboard: FunctionComponent = () => (
                     </li>
                     <li>
                       <a
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        href='https://www.typescriptlang.org/'
-                        className='dashboard-link typescript'
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://www.typescriptlang.org/"
+                        className="dashboard-link typescript"
                       >
                         TypeScript
                       </a>

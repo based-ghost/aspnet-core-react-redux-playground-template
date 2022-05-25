@@ -175,11 +175,11 @@ const Settings: FunctionComponent = () => {
   return (
     <StyledSettings isMenuOpen={isMenuOpen}>
       <SettingsLink
-        role='button'
+        role="button"
         ref={settingsLinkRef}
         onClick={() => setisMenuOpen((prevIsMenuOpen) => !prevIsMenuOpen)}
       >
-        <CogIcon icon='cog' />
+        <CogIcon icon="cog" />
       </SettingsLink>
       {isMenuOpen && (
         <SettingsMenu>
@@ -191,7 +191,7 @@ const Settings: FunctionComponent = () => {
               {...LINK_ATTRIBUTES}
               href={NUGET_URL_CONFIG.HealthUi}
             >
-              <FontAwesomeIcon icon='heart' /> Health Checks
+              <FontAwesomeIcon icon="heart" /> Health Checks
             </SettingsMenuLink>
           </li>
           <li>
@@ -199,12 +199,12 @@ const Settings: FunctionComponent = () => {
               {...LINK_ATTRIBUTES}
               href={NUGET_URL_CONFIG.SwaggerDocs}
             >
-              <FontAwesomeIcon icon='file' /> Swagger API
+              <FontAwesomeIcon icon="file" /> Swagger API
             </SettingsMenuLink>
           </li>
           <li>
             <SettingsMenuLink
-              role='button'
+              role="button"
               onClick={handleLogout}
             >
               <FontAwesomeIcon icon={loginIcon!} />{` ${loginName}`}
