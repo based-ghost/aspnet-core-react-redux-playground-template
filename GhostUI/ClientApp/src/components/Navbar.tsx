@@ -25,7 +25,7 @@ const Navbar: FunctionComponent = () => {
         <div className="navbar-routes">
           {isLoggedIn &&
             routes
-              .filter((x) => x.showInNav)
+            .filter(({ showInNav }) => showInNav)
               .map(({ path, name, params }) => (
                 <NavLink
                   key={name}
