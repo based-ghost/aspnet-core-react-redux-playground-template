@@ -23,7 +23,7 @@
     <PackageReference Include="AspNetCore.HealthChecks.UI" Version="6.0.4" />
     <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="6.0.4" />
     <PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="6.0.4" />
-    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="6.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="6.0.7" />
     <PackageReference Include="NSwag.AspNetCore" Version="13.16.1" />
     <PackageReference Include="NSwag.MSBuild" Version="13.16.1">
       <PrivateAssets>all</PrivateAssets>
