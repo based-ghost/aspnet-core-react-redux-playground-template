@@ -1,5 +1,5 @@
-import { useLocation } from 'react-router';
 import { useAppSelector } from '../store';
+import { useLocation } from 'react-router-dom';
 
 const useIsLoggedIn = (): boolean => {
   const { pathname } = useLocation();
