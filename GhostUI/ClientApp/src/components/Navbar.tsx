@@ -18,14 +18,14 @@ const Navbar: FunctionComponent = () => {
           <BulmaLogoSVG
             width="130"
             height="65"
-            aria-hidden={true}
+            aria-hidden
             title="bulma.io-logo"
           />
         </div>
         <div className="navbar-routes">
           {isLoggedIn &&
             routes
-            .filter(({ showInNav }) => showInNav)
+              .filter(({ showInNav }) => showInNav)
               .map(({ path, name, params }) => (
                 <NavLink
                   key={name}
