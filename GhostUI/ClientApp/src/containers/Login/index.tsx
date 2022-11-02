@@ -44,7 +44,6 @@ const Login: FunctionComponent = () => {
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-
     if (status === AuthStatusEnum.PROCESS) {
       return;
     }

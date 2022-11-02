@@ -33,9 +33,9 @@ export const weatherSlice = createSlice({
     },
     receiveForecasts: (state, action: PayloadAction<ReceiveForecastsPayload>) => {
       const { forecasts, startDateIndex } = action.payload;
-
-      // Only accept the incoming data if it matches the most recent request. This ensures we correctly handle out-of-order responses.
       if (startDateIndex === state.startDateIndex) {
+        // Only accept the incoming data if it matches the most recent request.
+        // This ensures we correctly handle out-of-order responses.
         state.isLoading = false;
         state.forecasts = forecasts;
         state.startDateIndex = startDateIndex;
@@ -60,7 +60,6 @@ export const getForecastsAsync = createAsyncThunk(
     try {
       const forecasts = await SampleApi.getForecastsAsync(startDateIndex);
       const payload = { forecasts, startDateIndex };
-
       dispatch(receiveForecasts(payload));
     } catch (e) {
       console.error(e);

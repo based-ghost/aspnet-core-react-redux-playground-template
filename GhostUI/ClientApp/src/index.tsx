@@ -1,7 +1,7 @@
 import { Provider } from 'react-redux';
 import { createRoot } from 'react-dom/client';
-import { useEffect, StrictMode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { useEffect, StrictMode, Fragment } from 'react';
 import App from './App';
 import './assets/style/scss/site.scss';
 import { store } from './store';
@@ -24,14 +24,16 @@ function AppRenderer() {
   }, []);
 
   return (
-    <StrictMode>
+    <Fragment>
       <BrowserRouter>
         <Provider store={store}>
-          <App />
+          <StrictMode>
+            <App />
+          </StrictMode>
         </Provider>
       </BrowserRouter>
       <ToastContainer {...toastifyProps} />
-    </StrictMode>
+    </Fragment>
   );
 }
 

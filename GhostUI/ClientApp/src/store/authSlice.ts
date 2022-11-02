@@ -64,7 +64,6 @@ export const loginAsync = createAsyncThunk(
     try {
       const authUser = await AuthApi.loginAsync(credentials);
       const payload = { ...authUser, isAuthenticated: true };
-
       dispatch(setUserLogin(payload));
     } catch (e) {
       dispatch(setAuthStatus(AuthStatusEnum.FAIL));

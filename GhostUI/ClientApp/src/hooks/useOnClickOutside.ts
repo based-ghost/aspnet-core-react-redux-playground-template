@@ -15,9 +15,10 @@ const useOnClickOutside = (
   }, [onClickAway]);
 
   useEffect(() => {
-    const onClickHandler = (e: Event): void => {
-      const { current: el } = ref;
-      !el?.contains(e.target as Node) && onClickAwayRef.current(e);
+    const onClickHandler = (e: Event) => {
+      if (!ref.current?.contains(e.target as Node)) {
+        onClickAwayRef.current(e);
+      }
     };
 
     events.forEach((e) => document.addEventListener(e, onClickHandler));

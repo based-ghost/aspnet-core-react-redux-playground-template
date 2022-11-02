@@ -160,7 +160,7 @@ const Settings: FunctionComponent = () => {
     path: loginPath,
     icon: loginIcon,
     name: loginName
-  } = Routes.find(({ path }) => path === '/')!;
+  } = Routes.find((x) => x.path === '/')!;
 
   const handleLogout = async () => {
     try {
