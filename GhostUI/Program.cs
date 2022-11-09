@@ -77,7 +77,7 @@ app.UseStaticFiles();
 app.UseSpaStaticFiles();
 app.UseRouting();
 
-// Map controllers / SignalR hubs / HealthChecks
+// Map controllers / SignalR hubs
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
