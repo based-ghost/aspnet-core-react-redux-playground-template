@@ -71,10 +71,7 @@ app.UseHealthChecks("/healthchecks-json", new HealthCheckOptions()
 // NSwage.MsBuild + adding automation config in GhostUI.csproj makes this part of the build step (updates to API will be handled automatically)
 app.UseOpenApi();
 app.UseSwaggerUi3();
-
 app.UseHttpsRedirection();
-// app.UseStaticFiles();
-// app.UseSpaStaticFiles();
 app.UseRouting();
 
 // Map controllers / SignalR hubs
