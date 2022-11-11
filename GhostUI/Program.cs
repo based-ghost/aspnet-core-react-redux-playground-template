@@ -73,8 +73,8 @@ app.UseOpenApi();
 app.UseSwaggerUi3();
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
-app.UseSpaStaticFiles();
+// app.UseStaticFiles();
+// app.UseSpaStaticFiles();
 app.UseRouting();
 
 // Map controllers / SignalR hubs
