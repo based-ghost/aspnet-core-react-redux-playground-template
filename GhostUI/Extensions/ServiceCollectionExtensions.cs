@@ -1,4 +1,5 @@
-﻿using System.IO.Compression;
+﻿using System;
+using System.IO.Compression;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,7 +31,7 @@ namespace GhostUI.Extensions
                 options.Providers.Add<BrotliCompressionProvider>();
                 options.Providers.Add<GzipCompressionProvider>();
                 options.EnableForHttps = enableForHttps;
-                options.MimeTypes = gzipMimeTypes;
+                options.MimeTypes = gzipMimeTypes ?? Array.Empty<string>();
             });
 
             services.Configure<BrotliCompressionProviderOptions>(options => options.Level = compressionLvl);

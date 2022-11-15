@@ -8,10 +8,8 @@ import { getForecastsAsync, type WeatherForecast } from '../../store/weatherSlic
 
 const FetchData: FunctionComponent = () => {
   const dispatch = useAppDispatch();
-
   const { startDateIndex: startDateIndexDefault = '0' } = useParams();
   const intNextStartDateIndex = parseInt(startDateIndexDefault, 10);
-
   const isLoading = useAppSelector<boolean>((state) => state.weather.isLoading);
   const forecasts = useAppSelector<WeatherForecast[]>((state) => state.weather.forecasts);
   const startDateIndex = useAppSelector<number>((state) => state.weather.startDateIndex);
