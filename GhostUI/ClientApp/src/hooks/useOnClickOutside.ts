@@ -5,19 +5,19 @@ const DEFAULT_EVENTS = ['mousedown', 'touchstart'];
 
 const useOnClickOutside = (
   ref: RefObject<HTMLElement | null>,
-  onClickAway: (...args: any[]) => any,
+  callback: (...args: any[]) => any,
   events: string[] = DEFAULT_EVENTS
 ): void => {
-  const onClickAwayRef = useRef(onClickAway);
+  const callbackRef = useRef(callback);
 
   useEffect(() => {
-    onClickAwayRef.current = onClickAway;
-  }, [onClickAway]);
+    callbackRef.current = callback;
+  }, [callback]);
 
   useEffect(() => {
     const onClickHandler = (e: Event) => {
       if (!ref.current?.contains(e.target as Node)) {
-        onClickAwayRef.current(e);
+        callbackRef.current(e);
       }
     };
 

@@ -90,27 +90,33 @@ const CheckIcon = styled.i`
   }
 `;
 
-const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  (
-    { id, name, label, onCheck, checked, disabled, readOnly },
-    ref: Ref<HTMLInputElement>
-  ) => (
-    <CheckboxWrapper>
-      <Input
-        id={id}
-        ref={ref}
-        name={name}
-        type="checkbox"
-        checked={checked}
-        readOnly={readOnly}
-        disabled={disabled}
-        onChange={(e) => onCheck(e.target.checked)}
-      />
-      <CheckIcon />
-      {label && <Label>{label}</Label>}
-    </CheckboxWrapper>
-  )
-);
+const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((
+  {
+    id,
+    name,
+    label,
+    onCheck,
+    checked,
+    disabled,
+    readOnly
+  },
+  ref: Ref<HTMLInputElement>
+) => (
+  <CheckboxWrapper>
+    <Input
+      id={id}
+      ref={ref}
+      name={name}
+      type="checkbox"
+      checked={checked}
+      readOnly={readOnly}
+      disabled={disabled}
+      onChange={(e) => onCheck(e.target.checked)}
+    />
+    <CheckIcon />
+    {label && <Label>{label}</Label>}
+  </CheckboxWrapper>
+));
 
 Checkbox.displayName = 'Checkbox';
 
