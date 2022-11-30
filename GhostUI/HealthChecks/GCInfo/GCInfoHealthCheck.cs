@@ -19,7 +19,7 @@ namespace GhostUI.HealthChecks
         public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
         {
             // This example will report degraded status if the application is using more than the configured amount of memory (1gb by default).
-            // Additionally we include some GC info in the reported diagnostics.
+            // Additionally, we include some GC info in the reported diagnostics.
             var options = _options.Get(context.Registration.Name);
             var allocated = GC.GetTotalMemory(forceFullCollection: false);
 

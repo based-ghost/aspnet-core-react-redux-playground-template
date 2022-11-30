@@ -81,7 +81,6 @@ app.UseEndpoints(endpoints =>
     endpoints.MapHub<UsersHub>("/hubs/users");
 });
 
-// PERSISTING ISSUE STILL IN .NET 6:
 // Killing .NET debug session does not kill spawned Node.js process (have to manually kill)
 app.UseSpa(spa =>
 {
