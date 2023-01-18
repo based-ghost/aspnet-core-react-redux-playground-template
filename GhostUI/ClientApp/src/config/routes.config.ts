@@ -64,7 +64,7 @@ export const Routes: Route[] = [
 
 // Can't use Location.key for CSSTransition key. Path for 'Fetch' route changes
 // ...on pagination and generates a new key (triggering a transition event).
-export const getTransitionMetaData = ({
+export const getCSSTransitionProps = ({
   pathname,
 }: Location): TransitionMetaData => {
   const key = pathname.split('/', 2).join('/');
