@@ -1,20 +1,18 @@
 import Layout from './Layout';
 import type { FunctionComponent } from 'react';
 import { useLocation, Route, Routes } from 'react-router-dom';
-import { Routes as routes, TRANSITION_DEFAULT } from './config';
+import { Routes as routes, getTransitionMetaData } from './config';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 
 const App: FunctionComponent = () => {
   const location = useLocation();
-  const cssKey = location.pathname?.split('/')[1] || '/';
-  const curRoute = routes.find((x) => (x.path === cssKey) || (x.name.toLowerCase() === cssKey.toLowerCase()));
-  const { timeout, classNames } = curRoute?.transition ?? TRANSITION_DEFAULT;
+  const { key, timeout, classNames } = getTransitionMetaData(location);
 
   return (
     <Layout>
       <SwitchTransition mode="out-in">
         <CSSTransition
-          key={cssKey}
+          key={key}
           timeout={timeout}
           classNames={classNames}
         >

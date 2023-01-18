@@ -18,8 +18,8 @@ const root = createRoot(container as HTMLElement);
 
 function AppRenderer() {
   useEffect(() => {
-    setTimeout(async () => {
-      await SignalRApi.startConnection();
+    setTimeout(() => {
+      SignalRApi.startConnection();
     }, 250);
   }, []);
 
