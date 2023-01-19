@@ -1,5 +1,5 @@
 import type { ComponentType } from 'react';
-import type { Params, Location } from 'react-router-dom';
+import type { Params } from 'react-router-dom';
 import { Login, Dashboard, FetchData, Form } from '../containers';
 import type { IconProp } from '@fortawesome/fontawesome-svg-core';
 
@@ -10,7 +10,6 @@ export const TRANSITION_DEFAULT = {
 
 export type RouteComponent = ComponentType<any>;
 export type Transition = typeof TRANSITION_DEFAULT;
-export type TransitionMetaData = Transition & { key: string };
 
 export type Route = Readonly<{
   name: string;
@@ -61,14 +60,3 @@ export const Routes: Route[] = [
     }
   }
 ];
-
-// Can't use Location.key for CSSTransition key. Path for 'Fetch' route changes
-// ...on pagination and generates a new key (triggering a transition event).
-export const getCSSTransitionProps = ({
-  pathname,
-}: Location): TransitionMetaData => {
-  const key = pathname.split('/', 2).join('/');
-  const route = Routes.find((r) => r.path.startsWith(key));
-  const transition = route?.transition ?? TRANSITION_DEFAULT;
-  return { key, ...transition };
-};

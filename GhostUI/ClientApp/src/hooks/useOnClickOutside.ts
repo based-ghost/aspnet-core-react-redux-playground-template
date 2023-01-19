@@ -12,7 +12,7 @@ const useOnClickOutside = (
 
   useEffect(() => {
     callbackRef.current = callback;
-  }, [callback]);
+  });
 
   useEffect(() => {
     const onClickHandler = (e: Event) => {

@@ -1,12 +1,13 @@
 import Layout from './Layout';
+import { Routes as routes } from './config';
 import type { FunctionComponent } from 'react';
+import { useCSSTransitionProps } from './hooks';
 import { useLocation, Route, Routes } from 'react-router-dom';
-import { Routes as routes, getCSSTransitionProps } from './config';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 
 const App: FunctionComponent = () => {
   const location = useLocation();
-  const cssProps = getCSSTransitionProps(location);
+  const cssProps = useCSSTransitionProps();
 
   return (
     <Layout>

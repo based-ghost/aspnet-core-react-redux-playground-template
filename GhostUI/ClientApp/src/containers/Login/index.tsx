@@ -1,18 +1,18 @@
-import { useCallback, useState, useRef, type FunctionComponent } from 'react';
+import { useCallback, useState, useRef, type FormEvent, type FunctionComponent } from 'react';
 import { Routes } from '../../config';
-import { toast } from 'react-toastify';
 import { useTextInput } from '../../hooks';
 import LoginControls from './LoginControls';
 import UserNameInput from './UserNameInput';
 import PasswordInput from './PasswordInput';
 import { useNavigate } from 'react-router-dom';
+import { toast, type Id } from 'react-toastify';
 import { Authenticator } from '../../components';
 import { useAppDispatch, useAppSelector } from '../../store';
 import BasedGhostLogoPNG from '../../assets/image/based-ghost-main.png';
 import { loginAsync, setAuthStatus, resetState, AuthStatusEnum, type Credentials } from '../../store/authSlice';
 
 const Login: FunctionComponent = () => {
-  const toastIdRef = useRef<string | number>('');
+  const toastIdRef = useRef<Id>('');
   const [rememberMe, setRememberMe] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [isInputInvalid, setIsInputInvalid] = useState<boolean>(false);
@@ -42,7 +42,7 @@ const Login: FunctionComponent = () => {
   const onRememberMeCheck = useCallback((checked: boolean): void => setRememberMe(checked), []);
   const onToggleShowPassword = useCallback((): void => setShowPassword((prevShow: boolean) => !prevShow), []);
 
-  const handleLogin = (e: React.FormEvent<HTMLFormElement>): void => {
+  const handleLogin = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     if (status === AuthStatusEnum.PROCESS) {
       return;

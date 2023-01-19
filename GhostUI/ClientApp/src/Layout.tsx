@@ -1,9 +1,7 @@
 import { Footer, Navbar, Settings } from './components';
 import { Fragment, type FunctionComponent, type PropsWithChildren } from 'react';
 
-type LayoutProps = PropsWithChildren<unknown>;
-
-const Layout: FunctionComponent<LayoutProps> = ({ children }) => (
+const Layout: FunctionComponent<PropsWithChildren> = ({ children }) => (
   <Fragment>
     <Navbar />
     <Settings />

@@ -14,12 +14,12 @@ const ForecastTable = memo<ForecastTableProps>(({ forecasts }) => (
       </tr>
     </thead>
     <tbody>
-      {forecasts.map((x) => (
-        <tr key={x.id}>
-          <td>{x.dateFormatted}</td>
-          <td>{x.temperatureC}</td>
-          <td>{x.temperatureF}</td>
-          <td>{x.summary}</td>
+      {forecasts.map((f) => (
+        <tr key={f.id}>
+          <td>{f.dateFormatted}</td>
+          <td>{f.temperatureC}</td>
+          <td>{f.temperatureF}</td>
+          <td>{f.summary}</td>
         </tr>
       ))}
     </tbody>
