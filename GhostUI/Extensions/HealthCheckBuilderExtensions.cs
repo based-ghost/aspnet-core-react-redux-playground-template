@@ -16,8 +16,8 @@ namespace GhostUI.Extensions
             long? thresholdInBytes = null)
         {
             builder.AddCheck<GCInfoHealthCheck>(
-                name, 
-                failureStatus ?? HealthStatus.Degraded, 
+                name,
+                failureStatus ?? HealthStatus.Degraded,
                 tags ?? Enumerable.Empty<string>());
 
             if (thresholdInBytes.HasValue)
