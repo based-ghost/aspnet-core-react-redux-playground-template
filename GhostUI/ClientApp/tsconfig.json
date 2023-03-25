@@ -5,6 +5,7 @@
     "module": "esnext",
     "jsx": "react-jsx",
     "moduleResolution": "node",
+    "ignoreDeprecations": "5.0",
     "strict": true,
     "noEmit": true,
     "sourceMap": true,
@@ -21,8 +22,7 @@
       "dom",
       "dom.iterable",
       "esnext"
-    ],
-    "allowJs": true
+    ]
   },
   "include": [
     "src"
