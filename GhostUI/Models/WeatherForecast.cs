@@ -10,6 +10,6 @@ namespace GhostUI.Models
 
         public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 
-        public int Id => Convert.ToInt32(DateFormatted?.Replace("/", ""));
+        public int Id => Random.Shared.Next(0, 1000);
     }
 }
